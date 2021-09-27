@@ -1,5 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 // import { Link } from "react-router-dom";
+import ArrowRight from "../../images/ArrowRight.png";
 import "./Login.css";
 
 function Login() {
@@ -17,7 +19,7 @@ function Login() {
 						<span className="title-email">Your Email</span>
 						<input
 							className="input-email"
-							type="text"
+							type="email"
 							placeholder="Email... "
 						></input>
 					</div>
@@ -39,9 +41,14 @@ function Login() {
 						</div>
 					</div>
 				</div>
-				<button className="btn-login">Login</button>
+				<button className="btn-login">
+					Login
+					<img className="icon-resgister" src={ArrowRight} alt=" " />
+				</button>
 				<span className="not-register">Not register</span>
-				<span className="create-account">Create account ?</span>
+				<Link to="/Resgister" className="create-account">
+					Create account ?
+				</Link>
 			</form>
 		</div>
 	);

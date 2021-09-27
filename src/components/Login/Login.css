@@ -35,6 +35,7 @@
 	text-align: center;
 	font-size: 1.4rem;
 	font-weight: 400;
+	margin-bottom: 30px;
 }
 .login-content {
 	margin-top: 20px;
@@ -43,6 +44,19 @@
 	display: flex;
 	flex-direction: column;
 	margin-bottom: 20px;
+}
+.login-title {
+	color: transparent;
+	-webkit-background-clip: text;
+	background-clip: text;
+	background-image: linear-gradient(
+		to right top,
+		#aebfd8,
+		#97ade2,
+		#8c99e7,
+		#9080e7,
+		#9f61de
+	);
 }
 .input-email {
 	padding: 10px;
@@ -53,7 +67,8 @@
 	font-size: 1.5rem;
 }
 .title-email {
-	font-size: 1.6rem;
+	font-size: 1.4rem;
+	font-weight: 600;
 	color: rgb(97, 97, 97);
 	margin-bottom: 10px;
 }
@@ -71,7 +86,8 @@
 }
 .title-password {
 	margin-bottom: 10px;
-	font-size: 1.6rem;
+	font-size: 1.4rem;
+	font-weight: 600;
 	color: rgb(97, 97, 97);
 }
 .login-handel {
@@ -95,16 +111,17 @@
 	font-weight: 600;
 }
 .btn-login {
+	position: relative;
 	margin-top: 20px;
 	width: 100%;
 	padding: 10px;
 	margin-bottom: 15px;
 	font-size: 1.6rem;
 	border: none;
-	border-radius: 5px;
+	border-radius: 10px;
 	font-weight: 400;
 	color: white;
-	background-color: #0cd365;
+	background-color: #42a5f7;
 	cursor: pointer;
 }
 .create-account {
@@ -118,4 +135,12 @@
 .login-info {
 	font-size: 1.4rem;
 	color: #6e6e6e;
+}
+.icon-resgister {
+	position: absolute;
+	top: 50%;
+	right: 10px;
+	transform: translateY(-50%);
+	width: 30px;
+	height: 30px;
 }
