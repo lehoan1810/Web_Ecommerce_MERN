@@ -1,0 +1,120 @@
+.product-background {
+	background-color: #f4f4f4;
+}
+.container-detail {
+	padding: 20px 90px;
+}
+.container-detail-flex {
+	display: flex;
+	background-color: white;
+	padding: 40px 20px;
+	border-radius: 5px;
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.detail-info-item {
+	margin-left: 50px;
+	width: 70%;
+	padding-right: 60px;
+}
+.detail-image img {
+	width: 100%;
+	height: 400px;
+	border-radius: 15px;
+}
+.name-detail-item {
+	font-size: 20px;
+	margin-bottom: 12px;
+	display: block;
+}
+.detail-version {
+	font-size: 15px;
+	line-height: 21px;
+	display: block;
+	margin-bottom: 20px;
+}
+.detail-insurance {
+	font-size: 15px;
+	line-height: 21px;
+	display: block;
+	margin-bottom: 15px;
+	text-transform: uppercase;
+}
+.detail-price {
+	font-size: 21px;
+	font-weight: 600;
+	display: block;
+	margin-bottom: 30px;
+}
+.quantity-item {
+	margin-bottom: 40px;
+}
+/* Handel Card */
+.detail-add-card {
+	padding: 15px;
+	background-color: white;
+	color: #a5806d;
+	border: 2px solid #a5806d;
+	border-radius: 10px;
+	font-size: 15px;
+	margin-right: 20px;
+	transition: all 0.4s ease-in;
+}
+.buy-now {
+	padding: 15px;
+	background-color: white;
+	color: #a5806d;
+	border: 2px solid #a5806d;
+	border-radius: 10px;
+	font-size: 15px;
+	margin-right: 20px;
+	transition: all 0.4s ease-in;
+}
+.item-like-img {
+	width: 100%;
+	height: 20px;
+}
+.detail-item-like {
+	padding: 10px;
+	background-color: white;
+	border: 2px solid #333;
+	transition: all 0.3s ease-in;
+	border-radius: 6px;
+}
+.detail-item-like:hover {
+	background-color: rgb(247, 101, 101);
+	filter: invert(100%);
+}
+.handle-item-detail {
+	display: flex;
+	align-items: center;
+}
+.buy-now:hover {
+	background-color: #a5806d;
+	color: white;
+}
+.detail-add-card:hover {
+	background-color: #a5806d;
+	color: white;
+}
+.btn-quantity {
+	padding: 10px 15px;
+	background-color: rgb(248, 118, 118);
+	font-size: 19px;
+	font-weight: 600;
+}
+.quantity-item span {
+	font-size: 15px;
+	margin: 0 20px;
+	border: 2px solid #d5d5d5;
+	padding: 8px 15px;
+}
+.quantity-item {
+	display: inline-block;
+}
+.detail-desc {
+	font-size: 15px;
+	line-height: 24px;
+	display: inline-block;
+	margin-bottom: 20px;
+	font-weight: 600;
+}

@@ -82,10 +82,10 @@ const Main = () => {
 					<div className="container">
 						<div className="work-header">
 							<h3 className="caption">work</h3>
-							<h2 className="heading">Recently Created Universes</h2>
+							<h2 className="heading">Featured products</h2>
 							<div className="text">
-								Phasellus pulvinar iaculis nunc at placerat. Sed porta
-								sollicitudin eros, vel sagittis.
+								These are the types of products that are most trusted by users
+								of the shop
 							</div>
 						</div>
 						<div className="work-list">
@@ -181,24 +181,6 @@ const Main = () => {
 								</div>
 								<img src="" alt="" className="review-avatar" />
 								<h3 className="review-author">Judie Lipsy</h3>
-							</div>
-						</div>
-					</div>
-				</section>
-				<section className="contact" id="contact">
-					<div className="container">
-						<div className="contact-main">
-							<img src="" alt="" className="contact-liquid" />
-							<img src="" alt="" className="contact-person" />
-							<div className="contact-content">
-								<h2 className="heading heading--big">Let's Get Started</h2>
-								<div className="text text--big contact-desc">
-									Start using our easy-to-use tools with multiple options to
-									improve.
-								</div>
-								<Link to="" href="#" className="btn btn--primary">
-									Let's start now
-								</Link>
 							</div>
 						</div>
 					</div>

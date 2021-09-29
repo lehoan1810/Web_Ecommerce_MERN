@@ -39,10 +39,7 @@ const Header = () => {
 								</li>
 							</ul>
 						</div>
-						{/* <div className="button-login">
-							<button>Resgister</button>
-							<button>Login</button>
-						</div> */}
+
 						<div className="header-tool">
 							<Link to="/resgister" className="link-resgister">
 								Resgister

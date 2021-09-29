@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Logo from "../../../images/LogoBrand.png";
 
 const Footer = () => {
 	return (
@@ -10,7 +11,7 @@ const Footer = () => {
 						<div className="footer-main">
 							<div className="footer-column">
 								<Link to="" href="index.html" className="footer-logo">
-									<img src="" alt="" />
+									<img src={Logo} alt="" />
 								</Link>
 								<div className="footer-desc text">
 									Vivamus dapibus et purus quis mollis. Mauris tempus tortor vel
@@ -30,6 +31,16 @@ const Footer = () => {
 										<ion-icon name="logo-dribbble"></ion-icon>
 									</Link>
 								</div>
+								<img
+									className="footer-icon"
+									src="https://frontend.tikicdn.com/_desktop-next/static/img/icons/playstore.png"
+									alt=""
+								/>
+								<img
+									className="footer-icon"
+									src="https://frontend.tikicdn.com/_desktop-next/static/img/icons/appstore.png"
+									alt=""
+								/>
 							</div>
 							<div className="footer-column">
 								<h3 className="footer-heading second-font">Usefull Links</h3>
@@ -75,10 +86,10 @@ const Footer = () => {
 								<ul className="footer-info">
 									<li>
 										<Link to="" href="mailto:support@ocatavian.io">
-											Email: support@ocatavian.io
+											Email: demo@gmail.com.io
 										</Link>
 									</li>
-									<li>Fax: support@ocatavian.io</li>
+									<li>Fax: demo@gmail.com.io</li>
 								</ul>
 								<ul className="footer-info">
 									<li>
@@ -90,7 +101,7 @@ const Footer = () => {
 						</div>
 					</div>
 				</div>
-				<div className="footer-bottom">
+				{/* <div className="footer-bottom">
 					<div className="container footer-container">
 						<Link to="" href="#" className="footer-rocket">
 							<ion-icon name="rocket"></ion-icon>
@@ -103,7 +114,7 @@ const Footer = () => {
 							All Rights Reserved.
 						</p>
 					</div>
-				</div>
+				</div> */}
 			</footer>
 		</div>
 	);

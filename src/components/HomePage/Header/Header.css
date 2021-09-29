@@ -1,3 +1,13 @@
-.button-login button {
-	padding: 10px;
+.link-resgister {
+	padding: 12px;
+	border-radius: 10px;
+	background-color: transparent;
+	border: 1px solid rgb(223, 223, 223);
+	color: white;
+}
+.link-login {
+	background-color: #569fff;
+	padding: 12px;
+	border-radius: 10px;
+	color: white;
 }

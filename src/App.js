@@ -5,6 +5,9 @@ import Login from "./components/Login/Login";
 import Resgister from "./components/Resgister/Resgister";
 import NotPage from "./components/NotPage/NotPage";
 import Home from "./components/HomePage/Home/Home";
+import Category from "./components/Category/Category";
+import ItemDetail from "./components/Product/ItemDetail/ItemDetail";
+import CartProduct from "./components/CartProduct.js/CartProduct";
 function App() {
 	return (
 		<Router>
@@ -13,6 +16,9 @@ function App() {
 					<Route exact path="/" component={Home} />
 					<Route exact path="/login" component={Login} />
 					<Route exact path="/Resgister" component={Resgister} />
+					<Route exact path="/product" component={Category} />
+					<Route exact path="/product/detail" component={ItemDetail} />
+					<Route exact path="/product/Cart" component={CartProduct} />
 					<Route path="*" component={NotPage} />
 				</Switch>
 			</div>
