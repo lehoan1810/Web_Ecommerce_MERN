@@ -1,0 +1,65 @@
+.btn-update-account {
+	padding: 10px;
+	color: white;
+	background-color: rgb(73, 139, 224);
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+	cursor: pointer;
+	border-radius: 5px;
+	outline: none;
+	border: 1px solid #333;
+}
+.btn-update-account:hover {
+	background-color: rgb(31, 101, 192);
+}
+.form-profile {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-image: linear-gradient(
+		to bottom,
+		#0cc4ae,
+		#00b9c4,
+		#00acd4,
+		#009dd9,
+		#4d8bd3
+	);
+	/* height: 100vh; */
+}
+.profile {
+	display: flex;
+	justify-content: space-between;
+	padding: 20px;
+}
+.profile-left {
+	width: 40%;
+}
+.img-left {
+	width: 200px;
+	height: 200px;
+	object-fit: cover;
+	border-radius: 50%;
+}
+.title-profile-right {
+	font-weight: 600;
+	font-size: 3rem;
+}
+.item-info {
+	font-weight: 600;
+	font-size: 2rem;
+}
+.info-detail {
+	font-size: 1.6rem;
+}
+
+.update-profile-item {
+	margin-bottom: 10px;
+	display: flex;
+	justify-content: space-between;
+}
+.update-profile-item input {
+	border: 1px solid #cdcdcd;
+	padding: 10px;
+	border-radius: 8px;
+	font-size: 15px;
+	margin-left: 20px;
+}

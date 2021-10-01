@@ -1,0 +1,20 @@
+.flex-form {
+	display: flex;
+	padding: 30px 120px;
+	background-color: #f4f4f4;
+}
+.user-handel {
+	flex: 1;
+	background-color: white;
+	padding: 20px;
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+	border-radius: 5px;
+}
+.information-handel {
+	padding: 20px;
+	flex: 4;
+	background-color: white;
+	margin-left: 20px;
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+	border-radius: 5px;
+}

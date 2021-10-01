@@ -1,0 +1,36 @@
+.profile-item {
+	padding: 10px;
+	background-color: #a5806d;
+	border-radius: 5px;
+	margin-bottom: 10px;
+	color: white;
+	display: flex;
+	align-items: center;
+	transition: all 0.3s ease-in;
+}
+.profile-item:hover {
+	background-color: rgb(255, 118, 118);
+}
+.purchase-item {
+	padding: 10px;
+	background-color: antiquewhite;
+	border-radius: 5px;
+	color: white;
+	display: flex;
+	align-items: center;
+	transition: all 0.3s ease-in;
+	background-color: #a5806d;
+}
+.purchase-item:hover {
+	background-color: rgb(255, 118, 118);
+}
+.profile-item img {
+	width: 25px;
+	height: 25px;
+	margin-right: 10px;
+}
+.purchase-item img {
+	width: 25px;
+	height: 25px;
+	margin-right: 10px;
+}

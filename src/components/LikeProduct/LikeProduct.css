@@ -1,0 +1,44 @@
+.table-product-like {
+	padding: 40px 60px;
+	background-color: #f4f4f4;
+}
+.table-like {
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+	background-color: white;
+	border-radius: 5px;
+	padding: 20px 60px;
+}
+.img-product-like img {
+	width: 200px;
+	height: 150px;
+	object-fit: cover;
+}
+.table-like-title {
+	background-color: rgb(253, 54, 54);
+	display: inline-block;
+	padding: 10px;
+	font-weight: 600;
+	color: white;
+}
+.check-detail {
+	padding: 10px;
+	border-radius: 8px;
+	color: white;
+	background-color: rgb(63, 160, 252);
+	margin-right: 10px;
+	transition: all 0.2s ease-in;
+}
+.check-detail:hover {
+	color: white;
+	background-color: blue;
+}
+.check-delete {
+	padding: 10px;
+	border-radius: 8px;
+	color: white;
+	background-color: rgb(255, 106, 95);
+	transition: all 0.2s ease-in;
+}
+.check-delete:hover {
+	background-color: rgb(255, 17, 0);
+}

@@ -10,6 +10,7 @@ const CartTable = () => {
 					<thead>
 						<tr>
 							<th>Sản Phẩm</th>
+							<th>Tên Sản Phẩm</th>
 							<th>Đơn Giá</th>
 							<th>Số Lượng</th>
 							<th>Số Tiền</th>
@@ -21,17 +22,12 @@ const CartTable = () => {
 							<td>
 								<div className="image-text">
 									<img src={img1} alt="" />
-									<span>Rachel</span>
 								</div>
 							</td>
 							<td>Mike wazowski</td>
-							<td>Mike Dawson</td>
-							<td>
-								<div className="image-list">
-									<img src="/images/outer-space.png" alt="" />
-									<img src="/images/rachelizmarvel.png" alt="" />
-								</div>
-							</td>
+							<td>15.000.000 VND</td>
+							<td>2</td>
+							<td>30.000.000 VND</td>
 							<td>
 								<div className="action-handel">
 									<button className="action-delete">Delete</button>

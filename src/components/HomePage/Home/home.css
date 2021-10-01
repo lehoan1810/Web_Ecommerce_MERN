@@ -58,8 +58,7 @@ select {
 	outline: none;
 	border: 0;
 }
-
-input {
+.hero-caption input {
 	line-height: normal;
 }
 
@@ -231,10 +230,10 @@ section {
 	align-items: center;
 	list-style: none;
 	gap: 0 50px;
-	color: white;
 }
 .menu-link {
 	font-weight: 600;
+	color: white;
 }
 @media screen and (max-width: 1023px) {
 	.menu {
@@ -285,11 +284,13 @@ section {
 	font-weight: 800;
 	font-size: 120px;
 	margin-bottom: 15px;
+	color: white;
 }
 .hero-caption {
 	font-size: 40px;
 	font-weight: 600;
 	margin-bottom: 50px;
+	color: white;
 }
 .hero-video {
 	display: flex;
