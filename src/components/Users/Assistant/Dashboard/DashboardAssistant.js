@@ -9,26 +9,26 @@ const DashboardAssistant = () => {
 		<div>
 			<div className="dashboard-wrap">
 				<ul>
-					<Link to="/user/account/profile">
+					<Link to="/assistant/account/profile">
 						<li className="profile-item">
 							<img src={imgUser} alt="" />
 							<span>Tài khoản của tôi</span>
 						</li>
 					</Link>
-					<Link to="/user/purchase">
-						<li className="purchase-item">
+					<Link to="/assistant/manager/user">
+						<li className="purchase-item item-bottom">
 							<img src={Bookmark} alt="" />
 							<span>Quản Lý Khách Hàng</span>
 						</li>
 					</Link>
-					<Link to="/user/purchase">
-						<li className="purchase-item">
+					<Link to="/assistant/product">
+						<li className="purchase-item item-bottom">
 							<img src={Bookmark} alt="" />
 							<span>Sản Phẩm</span>
 						</li>
 					</Link>
-					<Link to="/user/purchase">
-						<li className="purchase-item">
+					<Link to="/assistant/manager/order">
+						<li className="purchase-item item-bottom">
 							<img src={Bookmark} alt="" />
 							<span>Quản Lý Đơn Hàng</span>
 						</li>
