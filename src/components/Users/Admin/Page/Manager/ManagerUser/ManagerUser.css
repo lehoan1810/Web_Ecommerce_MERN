@@ -1,0 +1,37 @@
+.avatar-status {
+	position: relative;
+	z-index: 1;
+	width: 50px;
+	height: 50px;
+}
+.avatar-status ._status {
+	width: 15px;
+	height: 15px;
+	border-radius: 100rem;
+	background-color: #13d2b8;
+	display: inline-block;
+	position: absolute;
+	right: 0;
+	top: 0;
+	box-shadow: 0 0 0 2px white;
+}
+.image-cover {
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+}
+.action-lock {
+	padding: 5px;
+	background-color: #46c4ff;
+	border-radius: 8px;
+}
+.action-lock img {
+	width: 30px;
+	height: 30px;
+}
+.title-admin {
+	padding: 10px;
+	font-weight: 600;
+	display: inline-block;
+	border-bottom: 2px solid #333;
+}
