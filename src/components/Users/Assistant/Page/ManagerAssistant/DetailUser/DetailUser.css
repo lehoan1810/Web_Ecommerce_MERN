@@ -1,0 +1,13 @@
+.action-detail img {
+	width: 30px;
+	height: 30px;
+}
+.action-detail {
+	padding: 5px 10px;
+	border-radius: 5px;
+	background-color: rgb(86, 192, 253);
+	transition: all 0.3s ease-in-out;
+}
+.action-detail:hover {
+	background-color: rgb(20, 150, 224);
+}

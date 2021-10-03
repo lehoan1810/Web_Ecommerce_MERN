@@ -1,0 +1,11 @@
+.search-product {
+	margin: 30px 0;
+	width: 50%;
+	float: right;
+}
+.create-product {
+	padding: 8px;
+	color: white;
+	background-color: rgb(43, 181, 245);
+	border-radius: 5px;
+}
