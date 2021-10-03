@@ -1,10 +1,10 @@
 import React from "react";
+import "./CreateProduct.css";
 
 const CreateProduct = () => {
 	return (
-		<div className="profile">
-			<div className="profile-left">
-				{/* <Image
+		<div className="add-product">
+			{/* <Image
 						style={{ width: 200, height: 200 }}
 						cloudName="dbml4nd68"
 						publicId={dataimage}
@@ -20,36 +20,32 @@ const CreateProduct = () => {
 					</button>
 				</div> */}
 
+			<div className="add-product-left">
 				<img
-					className="img-left"
-					src="https://scontent.fsgn8-2.fna.fbcdn.net/v/t1.6435-9/178798943_3120069478298165_5504585504839378314_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=eOOEH2EO8UoAX_iNqpa&_nc_ht=scontent.fsgn8-2.fna&oh=3e427c20580275813462db1e3bab8f20&oe=617D8523"
+					src="https://channel.mediacdn.vn/2019/8/26/photo-1-15668038321241232406768.jpg"
 					alt=""
 				/>
 			</div>
-			<div className="profile-right">
-				<h1 className="title-profile-right">Personal information</h1>
-				<div className="update-profile-item">
-					<span className="item-info">Email:</span>
-					<input placeholder="HongGhi@gmail.com" />
+			<div className="add-product-right">
+				<div className="add-name-product add-item">
+					<span>Name Product</span>
+					<input placeholder="Name Product ..." />
 				</div>
-				<div className="update-profile-item">
-					<span className="item-info">Name:</span>
-					<input placeholder="Hồng Ghi" />
+				<div className="add-desc-product add-item">
+					<span>Description Product</span>
+					<textarea placeholder="desc Product ..." />
 				</div>
-
-				<div className="update-profile-item">
-					<span className="item-info">Full name:</span>
-					<input placeholder="HongGhi@gmail.com" />
+				<div className="add-category-product add-item">
+					<span>Category Product</span>
+					<input placeholder="Category Product ..." />
 				</div>
-				<div className="update-profile-item">
-					<span className="item-info">Phone Number:</span>
-					<input placeholder="HongGhi@gmail.com" />
+				<div className="add-price-product add-item">
+					<span>Price Product</span>
+					<input placeholder="Price Product ..." />
 				</div>
-				<div className="update-profile-item">
-					<span className="item-info">Address</span>
-					<input placeholder="HongGhi@gmail.com" />
+				<div className="button-add-product">
+					<button>Add Product</button>
 				</div>
-				<button className="btn-update-account">Update Account</button>
 			</div>
 		</div>
 	);

@@ -12,7 +12,7 @@ const ManagerProduct = () => {
 	const dataSource = [
 		{
 			key: "1",
-			nameProduct: "xin cahf",
+			nameProduct: "xin chào",
 			priceProduct: 32,
 			image: "http://www.techrum.vn/chevereto/images/2017/11/21/q4OQY.jpg",
 		},
@@ -120,9 +120,9 @@ const ManagerProduct = () => {
 						backgroundColor: "rgba(0,0,0,0.4)",
 					},
 					content: {
-						width: "50%",
+						width: "60%",
 						margin: "auto",
-						height: "65%",
+						height: "78%",
 					},
 				}}
 			>
