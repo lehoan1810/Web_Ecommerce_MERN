@@ -12,6 +12,7 @@ import LikeProduct from "./components/LikeProduct/LikeProduct";
 import RouterClient from "./components/Users/Client/Router/RouterClient";
 import RouterAdmin from "./components/Users/Admin/Router/RouterAdmin";
 import RouterAssistant from "./components/Users/Assistant/Router/RouterAssistant";
+import CategoryProduct from "./components/Shop/Category/CategoryProduct";
 function App() {
 	return (
 		<Router>
@@ -25,7 +26,7 @@ function App() {
 
 					<Route exact path="/product" component={Category} />
 
-					<Route exact path="/product/detail" component={ItemDetail} />
+					<Route path="/product/detail" component={ItemDetail} />
 
 					<Route exact path="/product/Cart" component={CartProduct} />
 
@@ -36,6 +37,8 @@ function App() {
 					<Route path="/admin" component={RouterAdmin} />
 
 					<Route path="/assistant" component={RouterAssistant} />
+
+					<Route path="/shop/category" component={CategoryProduct} />
 
 					<Route path="*" component={NotPage} />
 				</Switch>
