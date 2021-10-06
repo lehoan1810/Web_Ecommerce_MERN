@@ -15,11 +15,15 @@ button {
 }
 .cart-table {
 	padding: 40px;
+	display: flex;
+	justify-content: space-between;
 }
 
 .table {
-	width: 100%;
+	width: 80%;
 	overflow-x: auto;
+	background-color: #f4f4f4;
+	border-radius: 5px;
 }
 .table table {
 	border-collapse: collapse;

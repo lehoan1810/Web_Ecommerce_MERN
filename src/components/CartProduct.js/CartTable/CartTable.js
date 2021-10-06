@@ -1,5 +1,6 @@
 import React from "react";
 import img1 from "../../../images/img2.jpg";
+import PaymentProduct from "../PaymentProduct/PaymentProduct";
 import "./CartTable.css";
 
 const CartTable = () => {
@@ -37,6 +38,7 @@ const CartTable = () => {
 					</tbody>
 				</table>
 			</div>
+			<PaymentProduct />
 		</div>
 	);
 };

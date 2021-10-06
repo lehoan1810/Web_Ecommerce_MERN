@@ -1,10 +1,40 @@
-.action-status {
+.action-status button {
 	background-color: rgb(129, 173, 255);
-	display: inline-block;
-	padding: 5px;
+	padding: 5px 10px;
 	color: white;
-	border-radius: 10px;
+	border-radius: 5px;
 }
 .Order-table {
 	padding: 10px;
+}
+.desc-rating textarea {
+	padding: 10px;
+	border: 1px solid #333;
+	border-radius: 5px;
+	height: 100px;
+	width: 100%;
+}
+.button-rating {
+	text-align: center;
+}
+.button-rating button {
+	padding: 10px 60px;
+	border-radius: 5px;
+	margin-top: 10px;
+	background-color: rgb(16, 133, 241);
+	color: white;
+	font-weight: 600;
+}
+.user-rating h3 {
+	display: inline-block;
+	font-weight: 600;
+	margin-right: 20px;
+}
+.product-rating h3 {
+	display: inline-block;
+	font-weight: 600;
+	margin-right: 20px;
+}
+.star-rating {
+	margin-bottom: 10px;
 }

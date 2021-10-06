@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
+import Modal from "react-modal";
+import ModalAccess from "./ModalRating";
 
 const OrderComplete = () => {
+	const [modalIsOpen, setModalIsOpen] = useState(false);
 	return (
 		<div>
 			<div className="Order-table">
@@ -12,7 +15,7 @@ const OrderComplete = () => {
 								<th>Đơn Giá</th>
 								<th>Số Lượng</th>
 								<th>Số Tiền</th>
-								<th>Trạng Thái</th>
+								<th>Đánh giá</th>
 								{/* <th>Thao Tác</th> */}
 							</tr>
 						</thead>
@@ -40,7 +43,7 @@ const OrderComplete = () => {
 								<td>30.000.000 VND</td>
 								<td>
 									<div className="action-status">
-										<span>Complete</span>
+										<button onClick={() => setModalIsOpen(true)}>assess</button>
 									</div>
 								</td>
 								{/* <td>
@@ -53,6 +56,25 @@ const OrderComplete = () => {
 					</table>
 				</div>
 			</div>
+			<Modal
+				isOpen={modalIsOpen}
+				//err
+				ariaHideApp={false}
+				//
+				onRequestClose={() => setModalIsOpen(false)}
+				style={{
+					overlay: {
+						backgroundColor: "rgba(0,0,0,0.4)",
+					},
+					content: {
+						width: "30%",
+						margin: "auto",
+						height: "43%",
+					},
+				}}
+			>
+				<ModalAccess setModalIsOpen={setModalIsOpen} />
+			</Modal>
 		</div>
 	);
 };
