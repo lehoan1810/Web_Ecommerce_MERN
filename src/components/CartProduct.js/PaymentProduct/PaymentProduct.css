@@ -1,5 +1,51 @@
 .form-payment {
 	padding: 30px 20px;
-	background-color: #f4f4f4;
+	background-color: white;
+	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 	border-radius: 5px;
+	flex: 1;
+	/* height: 200px; */
+	max-height: 320px;
+}
+
+.desc-order-user h3 {
+	font-weight: 600;
+	font-size: 16px;
+	text-transform: uppercase;
+}
+.desc-order-address h3 {
+	font-weight: 600;
+	font-size: 16px;
+	text-transform: uppercase;
+}
+.desc-order-address {
+	border-bottom: 1px solid #333;
+	padding: 10px 0;
+}
+.payment-product {
+	padding: 20px 0;
+}
+.discount-product,
+.price-product {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.discount-product h3 {
+	font-size: 14px;
+	color: #bbbbbb;
+}
+.price-product h3 {
+	font-size: 14px;
+	color: #bbbbbb;
+}
+.btn-payment-price button {
+	padding: 10px;
+	background-color: rgb(255, 111, 111);
+	color: white;
+	border-radius: 5px;
+	width: 100%;
+}
+.btn-payment-price button:hover {
+	background-color: rgb(253, 63, 63);
 }

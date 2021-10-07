@@ -25,7 +25,25 @@ const CartTable = () => {
 									<img src={img1} alt="" />
 								</div>
 							</td>
-							<td>Mike wazowski</td>
+							<td>Mike wazowski guihiu ohoihih jhbhghh ghghgh oiiuuvug</td>
+							<td>15.000.000 VND</td>
+							<td>2</td>
+							<td>30.000.000 VND</td>
+							<td>
+								<div className="action-handel">
+									<button className="action-delete">Delete</button>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>
+								<div className="image-text">
+									<img src={img1} alt="" />
+								</div>
+							</td>
+							<td>Mike wazowski guihiu ohoihih jhbhghh ghghgh oiiuuvug</td>
 							<td>15.000.000 VND</td>
 							<td>2</td>
 							<td>30.000.000 VND</td>

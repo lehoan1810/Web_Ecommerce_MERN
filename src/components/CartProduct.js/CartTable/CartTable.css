@@ -16,14 +16,19 @@ button {
 .cart-table {
 	padding: 40px;
 	display: flex;
-	justify-content: space-between;
+	/* justify-content: space-between; */
+	background-color: #f4f4f4;
 }
 
 .table {
-	width: 80%;
+	/* width: 80%; */
+	margin-right: 20px;
+	flex: 3;
 	overflow-x: auto;
-	background-color: #f4f4f4;
+	background-color: white;
+	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 	border-radius: 5px;
+	padding: 0 20px;
 }
 .table table {
 	border-collapse: collapse;

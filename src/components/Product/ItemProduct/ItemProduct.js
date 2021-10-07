@@ -20,12 +20,12 @@ const ItemProduct = () => {
 					<Link to="/product/detail" className="item-detail" href="#">
 						<img className="item-detail-img" src={Show} alt="" />
 					</Link>
-					<button className="item-detail">
+					<Link to="/product/Like" className="item-detail">
 						<img className="item-detail-img" src={Like} alt="" />
-					</button>
-					<button className="item-detail">
+					</Link>
+					<Link to="/product/Cart" className="item-detail">
 						<img className="item-detail-img" src={Bag} alt="" />
-					</button>
+					</Link>
 				</div>
 			</div>
 		</div>
