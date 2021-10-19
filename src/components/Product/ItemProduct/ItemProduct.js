@@ -17,9 +17,9 @@ const ItemProduct = () => {
 					eiusmod.
 				</p>
 				<div className="item-detail-handel">
-					<Link to="/product/detail" className="item-detail" href="#">
+					<a href="/product/detail/123" className="item-detail">
 						<img className="item-detail-img" src={Show} alt="" />
-					</Link>
+					</a>
 					<Link to="/product/Like" className="item-detail">
 						<img className="item-detail-img" src={Like} alt="" />
 					</Link>
