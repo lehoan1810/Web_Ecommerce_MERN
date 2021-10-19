@@ -11,29 +11,29 @@ const Header = () => {
 					<div className="header-main">
 						<img src={Logo} alt="" className="header-logo" />
 						<div className="menu">
-							<ul className="menu-list">
-								<li className="menu-item">
-									<Link to="" href="index.html" className="menu-link">
+							<ul className="menu-home-list">
+								<li className="menu-home-item">
+									<Link to="/" href="" className="menu-home-link">
 										Home
 									</Link>
 								</li>
-								<li className="menu-item">
-									<a href="#about" className="menu-link">
-										About us
-									</a>
+								<li className="menu-home-item">
+									<Link to="/product" href="#about" className="menu-home-link">
+										Category
+									</Link>
 								</li>
-								<li className="menu-item">
-									<a href="#work" className="menu-link">
+								<li className="menu-home-item">
+									<a href="#work" className="menu-home-link">
 										Service
 									</a>
 								</li>
-								<li className="menu-item">
-									<a href="#experience" className="menu-link">
+								<li className="menu-home-item">
+									<a href="#experience" className="menu-home-link">
 										Blog
 									</a>
 								</li>
-								<li className="menu-item">
-									<a href="#contact" className="menu-link">
+								<li className="menu-home-item">
+									<a href="#contact" className="menu-home-link">
 										Contact
 									</a>
 								</li>

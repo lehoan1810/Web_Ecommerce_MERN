@@ -8,6 +8,7 @@ import img4 from "../../../images/img4.jpg";
 import img5 from "../../../images/img5.png";
 import img6 from "../../../images/img6.png";
 import img7 from "../../../images/img7.png";
+// import giado from "../../../images/giado.png";
 
 const Main = () => {
 	return (
@@ -102,7 +103,7 @@ const Main = () => {
 								<img src={img7} alt="" />
 							</div>
 						</div>
-						<Link to="" href="#" className="btn btn--primary work-link">
+						<Link to="/product" href="#" className="btn btn--primary work-link">
 							All works
 						</Link>
 					</div>
@@ -111,18 +112,16 @@ const Main = () => {
 					<div className="container">
 						<div className="experience-main">
 							<div className="experience-number">
-								<span className="experience-year">20</span>
-								<img src="" alt="" className="experience-mask" />
+								<span className="experience-year">4</span>
+								{/* <img src={giado} alt="" /> */}
 								<img src="" alt="" className="experience-dots" />
 							</div>
 							<div className="experience-content">
-								<h3 className="caption">experience</h3>
-								<h2 className="heading">
-									Years of Creative Universes Performed
-								</h2>
+								<h3 className="caption">Experience</h3>
+								<h2 className="heading">Operational Experience</h2>
 								<div className="text">
-									Integer eu metus at orci scelerisque rutrum. Vivamus
-									condimentu ipsum vitae iaculis cursus.
+									Has many years of experience in providing the best quality
+									computer products and accessories
 								</div>
 							</div>
 						</div>

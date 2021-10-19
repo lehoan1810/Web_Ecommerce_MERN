@@ -1,6 +1,6 @@
 .header-background {
 	/* background-color: #a19f9f9c; */
-	background-color: #a5806d;
+	background-color: #969696;
 	font-size: 18px;
 }
 .icon-shop {
@@ -9,8 +9,14 @@
 }
 
 .card-shop {
-	position: relative;
+	/* position: relative; */
 	display: flex;
+}
+.header-icon-number {
+	position: relative;
+}
+.header-icon-like {
+	position: relative;
 }
 
 .number-product {
@@ -20,11 +26,11 @@
 	right: 0;
 	z-index: 2;
 	font-size: 13px;
-	transform: translate(5px, 5px);
 	font-weight: 600;
+	transform: translateX(50%);
 }
 
-.card-shop::after {
+.header-icon-number::after {
 	position: absolute;
 	content: "";
 	font-size: 13px;
@@ -33,7 +39,19 @@
 	right: 0;
 	width: 18px;
 	height: 18px;
-	border-radius: 40%;
+	border-radius: 50%;
+	transform: translateX(10px);
+}
+.header-icon-like::after {
+	position: absolute;
+	content: "";
+	font-size: 13px;
+	background-color: rgb(255, 146, 146);
+	top: 0;
+	right: 0;
+	width: 18px;
+	height: 18px;
+	border-radius: 50%;
 	transform: translateX(10px);
 }
 

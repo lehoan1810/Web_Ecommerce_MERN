@@ -19,7 +19,7 @@ const HeaderProduct = () => {
 					<div className="header-tooll card-shop">
 						<div className="header-icon-like">
 							<span className="number-product">5</span>
-							<Link to="">
+							<Link to="/product/Like">
 								<img className="icon-shop" src={Like} alt="" />
 							</Link>
 						</div>

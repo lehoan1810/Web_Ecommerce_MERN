@@ -12,7 +12,7 @@ import LikeProduct from "./components/LikeProduct/LikeProduct";
 import RouterClient from "./components/Users/Client/Router/RouterClient";
 import RouterAdmin from "./components/Users/Admin/Router/RouterAdmin";
 import RouterAssistant from "./components/Users/Assistant/Router/RouterAssistant";
-import CategoryProduct from "./components/Shop/Category/CategoryProduct";
+import RouterCategory from "./components/Shop/Router/RouterCategory";
 function App() {
 	return (
 		<Router>
@@ -38,7 +38,9 @@ function App() {
 
 					<Route path="/assistant" component={RouterAssistant} />
 
-					<Route path="/shop/category" component={CategoryProduct} />
+					{/* <Route path="/shop/category" component={CategoryProduct} /> */}
+
+					<Route path="/shop/category" component={RouterCategory} />
 
 					<Route path="*" component={NotPage} />
 				</Switch>

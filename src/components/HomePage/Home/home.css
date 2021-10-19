@@ -225,13 +225,13 @@ section {
 	}
 }
 
-.menu-list {
+.menu-home-list {
 	display: flex;
 	align-items: center;
 	list-style: none;
 	gap: 0 50px;
 }
-.menu-link {
+.menu-home-link {
 	font-weight: 600;
 	color: white;
 }
@@ -256,11 +256,11 @@ section {
 		height: 100%;
 		padding: 50px 20px;
 	}
-	.menu-item {
+	.menu-home-item {
 		width: 100%;
 		margin-bottom: 15px;
 	}
-	.menu-link {
+	.menu-home-link {
 		display: block;
 		width: 100%;
 		padding: 15px 20px;
@@ -268,7 +268,7 @@ section {
 		border-radius: 4px;
 		transition: all 0.2s ease;
 	}
-	.menu-link:hover {
+	.menu-home-link:hover {
 		color: white;
 		background-color: #f56766;
 	}
@@ -522,7 +522,7 @@ section {
 	position: relative;
 	z-index: 2;
 	/* background: url("../images/img7.png") no-repeat 50%; */
-	color: transparent;
+	color: white;
 	-webkit-background-clip: text;
 	background-clip: text;
 }
