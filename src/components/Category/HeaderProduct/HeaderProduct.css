@@ -1,7 +1,10 @@
 .header-background {
 	/* background-color: #a19f9f9c; */
-	background-color: #969696;
+	/* background-color: #969696; */
 	font-size: 18px;
+	border-bottom: 3px solid #cdcdcd;
+	margin-bottom: 10px;
+	background-color: white;
 }
 .icon-shop {
 	width: 28px;
@@ -56,7 +59,7 @@
 }
 
 .header-padding {
-	padding: 7px 0;
+	padding: 10px 0;
 }
 
 .header-icon-like {

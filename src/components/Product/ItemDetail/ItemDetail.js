@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ItemDetail.css";
 import HeaderProduct from "../../Category/HeaderProduct/HeaderProduct";
 import img1 from "../../../images/img2.jpg";
@@ -7,6 +7,13 @@ import Like from "../../../images/like.png";
 import FeedBack from "../FeedBack/FeedBack";
 
 const ItemDetail = () => {
+	const [count, setCount] = useState(0);
+	const Increase = () => {
+		setCount(count + 1);
+	};
+	const Decrease = () => {
+		count <= 0 ? setCount(0) : setCount(count - 1);
+	};
 	return (
 		<div className="product-background">
 			<HeaderProduct />
@@ -32,13 +39,21 @@ const ItemDetail = () => {
 						<span className="detail-insurance">Bảo hành: 24 tháng</span>
 						<span className="detail-price">1.2000.000 VND</span>
 						<div className="quantity-item">
-							<button className="btn-quantity ">-</button>
-							<span>5</span>
-							<button className="btn-quantity">+</button>
+							<button className="btn-quantity " onClick={Decrease}>
+								-
+							</button>
+							<span>{count}</span>
+							<button className="btn-quantity" onClick={Increase}>
+								+
+							</button>
 						</div>
 						<div className="handle-item-detail">
-							<Link className="detail-add-card">Thêm vào giỏ hàng</Link>
-							<Link className="buy-now">Mua ngay</Link>
+							<Link to="" className="detail-add-card">
+								Thêm vào giỏ hàng
+							</Link>
+							<Link to="" className="buy-now">
+								Mua ngay
+							</Link>
 							<button className="detail-item-like">
 								<img className="item-like-img" src={Like} alt="" />
 							</button>

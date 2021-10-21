@@ -97,7 +97,7 @@ section[id] {
 
 .header-logo {
 	/* width: 100px; */
-	height: 70px;
+	height: 60px;
 	object-fit: cover;
 }
 .about-image img {
@@ -230,7 +230,9 @@ section {
 	align-items: center;
 	list-style: none;
 	gap: 0 50px;
+	margin-bottom: 0;
 }
+
 .menu-home-link {
 	font-weight: 600;
 	color: white;

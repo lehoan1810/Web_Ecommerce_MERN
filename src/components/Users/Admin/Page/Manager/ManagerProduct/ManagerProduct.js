@@ -81,9 +81,7 @@ const ManagerProduct = () => {
 		<div>
 			<div className="table-manager-product">
 				<h2 className="title-admin">Quản Lý Sản Phẩm</h2>
-				<div className="button-add-category">
-					<button className="btn-add-category">tạo danh mục</button>
-				</div>
+
 				<TableProduct columns={columns} data={dataSource} />
 			</div>
 		</div>

@@ -103,3 +103,15 @@ button {
 .action-delete:hover {
 	color: #333;
 }
+.count-cart-product span {
+	padding: 0 5px;
+}
+.btn-inc,
+.btn-dec {
+	padding: 2px 5px;
+	background-color: #08aeea;
+	color: white;
+	width: 20px;
+	height: 20px;
+	text-align: center;
+}

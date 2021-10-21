@@ -33,6 +33,12 @@ const DashboardAdmin = () => {
 							<span>Quản Lý Sản Phẩm</span>
 						</li>
 					</Link>
+					<Link to="/admin/manager/category">
+						<li className="purchase-item item-bottom">
+							<img src={Bookmark} alt="" />
+							<span>Quản Lý Danh mục</span>
+						</li>
+					</Link>
 					<Link to="/admin/manager/data">
 						<li className="purchase-item item-bottom">
 							<img src={Bookmark} alt="" />

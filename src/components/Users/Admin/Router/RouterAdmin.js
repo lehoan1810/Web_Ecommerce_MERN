@@ -7,6 +7,7 @@ import Footer from "../../../HomePage/Footer/Footer";
 import Profile from "../../Client/Page/Profile/Profile";
 import DashboardAdmin from "../Dashboard/DashboardAdmin";
 import ManagerAssistant from "../Page/Manager/ManagerAssistant/ManagerAssistant";
+import ManagerCategory from "../Page/Manager/ManagerCategory/ManagerCategory";
 import ManagerData from "../Page/Manager/ManagerData/ManagerData";
 import ManagerProduct from "../Page/Manager/ManagerProduct/ManagerProduct";
 import ManagerUser from "../Page/Manager/ManagerUser/ManagerUser";
@@ -35,6 +36,11 @@ const RouterAdmin = () => {
 								exact
 								path="/admin/manager/product"
 								component={ManagerProduct}
+							/>
+							<Route
+								exact
+								path="/admin/manager/category"
+								component={ManagerCategory}
 							/>
 						</Switch>
 					</div>
