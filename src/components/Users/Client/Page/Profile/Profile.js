@@ -36,7 +36,7 @@ const Profile = () => {
 				</div>
 				<div className="avt-profile-right">
 					<img
-						src="https://scontent.fsgn8-2.fna.fbcdn.net/v/t1.6435-9/178798943_3120069478298165_5504585504839378314_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=eOOEH2EO8UoAX_iNqpa&_nc_ht=scontent.fsgn8-2.fna&oh=3e427c20580275813462db1e3bab8f20&oe=617D8523"
+						src="https://scontent.fsgn8-2.fna.fbcdn.net/v/t1.6435-9/119116308_2950540125251102_6477465873348125857_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=174925&_nc_ohc=69ec69ITmkMAX8AvtR_&_nc_ht=scontent.fsgn8-2.fna&oh=6f091027deefbeec40c8ac039ef8aaec&oe=61A5E6D4"
 						alt=""
 					/>
 				</div>

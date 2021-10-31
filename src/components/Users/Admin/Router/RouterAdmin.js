@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import HeaderProduct from "../../../Category/HeaderProduct/HeaderProduct";
+// import Header from "../../../HomePage/Header/Header";
 // import Profile from "../Page/Profile/Profile";
 // import Purchase from "../Page/Purchase/Purchase";
 import Footer from "../../../HomePage/Footer/Footer";
