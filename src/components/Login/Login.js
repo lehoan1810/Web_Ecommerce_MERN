@@ -1,10 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 // import { Link } from "react-router-dom";
 import ArrowRight from "../../images/ArrowRight.png";
 import "./Login.css";
+import { useHistory } from "react-router-dom";
+import { login } from "../../Service/AuthService";
 
 function Login() {
+	const [email, setEmail] = useState();
+	const [password, setPassword] = useState();
+	const history = useHistory();
+
+	const onSubmit = async (e) => {
+		const formData = { email, password };
+		e.preventDefault();
+		try {
+			const res = await login(formData);
+			console.log(res);
+			history.push("/");
+		} catch (err) {
+			console.log(err);
+		}
+	};
+
 	return (
 		<div className="login">
 			<form className="login-form">
@@ -21,6 +39,7 @@ function Login() {
 							className="input-email"
 							type="email"
 							placeholder="Email... "
+							onChange={(e) => setEmail(e.target.value)}
 						></input>
 					</div>
 					<div className="fill-password">
@@ -29,6 +48,7 @@ function Login() {
 							className="input-password"
 							type="password"
 							placeholder="Password... "
+							onChange={(e) => setPassword(e.target.value)}
 						></input>
 					</div>
 					<div className="login-handel">
@@ -41,7 +61,7 @@ function Login() {
 						</div>
 					</div>
 				</div>
-				<button className="btn-login">
+				<button className="btn-login" onClick={onSubmit}>
 					Login
 					<img className="icon-resgister" src={ArrowRight} alt=" " />
 				</button>

@@ -1,8 +1,50 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, Redirect } from "react-router-dom";
 import "./Resgister.css";
 import ArrowRight from "../../images/ArrowRight.png";
+import axios from "axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+toast.configure();
 function Resgister() {
+	const url = "http://localhost:3000/v1/auth/register";
+	const [name, setName] = useState("");
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const [confirm, setConfirm] = useState("");
+	const [error, setError] = useState("");
+	const [success, setSuccess] = useState(false);
+
+	const onSignUp = () => {
+		if (name === "" || email === "" || password === "") {
+			setError("Please enter your info");
+			return;
+		}
+		if (password !== confirm) {
+			setError("Passwords did not match");
+			return;
+		}
+		axios
+			.post(url, {
+				name: name,
+				email: email,
+				password: password,
+			})
+			.then((res) => {
+				console.log(res.data);
+				setSuccess(true);
+				toast.success("success");
+			})
+			.catch((err) => {
+				console.log(err.response.data.data);
+				// setError(err.response.data.data[0].description);
+			});
+	};
+
+	if (success) {
+		return <Redirect to="./login" />;
+	}
 	return (
 		<div className="resgister">
 			<form className="resgister-form">
@@ -19,6 +61,7 @@ function Resgister() {
 							className="input-userName"
 							type="text"
 							placeholder="userName... "
+							onChange={(e) => setName(e.target.value)}
 						></input>
 					</div>
 					<div className="fill-email">
@@ -27,6 +70,7 @@ function Resgister() {
 							className="input-email"
 							type="email"
 							placeholder="Email... "
+							onChange={(e) => setEmail(e.target.value)}
 						></input>
 					</div>
 					<div className="fill-password">
@@ -35,6 +79,7 @@ function Resgister() {
 							className="input-password"
 							type="password"
 							placeholder="Password... "
+							onChange={(e) => setPassword(e.target.value)}
 						></input>
 					</div>
 					<div className="fill-confirm-password">
@@ -45,13 +90,14 @@ function Resgister() {
 							className="input-confirm-password"
 							type="password"
 							placeholder="Confirm password... "
+							onChange={(e) => setConfirm(e.target.value)}
 						></input>
 					</div>
 				</div>
-				<button className="btn-resgister">
+				<Link to="/login" onClick={onSignUp} className="btn-resgister">
 					Resgister
 					<img className="icon-resgister" src={ArrowRight} alt=" " />
-				</button>
+				</Link>
 				<span className="have-account">Have a account</span>
 				<Link to="/login" className="create-account">
 					Sign in ?
