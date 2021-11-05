@@ -5,10 +5,13 @@ import ArrowRight from "../../images/ArrowRight.png";
 import "./Login.css";
 import { useHistory } from "react-router-dom";
 import { login } from "../../Service/AuthService";
+import iconShow from "../../../src/images/Show.png";
+import iconHide from "../../../src/images/Hide.png";
 
 function Login() {
 	const [email, setEmail] = useState();
 	const [password, setPassword] = useState();
+	const [isShowPassword, setIsShowPassWord] = useState(false);
 	const history = useHistory();
 
 	const onSubmit = async (e) => {
@@ -21,6 +24,10 @@ function Login() {
 		} catch (err) {
 			console.log(err);
 		}
+	};
+
+	const handleShowHidePassword = () => {
+		setIsShowPassWord(!isShowPassword);
 	};
 
 	return (
@@ -44,12 +51,21 @@ function Login() {
 					</div>
 					<div className="fill-password">
 						<span className="title-password">Your Password</span>
-						<input
-							className="input-password"
-							type="password"
-							placeholder="Password... "
-							onChange={(e) => setPassword(e.target.value)}
-						></input>
+						<div className="custom-input-password">
+							<input
+								className="input-password"
+								type={isShowPassword ? "text" : "password"}
+								placeholder="Password... "
+								onChange={(e) => setPassword(e.target.value)}
+							></input>
+							<span onClick={() => handleShowHidePassword()}>
+								<img
+									className="show-password"
+									alt=""
+									src={isShowPassword ? iconShow : iconHide}
+								/>
+							</span>
+						</div>
 					</div>
 					<div className="login-handel">
 						<div className="fill-remember">

@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 toast.configure();
 export const login = async (formData) => {
 	try {
-		let url = "/v1/auth/login";
+		let url = "/auth/login";
 
 		const res = await axios.post(url, {
 			email: formData.email,

@@ -8,21 +8,22 @@ import "react-toastify/dist/ReactToastify.css";
 
 toast.configure();
 function Resgister() {
-	const url = "http://localhost:3000/v1/auth/register";
+	const url = `${process.env.REACT_APP_API_LOCAL}/auth/register`;
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [confirm, setConfirm] = useState("");
-	const [error, setError] = useState("");
+	// const [error, setError] = useState("");
 	const [success, setSuccess] = useState(false);
 
-	const onSignUp = () => {
+	const onSignUp = (e) => {
+		e.preventDefault();
 		if (name === "" || email === "" || password === "") {
-			setError("Please enter your info");
+			alert("Please enter your info");
 			return;
 		}
-		if (password !== confirm) {
-			setError("Passwords did not match");
+		if (confirm !== password) {
+			alert("Passwords did not match");
 			return;
 		}
 		axios
@@ -94,10 +95,10 @@ function Resgister() {
 						></input>
 					</div>
 				</div>
-				<Link to="/login" onClick={onSignUp} className="btn-resgister">
+				<button onClick={(e) => onSignUp(e)} className="btn-resgister">
 					Resgister
 					<img className="icon-resgister" src={ArrowRight} alt=" " />
-				</Link>
+				</button>
 				<span className="have-account">Have a account</span>
 				<Link to="/login" className="create-account">
 					Sign in ?
