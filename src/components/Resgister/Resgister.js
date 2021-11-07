@@ -8,7 +8,8 @@ import "react-toastify/dist/ReactToastify.css";
 
 toast.configure();
 function Resgister() {
-	const url = `${process.env.REACT_APP_API_LOCAL}/auth/register`;
+	// const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/users/signup`;
+	const url = "http://localhost:5000/api/v1/users/signup";
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -38,7 +39,7 @@ function Resgister() {
 				toast.success("success");
 			})
 			.catch((err) => {
-				console.log(err.response.data.data);
+				console.log(err);
 				// setError(err.response.data.data[0].description);
 			});
 	};

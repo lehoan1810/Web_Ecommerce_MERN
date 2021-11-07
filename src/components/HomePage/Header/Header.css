@@ -5,9 +5,41 @@
 	border: 1px solid rgb(223, 223, 223);
 	color: white;
 }
+
+/* a:hover {
+	color: white;
+} */
+
 .link-login {
-	background-color: #569fff;
+	background-color: #3ea4f8;
 	padding: 12px;
 	border-radius: 10px;
 	color: white;
+}
+.link-logOut {
+	background-color: #3ea4f8;
+	padding: 10px;
+	border-radius: 10px;
+	color: white;
+	transition: all 0.4s ease-in;
+}
+.link-logOut:hover {
+	background-color: rgb(255, 87, 87);
+}
+.custom-avt {
+	display: flex;
+	cursor: pointer;
+	padding: 10px;
+	border-radius: 10px;
+}
+.custom-avt:hover {
+	background-color: rgba(121, 121, 121, 0.678);
+}
+.custom-avt img {
+	width: 3rem;
+}
+.custom-avt span {
+	color: rgb(93, 253, 240);
+	font-weight: 600;
+	margin-left: 5px;
 }

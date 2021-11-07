@@ -10,7 +10,7 @@ const Footer = () => {
 					<div className="container">
 						<div className="footer-main">
 							<div className="footer-column">
-								<Link to="" href="index.html" className="footer-logo">
+								<Link to="/" href="index.html" className="footer-logo">
 									<img src={Logo} alt="" />
 								</Link>
 								<div className="footer-desc text">
@@ -18,16 +18,16 @@ const Footer = () => {
 									mi eleifend laoreet. Nulla laoreet sapien erat.
 								</div>
 								<div className="social">
-									<Link to="" href="#" className="social-item">
+									<Link to="/" href="#" className="social-item">
 										<ion-icon name="logo-facebook"></ion-icon>
 									</Link>
-									<Link to="" href="#" className="social-item">
+									<Link to="/" href="#" className="social-item">
 										<ion-icon name="logo-twitter"></ion-icon>
 									</Link>
-									<Link to="" href="#" className="social-item">
+									<Link to="/" href="#" className="social-item">
 										<ion-icon name="logo-instagram"></ion-icon>
 									</Link>
-									<Link to="" href="#" className="social-item">
+									<Link to="/" href="#" className="social-item">
 										<ion-icon name="logo-dribbble"></ion-icon>
 									</Link>
 								</div>
@@ -46,27 +46,27 @@ const Footer = () => {
 								<h3 className="footer-heading second-font">Usefull Links</h3>
 								<ul className="footer-links">
 									<li className="footer-item">
-										<Link to="" href="#" className="footer-link">
+										<Link to="/" href="#" className="footer-link">
 											About Us
 										</Link>
 									</li>
 									<li className="footer-item">
-										<Link to="" href="#" className="footer-link">
+										<Link to="/" href="#" className="footer-link">
 											Contact us
 										</Link>
 									</li>
 									<li className="footer-item">
-										<Link to="" href="#" className="footer-link">
+										<Link to="/" href="#" className="footer-link">
 											Terms of Services
 										</Link>
 									</li>
 									<li className="footer-item">
 										<Link to="" href="#" className="footer-link">
-											Plan & Precing
+											Plan and Precing
 										</Link>
 									</li>
 									<li className="footer-item">
-										<Link to="" href="#" className="footer-link">
+										<Link to="/" href="#" className="footer-link">
 											Site Map
 										</Link>
 									</li>
@@ -85,7 +85,7 @@ const Footer = () => {
 								</ul>
 								<ul className="footer-info">
 									<li>
-										<Link to="" href="mailto:support@ocatavian.io">
+										<Link to="/" href="mailto:support@ocatavian.io">
 											Email: demo@gmail.com.io
 										</Link>
 									</li>

@@ -9,8 +9,8 @@ import iconShow from "../../../src/images/Show.png";
 import iconHide from "../../../src/images/Hide.png";
 
 function Login() {
-	const [email, setEmail] = useState();
-	const [password, setPassword] = useState();
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
 	const [isShowPassword, setIsShowPassWord] = useState(false);
 	const history = useHistory();
 
