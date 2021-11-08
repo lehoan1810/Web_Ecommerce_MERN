@@ -63,3 +63,25 @@
 	font-size: 15px;
 	margin-left: 20px;
 }
+.settings-img {
+	width: 27rem;
+	height: 27rem;
+	border: 1px solid rgb(141, 141, 141);
+	border-radius: 10px;
+	object-fit: cover;
+}
+.input-upload {
+	padding: 5px;
+	background-color: #009dd9;
+	color: white;
+	visibility: hidden;
+}
+.icon-upload {
+	width: 4rem;
+	height: 4rem;
+}
+.custom-input-file {
+	display: flex;
+	margin-top: 10px;
+	align-items: center;
+}

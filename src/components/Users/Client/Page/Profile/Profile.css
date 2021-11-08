@@ -13,28 +13,28 @@
 .info-profile-left {
 	font-size: 17px;
 	width: 50%;
+	/* flex: 1; */
 	display: flex;
 	flex-direction: column;
 }
 .info-item {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
 	margin-bottom: 20px;
 }
 .info-item h3 {
 	color: #777575;
 	margin-bottom: 0;
+	display: inline-block;
+	width: 200px;
 }
 .avt-profile-right {
-	width: 40%;
-	object-fit: cover;
-
-	padding: 20px 20px;
+	/* padding: 20px 20px; */
+	padding-left: 10px;
 	border-left: 2px solid #d5d5d5;
 }
 .avt-profile-right img {
-	width: 100%;
+	object-fit: cover;
+	width: 27rem;
+	height: 27rem;
 	border-radius: 10px;
 }
 .btn-update-profile {

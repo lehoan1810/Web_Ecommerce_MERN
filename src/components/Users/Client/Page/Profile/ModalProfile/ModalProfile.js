@@ -1,31 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
+import { getCurrentIdUser } from "../../../../../../Service/AuthService";
+import AuthHeader from "../../../../../../Service/AuthHeader";
 import "./ModalProfile.css";
+import Loading from "../../../../../Loading/Loading";
+import upload from "../../../../../../images/upload.png";
 
-const ModalProfile = () => {
+const ModalProfile = ({ setModalIsOpen, data }) => {
+	const [imageSelected, setImageSelected] = useState(data.photo);
+	// const [dataimage, setDataImage] = useState(data.avatar);
+	const [loading, setLoading] = useState(false);
+	const uploadImage = (e) => {
+		const files = e.target.files[0];
+		const formData = new FormData();
+		formData.append("upload_preset", "xwfcqasw");
+		formData.append("file", files);
+		setLoading(true);
+
+		axios
+			.post("https://api.cloudinary.com/v1_1/dbml4nd68/image/upload", formData)
+			.then((res) => {
+				setImageSelected(res.data.secure_url);
+				setLoading(false);
+			})
+			.catch((err) => console.log(err));
+	};
+
 	return (
 		<div className="profile">
 			<div className="profile-left">
-				{/* <Image
-						style={{ width: 200, height: 200 }}
-						cloudName="dbml4nd68"
-						publicId={dataimage}
-						src={dataimage}
-					/>
-					<input
-						onChange={(e) => setImageSelected(e.target.files[0])}
-						className="course-desc"
-						type="file"
-					/>
-					<button className="btn-loadImg-profile" onClick={uploadImage}>
-						upload Image
-					</button>
-				</div> */}
-
-				<img
-					className="img-left"
-					src="https://scontent.fsgn8-2.fna.fbcdn.net/v/t1.6435-9/178798943_3120069478298165_5504585504839378314_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=eOOEH2EO8UoAX_iNqpa&_nc_ht=scontent.fsgn8-2.fna&oh=3e427c20580275813462db1e3bab8f20&oe=617D8523"
-					alt=""
-				/>
+				{loading ? (
+					<Loading />
+				) : (
+					<img className="settings-img" src={imageSelected} alt="" />
+				)}
+				<label className="custom-input-file">
+					<img className="icon-upload" src={upload} alt="" />
+					upload
+					<input onChange={uploadImage} className="input-upload" type="file" />
+				</label>
 			</div>
 			<div className="profile-right">
 				<h1 className="title-profile-right">Personal information</h1>

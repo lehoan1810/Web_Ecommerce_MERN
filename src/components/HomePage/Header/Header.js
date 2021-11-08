@@ -7,11 +7,13 @@ import {
 	getCurrentUser,
 	logout,
 	getCurrentRole,
+	getCurrentIdUser,
 } from "../../../Service/AuthService";
 
 const Header = () => {
 	const [currentUser, setCurrentUser] = useState(null);
 	const user = getCurrentUser();
+	const idUser = getCurrentIdUser();
 	const roleUser = getCurrentRole();
 	useEffect(() => {
 		if (user) {
@@ -126,10 +128,22 @@ const Header = () => {
 						</div>
 						{currentUser ? (
 							<div className="header-tool">
-								<div className="custom-avt">
-									<img src={avtHeader} alt="" />
-									<span>{currentUser}</span>
-								</div>
+								{roleUser === "admin" ? (
+									<Link to="/admin/account/profile/" className="custom-avt">
+										<img src={avtHeader} alt="" />
+										<span>{currentUser}</span>
+									</Link>
+								) : roleUser === "customer" ? (
+									<Link to="/user/account/profile/" className="custom-avt">
+										<img src={avtHeader} alt="" />
+										<span>{currentUser}</span>
+									</Link>
+								) : (
+									<Link to="/assistant/account/profile/" className="custom-avt">
+										<img src={avtHeader} alt="" />
+										<span>{currentUser}</span>
+									</Link>
+								)}
 								<button onClick={logOut} className="link-logOut">
 									Log Out
 								</button>
