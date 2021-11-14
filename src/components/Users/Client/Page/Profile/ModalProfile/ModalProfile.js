@@ -1,14 +1,22 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { getCurrentIdUser } from "../../../../../../Service/AuthService";
+// import { getCurrentIdUser } from "../../../../../../Service/AuthService";
 import AuthHeader from "../../../../../../Service/AuthHeader";
 import "./ModalProfile.css";
 import Loading from "../../../../../Loading/Loading";
 import upload from "../../../../../../images/upload.png";
 
-const ModalProfile = ({ setModalIsOpen, data }) => {
+const ModalProfile = ({ data }) => {
+	// update field
+	const [email, setEmail] = useState(data.email);
+	const [address, setAddress] = useState(data.address);
+	const [phone, setPhone] = useState(data.phone);
+	const [name, setName] = useState(data.name);
+	const [gender, setGender] = useState(data.gender);
+	// const IdUser = getCurrentIdUser();
+
+	// upload image
 	const [imageSelected, setImageSelected] = useState(data.photo);
-	// const [dataimage, setDataImage] = useState(data.avatar);
 	const [loading, setLoading] = useState(false);
 	const uploadImage = (e) => {
 		const files = e.target.files[0];
@@ -25,6 +33,29 @@ const ModalProfile = ({ setModalIsOpen, data }) => {
 			})
 			.catch((err) => console.log(err));
 	};
+
+	// update data
+	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/users/updateMe`;
+	function onUpdateUser() {
+		axios
+			.patch(
+				url,
+				{
+					phone: phone,
+					address: address,
+					email: email,
+					name: name,
+					gender: gender,
+					photo: imageSelected,
+				},
+				{ headers: AuthHeader() }
+			)
+			.then((res) => {
+				console.log(res.data);
+				window.location.reload();
+			})
+			.catch((err) => console.log("Lỗi." + err));
+	}
 
 	return (
 		<div className="profile">
@@ -44,26 +75,48 @@ const ModalProfile = ({ setModalIsOpen, data }) => {
 				<h1 className="title-profile-right">Personal information</h1>
 				<div className="update-profile-item">
 					<span className="item-info">Email:</span>
-					<input placeholder="HongGhi@gmail.com" />
+					<input
+						placeholder={email}
+						onChange={(e) => setEmail(e.target.value)}
+						value={data.email}
+					/>
 				</div>
 				<div className="update-profile-item">
 					<span className="item-info">Name:</span>
-					<input placeholder="Hồng Ghi" />
+					<input
+						placeholder={data.name}
+						onChange={(e) => setName(e.target.value)}
+						value={name}
+					/>
 				</div>
 
 				<div className="update-profile-item">
-					<span className="item-info">Full name:</span>
-					<input placeholder="HongGhi@gmail.com" />
+					<span className="item-info">Gender</span>
+					<input
+						placeholder={data.gender}
+						onChange={(e) => setGender(e.target.value)}
+						value={gender}
+					/>
 				</div>
 				<div className="update-profile-item">
 					<span className="item-info">Phone Number:</span>
-					<input placeholder="HongGhi@gmail.com" />
+					<input
+						placeholder={data.phone}
+						onChange={(e) => setPhone(e.target.value)}
+						value={phone}
+					/>
 				</div>
 				<div className="update-profile-item">
 					<span className="item-info">Address</span>
-					<input placeholder="HongGhi@gmail.com" />
+					<input
+						placeholder={data.address}
+						onChange={(e) => setAddress(e.target.value)}
+						value={address}
+					/>
 				</div>
-				<button className="btn-update-account">Update Account</button>
+				<button className="btn-update-account" onClick={onUpdateUser}>
+					Update Account
+				</button>
 			</div>
 		</div>
 	);

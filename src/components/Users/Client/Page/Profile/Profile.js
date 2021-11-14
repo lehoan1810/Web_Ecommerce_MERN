@@ -23,6 +23,7 @@ const Profile = () => {
 				.get(url, { headers: authHeader() })
 				.then((res) => {
 					setDataUser(res.data.data.userData);
+					sessionStorage.setItem("name", res.data.data.userData.name);
 					console.log(res.data.data);
 				})
 				.catch((err) => console.log(err));
@@ -48,20 +49,20 @@ const Profile = () => {
 					</div>
 					<div className="info-item">
 						<h3>Số Điện Thoại:</h3>
-						<span>09123456789</span>
+						<span>{dataUser.phone}</span>
 					</div>
 					<div className="info-item">
 						<h3>Địa chỉ:</h3>
-						<span>Quận 1</span>
+						<span>{dataUser.address}</span>
 					</div>
 					<div className="info-item">
 						<h3>Giới Tính:</h3>
-						<span>Nữ</span>
+						<span>{dataUser.gender}</span>
 					</div>
-					<div className="info-item">
+					{/* <div className="info-item">
 						<h3>Ngày Sinh:</h3>
 						<span>22/02/2000</span>
-					</div>
+					</div> */}
 				</div>
 				<div className="avt-profile-right">
 					<img src={dataUser.photo} alt="" />

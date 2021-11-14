@@ -36,7 +36,7 @@ function Resgister() {
 			.then((res) => {
 				console.log(res.data);
 				setSuccess(true);
-				toast.success("success");
+				toast.success("Sign Up Success !!!");
 			})
 			.catch((err) => {
 				console.log(err);

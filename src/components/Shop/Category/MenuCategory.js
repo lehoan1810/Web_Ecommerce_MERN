@@ -1,75 +1,28 @@
-import React from "react";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
+import authHeader from "../../../Service/AuthHeader";
 import CategoryProduct from "./CategoryProduct";
 
 const MenuCategory = () => {
-	const menu = [
-		{
-			key: 1,
-			data: "Bàn Phím",
-			iconClosed: "down",
-			iconOpened: "up",
-			subData: [
-				{
-					data: "bàn phím 1",
-				},
-				{
-					data: "bàn phím 2",
-				},
-			],
-		},
-		{
-			key: 2,
-			data: "Chuột",
-			subData: [
-				{
-					data: "bàn phím 1",
-				},
-				{
-					data: "bàn phím 2",
-				},
-				{
-					data: "bàn phím 3",
-				},
-			],
-		},
-		{
-			key: 3,
-			data: "Màn hình",
-			subData: [
-				{
-					data: "bàn phím 1",
-				},
-				{
-					data: "bàn phím 2",
-				},
-				{
-					data: "bàn phím 3",
-				},
-			],
-		},
-		{
-			key: 4,
-			data: "Tai Nghe",
-			subData: [
-				{
-					data: "bàn phím 1",
-				},
-				{
-					data: "bàn phím 2",
-				},
-				{
-					data: "bàn phím 3",
-				},
-			],
-		},
-		{
-			key: 5,
-			data: "Loa",
-		},
-	];
+	const [data, setData] = useState([]);
+	const url = "http://localhost:5000/api/v1/category/getCategory";
+
+	useEffect(() => {
+		const loadProduct = () => {
+			axios
+				.get(url, { headers: authHeader() })
+				.then((res) => {
+					setData(res.data.categoryList);
+					console.log(res.data.categoryList);
+				})
+				.catch((err) => console.log(err));
+		};
+		loadProduct();
+	}, [url]);
+
 	return (
 		<div>
-			{menu.map((item, id) => (
+			{data.map((item, id) => (
 				<div key={id}>
 					<CategoryProduct id={id} item={item} />
 				</div>

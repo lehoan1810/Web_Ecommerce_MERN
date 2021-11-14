@@ -122,7 +122,7 @@ const ManagerProduct = () => {
 					content: {
 						width: "60%",
 						margin: "auto",
-						height: "78%",
+						height: "80%",
 					},
 				}}
 			>

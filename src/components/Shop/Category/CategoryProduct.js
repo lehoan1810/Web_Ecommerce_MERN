@@ -15,23 +15,27 @@ const CategoryProduct = ({ item, id }) => {
 					<ul className="menu">
 						<li
 							className="menu-item-product"
-							onClick={item.subData && showSubnav}
+							onClick={item.children && showSubnav}
 						>
-							<Link to="/shop/category/id" href="#" className="menu-link">
-								{item.data}
-							</Link>
+							<span>{item.name}</span>
 							<div className="icon-handel">
-								{item.subData && subnav ? (
+								{item.children && subnav ? (
 									<img src={ArrowDown} alt="" />
-								) : item.subData ? (
+								) : item.children ? (
 									<img src={ArrowUp} alt="" />
 								) : null}
 							</div>
 						</li>
 						{subnav &&
-							item.subData.map((test, id) => (
+							item.children.map((test, id) => (
 								<div className="sub-item-product" key={id}>
-									<span>{test.data}</span>
+									<Link
+										to={`/shop/category/${test._id}`}
+										href="#"
+										className="menu-link"
+									>
+										{test.name}
+									</Link>
 								</div>
 							))}
 					</ul>

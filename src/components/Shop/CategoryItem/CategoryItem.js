@@ -1,8 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ItemProduct from "../../Product/ItemProduct/ItemProduct";
 import Search from "../../../images/Search.png";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import authHeader from "../../../Service/AuthHeader";
 
 const CategoryItem = () => {
+	const { id } = useParams();
+	const [dataProduct, setDataProduct] = useState([]);
+
+	const url = `http://localhost:5000/api/v1/category/getProductsId/${id}`;
+	useEffect(() => {
+		const loadProduct = () => {
+			axios
+				.get(url, { headers: authHeader() })
+				.then((res) => {
+					setDataProduct(res.data.products);
+					console.log(res.data.products);
+				})
+				.catch((err) => console.log(err));
+		};
+		loadProduct();
+	}, [url]);
 	return (
 		<div>
 			<div className="menu-product-item">
@@ -15,19 +34,11 @@ const CategoryItem = () => {
 					</div>
 				</div>
 				<div className="show-item-product">
-					<div className="item-flex">
-						<ItemProduct />
-					</div>
-					<div className="item-flex">
-						<ItemProduct />
-					</div>
-					<div className="item-flex">
-						<ItemProduct />
-					</div>
-
-					<div className="item-flex">
-						<ItemProduct />
-					</div>
+					{dataProduct.map((item, id) => (
+						<div key={id} className="item-flex">
+							<ItemProduct data={item} />
+						</div>
+					))}
 				</div>
 			</div>
 		</div>

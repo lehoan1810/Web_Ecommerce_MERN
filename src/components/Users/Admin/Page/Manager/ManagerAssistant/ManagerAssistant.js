@@ -1,9 +1,38 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import authHeader from "../../../../../../Service/AuthHeader";
+import ModalDelete from "../ManagerUser/ModalDelete";
+import Modal from "react-modal";
 
 const ManagerAssistant = () => {
+	const [dataUser, setDataUser] = useState([]);
+	const [modalIsOpen, setModalIsOpen] = useState(false);
+	const [idUser, setIdUser] = useState("");
+	const [nameUser, setNameUser] = useState("");
+
+	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/users/getAllAssistant`;
+
+	useEffect(() => {
+		const loadUser = () => {
+			axios
+				.get(url, { headers: authHeader() })
+				.then((res) => {
+					setDataUser(res.data.data.users);
+					console.log(res.data.data.users);
+				})
+				.catch((err) => console.log(err));
+		};
+		loadUser();
+	}, [url]);
+	const deleteUser = (id, name, e) => {
+		e.preventDefault();
+		setIdUser(id);
+		setNameUser(name);
+		setModalIsOpen(true);
+	};
+
 	return (
 		<div>
-			<h2 className="title-admin">Quản Lý Nhân Viên</h2>
 			<div className="Order-table">
 				<div className="table">
 					<table>
@@ -17,52 +46,61 @@ const ManagerAssistant = () => {
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>
-									<div className="avatar-center avatar-status">
-										<span className="_status"></span>
-										<img
-											className="image-cover avatar-image"
-											src="https://scontent.fsgn3-1.fna.fbcdn.net/v/t1.6435-9/82398379_2724049827900134_6357295022559199232_n.jpg?_nc_cat=107&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=CPdfaerbjkcAX9dJZJD&_nc_ht=scontent.fsgn3-1.fna&oh=0885b39ffc7a9bec323b7d1de1650da2&oe=617C6254"
-											alt=""
-										/>
-									</div>
-								</td>
-								<td>Hồng Ghi</td>
-								<td>HongGi@gmail.com</td>
-								<td>090123456</td>
+							{dataUser.map((item, id) => (
+								<tr key={id}>
+									<td>
+										<div className="avatar-center avatar-status">
+											<span className="_status"></span>
+											<img
+												className="image-cover avatar-image"
+												src={item.photo}
+												alt=""
+											/>
+										</div>
+									</td>
+									<td>{item.name}</td>
+									<td>{item.email}</td>
+									<td>{item.phone}</td>
 
-								<td>
-									<div className="action-handel">
-										<button className="action-delete">Delete</button>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<div className="avatar-center avatar-status">
-										<span className="_status"></span>
-										<img
-											className="image-cover avatar-image"
-											src="https://scontent.fsgn3-1.fna.fbcdn.net/v/t1.6435-9/82398379_2724049827900134_6357295022559199232_n.jpg?_nc_cat=107&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=CPdfaerbjkcAX9dJZJD&_nc_ht=scontent.fsgn3-1.fna&oh=0885b39ffc7a9bec323b7d1de1650da2&oe=617C6254"
-											alt=""
-										/>
-									</div>
-								</td>
-								<td>Hồng Ghi</td>
-								<td>HongGi@gmail.com</td>
-								<td>090123456</td>
-
-								<td>
-									<div className="action-handel">
-										<button className="action-delete">Delete</button>
-									</div>
-								</td>
-							</tr>
+									<td>
+										<div className="action-handel">
+											<button
+												onClick={(e) => deleteUser(item._id, item.name, e)}
+												className="action-delete"
+											>
+												Delete
+											</button>
+										</div>
+									</td>
+								</tr>
+							))}
 						</tbody>
 					</table>
 				</div>
 			</div>
+			<Modal
+				isOpen={modalIsOpen}
+				//err
+				ariaHideApp={false}
+				//
+				onRequestClose={() => setModalIsOpen(false)}
+				style={{
+					overlay: {
+						backgroundColor: "rgba(0,0,0,0.4)",
+					},
+					content: {
+						width: "22%",
+						margin: "auto",
+						height: "25%",
+					},
+				}}
+			>
+				<ModalDelete
+					idData={idUser}
+					nameUser={nameUser}
+					setModalIsOpen={setModalIsOpen}
+				/>
+			</Modal>
 		</div>
 	);
 };

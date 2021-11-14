@@ -6,8 +6,9 @@ import Bag from "../../../images/Bag.png";
 import Like from "../../../images/like.png";
 import "./ItemProduct.css";
 
-const ItemProduct = () => {
+const ItemProduct = ({ data }) => {
 	// const history = useHistory();
+
 	const linkTarget = (e) => {
 		// e.preventDefault();
 		// history.push("/product/detail/123");
@@ -15,19 +16,17 @@ const ItemProduct = () => {
 	};
 	return (
 		<div className="product-item">
-			<img className="product-item-img" src={item1} alt="" />
+			<img className="product-item-img" src={data.productPicture} alt="" />
 			<div className="description">
-				<h3>Mountain Morning</h3>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-					eiusmod.
-				</p>
+				<h3>{data.name}</h3>
+				<p>{data.description}</p>
 				<div className="item-detail-handel">
 					{/* <a to="" href="/product/detail/123" className="item-detail">
 						<img className="item-detail-img" src={Show} alt="" />
 					</a> */}
 					<Link
 						// to="/product/detail/123"
+						to=""
 						href="/product/detail/123"
 						onClick={(e) => linkTarget(e)}
 						className="item-detail"

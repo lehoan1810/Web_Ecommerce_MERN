@@ -7,6 +7,7 @@ import Profile from "../../Client/Page/Profile/Profile";
 import DetailUser from "../Page/ManagerAssistant/DetailUser/DetailUser";
 import ManagerProduct from "../Page/ManagerAssistant/Product/ManagerProduct";
 import ManagerOrder from "../Page/ManagerAssistant/ManagerOrder/ManagerOrder";
+import ManagerBrand from "../Page/ManagerAssistant/ManagerBrand/ManagerBrand";
 
 const RouterAssistant = () => {
 	return (
@@ -33,6 +34,11 @@ const RouterAssistant = () => {
 								exact
 								path="/assistant/product"
 								component={ManagerProduct}
+							/>
+							<Route
+								exact
+								path="/assistant/manager/brand"
+								component={ManagerBrand}
 							/>
 							<Route
 								exact

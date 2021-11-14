@@ -50,3 +50,9 @@
 .button-add-product button:hover {
 	background-color: rgb(11, 125, 201);
 }
+.select-category {
+	border: 1px solid #cdcdcd;
+	padding: 8px;
+	border-radius: 5px;
+	cursor: pointer;
+}

@@ -27,6 +27,12 @@ const DashboardAssistant = () => {
 							<span>Sản Phẩm</span>
 						</li>
 					</NavLink>
+					<NavLink activeClassName="active" to="/assistant/manager/brand">
+						<li className="profile-item item-bottom">
+							<img src={Bookmark} alt="" />
+							<span>Quản Lý Brand</span>
+						</li>
+					</NavLink>
 					<NavLink activeClassName="active" to="/assistant/manager/order">
 						<li className="profile-item item-bottom">
 							<img src={Bookmark} alt="" />
