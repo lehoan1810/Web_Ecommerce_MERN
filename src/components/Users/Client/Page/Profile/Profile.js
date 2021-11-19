@@ -87,9 +87,9 @@ const Profile = () => {
 						backgroundColor: "rgba(0,0,0,0.4)",
 					},
 					content: {
-						width: "50%",
+						width: "80rem",
 						margin: "auto",
-						height: "65%",
+						height: "50rem",
 					},
 				}}
 			>

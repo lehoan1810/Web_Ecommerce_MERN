@@ -11,30 +11,30 @@ const Content = () => {
 		<div className="product-category">
 			<div className="category-select">
 				<div className="title-category">
-					<h1>Danh mục</h1>
+					<h1>Category</h1>
 				</div>
 				<div className="Category-list">
 					<div className="category-item">
 						<img className="category-img" src={item1} alt="" />
-						<Link to="/" href="" className="link-product">
+						<Link to="/shop/category" href="" className="link-product">
 							Bàn Phím
 						</Link>
 					</div>
 					<div className="category-item">
 						<img className="category-img" src={item2} alt="" />
-						<Link to="/" href="" className="link-product">
+						<Link to="/shop/category" href="" className="link-product">
 							Chuột
 						</Link>
 					</div>
 					<div className="category-item">
 						<img className="category-img" src={item3} alt="" />
-						<Link to="/" href="" className="link-product">
+						<Link to="/shop/category" href="" className="link-product">
 							Tai Nghe
 						</Link>
 					</div>
 					<div className="category-item">
 						<img className="category-img" src={item4} alt="" />
-						<Link to="/" className="link-product">
+						<Link to="/shop/category" className="link-product">
 							Màn hình
 						</Link>
 					</div>

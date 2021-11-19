@@ -9,7 +9,7 @@ const CategoryItem = () => {
 	const { id } = useParams();
 	const [dataProduct, setDataProduct] = useState([]);
 
-	const url = `http://localhost:5000/api/v1/category/getProductsId/${id}`;
+	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/category/getProductsId/${id}`;
 	useEffect(() => {
 		const loadProduct = () => {
 			axios

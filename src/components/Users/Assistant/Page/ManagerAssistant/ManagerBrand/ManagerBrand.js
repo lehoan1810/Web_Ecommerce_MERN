@@ -11,7 +11,7 @@ const ManagerBrand = () => {
 	const [modalIsOpen, setModalIsOpen] = useState(false);
 	const [dataBrand, setDataBrand] = useState([]);
 
-	const url = "http://localhost:5000/api/v1/category/getCategory";
+	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/category/getCategory`;
 
 	useEffect(() => {
 		const loadProduct = () => {
@@ -83,9 +83,9 @@ const ManagerBrand = () => {
 						backgroundColor: "rgba(0,0,0,0.4)",
 					},
 					content: {
-						width: "30%",
+						width: "40rem",
 						margin: "auto",
-						height: "41%",
+						height: "30rem",
 					},
 				}}
 			>

@@ -6,7 +6,7 @@
 }
 .feedback {
 	padding: 0 90px;
-	margin-top: 50px;
+	margin-top: 20px;
 }
 
 /* Send Feedback */
@@ -26,11 +26,25 @@
 .avt-feedback {
 	display: flex;
 }
+.border-image {
+	padding: 3px;
+	background: linear-gradient(
+		200deg,
+		#da3394 25%,
+		#e03c67 50%,
+		#f3753b 75%,
+		#f99b4a 100%
+	);
+	border-radius: 50%;
+	margin-right: 10px;
+}
 .avt-feedback img {
 	width: 60px;
 	height: 60px;
 	border-radius: 50%;
-	margin-right: 10px;
+	object-fit: cover;
+	border: 3px solid #fff;
+	cursor: pointer;
 }
 .avt-feedback span {
 	font-size: 15px;
@@ -73,4 +87,29 @@
 	margin-top: 10px;
 	width: 25px;
 	height: 25px;
+}
+.anticon svg {
+	font-size: 20px;
+}
+.edit-review {
+	color: #349df3;
+	margin-right: 20px;
+	cursor: pointer;
+}
+.delete-review {
+	color: rgb(255, 81, 81);
+	cursor: pointer;
+}
+.date-review {
+	color: #a3a2a2;
+	font-size: 1.3rem;
+	margin-bottom: 0;
+	display: inline-block;
+}
+.handle-review {
+	margin-top: 10px;
+	padding-left: 70px;
+}
+.update-review:hover {
+	background-color: rgb(125, 183, 250);
 }

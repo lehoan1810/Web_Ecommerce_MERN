@@ -56,3 +56,10 @@
 	border-radius: 5px;
 	cursor: pointer;
 }
+.img-product-update {
+	width: 30rem;
+	height: 27rem;
+	/* border: 1px solid rgb(141, 141, 141); */
+	border-radius: 10px;
+	object-fit: cover;
+}

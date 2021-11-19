@@ -35,7 +35,7 @@ const CreateProduct = () => {
 			.catch((err) => console.log(err));
 	};
 	//
-	const url = "http://localhost:5000/api/v1/category/getCategory";
+	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/category/getCategory`;
 
 	useEffect(() => {
 		const loadProduct = () => {
@@ -49,7 +49,7 @@ const CreateProduct = () => {
 		};
 		loadProduct();
 	}, [url]);
-	const test = `http://localhost:5000/api/v1/category/getAllBrand/${selectCategory}`;
+	const test = `${process.env.REACT_APP_API_LOCAL}/api/v1/category/getAllBrand/${selectCategory}`;
 	useEffect(() => {
 		if (!selectCategory) {
 			return 0;
@@ -73,7 +73,7 @@ const CreateProduct = () => {
 		console.log(e.target.value);
 	};
 
-	const urlAddCategory = "http://localhost:5000/api/v1/category/addproduct";
+	const urlAddCategory = `${process.env.REACT_APP_API_LOCAL}/api/v1/category/addproduct`;
 	const onAddClass = () => {
 		axios
 			.post(

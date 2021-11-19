@@ -7,7 +7,7 @@ import "./ManagerCategory.css";
 const ManagerCategory = () => {
 	const [category, setCategory] = useState([]);
 	const [nameCategory, setNameCategory] = useState("");
-	const url = "http://localhost:5000/api/v1/category/getCategory";
+	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/category/getCategory`;
 
 	useEffect(() => {
 		const loadProduct = () => {
@@ -22,7 +22,7 @@ const ManagerCategory = () => {
 		loadProduct();
 	}, [url]);
 
-	const urlCategory = "http://localhost:5000/api/v1/category/create";
+	const urlCategory = `${process.env.REACT_APP_API_LOCAL}/api/v1/category/create`;
 
 	const addCategory = () => {
 		axios

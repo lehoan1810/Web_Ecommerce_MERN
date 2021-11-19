@@ -15,21 +15,6 @@ const Header = () => {
 	const [currentUser, setCurrentUser] = useState(null);
 	const user = getCurrentUser();
 	const roleUser = getCurrentRole();
-	// const idUser = getCurrentIdUser();
-
-	// const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/users/profile/${idUser}`;
-
-	// useEffect(() => {
-	// 	const loadProfile = () => {
-	// 		axios
-	// 			.get(url, { headers: authHeader() })
-	// 			.then((res) => {
-	// 				setCurrentUser(res.data.data.userData.name);
-	// 			})
-	// 			.catch((err) => console.log(err));
-	// 	};
-	// 	loadProfile();
-	// }, [url, idUser]);
 
 	useEffect(() => {
 		if (user) {

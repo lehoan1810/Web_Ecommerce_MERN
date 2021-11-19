@@ -2,24 +2,21 @@ import { Rate } from "antd";
 import axios from "axios";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
-import authHeader from "../../../../../../Service/AuthHeader";
+import authHeader from "../../../Service/AuthHeader";
 
-const ModalRating = ({ dataUser, dataProduct }) => {
-	console.log("user review: ", dataUser);
-	console.log("id product: ", dataProduct);
-	const [review, setReview] = useState("");
-	const [rating, setRating] = useState(1);
+const ModalEdit = ({ dataReview }) => {
+	console.log(dataReview);
+	const [review, setReview] = useState(dataReview.review);
+	const [rating, setRating] = useState(dataReview.rating);
 	// const [currentValue, setCurrentValue] = useState(1);
 
 	// post review
-	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/category/${dataProduct}/reviews`;
-	const onCreateReview = () => {
+	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/reviews/${dataReview._id}`;
+	const onEditReview = () => {
 		axios
-			.post(
+			.patch(
 				url,
 				{
-					name: dataUser.name,
-					photo: dataUser.photo,
 					review: review,
 					rating: rating,
 				},
@@ -29,7 +26,9 @@ const ModalRating = ({ dataUser, dataProduct }) => {
 				toast.success("thành công");
 				window.location.reload();
 			})
-			.catch((err) => console.log(err));
+			.catch((err) => {
+				toast.error("faild");
+			});
 	};
 
 	const onRating = (value) => {
@@ -38,15 +37,6 @@ const ModalRating = ({ dataUser, dataProduct }) => {
 
 	return (
 		<div className="form-rating">
-			<div className="user-rating">
-				<h3>Tên User: </h3>
-				<span>{dataUser.name}</span>
-			</div>
-
-			<div className="product-rating">
-				<h3>Tên Sản Phẩm:</h3>
-				<span>{dataProduct}</span>
-			</div>
 			<div className="star-rating">
 				<Rate onChange={onRating} value={rating} />
 			</div>
@@ -54,13 +44,16 @@ const ModalRating = ({ dataUser, dataProduct }) => {
 				<textarea
 					onChange={(e) => setReview(e.target.value)}
 					placeholder="text"
+					value={review}
 				/>
 			</div>
 			<div className="button-rating">
-				<button onClick={onCreateReview}>Send</button>
+				<button className="update-review" onClick={onEditReview}>
+					Send
+				</button>
 			</div>
 		</div>
 	);
 };
 
-export default ModalRating;
+export default ModalEdit;

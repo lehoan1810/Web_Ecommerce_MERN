@@ -1,10 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../../../images/LogoBrand.png";
 import CardTick from "../../../images/Bag.png";
 import Like from "../../../images/like.png";
 import "./HeaderProduct.css";
+import authHeader from "../../../Service/AuthHeader";
+import axios from "axios";
+import { getCurrentRole, getCurrentUser } from "../../../Service/AuthService";
+import accountImg from "../../../images/account.png";
 const HeaderProduct = () => {
+	const user = getCurrentUser();
+	const roleUser = getCurrentRole();
+
+	//
+	const [dataUser, setDataUser] = useState([]);
+	const urlCart = `${process.env.REACT_APP_API_LOCAL}/api/v1/cart`;
+	useEffect(() => {
+		const loadCart = () => {
+			axios
+				.get(urlCart, { headers: authHeader() })
+				.then((res) => {
+					setDataUser(res.data.data.doc.cart.items);
+					console.log("header: ", res.data.data.doc.cart.items);
+				})
+				.catch((err) => console.log(err));
+		};
+		loadCart();
+	}, [urlCart]);
+
+	const count = (data) => {
+		if (data.length === undefined) {
+			return 0;
+		} else {
+			let length = Object.keys(data).length;
+			return length;
+		}
+	};
+
 	return (
 		<header className="header header-background">
 			<div className="container">
@@ -15,21 +47,41 @@ const HeaderProduct = () => {
 					<div className="menu">
 						<ul className="menu-list"></ul>
 					</div>
+					{roleUser === "customer" ? (
+						<div className="header-tooll card-shop">
+							<div className="header-icon-like">
+								<span className="number-product"></span>
+								<Link to="/product/Like">
+									<img className="icon-shop" src={Like} alt="" />
+								</Link>
+							</div>
+							<div className="header-icon-number">
+								<span className="number-product">{count(dataUser)}</span>
 
-					<div className="header-tooll card-shop">
-						<div className="header-icon-like">
-							<span className="number-product">5</span>
-							<Link to="/product/Like">
-								<img className="icon-shop" src={Like} alt="" />
-							</Link>
+								<Link to="/product/cart">
+									<img className="icon-shop" src={CardTick} alt="" />
+								</Link>
+							</div>
 						</div>
-						<div className="header-icon-number">
-							<span className="number-product">5</span>
-							<Link to="/product/cart">
-								<img className="icon-shop" src={CardTick} alt="" />
-							</Link>
+					) : roleUser === "assistant" ? (
+						<div className="header-tooll card-shop">
+							<div className="header-icon-role">
+								<img className="icon-role" src={accountImg} alt="" />
+
+								<span className="name-role">Assistant: </span>
+								<span className="name-user">{user}</span>
+							</div>
 						</div>
-					</div>
+					) : (
+						<div className="header-tooll card-shop">
+							<div className="header-icon-role">
+								<img className="icon-role" src={accountImg} alt="" />
+
+								<span className="name-role">Admin: </span>
+								<span className="name-user">{user}</span>
+							</div>
+						</div>
+					)}
 				</div>
 			</div>
 		</header>

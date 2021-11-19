@@ -9,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 toast.configure();
 function Resgister() {
 	// const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/users/signup`;
-	const url = "http://localhost:5000/api/v1/users/signup";
+	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/users/signup`;
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");

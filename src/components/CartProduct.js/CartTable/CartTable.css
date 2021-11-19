@@ -103,15 +103,31 @@ button {
 .action-delete:hover {
 	color: #333;
 }
+
+.count-cart-product {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
 .count-cart-product span {
 	padding: 0 5px;
+	line-height: 12px;
+	font-weight: 600;
 }
 .btn-inc,
 .btn-dec {
-	padding: 2px 5px;
-	background-color: #08aeea;
-	color: white;
-	width: 20px;
+	/* padding: 2px 5px; */
+	background-color: #fff;
+	/* color: white; */
+	/* width: 20px;
 	height: 20px;
-	text-align: center;
+	text-align: center; */
+}
+.name-prodcut {
+	width: 24rem;
+}
+.onChange-qty {
+	width: 2.2rem;
+	object-fit: cover;
 }

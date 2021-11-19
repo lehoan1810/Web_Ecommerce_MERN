@@ -1,16 +1,82 @@
-import React, { useState } from "react";
-import img1 from "../../../images/img2.jpg";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import authHeader from "../../../Service/AuthHeader";
 import PaymentProduct from "../PaymentProduct/PaymentProduct";
+import Modal from "react-modal";
 import "./CartTable.css";
+// import { toast } from "react-toastify";
+import ModalDeleteItem from "./ModalDeleteItem";
+import imgIncrease from "../../../images/increase.png";
+import imgDecrease from "../../../images/decrease.png";
 
 const CartTable = () => {
 	const [count, setCount] = useState(0);
-	const Increase = () => {
-		setCount(count + 1);
+	const [dataCart, setDataCart] = useState([]);
+	const [dataUser, setDataUser] = useState([]);
+	const [modalIsOpen, setModalIsOpen] = useState(false);
+	const [getIdProduct, setGetIdproduct] = useState("");
+
+	//Delete item from cart
+	const urlCart = `${process.env.REACT_APP_API_LOCAL}/api/v1/cart`;
+	useEffect(() => {
+		const loadCart = () => {
+			axios
+				.get(urlCart, { headers: authHeader() })
+				.then((res) => {
+					setDataUser(res.data.data.doc.cart);
+					setDataCart(res.data.data.doc.cart.items);
+					console.log("xem: ", res.data.data.doc.cart.items);
+				})
+				.catch((err) => console.log(err));
+		};
+		loadCart();
+	}, [urlCart]);
+
+	//
+	const Increase = (productId) => {
+		// setCount(count + 1);
+		const urlIncrease = `${process.env.REACT_APP_API_LOCAL}/api/v1/cart`;
+		axios
+			.post(
+				urlIncrease,
+				{ productId: productId, qty: 1 },
+				{ headers: authHeader() }
+			)
+			.then((res) => {
+				console.log("thành công");
+				window.location.reload();
+			})
+			.catch((err) => console.log(err));
 	};
-	const Decrease = () => {
-		count <= 0 ? setCount(0) : setCount(count - 1);
+	const Decrease = (productId) => {
+		const urlDecrease = `${process.env.REACT_APP_API_LOCAL}/api/v1/cart/decreaseFromCart`;
+		// count <= 0 ? setCount(0) : setCount(count - 1);
+		axios
+			.post(
+				urlDecrease,
+				{ productId: productId, qty: 1 },
+				{ headers: authHeader() }
+			)
+			.then((res) => {
+				console.log("thành công");
+				window.location.reload();
+			})
+			.catch((err) => console.log(err));
 	};
+
+	const totalOneProduct = (qty, price) => {
+		let total = qty * price;
+		return new Intl.NumberFormat("it-IT", {
+			style: "currency",
+			currency: "VND",
+		}).format(total);
+	};
+
+	const onGetIdproduct = (id) => {
+		setModalIsOpen(true);
+		setGetIdproduct(id);
+	};
+
 	return (
 		<div className="cart-table">
 			<div className="table">
@@ -25,65 +91,79 @@ const CartTable = () => {
 							<th>Thao Tác</th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr>
-							<td>
-								<div className="image-text">
-									<img src={img1} alt="" />
-								</div>
-							</td>
-							<td>Mike wazowski guihiu ohoihih jhbhghh ghghgh oiiuuvug</td>
-							<td>15.000.000 VND</td>
-							<td>
-								<div className="count-cart-product">
-									<button className="btn-dec " onClick={Decrease}>
-										-
-									</button>
-									<span>{count}</span>
-									<button className="btn-inc" onClick={Increase}>
-										+
-									</button>
-								</div>
-							</td>
-							<td>30.000.000 VND</td>
-							<td>
-								<div className="action-handel">
-									<button className="action-delete">Delete</button>
-								</div>
-							</td>
-						</tr>
-					</tbody>
-					<tbody>
-						<tr>
-							<td>
-								<div className="image-text">
-									<img src={img1} alt="" />
-								</div>
-							</td>
-							<td>Mike wazowski guihiu ohoihih jhbhghh ghghgh oiiuuvug</td>
-							<td>15.000.000 VND</td>
-							<td>
-								<div className="count-cart-product">
-									<button className="btn-dec " onClick={Decrease}>
-										-
-									</button>
-									<span>{count}</span>
-									<button className="btn-inc" onClick={Increase}>
-										+
-									</button>
-								</div>
-							</td>
-							<td>30.000.000 VND</td>
-							<td>
-								<div className="action-handel">
-									<button className="action-delete">Delete</button>
-								</div>
-							</td>
-						</tr>
-					</tbody>
+					{dataCart.map((item, id) => (
+						<tbody key={id}>
+							{/* <h1>{sum(item.qty, item.price)}</h1> */}
+							<tr>
+								<td>
+									<div className="image-text">
+										<img src={item.productPicture} alt="" />
+									</div>
+								</td>
+								<td className="name-prodcut">{item.nameProduct}</td>
+								<td>
+									{new Intl.NumberFormat("it-IT", {
+										style: "currency",
+										currency: "VND",
+									}).format(item.price)}
+								</td>
+								<td>
+									<div className="count-cart-product">
+										<button
+											className="btn-dec "
+											onClick={() => Decrease(item.productId)}
+										>
+											<img className="onChange-qty" src={imgDecrease} alt="" />
+										</button>
+										<span>{item.qty}</span>
+										<button
+											className="btn-inc"
+											onClick={() => Increase(item.productId)}
+										>
+											<img className="onChange-qty" src={imgIncrease} alt="" />
+										</button>
+									</div>
+								</td>
+								<td>
+									<span>{totalOneProduct(item.qty, item.price)}</span>
+								</td>
+								<td>
+									<div className="action-handel">
+										<button
+											onClick={() => onGetIdproduct(item.productId)}
+											className="action-delete"
+										>
+											Delete
+										</button>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					))}
 				</table>
 			</div>
-			<PaymentProduct />
+			<PaymentProduct data={dataUser} />
+			<Modal
+				isOpen={modalIsOpen}
+				ariaHideApp={false}
+				onRequestClose={() => setModalIsOpen(false)}
+				style={{
+					overlay: {
+						backgroundColor: "rgba(0,0,0,0.4)",
+					},
+					content: {
+						width: "30rem",
+						margin: "auto",
+						height: "20rem",
+					},
+				}}
+			>
+				<ModalDeleteItem
+					// dataProduct={id}
+					data={getIdProduct}
+					setModalIsOpen={setModalIsOpen}
+				/>
+			</Modal>
 		</div>
 	);
 };

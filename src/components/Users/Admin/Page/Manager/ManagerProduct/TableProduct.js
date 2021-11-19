@@ -20,7 +20,7 @@ const TableProduct = ({ columns, data, loading }) => {
 						},
 					}}
 					loading={loading}
-					// rowKey="idTeacher"
+					rowKey="_id"
 				/>
 			</div>
 		</div>

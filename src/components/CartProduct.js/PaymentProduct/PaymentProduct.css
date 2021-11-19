@@ -24,6 +24,10 @@
 }
 .payment-product {
 	padding: 20px 0;
+	font-weight: 600;
+}
+.discount-product {
+	font-weight: 600;
 }
 .discount-product,
 .price-product {

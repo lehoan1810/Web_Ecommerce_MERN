@@ -6,7 +6,7 @@ import "./ProductHot.css";
 import ItemProduct from "../../Product/ItemProduct/ItemProduct";
 
 const ProductHot = () => {
-	const url = `http://localhost:5000/api/v1/products/`;
+	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/products/`;
 	useEffect(() => {
 		const getPostsData = () => {
 			axios

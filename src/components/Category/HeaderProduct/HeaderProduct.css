@@ -65,3 +65,18 @@
 .header-icon-like {
 	margin-right: 20px;
 }
+.name-role {
+	font-weight: 600;
+}
+.name-user {
+	padding-left: 10px;
+}
+.icon-role {
+	width: 29px;
+	height: 29px;
+	display: inline-block;
+}
+.header-icon-role {
+	display: flex;
+	cursor: pointer;
+}

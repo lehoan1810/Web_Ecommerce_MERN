@@ -1,42 +1,96 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TableProduct from "./TableProduct";
 import { Input } from "antd";
 import Modal from "react-modal";
+import axios from "axios";
 import "./ManagerProduct.css";
 import CreateProduct from "./ModalCreate/CreateProduct";
+import authHeader from "../../../../../../Service/AuthHeader";
+import ModalUpdate from "./ModalUpdate/ModalUpdate";
 const { Search } = Input;
 
 const ManagerProduct = () => {
-	// const [loading, setloading] = useState(false);
+	const [loading, setloading] = useState(false);
+
 	const [modalIsOpen, setModalIsOpen] = useState(false);
-	const dataSource = [
-		{
-			key: "1",
-			nameProduct: "xin chào",
-			priceProduct: 32,
-			image: "http://www.techrum.vn/chevereto/images/2017/11/21/q4OQY.jpg",
-		},
-		{
-			key: "2",
-			nameProduct: "Mike",
-			priceProduct: 32,
-		},
-		{
-			key: "3",
-			nameProduct: "Mike",
-			priceProduct: 32,
-		},
-		{
-			key: "4",
-			nameProduct: "Mike",
-			priceProduct: 32,
-		},
-	];
+	const [selectCategory, setSelectCategory] = useState("");
+	const [selectBrand, setSelectBrand] = useState("");
+	const [dataCategory, setDataCategory] = useState([]);
+	const [dataBrand, setDataBrand] = useState([]);
+
+	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/category/getCategory`;
+
+	useEffect(() => {
+		const loadProduct = () => {
+			axios
+				.get(url)
+				.then((res) => {
+					setDataCategory(res.data.categoryList);
+					console.log(res.data.categoryList);
+				})
+				.catch((err) => console.log(err));
+		};
+		loadProduct();
+	}, [url]);
+	const test = `${process.env.REACT_APP_API_LOCAL}/api/v1/category/getAllBrand/${selectCategory}`;
+	useEffect(() => {
+		if (!selectCategory) {
+			return 0;
+		}
+		const loadBrand = () => {
+			axios
+				.get(test)
+				.then((res) => {
+					setDataBrand(res.data.categoryList);
+					console.log(res.data.categoryList);
+				})
+				.catch((err) => console.log(err));
+		};
+		loadBrand();
+	}, [test, selectCategory]);
+	const onSelectCategory = (e) => {
+		setSelectCategory(e.target.value);
+	};
+	const onSelectBrand = (e) => {
+		setSelectBrand(e.target.value);
+		console.log(e.target.value);
+	};
+
+	// load product
+	const urlProduct = `${process.env.REACT_APP_API_LOCAL}/api/v1/category/getProductsId/${selectBrand}`;
+
+	const [dataProduct, setDataProduct] = useState([]);
+	useEffect(() => {
+		const loadProduct = () => {
+			if (!selectBrand) {
+				return 0;
+			}
+			setloading(true);
+			axios
+				.get(urlProduct, { headers: authHeader() })
+				.then((res) => {
+					setDataProduct(res.data.products);
+					console.log(res.data.products);
+					setloading(false);
+				})
+				.catch((err) => console.log(err));
+		};
+		loadProduct();
+	}, [urlProduct, selectBrand]);
+
+	const [updateIsOpen, setUpdateIsOpen] = useState(false);
+	const [idUpdate, setIdUpdate] = useState("");
+	const onUpdate = (item, e) => {
+		e.preventDefault();
+		setIdUpdate(item);
+		setUpdateIsOpen(true);
+	};
+
 	const columns = [
 		{
 			title: "Image",
-			dataIndex: "image",
-			key: "image",
+			dataIndex: "productPicture",
+			key: "productPicture",
 			render: (item) => (
 				<div className="img-product-like">
 					<img src={item} alt="" />
@@ -46,29 +100,29 @@ const ManagerProduct = () => {
 
 		{
 			title: "Tên Sản Phẩm",
-			dataIndex: "nameProduct",
+			dataIndex: "name",
 			responsive: ["md"],
-			key: "nameProduct",
+			key: "name",
 		},
 
 		{
 			title: "Giá Sản Phẩm",
-			dataIndex: "priceProduct",
+			dataIndex: "price",
 			responsive: ["md"],
-			key: "priceProduct",
+			key: "price",
 		},
 
 		{
 			title: "Action",
 			dataIndex: "action",
 			key: "action",
-			render: (item, teacher) => (
+			render: (item, products) => (
 				<div>
 					<button
 						className="check-detail"
-						// onClick={(e) => onAssign(teacher.idTeacher, e)}
+						onClick={(e) => onUpdate(products, e)}
 					>
-						Detail
+						Update
 					</button>
 				</div>
 			),
@@ -76,16 +130,12 @@ const ManagerProduct = () => {
 	];
 	const [filterInput, setFilterInput] = useState("");
 	const filterData = () => {
-		if (filterInput === "") return dataSource;
+		if (filterInput === "") return dataProduct;
 
 		if (isNaN(filterInput)) {
-			return dataSource.filter(({ nameProduct }) =>
-				nameProduct.includes(filterInput)
-			);
+			return dataProduct.filter(({ name }) => name.includes(filterInput));
 		}
-		return dataSource.filter(
-			({ priceProduct }) => priceProduct === +filterInput
-		);
+		return dataProduct.filter(({ price }) => price === +filterInput);
 	};
 
 	return (
@@ -102,18 +152,54 @@ const ManagerProduct = () => {
 						onSearch={setFilterInput}
 						className="search-product"
 					/>
+					<button
+						className="create-product"
+						onClick={() => setModalIsOpen(true)}
+					>
+						Create Product
+					</button>
 				</div>
-				<button className="create-product" onClick={() => setModalIsOpen(true)}>
-					Create Product
-				</button>
-
-				<TableProduct columns={columns} data={filterData()} />
+				<div className="select-show">
+					<select
+						value={selectCategory}
+						name="product"
+						className="select-category"
+						id="product"
+						onChange={(e) => onSelectCategory(e)}
+					>
+						<option value="" disabled selected>
+							Chọn category tương ứng
+						</option>
+						{dataCategory.map((item, id) => (
+							<option className="option-item" key={id} value={item._id}>
+								{item.name}
+							</option>
+						))}
+					</select>
+				</div>
+				<div className="select-show-product">
+					<select
+						value={selectBrand}
+						name="product"
+						className="select-category"
+						id="product"
+						onChange={(e) => onSelectBrand(e)}
+					>
+						<option value="" disabled selected>
+							Chọn brand
+						</option>
+						{dataBrand.map((item, id) => (
+							<option className="option-item" key={id} value={item._id}>
+								{item.name}
+							</option>
+						))}
+					</select>
+				</div>
+				<TableProduct columns={columns} data={filterData()} loading={loading} />
 			</div>
 			<Modal
 				isOpen={modalIsOpen}
-				//err
 				ariaHideApp={false}
-				//
 				onRequestClose={() => setModalIsOpen(false)}
 				style={{
 					overlay: {
@@ -127,6 +213,23 @@ const ManagerProduct = () => {
 				}}
 			>
 				<CreateProduct setModalIsOpen={setModalIsOpen} />
+			</Modal>
+			<Modal
+				isOpen={updateIsOpen}
+				ariaHideApp={false}
+				onRequestClose={() => setUpdateIsOpen(false)}
+				style={{
+					overlay: {
+						backgroundColor: "rgba(0,0,0,0.4)",
+					},
+					content: {
+						width: "70rem",
+						margin: "auto",
+						height: "50rem",
+					},
+				}}
+			>
+				<ModalUpdate data={idUpdate} setModalIsOpen={setUpdateIsOpen} />
 			</Modal>
 		</div>
 	);
