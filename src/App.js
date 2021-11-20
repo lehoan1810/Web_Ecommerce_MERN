@@ -13,6 +13,8 @@ import RouterClient from "./components/Users/Client/Router/RouterClient";
 import RouterAdmin from "./components/Users/Admin/Router/RouterAdmin";
 import RouterAssistant from "./components/Users/Assistant/Router/RouterAssistant";
 import RouterCategory from "./components/Shop/Router/RouterCategory";
+import ForgetPassword from "./components/Login/ForgetPassword/ForgetPassword";
+import ResetPassword from "./components/Login/ResetPassword/ResetPassword";
 function App() {
 	return (
 		<Router>
@@ -21,6 +23,10 @@ function App() {
 					<Route exact path="/" component={Home} />
 
 					<Route exact path="/login" component={Login} />
+
+					<Route exact path="/forgetPassword" component={ForgetPassword} />
+
+					<Route exact path="/resetPassword" component={ResetPassword} />
 
 					<Route exact path="/Resgister" component={Resgister} />
 

@@ -68,12 +68,17 @@ const ItemDetail = () => {
 	// Add to cart
 	const urlAdd = `${process.env.REACT_APP_API_LOCAL}/api/v1/cart`;
 	const onAddCart = () => {
-		axios
-			.post(urlAdd, { productId: id, qty: count }, { headers: authHeader() })
-			.then((res) => {
-				toast.success("Add to Cart Success !!!", { autoClose: 1500 });
-			})
-			.catch((err) => toast.error("Faild"));
+		const UserId = getCurrentIdUser();
+		if (!UserId) {
+			toast.error("You need Login !!!", { autoClose: 1500 });
+		} else {
+			axios
+				.post(urlAdd, { productId: id, qty: count }, { headers: authHeader() })
+				.then((res) => {
+					toast.success("Add to Cart Success !!!", { autoClose: 1500 });
+				})
+				.catch((err) => toast.error("Faild"));
+		}
 	};
 
 	return (

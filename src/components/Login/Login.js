@@ -73,7 +73,9 @@ function Login() {
 							<span className="title-remember">Remember me</span>
 						</div>
 						<div className="fill-forget">
-							<span className="title-forget">Forget password ?</span>
+							<Link to="/forgetPassword" className="title-forget">
+								Forget password ?
+							</Link>
 						</div>
 					</div>
 				</div>

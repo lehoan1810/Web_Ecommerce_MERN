@@ -72,12 +72,28 @@ const HeaderProduct = () => {
 								<span className="name-user">{user}</span>
 							</div>
 						</div>
-					) : (
+					) : roleUser === "admin" ? (
 						<div className="header-tooll card-shop">
 							<div className="header-icon-role">
 								<img className="icon-role" src={accountImg} alt="" />
 
 								<span className="name-role">Admin: </span>
+								<span className="name-user">{user}</span>
+							</div>
+						</div>
+					) : (
+						<div className="header-tooll card-shop">
+							<div className="header-icon-role">
+								{/* <img className="icon-role" src={accountImg} alt="" /> */}
+
+								<Link to="/login" className="role-login">
+									{" "}
+									Đăng nhập
+								</Link>
+								<Link to="/Resgister" className="role-resgister">
+									{" "}
+									Đăng ký
+								</Link>
 								<span className="name-user">{user}</span>
 							</div>
 						</div>

@@ -10,7 +10,7 @@ import imgIncrease from "../../../images/increase.png";
 import imgDecrease from "../../../images/decrease.png";
 
 const CartTable = () => {
-	const [count, setCount] = useState(0);
+	// const [count, setCount] = useState(0);
 	const [dataCart, setDataCart] = useState([]);
 	const [dataUser, setDataUser] = useState([]);
 	const [modalIsOpen, setModalIsOpen] = useState(false);
