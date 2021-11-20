@@ -3,7 +3,7 @@ import ItemProduct from "../../Product/ItemProduct/ItemProduct.js";
 import Search from "../../../images/Search.png";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import authHeader from "../../../Service/AuthHeader.js";
+import authHeader from "../../../service/AuthHeader.js";
 
 const CategoryItem = () => {
 	const { id } = useParams();

@@ -2,7 +2,7 @@ import { Rate } from "antd";
 import axios from "axios";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
-import authHeader from "../../../Service/AuthHeader.js";
+import authHeader from "../../../service/AuthHeader.js";
 
 const ModalEdit = ({ dataReview }) => {
 	console.log(dataReview);

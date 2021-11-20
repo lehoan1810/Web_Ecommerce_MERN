@@ -4,12 +4,12 @@ import Logo from "../../../images/LogoBrand.png";
 import CardTick from "../../../images/Bag.png";
 import Like from "../../../images/like.png";
 import "./HeaderProduct.css";
-import authHeader from "../../../Service/AuthHeader.js";
+import authHeader from "../../../service/AuthHeader.js";
 import axios from "axios";
 import {
 	getCurrentRole,
 	getCurrentUser,
-} from "../../../Service/AuthService.js";
+} from "../../../service/AuthService.js";
 import accountImg from "../../../images/account.png";
 const HeaderProduct = () => {
 	const user = getCurrentUser();

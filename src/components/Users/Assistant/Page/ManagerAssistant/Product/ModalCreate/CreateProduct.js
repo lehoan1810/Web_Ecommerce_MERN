@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import authHeader from "../../../../../../../Service/AuthHeader.js";
+import authHeader from "../../../../../../../service/AuthHeader.js";
 import "./CreateProduct.css";
 import Loading from "../../../../../../Loading/Loading.js";
 import upload from "../../../../../../../images/upload.png";

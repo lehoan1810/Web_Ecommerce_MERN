@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import AuthHeader from "../../../../../../Service/AuthHeader.js";
+import AuthHeader from "../../../../../../service/AuthHeader.js";
 import "./ModalProfile.css";
 import Loading from "../../../../../Loading/Loading.js";
 import upload from "../../../../../../images/upload.png";

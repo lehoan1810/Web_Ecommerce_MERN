@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 
-import { getCurrentUser, getCurrentRole } from "../Service/AuthService.js";
+import { getCurrentUser, getCurrentRole } from "../service/AuthService.js";
 
 export const PrivateRoute = ({ component: Component, roles, ...rest }) => (
 	<Route

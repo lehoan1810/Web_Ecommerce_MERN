@@ -4,14 +4,15 @@ import HeaderProduct from "../../Category/HeaderProduct/HeaderProduct.js";
 import { useParams } from "react-router-dom";
 import Like from "../../../images/like.png";
 import FeedBack from "../FeedBack/FeedBack.js";
-import authHeader from "../../../Service/AuthHeader.js";
+import authHeader from "../../../service/AuthHeader.js";
+
 import axios from "axios";
 import { Link } from "react-router-dom";
 
 // test create review
 import Modal from "react-modal";
 import ModalAccess from "../../Users/Client/Page/Purchase/Order/ModalRating";
-import { getCurrentIdUser } from "../../../Service/AuthService.js";
+import { getCurrentIdUser } from "../../../service/AuthService.js";
 import { toast } from "react-toastify";
 
 const ItemDetail = () => {

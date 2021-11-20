@@ -5,7 +5,7 @@ import Modal from "react-modal";
 import axios from "axios";
 import "./ManagerProduct.css";
 import CreateProduct from "./ModalCreate/CreateProduct.js";
-import authHeader from "../../../../../../Service/AuthHeader.js";
+import authHeader from "../../../../../../service/AuthHeader.js";
 import ModalUpdate from "./ModalUpdate/ModalUpdate.js";
 const { Search } = Input;
 

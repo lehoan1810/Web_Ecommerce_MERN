@@ -1,9 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
-import authHeader from "../../../../../Service/AuthHeader.js";
+import authHeader from "../../../../../service/AuthHeader.js";
 import ModalProfile from "./ModalProfile/ModalProfile.js";
-import { getCurrentIdUser } from "../../../../../Service/AuthService.js";
+import { getCurrentIdUser } from "../../../../../service/AuthService.js";
 import "./Profile.css";
 
 const Profile = () => {

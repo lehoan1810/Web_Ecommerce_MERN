@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import authHeader from "../../../Service/AuthHeader.js";
+import authHeader from "../../../service/AuthHeader.js";
 import CategoryProduct from "./CategoryProduct.js";
 
 const MenuCategory = () => {

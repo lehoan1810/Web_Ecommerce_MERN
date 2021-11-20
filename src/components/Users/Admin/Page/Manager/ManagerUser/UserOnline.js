@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Lock from "../../../../../../images/lock.png";
-import authHeader from "../../../../../../Service/AuthHeader.js";
+import authHeader from "../../../../../../service/AuthHeader.js";
 import Modal from "react-modal";
 import ModalDelete from "./ModalDelete.js";
 

@@ -1,7 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { toast } from "react-toastify";
-import authHeader from "../../../../../../Service/AuthHeader.js";
+import authHeader from "../../../../../../service/AuthHeader.js";
 
 const ModalDeleteProduct = ({ idData, setModalIsOpen }) => {
 	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/category/deleteProductById`;

@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { Rate } from "antd";
 import "antd/dist/antd.css";
 import "./FeedBack.css";
-import { getCurrentIdUser } from "../../../Service/AuthService.js";
+import { getCurrentIdUser } from "../../../service/AuthService.js";
 import Moment from "react-moment";
 import Modal from "react-modal";
 import ModalEdit from "./ModalEdit.js";
 import axios from "axios";
-import authHeader from "../../../Service/AuthHeader.js";
+import authHeader from "../../../service/AuthHeader.js";
 import { toast } from "react-toastify";
 
 const FeedBack = ({ dataReview }) => {

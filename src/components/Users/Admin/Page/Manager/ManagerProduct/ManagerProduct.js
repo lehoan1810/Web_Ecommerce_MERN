@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import authHeader from "../../../../../../Service/AuthHeader.js";
+import authHeader from "../../../../../../service/AuthHeader.js";
 import TableProduct from "./TableProduct.js";
 import Modal from "react-modal";
 import ModalDeleteProduct from "./ModalDeleteProduct.js";

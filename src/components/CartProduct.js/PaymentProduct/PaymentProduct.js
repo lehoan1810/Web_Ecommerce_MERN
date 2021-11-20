@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import authHeader from "../../../Service/AuthHeader.js";
+import authHeader from "../../../service/AuthHeader.js";
 import "./PaymentProduct.css";
-import { getCurrentIdUser } from "../../../Service/AuthService.js";
+import { getCurrentIdUser } from "../../../service/AuthService.js";
 
 const PaymentProduct = ({ data }) => {
 	const idUser = getCurrentIdUser();
