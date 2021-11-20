@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import ArrowRight from "../../images/ArrowRight.png";
 import "./Login.css";
 import { useHistory } from "react-router-dom";
-import { login } from "../../Service/AuthService.js";
+// import { login } from "../../Service/AuthService.js";
 import iconShow from "../../images/Show.png";
 import iconHide from "../../images/Hide.png";
 
@@ -17,8 +17,8 @@ function Login() {
 		const formData = { email, password };
 		e.preventDefault();
 		try {
-			const res = await login(formData);
-			console.log(res);
+			// const res = await login(formData);
+			console.log(formData);
 			history.push("/");
 		} catch (err) {
 			console.log(err);
