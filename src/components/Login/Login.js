@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import ArrowRight from "../../images/ArrowRight.png";
 import "./Login.css";
 import { useHistory } from "react-router-dom";
-import { login } from "../../../src/Service/AuthService";
-import iconShow from "../../../src/images/Show.png";
-import iconHide from "../../../src/images/Hide.png";
+import { login } from "../../Service/AuthService";
+import iconShow from "../../images/Show.png";
+import iconHide from "../../images/Hide.png";
 
 function Login() {
 	const [email, setEmail] = useState("");
