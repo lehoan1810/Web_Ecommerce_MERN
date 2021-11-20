@@ -1,13 +1,13 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import HeaderProduct from "../../../Category/HeaderProduct/HeaderProduct";
-import Footer from "../../../HomePage/Footer/Footer";
-import DashboardAssistant from "../Dashboard/DashboardAssistant";
-import Profile from "../../Client/Page/Profile/Profile";
-import DetailUser from "../Page/ManagerAssistant/DetailUser/DetailUser";
-import ManagerProduct from "../Page/ManagerAssistant/Product/ManagerProduct";
-import ManagerOrder from "../Page/ManagerAssistant/ManagerOrder/ManagerOrder";
-import ManagerBrand from "../Page/ManagerAssistant/ManagerBrand/ManagerBrand";
+import HeaderProduct from "../../../Category/HeaderProduct/HeaderProduct.js";
+import Footer from "../../../HomePage/Footer/Footer.js";
+import DashboardAssistant from "../Dashboard/DashboardAssistant.js";
+import Profile from "../../Client/Page/Profile/Profile.js";
+import DetailUser from "../Page/ManagerAssistant/DetailUser/DetailUser.js";
+import ManagerProduct from "../Page/ManagerAssistant/Product/ManagerProduct.js";
+import ManagerOrder from "../Page/ManagerAssistant/ManagerOrder/ManagerOrder.js";
+import ManagerBrand from "../Page/ManagerAssistant/ManagerBrand/ManagerBrand.js";
 
 const RouterAssistant = () => {
 	return (

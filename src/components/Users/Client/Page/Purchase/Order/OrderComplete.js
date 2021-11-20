@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
-import ModalAccess from "./ModalRating";
+import ModalAccess from "./ModalRating.js";
 
 const OrderComplete = () => {
 	const [modalIsOpen, setModalIsOpen] = useState(false);

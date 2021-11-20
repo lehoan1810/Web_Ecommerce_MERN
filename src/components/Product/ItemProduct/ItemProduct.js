@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Show from "../../../images/Show.png";
-// import Bag from "../../../images/Bag.png";
 import Like from "../../../images/like.png";
 import "./ItemProduct.css";
 

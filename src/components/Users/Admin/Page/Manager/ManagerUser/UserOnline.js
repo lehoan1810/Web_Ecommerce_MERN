@@ -1,9 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Lock from "../../../../../../images/lock.png";
-import authHeader from "../../../../../../Service/AuthHeader";
+import authHeader from "../../../../../../Service/AuthHeader.js";
 import Modal from "react-modal";
-import ModalDelete from "./ModalDelete";
+import ModalDelete from "./ModalDelete.js";
 
 const UserOnline = () => {
 	const [dataUser, setDataUser] = useState([]);

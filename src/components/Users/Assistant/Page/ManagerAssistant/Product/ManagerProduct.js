@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import TableProduct from "./TableProduct";
+import TableProduct from "./TableProduct.js";
 import { Input } from "antd";
 import Modal from "react-modal";
 import axios from "axios";
 import "./ManagerProduct.css";
-import CreateProduct from "./ModalCreate/CreateProduct";
-import authHeader from "../../../../../../Service/AuthHeader";
-import ModalUpdate from "./ModalUpdate/ModalUpdate";
+import CreateProduct from "./ModalCreate/CreateProduct.js";
+import authHeader from "../../../../../../Service/AuthHeader.js";
+import ModalUpdate from "./ModalUpdate/ModalUpdate.js";
 const { Search } = Input;
 
 const ManagerProduct = () => {

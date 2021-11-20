@@ -1,11 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import authHeader from "../../../Service/AuthHeader";
-import PaymentProduct from "../PaymentProduct/PaymentProduct";
+import authHeader from "../../../Service/AuthHeader.js";
+import PaymentProduct from "../PaymentProduct/PaymentProduct.js";
 import Modal from "react-modal";
 import "./CartTable.css";
 // import { toast } from "react-toastify";
-import ModalDeleteItem from "./ModalDeleteItem";
+import ModalDeleteItem from "./ModalDeleteItem.js";
 import imgIncrease from "../../../images/increase.png";
 import imgDecrease from "../../../images/decrease.png";
 

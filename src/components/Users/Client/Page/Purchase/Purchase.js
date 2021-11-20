@@ -1,10 +1,10 @@
 import React from "react";
 import "./Purchase.css";
 import { Tabs } from "antd";
-import OrderConfirm from "./Order/OrderConfirm";
-import OrderDelete from "./Order/OrderDelete";
-import OrderComplete from "./Order/OrderComplete";
-import OrderProcess from "./Order/OrderProcess";
+import OrderConfirm from "./Order/OrderConfirm.js";
+import OrderDelete from "./Order/OrderDelete.js";
+import OrderComplete from "./Order/OrderComplete.js";
+import OrderProcess from "./Order/OrderProcess.js";
 const { TabPane } = Tabs;
 
 const Purchase = () => {

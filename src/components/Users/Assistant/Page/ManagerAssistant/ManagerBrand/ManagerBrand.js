@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Input } from "antd";
 import Modal from "react-modal";
-import TableBrand from "./TableBrand";
+import TableBrand from "./TableBrand.js";
 import axios from "axios";
-import CreateBrand from "./ModalBrand/CreateBrand";
+import CreateBrand from "./ModalBrand/CreateBrand.js";
 const { Search } = Input;
 
 const ManagerBrand = () => {

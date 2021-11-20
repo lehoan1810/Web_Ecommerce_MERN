@@ -1,10 +1,8 @@
 import React from "react";
-import Content from "./Content/Content";
-import HeaderProduct from "./HeaderProduct/HeaderProduct";
-// import ProductHot from "./ProductHot/ProductHot";
-import Slider from "./Slider/Slider";
-import Footer from "../HomePage/Footer/Footer";
-// import Footer from "../HomePage/Footer/Footer";
+import Content from "./Content/Content.js";
+import HeaderProduct from "./HeaderProduct/HeaderProduct.js";
+import Slider from "./Slider/Slider.js";
+import Footer from "../HomePage/Footer/Footer.js";
 
 const Category = () => {
 	return (

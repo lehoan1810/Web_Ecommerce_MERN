@@ -1,8 +1,8 @@
 import React from "react";
 import { Tabs } from "antd";
 import "./ManagerUser.css";
-import UserOnline from "./UserOnline";
-import UserLock from "./UserLock";
+import UserOnline from "./UserOnline.js";
+import UserLock from "./UserLock.js";
 const { TabPane } = Tabs;
 
 const ManagerUser = () => {

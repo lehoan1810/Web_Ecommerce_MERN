@@ -1,9 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import HeaderProduct from "../../Category/HeaderProduct/HeaderProduct";
-// import ItemDetail from "../../Product/ItemDetail/ItemDetail";
-import MenuCategory from "../Category/MenuCategory";
-import CategoryItem from "../CategoryItem/CategoryItem";
+import HeaderProduct from "../../Category/HeaderProduct/HeaderProduct.js";
+import MenuCategory from "../Category/MenuCategory.js";
+import CategoryItem from "../CategoryItem/CategoryItem.js";
 
 const RouterCategory = () => {
 	return (

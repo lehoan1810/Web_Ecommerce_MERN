@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
-import authHeader from "../../../../../../../Service/AuthHeader";
-import Loading from "../../../../../../Loading/Loading";
+import authHeader from "../../../../../../../Service/AuthHeader.js";
+import Loading from "../../../../../../Loading/Loading.js";
 import upload from "../../../../../../../images/upload.png";
 
 const ModalUpdate = ({ data }) => {

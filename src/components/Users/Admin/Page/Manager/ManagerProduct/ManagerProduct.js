@@ -1,9 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import authHeader from "../../../../../../Service/AuthHeader";
-import TableProduct from "./TableProduct";
+import authHeader from "../../../../../../Service/AuthHeader.js";
+import TableProduct from "./TableProduct.js";
 import Modal from "react-modal";
-import ModalDeleteProduct from "./ModalDeleteProduct";
+import ModalDeleteProduct from "./ModalDeleteProduct.js";
 
 const ManagerProduct = () => {
 	const [loading, setloading] = useState(false);

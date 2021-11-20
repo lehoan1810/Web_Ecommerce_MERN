@@ -1,9 +1,8 @@
 import React from "react";
-import HeaderProduct from "../Category/HeaderProduct/HeaderProduct";
-import Footer from "../HomePage/Footer/Footer";
+import HeaderProduct from "../Category/HeaderProduct/HeaderProduct.js";
+import Footer from "../HomePage/Footer/Footer.js";
 import "./CartProduct.css";
-import CartTable from "./CartTable/CartTable";
-// import PaymentProduct from "./PaymentProduct/PaymentProduct";
+import CartTable from "./CartTable/CartTable.js";
 
 const CartProduct = () => {
 	return (

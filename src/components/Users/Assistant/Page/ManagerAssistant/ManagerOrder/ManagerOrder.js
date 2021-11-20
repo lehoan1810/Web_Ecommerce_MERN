@@ -1,7 +1,7 @@
 import React from "react";
 import { Tabs } from "antd";
-import ProductPending from "./ProductPending";
-import ProductAccept from "./ProductAccept";
+import ProductPending from "./ProductPending.js";
+import ProductAccept from "./ProductAccept.js";
 const { TabPane } = Tabs;
 
 const ManagerOrder = () => {

@@ -1,18 +1,14 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import HeaderProduct from "../../../Category/HeaderProduct/HeaderProduct";
-// import Header from "../../../HomePage/Header/Header";
-// import Profile from "../Page/Profile/Profile";
-// import Purchase from "../Page/Purchase/Purchase";
-import Footer from "../../../HomePage/Footer/Footer";
-import Profile from "../../Client/Page/Profile/Profile";
-import DashboardAdmin from "../Dashboard/DashboardAdmin";
-import ManagerAssistant from "../Page/Manager/ManagerAssistant/ManagerAssistant";
-import ManagerCategory from "../Page/Manager/ManagerCategory/ManagerCategory";
-import ManagerData from "../Page/Manager/ManagerData/ManagerData";
-import ManagerProduct from "../Page/Manager/ManagerProduct/ManagerProduct";
-import ManagerUser from "../Page/Manager/ManagerUser/ManagerUser";
-// import "./RouterClient.css";
+import HeaderProduct from "../../../Category/HeaderProduct/HeaderProduct.js";
+import Footer from "../../../HomePage/Footer/Footer.js";
+import Profile from "../../Client/Page/Profile/Profile.js";
+import DashboardAdmin from "../Dashboard/DashboardAdmin.js";
+import ManagerAssistant from "../Page/Manager/ManagerAssistant/ManagerAssistant.js";
+import ManagerCategory from "../Page/Manager/ManagerCategory/ManagerCategory.js";
+import ManagerData from "../Page/Manager/ManagerData/ManagerData.js";
+import ManagerProduct from "../Page/Manager/ManagerProduct/ManagerProduct.js";
+import ManagerUser from "../Page/Manager/ManagerUser/ManagerUser.js";
 
 const RouterAdmin = () => {
 	return (

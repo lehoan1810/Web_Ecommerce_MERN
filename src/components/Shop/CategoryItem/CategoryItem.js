@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import ItemProduct from "../../Product/ItemProduct/ItemProduct";
+import ItemProduct from "../../Product/ItemProduct/ItemProduct.js";
 import Search from "../../../images/Search.png";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import authHeader from "../../../Service/AuthHeader";
+import authHeader from "../../../Service/AuthHeader.js";
 
 const CategoryItem = () => {
 	const { id } = useParams();

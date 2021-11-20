@@ -7,9 +7,7 @@ import {
 	logout,
 	getCurrentRole,
 	getCurrentUser,
-} from "../../../Service/AuthService";
-// import axios from "axios";
-// import authHeader from "../../../Service/AuthHeader";
+} from "../../../Service/AuthService.js";
 
 const Header = () => {
 	const [currentUser, setCurrentUser] = useState(null);

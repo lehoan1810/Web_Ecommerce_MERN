@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
 import axios from "axios";
-// import AuthHeader from "../../../Service/AuthHeader";
 
 import "./ProductHot.css";
-import ItemProduct from "../../Product/ItemProduct/ItemProduct";
+import ItemProduct from "../../Product/ItemProduct/ItemProduct.js";
 
 const ProductHot = () => {
 	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/products/`;

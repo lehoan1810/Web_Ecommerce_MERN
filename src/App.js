@@ -1,20 +1,20 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Login from "./components/Login/Login";
-import Resgister from "./components/Resgister/Resgister";
-import NotPage from "./components/NotPage/NotPage";
-import Home from "./components/HomePage/Home/Home";
-import Category from "./components/Category/Category";
-import ItemDetail from "./components/Product/ItemDetail/ItemDetail";
-import CartProduct from "./components/CartProduct.js/CartProduct";
-import LikeProduct from "./components/LikeProduct/LikeProduct";
-import RouterClient from "./components/Users/Client/Router/RouterClient";
-import RouterAdmin from "./components/Users/Admin/Router/RouterAdmin";
-import RouterAssistant from "./components/Users/Assistant/Router/RouterAssistant";
-import RouterCategory from "./components/Shop/Router/RouterCategory";
-import ForgetPassword from "./components/Login/ForgetPassword/ForgetPassword";
-import ResetPassword from "./components/Login/ResetPassword/ResetPassword";
+import Login from "./components/Login/Login.js";
+import Resgister from "./components/Resgister/Resgister.js";
+import NotPage from "./components/NotPage/NotPage.js";
+import Home from "./components/HomePage/Home/Home.js";
+import Category from "./components/Category/Category.js";
+import ItemDetail from "./components/Product/ItemDetail/ItemDetail.js";
+import CartProduct from "./components/CartProduct.js/CartProduct.js";
+import LikeProduct from "./components/LikeProduct/LikeProduct.js";
+import RouterClient from "./components/Users/Client/Router/RouterClient.js";
+import RouterAdmin from "./components/Users/Admin/Router/RouterAdmin.js";
+import RouterAssistant from "./components/Users/Assistant/Router/RouterAssistant.js";
+import RouterCategory from "./components/Shop/Router/RouterCategory.js";
+import ForgetPassword from "./components/Login/ForgetPassword/ForgetPassword.js";
+import ResetPassword from "./components/Login/ResetPassword/ResetPassword.js";
 function App() {
 	return (
 		<Router>

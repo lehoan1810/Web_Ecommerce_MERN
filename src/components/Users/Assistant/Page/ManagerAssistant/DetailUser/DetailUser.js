@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Show from "../../../../../../images/Show.png";
-import authHeader from "../../../../../../Service/AuthHeader";
+import authHeader from "../../../../../../Service/AuthHeader.js";
 import "./DetailUser.css";
 
 const DetailUser = () => {

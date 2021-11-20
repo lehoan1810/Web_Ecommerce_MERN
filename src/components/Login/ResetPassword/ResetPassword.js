@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import iconShow from "../../../../src/images/Show.png";
 import iconHide from "../../../../src/images/Hide.png";
 import ArrowRight from "../../../images/ArrowRight.png";
-// import { Link } from "react-router-dom";
 
 const ResetPassword = () => {
 	// const [email, setEmail] = useState("");

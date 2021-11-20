@@ -1,7 +1,7 @@
 import React from "react";
-import HeaderProduct from "../Category/HeaderProduct/HeaderProduct";
-import Footer from "../HomePage/Footer/Footer";
-import TableLike from "./TableLike";
+import HeaderProduct from "../Category/HeaderProduct/HeaderProduct.js";
+import Footer from "../HomePage/Footer/Footer.js";
+import TableLike from "./TableLike.js";
 import "antd/dist/antd.css";
 import "./LikeProduct.css";
 import { Link } from "react-router-dom";

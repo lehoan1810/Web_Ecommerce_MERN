@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import authHeader from "../../../../../../Service/AuthHeader";
+import authHeader from "../../../../../../Service/AuthHeader.js";
 import "./ManagerCategory.css";
 
 const ManagerCategory = () => {

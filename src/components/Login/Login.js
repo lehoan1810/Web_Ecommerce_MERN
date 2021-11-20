@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-// import { Link } from "react-router-dom";
 import ArrowRight from "../../images/ArrowRight.png";
 import "./Login.css";
 import { useHistory } from "react-router-dom";

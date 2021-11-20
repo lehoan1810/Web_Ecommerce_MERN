@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import HeaderProduct from "../../../Category/HeaderProduct/HeaderProduct";
-import Dashboard from "../Dashboard/Dashboard";
-import Profile from "../Page/Profile/Profile";
-import Purchase from "../Page/Purchase/Purchase";
-import Footer from "../../../HomePage/Footer/Footer";
+import HeaderProduct from "../../../Category/HeaderProduct/HeaderProduct.js";
+import Dashboard from "../Dashboard/Dashboard.js";
+import Profile from "../Page/Profile/Profile.js";
+import Purchase from "../Page/Purchase/Purchase.js";
+import Footer from "../../../HomePage/Footer/Footer.js";
 import "./RouterClient.css";
 
 const RouterClient = () => {

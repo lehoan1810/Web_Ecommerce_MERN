@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import authHeader from "../../../Service/AuthHeader";
-import CategoryProduct from "./CategoryProduct";
+import authHeader from "../../../Service/AuthHeader.js";
+import CategoryProduct from "./CategoryProduct.js";
 
 const MenuCategory = () => {
 	const [data, setData] = useState([]);

@@ -1,7 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { toast } from "react-toastify";
-import authHeader from "../../../../../../Service/AuthHeader";
+import authHeader from "../../../../../../Service/AuthHeader.js";
 import "./ManagerUser.css";
 
 const ModalDelete = ({ idData, nameUser, setModalIsOpen }) => {

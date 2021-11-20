@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
-// import { getCurrentIdUser } from "../../../../../../Service/AuthService";
-import AuthHeader from "../../../../../../Service/AuthHeader";
+import AuthHeader from "../../../../../../Service/AuthHeader.js";
 import "./ModalProfile.css";
-import Loading from "../../../../../Loading/Loading";
+import Loading from "../../../../../Loading/Loading.js";
 import upload from "../../../../../../images/upload.png";
 
 const ModalProfile = ({ data }) => {
