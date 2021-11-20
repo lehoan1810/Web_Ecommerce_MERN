@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import ArrowRight from "../../images/ArrowRight.png";
 import "./Login.css";
 import { useHistory } from "react-router-dom";
-import { login } from "../../Service/AuthService";
+import { login } from "../../Service/AuthService.js";
 import iconShow from "../../images/Show.png";
 import iconHide from "../../images/Hide.png";
 
