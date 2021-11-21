@@ -1,12 +1,20 @@
+import axios from "axios";
 import React, { useState } from "react";
 import ArrowRight from "../../../images/ArrowRight.png";
 
 const ForgetPassword = () => {
+	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/users/forgotPassword`;
 	const [email, setEmail] = useState("");
 
-	const onSubmit = () => {
-		console.log(email);
+	const onForgetPassword = () => {
+		axios
+			.get(url, { email: email })
+			.then((res) => {
+				console.log("thành công");
+			})
+			.catch((err) => console.log(err));
 	};
+
 	return (
 		<div className="login">
 			<form className="login-form">
@@ -27,7 +35,7 @@ const ForgetPassword = () => {
 						></input>
 					</div>
 				</div>
-				<button className="btn-login" onClick={onSubmit}>
+				<button className="btn-login" onClick={onForgetPassword}>
 					Send Email
 					<img className="icon-resgister" src={ArrowRight} alt=" " />
 				</button>

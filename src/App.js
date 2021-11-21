@@ -26,7 +26,7 @@ function App() {
 
 					<Route exact path="/forgetPassword" component={ForgetPassword} />
 
-					<Route exact path="/resetPassword" component={ResetPassword} />
+					<Route exact path="/resetPassword/:id" component={ResetPassword} />
 
 					<Route exact path="/Resgister" component={Resgister} />
 
