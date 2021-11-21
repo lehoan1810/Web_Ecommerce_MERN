@@ -2,14 +2,25 @@ import React, { useState } from "react";
 import iconShow from "../../../../src/images/Show.png";
 import iconHide from "../../../../src/images/Hide.png";
 import ArrowRight from "../../../images/ArrowRight.png";
+import { useParams } from "react-router";
+import axios from "axios";
 
 const ResetPassword = () => {
-	// const [email, setEmail] = useState("");
+	const { id } = useParams();
 	const [password, setPassword] = useState("");
+	const [confirmPassword, setConfirmPassword] = useState("");
 	const [isShowPassword, setIsShowPassWord] = useState(false);
-	const onSubmit = () => {};
+	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/users/resetPassword/${id}`;
+
+	const onResetPassword = () => {
+		axios
+			.patch(url, { password: password, passwordConfirm: confirmPassword })
+			.then((res) => {
+				console.log("thành công");
+			})
+			.catch((err) => console.log(err));
+	};
 	const handleShowHidePassword = () => {
-		console.log(password);
 		setIsShowPassWord(!isShowPassword);
 	};
 	return (
@@ -48,12 +59,12 @@ const ResetPassword = () => {
 								className="input-password"
 								type="password"
 								placeholder="Password... "
-								onChange={(e) => setPassword(e.target.value)}
+								onChange={(e) => setConfirmPassword(e.target.value)}
 							></input>
 						</div>
 					</div>
 				</div>
-				<button className="btn-login" onClick={onSubmit}>
+				<button className="btn-login" onClick={onResetPassword}>
 					Login
 					<img className="icon-resgister" src={ArrowRight} alt=" " />
 				</button>
