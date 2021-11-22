@@ -1,18 +1,21 @@
 import axios from "axios";
 import React, { useState } from "react";
 import ArrowRight from "../../../images/ArrowRight.png";
+import { toast } from "react-toastify";
 
 const ForgetPassword = () => {
 	const [email, setEmail] = useState("");
-	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/users/forgotPassword`;
 
-	const onForgetPassword = () => {
+	const onsubmit = (e) => {
+		e.preventDefault();
+		const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/users/forgotPassword`;
 		axios
 			.post(url, { email: email })
 			.then((res) => {
-				console.log("thành công");
+				console.log(email);
+				toast.success("success");
 			})
-			.catch((err) => console.log(err));
+			.catch((err) => toast.error("faild"));
 	};
 
 	return (
@@ -35,7 +38,7 @@ const ForgetPassword = () => {
 						></input>
 					</div>
 				</div>
-				<button className="btn-login" onClick={onForgetPassword}>
+				<button className="btn-login" onClick={(e) => onsubmit(e)}>
 					Send Email
 					<img className="icon-resgister" src={ArrowRight} alt=" " />
 				</button>

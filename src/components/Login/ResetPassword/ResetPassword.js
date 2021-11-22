@@ -12,7 +12,8 @@ const ResetPassword = () => {
 	const [isShowPassword, setIsShowPassWord] = useState(false);
 	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/users/resetPassword/${id}`;
 
-	const onResetPassword = () => {
+	const onResetPassword = (e) => {
+		e.preventDefault();
 		axios
 			.patch(url, { password: password, passwordConfirm: confirmPassword })
 			.then((res) => {
@@ -64,7 +65,7 @@ const ResetPassword = () => {
 						</div>
 					</div>
 				</div>
-				<button className="btn-login" onClick={onResetPassword}>
+				<button className="btn-login" onClick={(e) => onResetPassword(e)}>
 					Login
 					<img className="icon-resgister" src={ArrowRight} alt=" " />
 				</button>
