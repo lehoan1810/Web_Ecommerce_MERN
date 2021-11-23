@@ -30,14 +30,15 @@
 	z-index: 2;
 	font-size: 13px;
 	font-weight: 600;
-	transform: translateX(50%);
+	transform: translate(50%, -10%);
 }
 
 .header-icon-number::after {
 	position: absolute;
 	content: "";
 	font-size: 13px;
-	background-color: rgb(255, 146, 146);
+	/* background-color: rgb(255, 146, 146); */
+	background-color: #ff6651;
 	top: 0;
 	right: 0;
 	width: 18px;
@@ -49,7 +50,8 @@
 	position: absolute;
 	content: "";
 	font-size: 13px;
-	background-color: rgb(255, 146, 146);
+	/* background-color: rgb(255, 146, 146); */
+	background-color: #ff6651;
 	top: 0;
 	right: 0;
 	width: 18px;
