@@ -1,0 +1,21 @@
+.range-search {
+	width: 30rem;
+}
+.handel-item-product {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.button-sort {
+	padding: 10px;
+	border-radius: 5px;
+	background-color: #2cccff;
+	color: #333;
+	margin-right: 10px;
+}
+.change-price {
+	display: flex;
+}
+.simple-search {
+	width: 20rem;
+}
