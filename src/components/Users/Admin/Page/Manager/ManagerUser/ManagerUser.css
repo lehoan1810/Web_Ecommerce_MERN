@@ -84,3 +84,7 @@
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
+.custom-loading {
+	display: block;
+	margin: 20px auto;
+}

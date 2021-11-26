@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Show from "../../../images/Show.png";
 import Like from "../../../images/like.png";
+import Bag from "../../../images/Bag.png";
 import "./ItemProduct.css";
 
 const ItemProduct = ({ data }) => {
@@ -28,9 +29,9 @@ const ItemProduct = ({ data }) => {
 					<Link to="/product/Like" href="" className="item-detail">
 						<img className="item-detail-img" src={Like} alt="" />
 					</Link>
-					{/* <Link to="/product/Cart" href="" className="item-detail">
+					<Link to="/product/Cart" href="" className="item-detail">
 						<img className="item-detail-img" src={Bag} alt="" />
-					</Link> */}
+					</Link>
 				</div>
 			</div>
 		</div>

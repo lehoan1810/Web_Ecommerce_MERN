@@ -8,38 +8,41 @@ import "react-toastify/dist/ReactToastify.css";
 
 toast.configure();
 function Resgister() {
-	// const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/users/signup`;
 	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/users/signup`;
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [confirm, setConfirm] = useState("");
-	// const [error, setError] = useState("");
 	const [success, setSuccess] = useState(false);
 
 	const onSignUp = (e) => {
 		e.preventDefault();
 		if (name === "" || email === "" || password === "") {
-			alert("Please enter your info");
+			toast.error("Fill in the registration information completely", {
+				autoClose: 1500,
+			});
 			return;
 		}
-		if (confirm !== password) {
-			alert("Passwords did not match");
-			return;
-		}
+		// if (confirm !== password) {
+		// 	toast.error("Passwords did not match");
+		// 	return;
+		// }
+
 		axios
 			.post(url, {
 				name: name,
 				email: email,
 				password: password,
+				passwordConfirm: confirm,
 			})
 			.then((res) => {
 				console.log(res.data);
 				setSuccess(true);
-				toast.success("Sign Up Success !!!");
+				toast.success("Sign Up Success !!!", { autoClose: 1500 });
 			})
 			.catch((err) => {
-				console.log(err);
+				console.log(err.response.data.message);
+				toast.error(err.response.data.message, { autoClose: 1500 });
 				// setError(err.response.data.data[0].description);
 			});
 	};

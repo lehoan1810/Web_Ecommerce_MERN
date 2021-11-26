@@ -20,16 +20,18 @@ const HeaderProduct = () => {
 	const urlCart = `${process.env.REACT_APP_API_LOCAL}/api/v1/cart`;
 	useEffect(() => {
 		const loadCart = () => {
-			axios
-				.get(urlCart, { headers: authHeader() })
-				.then((res) => {
-					setDataUser(res.data.data.doc.cart.items);
-					console.log("header: ", res.data.data.doc.cart.items);
-				})
-				.catch((err) => console.log(err));
+			if (roleUser === "customer") {
+				axios
+					.get(urlCart, { headers: authHeader() })
+					.then((res) => {
+						setDataUser(res.data.data.doc.cart.items);
+						console.log("header: ", res.data.data.doc.cart.items);
+					})
+					.catch((err) => console.log(err));
+			}
 		};
 		loadCart();
-	}, [urlCart]);
+	}, [urlCart, roleUser]);
 
 	const count = (data) => {
 		if (data.length === undefined) {

@@ -67,8 +67,8 @@
 	align-items: center;
 	justify-content: center;
 }
-.item-detail:not(first-child) {
-	margin-right: 20px;
+.item-detail:nth-child(2) {
+	margin: 0 20px;
 }
 .product-item:hover .description h3 {
 	opacity: 1;
@@ -81,4 +81,11 @@
 .product-item:hover .item-detail {
 	opacity: 1;
 	transform: translateY(0px);
+}
+.description p {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }

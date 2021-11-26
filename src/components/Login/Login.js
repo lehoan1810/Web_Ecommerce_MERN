@@ -12,12 +12,14 @@ function Login() {
 	const [password, setPassword] = useState("");
 	const [isShowPassword, setIsShowPassWord] = useState(false);
 	const history = useHistory();
+	// const [loading, setLoading] = useState(false);
 
 	const onSubmit = async (e) => {
 		const formData = { email, password };
 		e.preventDefault();
 		try {
 			const res = await login(formData);
+			// setLoading(true);
 			console.log(res);
 			history.push("/");
 		} catch (err) {

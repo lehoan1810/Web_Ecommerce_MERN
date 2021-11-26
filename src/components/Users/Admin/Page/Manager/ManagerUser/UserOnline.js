@@ -10,6 +10,7 @@ const UserOnline = () => {
 	const [modalIsOpen, setModalIsOpen] = useState(false);
 	const [idUser, setIdUser] = useState("");
 	const [nameUser, setNameUser] = useState("");
+	// const [loading, setLoading] = useState(true);
 
 	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/users/getAllCustomer`;
 
@@ -19,6 +20,7 @@ const UserOnline = () => {
 				.get(url, { headers: authHeader() })
 				.then((res) => {
 					setDataUser(res.data.data.users);
+					// setLoading(false);
 					console.log(res.data.data.users);
 				})
 				.catch((err) => console.log(err));

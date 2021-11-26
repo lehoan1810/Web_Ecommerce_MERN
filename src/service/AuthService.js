@@ -22,6 +22,7 @@ export const login = async (formData) => {
 		sessionStorage.setItem("name", name);
 		sessionStorage.setItem("email", email);
 		sessionStorage.setItem("role", role);
+
 		toast.success("Login Success !!!");
 		return { id, name, email, role };
 	} catch (error) {
