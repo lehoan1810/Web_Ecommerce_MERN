@@ -40,7 +40,7 @@ const PaymentProduct = ({ data }) => {
 
 	const paypal = () => {
 		axios
-			.post(urlPaypal, {}, { headers: authHeader() })
+			.post(urlPaypal, { headers: authHeader() })
 			.then((res) => {
 				toast.success("success !!!");
 			})
