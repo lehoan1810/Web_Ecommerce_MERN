@@ -8,7 +8,7 @@ const ModalDeleteItem = ({ data, setModalIsOpen }) => {
 	const urlDelete = `${process.env.REACT_APP_API_LOCAL}/api/v1/cart/deleteFromCart`;
 	const onDelete = () => {
 		axios
-			.post(urlDelete, { productId: data._id }, { headers: authHeader() })
+			.post(urlDelete, { productId: data }, { headers: authHeader() })
 			.then((res) => {
 				toast.success("delete success !!!");
 				window.location.reload();

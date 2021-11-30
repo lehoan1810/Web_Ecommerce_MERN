@@ -23,9 +23,9 @@ const CartTable = () => {
 			axios
 				.get(urlCart, { headers: authHeader() })
 				.then((res) => {
-					setDataUser(res.data.data.doc.cart);
-					setDataCart(res.data.data.doc.cart.items);
-					console.log("xem: ", res.data.data.doc.cart.items);
+					setDataUser(res.data.data.doc);
+					setDataCart(res.data.data.doc.items);
+					console.log("xem: ", res.data.data.doc.items);
 				})
 				.catch((err) => console.log(err));
 		};

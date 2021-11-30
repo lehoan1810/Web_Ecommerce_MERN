@@ -24,8 +24,8 @@ const HeaderProduct = () => {
 				axios
 					.get(urlCart, { headers: authHeader() })
 					.then((res) => {
-						setDataUser(res.data.data.doc.cart.items);
-						console.log("header: ", res.data.data.doc.cart.items);
+						setDataUser(res.data.data.doc.items);
+						console.log("header: ", res.data.data.doc);
 					})
 					.catch((err) => console.log(err));
 			}

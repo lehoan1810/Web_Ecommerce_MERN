@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import authHeader from "../../../service/AuthHeader.js";
 import "./PaymentProduct.css";
 import { getCurrentIdUser } from "../../../service/AuthService.js";
+import { toast } from "react-toastify";
 
 const PaymentProduct = ({ data }) => {
 	const idUser = getCurrentIdUser();
@@ -34,6 +35,18 @@ const PaymentProduct = ({ data }) => {
 			return 0;
 		}
 	};
+
+	const urlPaypal = `${process.env.REACT_APP_API_LOCAL}/api/v1/pay/id`;
+
+	const paypal = () => {
+		axios
+			.post(urlPaypal, {}, { headers: authHeader() })
+			.then((res) => {
+				toast.success("success !!!");
+			})
+			.catch((err) => toast.error("faild"));
+	};
+
 	return (
 		<div className="form-payment">
 			<div className="desc-order-user">
@@ -56,7 +69,7 @@ const PaymentProduct = ({ data }) => {
 				</div>
 			</div>
 			<div className="btn-payment-price">
-				<button>Thanh Toán</button>
+				<button onClick={paypal}>Thanh Toán</button>
 			</div>
 		</div>
 	);
