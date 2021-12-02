@@ -6,24 +6,27 @@ import { useHistory } from "react-router-dom";
 import { login } from "../../service/AuthService.js";
 import iconShow from "../../images/Show.png";
 import iconHide from "../../images/Hide.png";
+import LoadingPage from "../LoadingPage/LoadingPage";
 
 function Login() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [isShowPassword, setIsShowPassWord] = useState(false);
 	const history = useHistory();
-	// const [loading, setLoading] = useState(false);
+	const [loading, setLoading] = useState();
 
 	const onSubmit = async (e) => {
 		const formData = { email, password };
 		e.preventDefault();
+		setLoading(false);
 		try {
 			const res = await login(formData);
-			// setLoading(true);
+			setLoading(true);
 			console.log(res);
-			history.push("/");
+			// history.push("/");
 		} catch (err) {
 			console.log(err);
+			setLoading();
 		}
 	};
 
@@ -33,6 +36,8 @@ function Login() {
 
 	return (
 		<div className="login">
+			{loading === true && history.push("/")}
+			{loading === false && <LoadingPage />}
 			<form className="login-form">
 				<div className="login-header">
 					<h1 className="login-title">Login to our platform</h1>

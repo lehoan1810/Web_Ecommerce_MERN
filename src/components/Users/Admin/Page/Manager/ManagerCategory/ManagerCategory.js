@@ -41,6 +41,17 @@ const ManagerCategory = () => {
 			.catch((err) => toast.error(err));
 	};
 
+	const onDelete = (id) => {
+		let urlDelete = `${process.env.REACT_APP_API_LOCAL}/api/v1/category/deleteCategory/${id}`;
+		axios
+			.delete(urlDelete, { headers: authHeader() })
+			.then((res) => {
+				toast.success("Add Success !!!");
+				window.location.reload();
+			})
+			.catch((err) => toast.error(err));
+	};
+
 	return (
 		<div>
 			<h2 className="title-admin">Quản Lý danh mục sản phẩm</h2>
@@ -70,7 +81,12 @@ const ManagerCategory = () => {
 									<td>{item.children.length}</td>
 									<td>
 										<div className="action-handel">
-											<button className="action-delete">Delete</button>
+											<button
+												onClick={() => onDelete(item._id)}
+												className="action-delete"
+											>
+												Delete
+											</button>
 										</div>
 									</td>
 								</tr>

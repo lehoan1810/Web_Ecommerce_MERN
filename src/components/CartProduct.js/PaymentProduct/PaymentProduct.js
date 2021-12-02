@@ -3,7 +3,8 @@ import React, { useEffect, useState } from "react";
 import authHeader from "../../../service/AuthHeader.js";
 import "./PaymentProduct.css";
 import { getCurrentIdUser } from "../../../service/AuthService.js";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
+import Paypal from "./Paypal";
 
 const PaymentProduct = ({ data }) => {
 	const idUser = getCurrentIdUser();
@@ -35,16 +36,35 @@ const PaymentProduct = ({ data }) => {
 			return 0;
 		}
 	};
+	const test = (he) => {
+		if (he) {
+			const itemsPrice = he.reduce((a, c) => a + c.price * c.qty, 0);
+			return itemsPrice / 1000000;
+		} else {
+			return 0;
+		}
+	};
 
-	const urlPaypal = `${process.env.REACT_APP_API_LOCAL}/api/v1/pay/id`;
+	const [checkOut, setCheckOut] = useState(false);
 
 	const paypal = () => {
+		const urlPaypal = `${process.env.REACT_APP_API_LOCAL}/api/v1/pay/${idUser}`;
+		console.log(idUser);
 		axios
-			.post(urlPaypal, { headers: authHeader() })
-			.then((res) => {
-				toast.success("success !!!");
+			.post(urlPaypal, {
+				headers: {
+					"content-type": "application/json",
+					// Authorization: "Basic EC-7VH87786U64339905",
+				},
 			})
-			.catch((err) => toast.error("faild"));
+			.then((res) => {
+				console.log(res);
+				// toast.success("success !!!");
+			})
+			.catch((err) => {
+				console.log("faild", err);
+				// toast.error("faild");
+			});
 	};
 
 	return (
@@ -68,6 +88,19 @@ const PaymentProduct = ({ data }) => {
 					{/* <span>{sum(data.items)}</span> */}
 				</div>
 			</div>
+			{/* <div className="btn-payment-price">
+				{checkOut ? (
+					<Paypal money={test(data.items)} />
+				) : (
+					<button
+						onClick={() => {
+							setCheckOut(true);
+						}}
+					>
+						Thanh Toán
+					</button>
+				)}
+			</div> */}
 			<div className="btn-payment-price">
 				<button onClick={paypal}>Thanh Toán</button>
 			</div>

@@ -5,6 +5,7 @@ import authHeader from "../../../../../service/AuthHeader.js";
 import ModalProfile from "./ModalProfile/ModalProfile.js";
 import { getCurrentIdUser } from "../../../../../service/AuthService.js";
 import "./Profile.css";
+import UpdatePassword from "./UpdatePassword/UpdatePassword.js";
 
 const Profile = () => {
 	const idUser = getCurrentIdUser();
@@ -12,6 +13,7 @@ const Profile = () => {
 
 	const [dataUser, setDataUser] = useState("");
 	const [modalIsOpen, setModalIsOpen] = useState(false);
+	const [updateIsOpen, setUpdateIsOpen] = useState(false);
 
 	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/users/profile/${idUser}`;
 
@@ -75,6 +77,14 @@ const Profile = () => {
 					UPDATE
 				</button>
 			</div>
+			<div className="button-update-password">
+				<button
+					className="btn-update-password"
+					onClick={() => setUpdateIsOpen(true)}
+				>
+					UPDATE PASSWORD
+				</button>
+			</div>
 			<Modal
 				isOpen={modalIsOpen}
 				//err
@@ -93,6 +103,25 @@ const Profile = () => {
 				}}
 			>
 				<ModalProfile data={dataUser} setModalIsOpen={setModalIsOpen} />
+			</Modal>
+			<Modal
+				isOpen={updateIsOpen}
+				//err
+				ariaHideApp={false}
+				//
+				onRequestClose={() => setUpdateIsOpen(false)}
+				style={{
+					overlay: {
+						backgroundColor: "rgba(0,0,0,0.4)",
+					},
+					content: {
+						width: "40rem",
+						margin: "auto",
+						height: "40rem",
+					},
+				}}
+			>
+				<UpdatePassword setUpdateIsOpen={setUpdateIsOpen} />
 			</Modal>
 		</div>
 	);

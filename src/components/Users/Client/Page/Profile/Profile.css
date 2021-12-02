@@ -37,6 +37,23 @@
 	height: 27rem;
 	border-radius: 10px;
 }
+.button-update {
+	display: inline-block;
+}
+.button-update-password {
+	display: inline-block;
+}
+.btn-update-password {
+	padding: 10px 20px;
+	border-radius: 5px;
+	background-color: #25bdf0;
+	color: white;
+	transition: all 0.3s ease-in-out;
+	font-weight: 600;
+}
+.btn-update-password:hover {
+	background-color: #11a4d4;
+}
 .btn-update-profile {
 	padding: 10px 20px;
 	border-radius: 5px;
@@ -44,6 +61,7 @@
 	color: white;
 	transition: all 0.3s ease-in-out;
 	font-weight: 600;
+	margin-right: 20px;
 }
 .btn-update-profile:hover {
 	background-color: rgb(235, 18, 18);

@@ -5,6 +5,7 @@ import ArrowRight from "../../images/ArrowRight.png";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import LoadingPage from "../LoadingPage/LoadingPage";
 
 toast.configure();
 function Resgister() {
@@ -13,10 +14,11 @@ function Resgister() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [confirm, setConfirm] = useState("");
-	const [success, setSuccess] = useState(false);
+	const [success, setSuccess] = useState();
 
 	const onSignUp = (e) => {
 		e.preventDefault();
+
 		if (name === "" || email === "" || password === "") {
 			toast.error("Fill in the registration information completely", {
 				autoClose: 1500,
@@ -27,7 +29,7 @@ function Resgister() {
 		// 	toast.error("Passwords did not match");
 		// 	return;
 		// }
-
+		setSuccess(false);
 		axios
 			.post(url, {
 				name: name,
@@ -43,15 +45,15 @@ function Resgister() {
 			.catch((err) => {
 				console.log(err.response.data.message);
 				toast.error(err.response.data.message, { autoClose: 1500 });
+				setSuccess();
 				// setError(err.response.data.data[0].description);
 			});
 	};
 
-	if (success) {
-		return <Redirect to="./login" />;
-	}
 	return (
 		<div className="resgister">
+			{success === true && <Redirect to="./login" />}
+			{success === false && <LoadingPage />}
 			<form className="resgister-form">
 				<div className="resgister-header">
 					<h1 className="resgister-title">resgister to our platform</h1>
