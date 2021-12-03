@@ -3,8 +3,7 @@ import React, { useEffect, useState } from "react";
 import authHeader from "../../../service/AuthHeader.js";
 import "./PaymentProduct.css";
 import { getCurrentIdUser } from "../../../service/AuthService.js";
-// import { toast } from "react-toastify";
-import Paypal from "./Paypal";
+import { toast } from "react-toastify";
 
 const PaymentProduct = ({ data }) => {
 	const idUser = getCurrentIdUser();
@@ -36,34 +35,22 @@ const PaymentProduct = ({ data }) => {
 			return 0;
 		}
 	};
-	const test = (he) => {
-		if (he) {
-			const itemsPrice = he.reduce((a, c) => a + c.price * c.qty, 0);
-			return itemsPrice / 1000000;
-		} else {
-			return 0;
-		}
-	};
 
-	const [checkOut, setCheckOut] = useState(false);
+	// const [checkOut, setCheckOut] = useState(false);
 
 	const paypal = () => {
+		// const urlPaypal = `${process.env.REACT_APP_API_LOCAL}/api/v1/pay/${idUser}`;
 		const urlPaypal = `${process.env.REACT_APP_API_LOCAL}/api/v1/pay/${idUser}`;
-		console.log(idUser);
+		// console.log(idUser);
 		axios
-			.post(urlPaypal, {
-				headers: {
-					"content-type": "application/json",
-					// Authorization: "Basic EC-7VH87786U64339905",
-				},
-			})
+			.post(urlPaypal, { headers: authHeader() })
 			.then((res) => {
 				console.log(res);
-				// toast.success("success !!!");
+				toast.success("success !!!");
 			})
 			.catch((err) => {
 				console.log("faild", err);
-				// toast.error("faild");
+				toast.error("faild");
 			});
 	};
 
@@ -85,22 +72,9 @@ const PaymentProduct = ({ data }) => {
 				<div className="discount-product">
 					<h3>Giảm Giá</h3>
 					<span>Free Ship</span>
-					{/* <span>{sum(data.items)}</span> */}
 				</div>
 			</div>
-			{/* <div className="btn-payment-price">
-				{checkOut ? (
-					<Paypal money={test(data.items)} />
-				) : (
-					<button
-						onClick={() => {
-							setCheckOut(true);
-						}}
-					>
-						Thanh Toán
-					</button>
-				)}
-			</div> */}
+
 			<div className="btn-payment-price">
 				<button onClick={paypal}>Thanh Toán</button>
 			</div>
