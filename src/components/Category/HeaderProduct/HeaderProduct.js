@@ -93,11 +93,11 @@ const HeaderProduct = () => {
 
 								<Link to="/login" className="role-login">
 									{" "}
-									Đăng nhập
+									Login
 								</Link>
 								<Link to="/Resgister" className="role-resgister">
 									{" "}
-									Đăng ký
+									Register
 								</Link>
 								<span className="name-user">{user}</span>
 							</div>

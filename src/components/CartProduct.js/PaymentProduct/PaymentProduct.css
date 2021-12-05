@@ -5,7 +5,7 @@
 	border-radius: 5px;
 	flex: 1;
 	/* height: 200px; */
-	max-height: 320px;
+	max-height: 335px;
 }
 
 .desc-order-user h3 {
@@ -52,4 +52,9 @@
 }
 .btn-payment-price button:hover {
 	background-color: rgb(253, 63, 63);
+}
+
+.background-loading-center {
+	padding-top: 8px;
+	text-align: center;
 }

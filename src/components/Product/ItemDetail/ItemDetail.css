@@ -118,3 +118,45 @@
 	margin-bottom: 20px;
 	font-weight: 600;
 }
+.button-handel-create-review {
+	padding: 8px;
+	border-radius: 5px;
+	background-color: #28adda;
+	color: white;
+	display: flex;
+	align-items: center;
+	box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 12px;
+	transition: all 0.3s ease-in;
+}
+.button-handel-create-review:hover {
+	background-color: #0cb0e7;
+}
+.img-edit-review {
+	width: 30px;
+	height: 30px;
+	margin-left: 6px;
+}
+.info-detail-review {
+	display: flex;
+	align-items: center;
+	margin-bottom: 20px;
+	padding: 20px 50px;
+	border-radius: 5px;
+	border: 1px solid #cdcdcd;
+	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+	background-color: #79b3f4;
+}
+.info-review-handle {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.rating-average {
+	display: flex;
+	flex-direction: column;
+	margin-left: 20px;
+}
+.number-detail-rating {
+	font-size: 3.2rem;
+	font-weight: 600;
+}

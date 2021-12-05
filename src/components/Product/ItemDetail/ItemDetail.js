@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
-import "./ItemDetail.css";
+import { Rate } from "antd";
 import HeaderProduct from "../../Category/HeaderProduct/HeaderProduct.js";
 import { useParams } from "react-router-dom";
 import Like from "../../../images/like.png";
 import FeedBack from "../FeedBack/FeedBack.js";
 import authHeader from "../../../service/AuthHeader.js";
-
+import Edit from "../../../images/Edit.png";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import "./ItemDetail.css";
 
 // test create review
 import Modal from "react-modal";
@@ -49,7 +50,7 @@ const ItemDetail = () => {
 				.then((res) => {
 					setDataDetail(res.data.product);
 					setReview(res.data.product.reviews);
-					console.log(res.data.product);
+					console.log("data review: ", res.data.product);
 				})
 				.catch((err) => console.log(err));
 		};
@@ -135,8 +136,32 @@ const ItemDetail = () => {
 			{/* <FeedBack /> */}
 			<div className="feedback">
 				<div className="feedback-item">
-					<h1>Đánh Giá Sản Phẩm</h1>
-					<button onClick={() => setModalIsOpen(true)}>assess</button>
+					<h1>Đánh Giá - Nhận Xét Từ Khách Hàng</h1>
+					<div className="info-review-handle">
+						<div className="info-detail-review">
+							<span className="number-detail-rating">
+								{dataDetail.ratingsAverage}/5
+							</span>
+
+							<div className="rating-average">
+								{dataDetail.ratingsAverage && (
+									<Rate
+										disabled
+										allowHalf
+										defaultValue={dataDetail.ratingsAverage}
+									/>
+								)}
+								<span>{dataDetail.ratingsQuantity} nhận xét</span>
+							</div>
+						</div>
+						<button
+							className="button-handel-create-review"
+							onClick={() => setModalIsOpen(true)}
+						>
+							Add Review
+							<img className="img-edit-review" src={Edit} alt="" />
+						</button>
+					</div>
 					{review.map((item, id) => (
 						<div key={id}>
 							<FeedBack dataReview={item} />

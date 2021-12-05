@@ -45,6 +45,7 @@
 	opacity: 0;
 	transition: all 0.3s ease-out 0.2s;
 	margin-bottom: 20px;
+	font-size: 1.3rem;
 }
 .item-detail {
 	background: white;
