@@ -62,7 +62,6 @@ const HeaderProduct = () => {
 							</div>
 							<div className="header-icon-number">
 								<span className="number-product">{count(dataUser)}</span>
-
 								<Link to="/product/cart">
 									<img className="icon-shop" src={CardTick} alt="" />
 								</Link>

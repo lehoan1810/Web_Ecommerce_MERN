@@ -30,11 +30,13 @@
 	z-index: 2;
 	font-size: 13px;
 	font-weight: 600;
-	transform: translate(50%, -10%);
+	/* transform: translate(50%, -10%); */
+	transform: translateX(3px);
 }
 
 .header-icon-number::after {
 	position: absolute;
+	display: block;
 	content: "";
 	font-size: 13px;
 	/* background-color: rgb(255, 146, 146); */
