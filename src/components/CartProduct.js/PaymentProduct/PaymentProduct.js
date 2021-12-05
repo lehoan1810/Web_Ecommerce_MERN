@@ -39,13 +39,14 @@ const PaymentProduct = ({ data }) => {
 	// const [checkOut, setCheckOut] = useState(false);
 
 	const paypal = () => {
+		const urlPaypal = `http://localhost:5000/api/v1/pay/${idUser}`;
 		// const urlPaypal = `${process.env.REACT_APP_API_LOCAL}/api/v1/pay/${idUser}`;
-		const urlPaypal = `${process.env.REACT_APP_API_LOCAL}/api/v1/pay/${idUser}`;
 		// console.log(idUser);
 		axios
 			.post(urlPaypal, { headers: authHeader() })
 			.then((res) => {
-				console.log(res);
+				console.log(res.data);
+				window.location = res.data.forwardLink;
 				toast.success("success !!!");
 			})
 			.catch((err) => {
