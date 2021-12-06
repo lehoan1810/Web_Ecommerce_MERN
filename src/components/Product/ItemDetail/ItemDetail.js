@@ -7,7 +7,7 @@ import FeedBack from "../FeedBack/FeedBack.js";
 import authHeader from "../../../service/AuthHeader.js";
 import Edit from "../../../images/Edit.png";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./ItemDetail.css";
 
 // test create review
@@ -21,6 +21,7 @@ const ItemDetail = () => {
 	const [dataDetail, setDataDetail] = useState("");
 	const [review, setReview] = useState([]);
 	const [dataUser, setDataUser] = useState([]);
+	const historyback = useHistory();
 
 	// test create review
 	const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -83,9 +84,17 @@ const ItemDetail = () => {
 		}
 	};
 
+	const comeback = (e) => {
+		e.preventDefault();
+		historyback.goBack();
+	};
+
 	return (
 		<div className="product-background">
 			<HeaderProduct />
+			<div>
+				<button onClick={(e) => comeback(e)}>Back</button>
+			</div>
 			<div className="container-detail">
 				<div className="container-detail-flex">
 					<div className="detail-image">
@@ -151,7 +160,9 @@ const ItemDetail = () => {
 										defaultValue={dataDetail.ratingsAverage}
 									/>
 								)}
-								<span>{dataDetail.ratingsQuantity} nhận xét</span>
+								<span className="quantity-review">
+									{dataDetail.ratingsQuantity} nhận xét
+								</span>
 							</div>
 						</div>
 						<button

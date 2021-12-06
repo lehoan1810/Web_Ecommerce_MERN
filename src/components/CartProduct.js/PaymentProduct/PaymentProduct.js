@@ -35,7 +35,7 @@ const PaymentProduct = ({ data }) => {
 	};
 
 	const paypal = () => {
-		const urlPaypal = `http://localhost:5000/api/v1/pay/${idUser}`;
+		const urlPaypal = `${process.env.REACT_APP_API_LOCAL}/api/v1/pay/${idUser}`;
 		setLoading(true);
 
 		axios

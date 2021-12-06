@@ -78,6 +78,9 @@ h6 {
 section[id] {
 	scroll-margin-top: 30px;
 }
+.review-author {
+	color: white;
+}
 
 .wrapper {
 	max-width: 1920px;

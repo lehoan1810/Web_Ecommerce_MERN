@@ -8,6 +8,7 @@ import img4 from "../../../images/img4.jpg";
 import img5 from "../../../images/img5.png";
 import img6 from "../../../images/img6.png";
 import img7 from "../../../images/img7.png";
+import imgHomeReview from "../../../images/img-home-review.png";
 
 const Main = () => {
 	return (
@@ -17,10 +18,11 @@ const Main = () => {
 					<div className="container">
 						<div className="hero-content">
 							<h1 className="hero-heading">Computer</h1>
-							<h3 className="hero-caption">Online Shop</h3>
+							<h3 className="hero-caption">Shop Online</h3>
 							<div className="hero-video">
 								<img src="" alt="" />
 								<span>Open - 8:00 AM</span>
+								<span>Close - 5:00 PM</span>
 							</div>
 						</div>
 					</div>
@@ -126,17 +128,23 @@ const Main = () => {
 						</div>
 					</div>
 				</section>
-				<section className="partner" id="blog">
+				{/* <section className="partner" id="blog">
 					<div className="container">
 						<div className="partner-header">
 							<h3 className="caption">Partner</h3>
 						</div>
 						<div className="partner-list">
 							<div className="partner-item">
-								<img src="" alt="" />
+								<img
+									src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Dell_Logo.svg/1200px-Dell_Logo.svg.png"
+									alt=""
+								/>
 							</div>
 							<div className="partner-item">
-								<img src="" alt="" />
+								<img
+									src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/i/c912aa42-301c-4141-a624-745ab5702e03/dc8q1ww-20360b90-2838-43d0-9926-cf391efe14af.png"
+									alt=""
+								/>
 							</div>
 							<div className="partner-item">
 								<img src="" alt="" />
@@ -158,27 +166,26 @@ const Main = () => {
 							</div>
 						</div>
 					</div>
-				</section>
+				</section> */}
 				<section className="review">
 					<div className="container">
 						<div className="review-header">
 							<h3 className="caption">Testimonials</h3>
 							<h2 className="heading">See our Customers’ Reviews</h2>
 							<div className="text">
-								Phasellus pulvinar iaculis nunc at placerat. Sed porta
-								sollicitudin eros, vel sagittis.
+								Your most unhappy customers are your greatest source of learning
 							</div>
 						</div>
 						<div className="review-list">
 							<div className="review-item">
 								<img src="" alt="" className="review-icon" />
 								<div className="review-desc">
-									Rump spare ribs tail
-									<strong>pastrami ham hock turducken</strong> fatback salami
-									ham hock tender login drumstick pork bel.
+									Your company’s most valuable asset is how it is known to its
+									<span></span>
+									<strong> customers</strong>.
 								</div>
-								<img src="" alt="" className="review-avatar" />
-								<h3 className="review-author">Judie Lipsy</h3>
+								<img src={imgHomeReview} alt="" className="review-avatar" />
+								<h3 className="review-author">Brian Tracy</h3>
 							</div>
 						</div>
 					</div>
