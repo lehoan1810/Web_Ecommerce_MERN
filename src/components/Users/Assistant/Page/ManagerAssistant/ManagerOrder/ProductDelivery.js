@@ -3,12 +3,11 @@ import axios from "axios";
 import authHeader from "../../../../../../service/AuthHeader.js";
 import Moment from "react-moment";
 import "./ManagerOrder.css";
-import { toast } from "react-toastify";
 
-const ProductAccept = () => {
+const ProductDelivery = () => {
 	const [dataOrder, setDataOrder] = useState([]);
 	// const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/orders`;
-	const url = "http://localhost:5000/api/v1/orders?sort=date&status=1";
+	const url = "http://localhost:5000/api/v1/orders?sort=date&status=2";
 	useEffect(() => {
 		const loadProduct = () => {
 			axios
@@ -21,23 +20,7 @@ const ProductAccept = () => {
 		};
 		loadProduct();
 	}, [url]);
-	const onHandleDelivery = (idOrder) => {
-		const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/orders/${idOrder}`;
-		axios
-			.patch(
-				url,
-				{
-					status: 2,
-				},
-				{ headers: authHeader() }
-			)
-			.then((res) => {
-				toast.success("Successful Delivery !!!");
-				window.location.reload();
-				console.log(res.data);
-			})
-			.catch((err) => console.log(err));
-	};
+
 	return (
 		<div>
 			<div className="Order-table">
@@ -67,17 +50,12 @@ const ProductAccept = () => {
 									</td>
 									<td>
 										<div className="action-status">
-											<span>Đã xác nhận</span>
+											<span>Hoàn Thành</span>
 										</div>
 									</td>
 									<td>
 										<div className="action-handel">
-											<button
-												onClick={() => onHandleDelivery(item.order._id)}
-												className="action-delivery"
-											>
-												Giao Hàng
-											</button>
+											<button className="action-delete">Delete</button>
 										</div>
 									</td>
 								</tr>
@@ -90,4 +68,4 @@ const ProductAccept = () => {
 	);
 };
 
-export default ProductAccept;
+export default ProductDelivery;

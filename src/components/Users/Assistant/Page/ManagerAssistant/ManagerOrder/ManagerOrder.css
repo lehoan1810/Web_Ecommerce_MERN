@@ -8,3 +8,24 @@
 .action-accept:hover {
 	background-color: rgb(13, 92, 209);
 }
+.title-wait {
+	color: red;
+}
+.action-status {
+	padding: 7px;
+	/* background-color: rgb(61, 166, 252); */
+	display: inline;
+	border-radius: 3px;
+	color: red;
+	font-weight: 600;
+}
+.action-delivery {
+	padding: 8px;
+	background-color: rgb(61, 166, 252);
+	color: white;
+	border-radius: 5px;
+	transition: all 0.3s ease-in-out;
+}
+.action-delivery:hover {
+	background-color: rgb(13, 92, 209);
+}

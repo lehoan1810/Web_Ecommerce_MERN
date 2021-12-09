@@ -100,7 +100,7 @@ const CartTable = () => {
 										<img src={item.productPicture} alt="" />
 									</div>
 								</td>
-								<td className="name-prodcut">{item.nameProduct}</td>
+								<td className="name-prodcut">{item.productName}</td>
 								<td>
 									{new Intl.NumberFormat("it-IT", {
 										style: "currency",

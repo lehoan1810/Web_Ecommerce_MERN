@@ -1,9 +1,34 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
-import ModalAccess from "./ModalRating.js";
+import Moment from "react-moment";
+import authHeader from "../../../../../../service/AuthHeader.js";
+import { getCurrentUser } from "../../../../../../service/AuthService.js";
+import ModalOrderUser from "./ModalOrderUser/ModalOrderUser.js";
 
 const OrderComplete = () => {
+	const userName = getCurrentUser();
 	const [modalIsOpen, setModalIsOpen] = useState(false);
+	const [dataModal, setDataModal] = useState([]);
+	const [dataOrder, setDataOrder] = useState([]);
+
+	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/orders/customer?sort=date&status=2`;
+	useEffect(() => {
+		const loadData = () => {
+			axios
+				.get(url, { headers: authHeader() })
+				.then((res) => {
+					setDataOrder(res.data.data.orders);
+					console.log(res.data.data.orders);
+				})
+				.catch((err) => console.log(err));
+		};
+		loadData();
+	}, [url]);
+	const onHandleDetail = (idOrder) => {
+		setModalIsOpen(true);
+		setDataModal(idOrder);
+	};
 	return (
 		<div>
 			<div className="Order-table">
@@ -11,47 +36,41 @@ const OrderComplete = () => {
 					<table>
 						<thead>
 							<tr>
-								<th>Tên Sản Phẩm</th>
-								<th>Đơn Giá</th>
-								<th>Số Lượng</th>
-								<th>Số Tiền</th>
-								<th>Đánh giá</th>
-								{/* <th>Thao Tác</th> */}
+								<th>Tên Khách hàng</th>
+								<th>Tổng tiền đơn hàng</th>
+								<th>Ngày</th>
+								<th>Tình trạng</th>
+								<th>Chi tiết</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>Mike wazowski</td>
-								<td>15.000.000 VND</td>
-								<td>2</td>
-								<td>30.000.000 VND</td>
-								<td>
-									<div className="action-status">
-										<span>Complete</span>
-									</div>
-								</td>
-								{/* <td>
+							{dataOrder.map((item, id) => (
+								<tr key={id}>
+									<td>{userName}</td>
+									<td>
+										{new Intl.NumberFormat("it-IT", {
+											style: "currency",
+											currency: "VND",
+										}).format(item.totalPrice)}
+									</td>
+									<td>
+										<Moment format="DD-MM-YYYY">{item.date}</Moment>
+									</td>
+									<td>
+										<span className="action-status">Hoàn Thành</span>
+									</td>
+									<td>
 										<div className="action-handel">
-											<button className="action-delete">Delete</button>
+											<button
+												onClick={() => onHandleDetail(item._id)}
+												className="action-accept"
+											>
+												Xem
+											</button>
 										</div>
-									</td> */}
-							</tr>
-							<tr>
-								<td>Mike wazowski</td>
-								<td>15.000.000 VND</td>
-								<td>2</td>
-								<td>30.000.000 VND</td>
-								<td>
-									<div className="action-status">
-										<button onClick={() => setModalIsOpen(true)}>assess</button>
-									</div>
-								</td>
-								{/* <td>
-									<div className="action-handel">
-										<button className="action-delete">Delete</button>
-									</div>
-								</td> */}
-							</tr>
+									</td>
+								</tr>
+							))}
 						</tbody>
 					</table>
 				</div>
@@ -67,13 +86,13 @@ const OrderComplete = () => {
 						backgroundColor: "rgba(0,0,0,0.4)",
 					},
 					content: {
-						width: "30%",
+						width: "90rem",
 						margin: "auto",
-						height: "43%",
+						height: "30rem",
 					},
 				}}
 			>
-				<ModalAccess setModalIsOpen={setModalIsOpen} />
+				<ModalOrderUser data={dataModal} setModalIsOpen={setModalIsOpen} />
 			</Modal>
 		</div>
 	);
