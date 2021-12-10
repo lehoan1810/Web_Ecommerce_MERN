@@ -20,12 +20,15 @@ const ResetPassword = () => {
 			.patch(url, { password: password, passwordConfirm: confirmPassword })
 			.then((res) => {
 				console.log("thành công");
-				toast.error("Reset Success !!!", {
+				toast.success("Reset Success !!!", {
 					autoClose: 1500,
 				});
 				<Redirect to="/" />;
 			})
-			.catch((err) => console.log(err));
+			.catch((err) => {
+				toast.error("faild", { autoClose: 1500 });
+				console.log(err);
+			});
 	};
 	const handleShowHidePassword = () => {
 		setIsShowPassWord(!isShowPassword);
