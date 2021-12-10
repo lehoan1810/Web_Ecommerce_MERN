@@ -7,8 +7,7 @@ import { toast } from "react-toastify";
 
 const ProductAccept = () => {
 	const [dataOrder, setDataOrder] = useState([]);
-	// const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/orders`;
-	const url = "http://localhost:5000/api/v1/orders?sort=date&status=1";
+	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/orders?sort=date&status=1`;
 	useEffect(() => {
 		const loadProduct = () => {
 			axios

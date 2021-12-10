@@ -6,8 +6,7 @@ import "./ManagerOrder.css";
 
 const ProductDelivery = () => {
 	const [dataOrder, setDataOrder] = useState([]);
-	// const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/orders`;
-	const url = "http://localhost:5000/api/v1/orders?sort=date&status=2";
+	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/orders?sort=date&status=2`;
 	useEffect(() => {
 		const loadProduct = () => {
 			axios
