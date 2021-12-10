@@ -23,7 +23,7 @@ const ResetPassword = () => {
 				toast.success("Reset Success !!!", {
 					autoClose: 1500,
 				});
-				<Redirect to="/" />;
+				<Redirect to="./login" />;
 			})
 			.catch((err) => {
 				toast.error("faild", { autoClose: 1500 });
