@@ -5,7 +5,6 @@ import ArrowRight from "../../../images/ArrowRight.png";
 import { useParams } from "react-router";
 import { toast } from "react-toastify";
 import axios from "axios";
-import { Redirect } from "react-router-dom";
 
 const ResetPassword = () => {
 	const { id } = useParams();
