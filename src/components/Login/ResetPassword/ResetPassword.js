@@ -3,7 +3,9 @@ import iconShow from "../../../../src/images/Show.png";
 import iconHide from "../../../../src/images/Hide.png";
 import ArrowRight from "../../../images/ArrowRight.png";
 import { useParams } from "react-router";
+import { toast } from "react-toastify";
 import axios from "axios";
+import { Redirect } from "react-router-dom";
 
 const ResetPassword = () => {
 	const { id } = useParams();
@@ -18,6 +20,10 @@ const ResetPassword = () => {
 			.patch(url, { password: password, passwordConfirm: confirmPassword })
 			.then((res) => {
 				console.log("thành công");
+				toast.error("Reset Success !!!", {
+					autoClose: 1500,
+				});
+				<Redirect to="/" />;
 			})
 			.catch((err) => console.log(err));
 	};
