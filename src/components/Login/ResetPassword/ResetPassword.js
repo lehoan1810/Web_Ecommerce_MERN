@@ -5,16 +5,19 @@ import ArrowRight from "../../../images/ArrowRight.png";
 import { useParams } from "react-router";
 import { toast } from "react-toastify";
 import axios from "axios";
+import LoadingPage from "../../LoadingPage/LoadingPage";
+import { Redirect } from "react-router-dom";
 
 const ResetPassword = () => {
 	const { id } = useParams();
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [isShowPassword, setIsShowPassWord] = useState(false);
+	const [loading, setLoading] = useState();
 	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/users/resetPassword/${id}`;
 
-	const onResetPassword = (e) => {
-		// e.preventDefault();
+	const onResetPassword = () => {
+		setLoading(true);
 		axios
 			.patch(url, { password: password, passwordConfirm: confirmPassword })
 			.then((res) => {
@@ -22,11 +25,13 @@ const ResetPassword = () => {
 				toast.success("Reset Success !!!", {
 					autoClose: 1500,
 				});
-				window.location.href = "/login";
+				// window.location.href = "/login";
+				setLoading(false);
 			})
 			.catch((err) => {
 				toast.error("faild", { autoClose: 1500 });
 				console.log(err);
+				setLoading();
 			});
 	};
 	const handleShowHidePassword = () => {
@@ -34,6 +39,8 @@ const ResetPassword = () => {
 	};
 	return (
 		<div className="login">
+			{loading === true && <Redirect to="/login" />}
+			{loading === false && <LoadingPage />}
 			<form className="login-form">
 				<div className="login-header">
 					<h1 className="login-title">Create New Password</h1>
@@ -73,8 +80,8 @@ const ResetPassword = () => {
 						</div>
 					</div>
 				</div>
-				<button className="btn-login" onClick={(e) => onResetPassword(e)}>
-					Login
+				<button className="btn-login" onClick={() => onResetPassword()}>
+					Reset
 					<img className="icon-resgister" src={ArrowRight} alt=" " />
 				</button>
 			</form>
