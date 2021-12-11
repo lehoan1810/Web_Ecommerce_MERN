@@ -13,7 +13,7 @@ const ForgetPassword = () => {
 			.post(url, { email: email })
 			.then((res) => {
 				console.log(email);
-				toast.success("success");
+				toast.success("success", { autoClose: 1500 });
 			})
 			.catch((err) => toast.error("faild"));
 	};

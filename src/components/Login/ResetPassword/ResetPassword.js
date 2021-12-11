@@ -14,7 +14,7 @@ const ResetPassword = () => {
 	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/users/resetPassword/${id}`;
 
 	const onResetPassword = (e) => {
-		e.preventDefault();
+		// e.preventDefault();
 		axios
 			.patch(url, { password: password, passwordConfirm: confirmPassword })
 			.then((res) => {
@@ -22,7 +22,7 @@ const ResetPassword = () => {
 				toast.success("Reset Success !!!", {
 					autoClose: 1500,
 				});
-				window.location.reload("/login");
+				window.location.href = "/login";
 			})
 			.catch((err) => {
 				toast.error("faild", { autoClose: 1500 });
