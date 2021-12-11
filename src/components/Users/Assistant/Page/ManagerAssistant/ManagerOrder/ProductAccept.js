@@ -4,10 +4,12 @@ import authHeader from "../../../../../../service/AuthHeader.js";
 import Moment from "react-moment";
 import "./ManagerOrder.css";
 import { toast } from "react-toastify";
+import Loading from "../../../../../Loading/Loading.js";
 
 const ProductAccept = () => {
 	const [dataOrder, setDataOrder] = useState([]);
 	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/orders?sort=date&status=1`;
+	const [loading, setLoading] = useState(true);
 	useEffect(() => {
 		const loadProduct = () => {
 			axios
@@ -15,6 +17,7 @@ const ProductAccept = () => {
 				.then((res) => {
 					setDataOrder(res.data.data.orders);
 					console.log(res.data.data.orders);
+					setLoading(false);
 				})
 				.catch((err) => console.log(err));
 		};
@@ -52,35 +55,43 @@ const ProductAccept = () => {
 							</tr>
 						</thead>
 						<tbody>
-							{dataOrder.map((item, id) => (
-								<tr key={id}>
-									<td>{item.nameUser}</td>
-									<td>
-										{new Intl.NumberFormat("it-IT", {
-											style: "currency",
-											currency: "VND",
-										}).format(item.order.totalPrice)}
-									</td>
-									<td>
-										<Moment format="DD-MM-YYYY">{item.order.date}</Moment>
-									</td>
-									<td>
-										<div className="action-status">
-											<span>Đã xác nhận</span>
-										</div>
-									</td>
-									<td>
-										<div className="action-handel">
-											<button
-												onClick={() => onHandleDelivery(item.order._id)}
-												className="action-delivery"
-											>
-												Giao Hàng
-											</button>
-										</div>
+							{loading === true && (
+								<tr>
+									<td colSpan={6}>
+										<Loading />
 									</td>
 								</tr>
-							))}
+							)}
+							{loading === false &&
+								dataOrder.map((item, id) => (
+									<tr key={id}>
+										<td>{item.nameUser}</td>
+										<td>
+											{new Intl.NumberFormat("it-IT", {
+												style: "currency",
+												currency: "VND",
+											}).format(item.order.totalPrice)}
+										</td>
+										<td>
+											<Moment format="DD-MM-YYYY">{item.order.date}</Moment>
+										</td>
+										<td>
+											<div className="action-status">
+												<span>Đã xác nhận</span>
+											</div>
+										</td>
+										<td>
+											<div className="action-handel">
+												<button
+													onClick={() => onHandleDelivery(item.order._id)}
+													className="action-delivery"
+												>
+													Giao Hàng
+												</button>
+											</div>
+										</td>
+									</tr>
+								))}
 						</tbody>
 					</table>
 				</div>

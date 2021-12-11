@@ -11,6 +11,7 @@ const { TabPane } = Tabs;
 
 const Purchase = () => {
 	const [dataOrder, setDataOrder] = useState([]);
+	const [loading, setLoading] = useState(true);
 	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/orders/customer?sort=date&status=0`;
 	useEffect(() => {
 		const loadData = () => {
@@ -19,6 +20,7 @@ const Purchase = () => {
 				.then((res) => {
 					setDataOrder(res.data.data.orders);
 					console.log(res.data.data.orders);
+					setLoading(false);
 				})
 				.catch((err) => console.log(err));
 		};
@@ -29,7 +31,7 @@ const Purchase = () => {
 			<div className="form-purchase-user">
 				<Tabs defaultActiveKey="1">
 					<TabPane tab={<span>Chờ Xác Nhận</span>} key="1">
-						<OrderConfirm data={dataOrder} />
+						<OrderConfirm loading={loading} data={dataOrder} />
 					</TabPane>
 					<TabPane tab={<span>Đang Giao</span>} key="2">
 						<OrderProcess />

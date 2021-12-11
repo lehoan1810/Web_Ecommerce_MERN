@@ -7,7 +7,7 @@ import CreateBrand from "./ModalBrand/CreateBrand.js";
 const { Search } = Input;
 
 const ManagerBrand = () => {
-	// const [loading, setloading] = useState(false);
+	const [loading, setloading] = useState(false);
 	const [modalIsOpen, setModalIsOpen] = useState(false);
 	const [dataBrand, setDataBrand] = useState([]);
 
@@ -15,11 +15,13 @@ const ManagerBrand = () => {
 
 	useEffect(() => {
 		const loadProduct = () => {
+			setloading(true);
 			axios
 				.get(url)
 				.then((res) => {
 					setDataBrand(res.data.categoryList);
 					console.log(res.data.categoryList);
+					setloading(false);
 				})
 				.catch((err) => console.log(err));
 		};
@@ -54,7 +56,7 @@ const ManagerBrand = () => {
 	return (
 		<div>
 			<div className="table-manager-product">
-				<h2 className="title-admin">Quản Lý Sản Phẩm</h2>
+				<h2 className="title-admin">Quản Lý Thương Hiệu</h2>
 
 				<div>
 					<Search
@@ -67,10 +69,10 @@ const ManagerBrand = () => {
 					/>
 				</div>
 				<button className="create-product" onClick={() => setModalIsOpen(true)}>
-					Create Product
+					Create Brand
 				</button>
 
-				<TableBrand columns={columns} data={dataBrand} />
+				<TableBrand loading={loading} columns={columns} data={dataBrand} />
 			</div>
 			<Modal
 				isOpen={modalIsOpen}

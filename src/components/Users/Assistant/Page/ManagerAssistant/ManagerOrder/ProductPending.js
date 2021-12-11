@@ -5,8 +5,9 @@ import Moment from "react-moment";
 import axios from "axios";
 import authHeader from "../../../../../../service/AuthHeader";
 import { toast } from "react-toastify";
+import Loading from "../../../../../Loading/Loading";
 
-const ProductPending = ({ data }) => {
+const ProductPending = ({ loading, data }) => {
 	const [modalIsOpen, setModalIsOpen] = useState(false);
 	const [dataModa, setDataModal] = useState([]);
 
@@ -49,43 +50,51 @@ const ProductPending = ({ data }) => {
 							</tr>
 						</thead>
 						<tbody>
-							{data.map((item, id) => (
-								<tr key={id}>
-									<td>{item.nameUser}</td>
-									<td>
-										{new Intl.NumberFormat("it-IT", {
-											style: "currency",
-											currency: "VND",
-										}).format(item.order.totalPrice)}
-									</td>
-									<td>
-										<Moment format="DD-MM-YYYY">{item.order.date}</Moment>
-									</td>
-									<td>
-										<span className="action-status">Waiting</span>
-									</td>
-									<td>
-										<div className="action-handel">
-											<button
-												onClick={() => onHandleDetail(item.order._id)}
-												className="action-accept"
-											>
-												Xem
-											</button>
-										</div>
-									</td>
-									<td>
-										<div className="action-handel">
-											<button
-												onClick={() => onHandleAccept(item.order._id)}
-												className="action-accept"
-											>
-												Accept
-											</button>
-										</div>
+							{loading === true && (
+								<tr>
+									<td colSpan={6}>
+										<Loading />
 									</td>
 								</tr>
-							))}
+							)}
+							{loading === false &&
+								data.map((item, id) => (
+									<tr key={id}>
+										<td>{item.nameUser}</td>
+										<td>
+											{new Intl.NumberFormat("it-IT", {
+												style: "currency",
+												currency: "VND",
+											}).format(item.order.totalPrice)}
+										</td>
+										<td>
+											<Moment format="DD-MM-YYYY">{item.order.date}</Moment>
+										</td>
+										<td>
+											<span className="action-status">Waiting</span>
+										</td>
+										<td>
+											<div className="action-handel">
+												<button
+													onClick={() => onHandleDetail(item.order._id)}
+													className="action-accept"
+												>
+													Xem
+												</button>
+											</div>
+										</td>
+										<td>
+											<div className="action-handel">
+												<button
+													onClick={() => onHandleAccept(item.order._id)}
+													className="action-accept"
+												>
+													Accept
+												</button>
+											</div>
+										</td>
+									</tr>
+								))}
 						</tbody>
 					</table>
 				</div>

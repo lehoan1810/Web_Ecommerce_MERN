@@ -2,25 +2,29 @@ import React from "react";
 import { Line } from "@ant-design/charts";
 const ManagerData = () => {
 	const data = [
-		{ year: "1991", value: 3 },
-		{ year: "1992", value: 4 },
-		{ year: "1993", value: 3.5 },
-		{ year: "1994", value: 5 },
-		{ year: "1995", value: 4.9 },
-		{ year: "1996", value: 6 },
-		{ year: "1997", value: 7 },
-		{ year: "1998", value: 9 },
-		{ year: "1999", value: 13 },
+		{ month: "Tháng 1", value: 3 },
+		{ month: "Tháng 2", value: 4 },
+		{ month: "Tháng 3", value: 3.5 },
+		{ month: "Tháng 4", value: 5 },
+		{ month: "Tháng 5", value: 4.9 },
+		{ month: "Tháng 6", value: 6 },
+		{ month: "Tháng 7", value: 7 },
+		{ month: "Tháng 8", value: 9 },
+		{ month: "Tháng 9", value: 13 },
+		{ month: "Tháng 10", value: 13 },
+		{ month: "Tháng 11", value: 8 },
+		{ month: "Tháng 12", value: 9 },
 	];
 
 	const config = {
 		data,
-		xField: "year",
+		xField: "month",
 		yField: "value",
 		point: {
 			size: 5,
 			shape: "diamond",
 		},
+		// smooth: true,
 	};
 	return (
 		<div>

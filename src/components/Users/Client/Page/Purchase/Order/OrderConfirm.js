@@ -4,8 +4,9 @@ import Modal from "react-modal";
 import "./Order.css";
 import ModalOrderUser from "./ModalOrderUser/ModalOrderUser";
 import { getCurrentUser } from "../../../../../../service/AuthService";
+import Loading from "../../../../../Loading/Loading";
 
-const OrderConfirm = ({ data }) => {
+const OrderConfirm = ({ loading, data }) => {
 	const userName = getCurrentUser();
 	const [modalIsOpen, setModalIsOpen] = useState(false);
 	const [dataModa, setDataModal] = useState([]);
@@ -30,33 +31,41 @@ const OrderConfirm = ({ data }) => {
 							</tr>
 						</thead>
 						<tbody>
-							{data.map((item, id) => (
-								<tr key={id}>
-									<td>{userName}</td>
-									<td>
-										{new Intl.NumberFormat("it-IT", {
-											style: "currency",
-											currency: "VND",
-										}).format(item.totalPrice)}
-									</td>
-									<td>
-										<Moment format="DD-MM-YYYY">{item.date}</Moment>
-									</td>
-									<td>
-										<span className="action-status">Waiting</span>
-									</td>
-									<td>
-										<div className="action-handel">
-											<button
-												onClick={() => onHandleDetail(item._id)}
-												className="action-accept"
-											>
-												Xem
-											</button>
-										</div>
+							{loading === true && (
+								<tr>
+									<td colSpan={6}>
+										<Loading />
 									</td>
 								</tr>
-							))}
+							)}
+							{loading === false &&
+								data.map((item, id) => (
+									<tr key={id}>
+										<td>{userName}</td>
+										<td>
+											{new Intl.NumberFormat("it-IT", {
+												style: "currency",
+												currency: "VND",
+											}).format(item.totalPrice)}
+										</td>
+										<td>
+											<Moment format="DD-MM-YYYY">{item.date}</Moment>
+										</td>
+										<td>
+											<span className="action-status">Waiting</span>
+										</td>
+										<td>
+											<div className="action-handel">
+												<button
+													onClick={() => onHandleDetail(item._id)}
+													className="action-accept"
+												>
+													Xem
+												</button>
+											</div>
+										</td>
+									</tr>
+								))}
 						</tbody>
 					</table>
 				</div>
