@@ -39,8 +39,8 @@ const ResetPassword = () => {
 	};
 	return (
 		<div className="login">
-			{loading === true && <Redirect to="/login" />}
-			{loading === false && <LoadingPage />}
+			{loading === false && <Redirect to="/login" />}
+			{loading === true && <LoadingPage />}
 			<form className="login-form">
 				<div className="login-header">
 					<h1 className="login-title">Create New Password</h1>

@@ -99,7 +99,7 @@ const OrderComplete = () => {
 					content: {
 						width: "90rem",
 						margin: "auto",
-						height: "30rem",
+						height: "50rem",
 					},
 				}}
 			>

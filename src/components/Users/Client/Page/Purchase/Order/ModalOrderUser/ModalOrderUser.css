@@ -1,0 +1,24 @@
+.detail-bill {
+	display: flex;
+	justify-content: space-between;
+	padding-right: 5rem;
+	margin-bottom: 20px;
+}
+.item-bill h3 {
+	display: inline-block;
+	font-weight: 600;
+	width: 200px;
+}
+.item-bill-date h3 {
+	display: inline-block;
+	font-weight: 600;
+	padding-right: 2rem;
+}
+.title-bill {
+	text-transform: uppercase;
+	color: white;
+	display: inline-block;
+	padding: 0 8px;
+	border-radius: 4px;
+	background: #f76868;
+}

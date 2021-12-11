@@ -10,6 +10,7 @@ import Loading from "../../../../../Loading/Loading";
 const ProductPending = ({ loading, data }) => {
 	const [modalIsOpen, setModalIsOpen] = useState(false);
 	const [dataModa, setDataModal] = useState([]);
+	const [nameUser, setNameUser] = useState([]);
 
 	const onHandleAccept = (idOrder) => {
 		const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/orders/${idOrder}`;
@@ -29,9 +30,10 @@ const ProductPending = ({ loading, data }) => {
 			.catch((err) => console.log(err));
 	};
 
-	const onHandleDetail = (idOrder) => {
+	const onHandleDetail = (idOrder, item) => {
 		setModalIsOpen(true);
 		setDataModal(idOrder);
+		setNameUser(item);
 	};
 
 	return (
@@ -76,7 +78,7 @@ const ProductPending = ({ loading, data }) => {
 										<td>
 											<div className="action-handel">
 												<button
-													onClick={() => onHandleDetail(item.order._id)}
+													onClick={() => onHandleDetail(item.order._id, item)}
 													className="action-accept"
 												>
 													Xem
@@ -112,11 +114,15 @@ const ProductPending = ({ loading, data }) => {
 					content: {
 						width: "90rem",
 						margin: "auto",
-						height: "30rem",
+						height: "50rem",
 					},
 				}}
 			>
-				<ModalOrder data={dataModa} setModalIsOpen={setModalIsOpen} />
+				<ModalOrder
+					nameUser={nameUser}
+					data={dataModa}
+					setModalIsOpen={setModalIsOpen}
+				/>
 			</Modal>
 		</div>
 	);

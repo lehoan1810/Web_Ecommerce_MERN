@@ -12,8 +12,8 @@ const OrderProcess = () => {
 	const [modalIsOpen, setModalIsOpen] = useState(false);
 	const [dataModal, setDataModal] = useState([]);
 	const [loading, setLoading] = useState(true);
-
 	const [dataOrder, setDataOrder] = useState([]);
+
 	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/orders/customer?sort=date&status=1`;
 	useEffect(() => {
 		const loadData = () => {
@@ -21,7 +21,7 @@ const OrderProcess = () => {
 				.get(url, { headers: authHeader() })
 				.then((res) => {
 					setDataOrder(res.data.data.orders);
-					console.log(res.data.data.orders);
+					console.log("data: ", res.data.data.orders);
 					setLoading(false);
 				})
 				.catch((err) => console.log(err));
@@ -103,7 +103,7 @@ const OrderProcess = () => {
 					content: {
 						width: "90rem",
 						margin: "auto",
-						height: "30rem",
+						height: "50rem",
 					},
 				}}
 			>
