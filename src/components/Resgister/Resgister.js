@@ -63,11 +63,11 @@ function Resgister() {
 				</div>
 				<div className="resgister-content">
 					<div className="fill-userName">
-						<span className="title-userName">Your UserName</span>
+						<span className="title-userName">Your Name</span>
 						<input
 							className="input-userName"
 							type="text"
-							placeholder="userName... "
+							placeholder="Name... "
 							onChange={(e) => setName(e.target.value)}
 						></input>
 					</div>

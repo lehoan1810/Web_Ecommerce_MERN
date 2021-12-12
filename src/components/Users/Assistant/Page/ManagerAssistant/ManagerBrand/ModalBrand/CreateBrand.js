@@ -2,9 +2,11 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import authHeader from "../../../../../../../service/AuthHeader.js";
+import { Select } from "antd";
 import "./CreateBrand.css";
+const { Option } = Select;
 
-const CreateBrand = () => {
+const CreateBrand = ({ setModalIsOpen }) => {
 	const [dataCategory, setDataCategory] = useState([]);
 	const [selectCategory, setSelectCategory] = useState("");
 	const [name, setName] = useState("");
@@ -23,8 +25,8 @@ const CreateBrand = () => {
 		};
 		loadProduct();
 	}, [url]);
-	const onSelectCategory = (e) => {
-		setSelectCategory(e.target.value);
+	const onSelectCategory = (item) => {
+		setSelectCategory(item);
 	};
 
 	const urlAddCategory = `${process.env.REACT_APP_API_LOCAL}/api/v1/category/create`;
@@ -58,33 +60,33 @@ const CreateBrand = () => {
 					<span>Name Brand</span>
 					<input
 						onChange={(e) => setName(e.target.value)}
-						placeholder="Name Product ..."
+						placeholder="Name Brand ..."
 					/>
 				</div>
 
-				<div className="add-category-product add-item">
-					<span>Select Category</span>
-					<select
-						value={selectCategory}
-						name="product"
-						className="select-category"
-						id="product"
-						onChange={(e) => onSelectCategory(e)}
+				<div className="add-category-product add-item-brand">
+					<span className="titile-select">Select Category</span>
+
+					<Select
+						defaultValue="select brand"
+						style={{ width: "100%" }}
+						onChange={onSelectCategory}
 					>
-						<option value="" disabled selected>
-							Chọn category tương ứng
-						</option>
-						{dataCategory.map((item, id) => {
-							return (
-								<option className="option-item" key={id} value={item._id}>
+						{dataCategory &&
+							dataCategory.map((item, id) => (
+								<Option className="option-item" key={id} value={item._id}>
 									{item.name}
-								</option>
-							);
-						})}
-					</select>
+								</Option>
+							))}
+					</Select>
 				</div>
-				<div className="button-add-product">
-					<button onClick={onAddBrand}>Add Product</button>
+				<div className="button-add-brand">
+					<button className="btn-cancel" onClick={() => setModalIsOpen(false)}>
+						Cancel
+					</button>
+					<button className="btn-add" onClick={onAddBrand}>
+						Add Product
+					</button>
 				</div>
 			</div>
 		</div>

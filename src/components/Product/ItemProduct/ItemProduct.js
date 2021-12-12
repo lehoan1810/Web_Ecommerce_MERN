@@ -30,10 +30,17 @@ const ItemProduct = ({ data }) => {
 	};
 	return (
 		<div className="product-item">
-			<img className="product-item-img" src={data.productPicture} alt="" />
+			<div className="product-image-show">
+				<img className="product-item-img" src={data.productPicture} alt="" />
+			</div>
 			<div className="description">
 				<h3>{data.name}</h3>
-				<p>{data.description}</p>
+				<p>
+					{new Intl.NumberFormat("it-IT", {
+						style: "currency",
+						currency: "VND",
+					}).format(data.price)}
+				</p>
 				<div className="item-detail-handel">
 					<Link
 						// to="/product/detail/123"

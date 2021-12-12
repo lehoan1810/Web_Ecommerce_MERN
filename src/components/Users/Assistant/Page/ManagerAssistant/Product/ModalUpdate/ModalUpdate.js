@@ -4,8 +4,10 @@ import { toast } from "react-toastify";
 import authHeader from "../../../../../../../service/AuthHeader.js";
 import Loading from "../../../../../../Loading/Loading.js";
 import upload from "../../../../../../../images/upload.png";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
-const ModalUpdate = ({ data }) => {
+const ModalUpdate = ({ data, setModalIsOpen }) => {
 	console.log(data);
 	const [name, setName] = useState(data.name);
 	const [description, setDescription] = useState(data.description);
@@ -71,6 +73,9 @@ const ModalUpdate = ({ data }) => {
 					<input onChange={uploadImage} className="input-upload" type="file" />
 				</label>
 				<div className="button-add-product">
+					<button className="btn-cancel" onClick={(e) => setModalIsOpen(false)}>
+						Cancel
+					</button>
 					<button onClick={onUpdate}>Add Product</button>
 				</div>
 			</div>
@@ -85,10 +90,19 @@ const ModalUpdate = ({ data }) => {
 				</div>
 				<div className="add-desc-product add-item">
 					<span>Description Product</span>
-					<textarea
+					{/* <textarea
 						onChange={(e) => setDescription(e.target.value)}
 						placeholder={data.description}
 						value={description}
+					/> */}
+					<CKEditor
+						placeholder={data.description}
+						editor={ClassicEditor}
+						data={description}
+						onChange={(event, editor) => {
+							const data = editor.getData();
+							setDescription(data);
+						}}
 					/>
 				</div>
 

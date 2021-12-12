@@ -110,6 +110,16 @@ const ManagerProduct = () => {
 			dataIndex: "price",
 			responsive: ["md"],
 			key: "price",
+			render: (item) => (
+				<div>
+					<span>
+						{new Intl.NumberFormat("it-IT", {
+							style: "currency",
+							currency: "VND",
+						}).format(item)}
+					</span>
+				</div>
+			),
 		},
 
 		{
@@ -206,9 +216,9 @@ const ManagerProduct = () => {
 						backgroundColor: "rgba(0,0,0,0.4)",
 					},
 					content: {
-						width: "60%",
+						width: "80vw",
 						margin: "auto",
-						height: "80%",
+						height: "55rem",
 					},
 				}}
 			>
@@ -223,7 +233,7 @@ const ManagerProduct = () => {
 						backgroundColor: "rgba(0,0,0,0.4)",
 					},
 					content: {
-						width: "70rem",
+						width: "80vw",
 						margin: "auto",
 						height: "50rem",
 					},

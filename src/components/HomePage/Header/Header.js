@@ -63,34 +63,7 @@ const Header = () => {
 								</ul>
 							) : roleUser === "assistant" ? (
 								// role assistant
-								<ul className="menu-home-list">
-									<li className="menu-home-item">
-										<Link to="/" href="" className="menu-home-link">
-											Home
-										</Link>
-									</li>
-
-									<li className="menu-home-item">
-										<Link to="/product" href="" className="menu-home-link">
-											Category
-										</Link>
-									</li>
-									<li className="menu-home-item">
-										<Link to="/#" href="#work" className="menu-home-link">
-											Service
-										</Link>
-									</li>
-									<li className="menu-home-item">
-										<Link to="/" href="#experience" className="menu-home-link">
-											Blog
-										</Link>
-									</li>
-									<li className="menu-home-item">
-										<Link to="/" href="#contact" className="menu-home-link">
-											Contact
-										</Link>
-									</li>
-								</ul>
+								<ul className="menu-home-list"></ul>
 							) : roleUser === "admin" ? (
 								// role admin
 								<ul className="menu-home-list"></ul>

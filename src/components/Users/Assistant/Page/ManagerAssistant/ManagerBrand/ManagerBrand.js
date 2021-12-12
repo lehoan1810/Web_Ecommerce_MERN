@@ -4,12 +4,17 @@ import Modal from "react-modal";
 import TableBrand from "./TableBrand.js";
 import axios from "axios";
 import CreateBrand from "./ModalBrand/CreateBrand.js";
+import { Select } from "antd";
+import "./ManagerBrand.css";
+
+const { Option } = Select;
 const { Search } = Input;
 
 const ManagerBrand = () => {
 	const [loading, setloading] = useState(false);
 	const [modalIsOpen, setModalIsOpen] = useState(false);
 	const [dataBrand, setDataBrand] = useState([]);
+	const [itemBrand, setItemBrand] = useState([]);
 
 	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/category/getCategory`;
 
@@ -52,6 +57,20 @@ const ManagerBrand = () => {
 			),
 		},
 	];
+	const handleChange = (item) => {
+		const test = `${process.env.REACT_APP_API_LOCAL}/api/v1/category/getAllBrand/${item}`;
+		setloading(true);
+		axios
+			.get(test)
+			.then((res) => {
+				setItemBrand(res.data.categoryList);
+				console.log(res.data.categoryList);
+				setloading(false);
+			})
+			.catch((err) => console.log(err));
+
+		console.log(item);
+	};
 
 	return (
 		<div>
@@ -68,11 +87,23 @@ const ManagerBrand = () => {
 						className="search-product"
 					/>
 				</div>
-				<button className="create-product" onClick={() => setModalIsOpen(true)}>
+				<button className="create-brand" onClick={() => setModalIsOpen(true)}>
 					Create Brand
 				</button>
+				<Select
+					defaultValue="select brand"
+					style={{ width: 120 }}
+					onChange={handleChange}
+				>
+					{dataBrand &&
+						dataBrand.map((item, id) => (
+							<Option key={id} value={item._id}>
+								{item.name}
+							</Option>
+						))}
+				</Select>
 
-				<TableBrand loading={loading} columns={columns} data={dataBrand} />
+				<TableBrand loading={loading} columns={columns} data={itemBrand} />
 			</div>
 			<Modal
 				isOpen={modalIsOpen}

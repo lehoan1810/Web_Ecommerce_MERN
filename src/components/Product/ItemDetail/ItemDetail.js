@@ -9,6 +9,7 @@ import Edit from "../../../images/Edit.png";
 import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
 import "./ItemDetail.css";
+import parse from "html-react-parser/dist/html-react-parser";
 
 // test create review
 import Modal from "react-modal";
@@ -84,64 +85,66 @@ const ItemDetail = () => {
 		}
 	};
 
-	const comeback = (e) => {
-		e.preventDefault();
-		historyback.goBack();
+	const comeback = (item) => {
+		// historyback.goBack();
+		historyback.push(`/shop/category/${item}`);
 	};
 
 	return (
 		<div className="product-background">
 			<HeaderProduct />
-			<div>
-				<button onClick={(e) => comeback(e)}>Back</button>
+			<div className="btn-comeback">
+				<button onClick={() => comeback(dataDetail.category)}>Back</button>
 			</div>
-			<div className="container-detail">
-				<div className="container-detail-flex">
-					<div className="detail-image">
-						<img src={dataDetail.productPicture} alt="" />
-					</div>
-					<div className="detail-info-item">
-						<h2 className="name-detail-item">{dataDetail.name}</h2>
-						<span className="detail-version">
-							{/* Phiên bản Custom build chưa bao gồm: Switch, Keycap */}
-						</span>
-						<span className="detail-desc">{dataDetail.description}</span>
-						{/* <span className="detail-insurance">Bảo hành: 24 tháng</span> */}
-						{/* <span className="detail-price">{format(dataDetail.price)}</span> */}
-						<span className="detail-price">
-							{new Intl.NumberFormat("it-IT", {
-								style: "currency",
-								currency: "VND",
-							}).format(dataDetail.price)}
-						</span>
-						<div className="quantity-item">
-							<button className="btn-quantity " onClick={Decrease}>
-								-
-							</button>
-							<span>{count}</span>
-							<button className="btn-quantity" onClick={Increase}>
-								+
-							</button>
+			{dataDetail && (
+				<div className="container-detail">
+					<div className="container-detail-flex">
+						<div className="detail-image">
+							<img src={dataDetail.productPicture} alt="" />
 						</div>
-						<div className="handle-item-detail">
-							<button onClick={onAddCart} className="detail-add-card">
-								Thêm vào giỏ hàng
-							</button>
-							<Link
-								to="/product/cart"
-								href=""
-								onClick={onAddCart}
-								className="buy-now"
-							>
-								Mua ngay
-							</Link>
-							<button className="detail-item-like">
-								<img className="item-like-img" src={Like} alt="" />
-							</button>
+						<div className="detail-info-item">
+							<h2 className="name-detail-item">{dataDetail.name}</h2>
+							<span className="detail-version">
+								{/* Phiên bản Custom build chưa bao gồm: Switch, Keycap */}
+							</span>
+							<span>{parse(dataDetail.description)}</span>
+							{/* <span className="detail-insurance">Bảo hành: 24 tháng</span> */}
+							<span className="detail-price">
+								{new Intl.NumberFormat("it-IT", {
+									style: "currency",
+									currency: "VND",
+								}).format(dataDetail.price)}
+							</span>
+							<div className="quantity-item">
+								<button className="btn-quantity " onClick={Decrease}>
+									-
+								</button>
+								<span>{count}</span>
+								<button className="btn-quantity" onClick={Increase}>
+									+
+								</button>
+							</div>
+							<div className="handle-item-detail">
+								<button onClick={onAddCart} className="detail-add-card">
+									Thêm vào giỏ hàng
+								</button>
+								<Link
+									to="/product/cart"
+									href=""
+									onClick={onAddCart}
+									className="buy-now"
+								>
+									Mua ngay
+								</Link>
+								<button className="detail-item-like">
+									<img className="item-like-img" src={Like} alt="" />
+								</button>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			)}
+
 			{/* <FeedBack /> */}
 			<div className="feedback">
 				<div className="feedback-item">

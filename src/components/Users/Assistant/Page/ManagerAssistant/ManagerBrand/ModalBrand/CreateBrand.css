@@ -1,0 +1,28 @@
+.add-item-brand {
+	display: flex;
+	flex-direction: column;
+	margin-top: 10px;
+}
+.add-item-brand .titile-select {
+	color: #ff6868;
+	font-size: 1.7rem;
+	font-weight: 600;
+	margin-bottom: 5px;
+}
+.button-add-brand {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 20px;
+}
+.button-add-brand button {
+	border-radius: 5px;
+	color: white;
+}
+.button-add-brand .btn-cancel {
+	background-color: #ff6868;
+	padding: 8px 40px;
+}
+.button-add-brand .btn-add {
+	background-color: #1890ff;
+	padding: 8px 20px;
+}

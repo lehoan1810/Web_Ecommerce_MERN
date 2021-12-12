@@ -2,11 +2,13 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import authHeader from "../../../../../../../service/AuthHeader.js";
-import "./CreateProduct.css";
 import Loading from "../../../../../../Loading/Loading.js";
 import upload from "../../../../../../../images/upload.png";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import "./CreateProduct.css";
 
-const CreateProduct = () => {
+const CreateProduct = ({ setModalIsOpen }) => {
 	const [dataCategory, setDataCategory] = useState([]);
 	const [dataBrand, setDataBrand] = useState([]);
 
@@ -114,6 +116,9 @@ const CreateProduct = () => {
 					<input onChange={uploadImage} className="input-upload" type="file" />
 				</label>
 				<div className="button-add-product">
+					<button onClick={(e) => setModalIsOpen(false)} className="btn-cancel">
+						Cancel
+					</button>
 					<button onClick={onAddClass}>Add Product</button>
 				</div>
 			</div>
@@ -125,11 +130,19 @@ const CreateProduct = () => {
 						placeholder="Name Product ..."
 					/>
 				</div>
-				<div className="add-desc-product add-item">
+				<div className="add-desc-product add-item item-Editor">
 					<span>Description Product</span>
-					<textarea
+					{/* <textarea
 						onChange={(e) => setDescription(e.target.value)}
 						placeholder="desc Product ..."
+					/> */}
+					<CKEditor
+						editor={ClassicEditor}
+						data={description}
+						onChange={(event, editor) => {
+							const data = editor.getData();
+							setDescription(data);
+						}}
 					/>
 				</div>
 
@@ -162,7 +175,7 @@ const CreateProduct = () => {
 						onChange={(e) => onSelectBrand(e)}
 					>
 						<option value="" disabled selected>
-							Chọn category tương ứng
+							Chọn brand tương ứng
 						</option>
 						{dataBrand.map((item, id) => (
 							<option className="option-item" key={id} value={item._id}>
