@@ -81,7 +81,7 @@ const ResetPassword = () => {
 						</div>
 					</div>
 				</div>
-				<button className="btn-login" onClick={() => onResetPassword()}>
+				<button className="btn-login" onClick={(e) => onResetPassword(e)}>
 					Reset
 					<img className="icon-resgister" src={ArrowRight} alt=" " />
 				</button>
