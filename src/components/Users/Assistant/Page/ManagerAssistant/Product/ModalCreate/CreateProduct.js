@@ -130,21 +130,6 @@ const CreateProduct = ({ setModalIsOpen }) => {
 						placeholder="Name Product ..."
 					/>
 				</div>
-				<div className="add-desc-product add-item item-Editor">
-					<span>Description Product</span>
-					{/* <textarea
-						onChange={(e) => setDescription(e.target.value)}
-						placeholder="desc Product ..."
-					/> */}
-					<CKEditor
-						editor={ClassicEditor}
-						data={description}
-						onChange={(event, editor) => {
-							const data = editor.getData();
-							setDescription(data);
-						}}
-					/>
-				</div>
 
 				<div className="add-category-product add-item">
 					<span>Select Category</span>
@@ -190,6 +175,17 @@ const CreateProduct = ({ setModalIsOpen }) => {
 					<input
 						onChange={(e) => setPrice(e.target.value)}
 						placeholder="Price Product ..."
+					/>
+				</div>
+				<div className="add-desc-product add-item item-Editor">
+					<span>Description Product</span>
+					<CKEditor
+						editor={ClassicEditor}
+						data={description}
+						onChange={(event, editor) => {
+							const data = editor.getData();
+							setDescription(data);
+						}}
 					/>
 				</div>
 			</div>

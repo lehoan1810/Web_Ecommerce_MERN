@@ -97,7 +97,7 @@
 	opacity: 1;
 	transform: translateY(0px);
 }
-.description p {
+.description h3 {
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 3;
