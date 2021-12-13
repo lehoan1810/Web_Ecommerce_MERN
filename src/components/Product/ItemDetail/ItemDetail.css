@@ -173,3 +173,6 @@
 .btn-comeback button:hover {
 	opacity: 0.9;
 }
+.detail-info-item .detail-description {
+	line-height: 2;
+}

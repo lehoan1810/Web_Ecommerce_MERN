@@ -107,7 +107,9 @@ const ItemDetail = () => {
 							<span className="detail-version">
 								{/* Phiên bản Custom build chưa bao gồm: Switch, Keycap */}
 							</span>
-							<span>{parse(dataDetail.description)}</span>
+							<span className="detail-description">
+								{parse(dataDetail.description)}
+							</span>
 							{/* <span className="detail-insurance">Bảo hành: 24 tháng</span> */}
 							<span className="detail-price">
 								{new Intl.NumberFormat("it-IT", {
