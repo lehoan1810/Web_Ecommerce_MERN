@@ -44,7 +44,7 @@ html {
 
 body {
 	font-family: "Open sans", sans-serif;
-	line-height: 1;
+	/* line-height: 1; */
 
 	overflow-x: hidden;
 }
