@@ -20,10 +20,6 @@ button {
 	outline: none;
 }
 
-input {
-	line-height: normal;
-}
-
 label,
 button {
 	cursor: pointer;
