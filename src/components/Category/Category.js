@@ -3,6 +3,7 @@ import Content from "./Content/Content.js";
 import HeaderProduct from "./HeaderProduct/HeaderProduct.js";
 import Slider from "./Slider/Slider.js";
 import Footer from "../HomePage/Footer/Footer.js";
+import ProductNew from "./ProductNew/ProductNew.js";
 
 const Category = () => {
 	return (
@@ -10,8 +11,7 @@ const Category = () => {
 			<HeaderProduct />
 			<Slider />
 			<Content />
-			{/* <Footer /> */}
-			{/* <ProductHot /> */}
+			<ProductNew />
 			<Footer />
 		</div>
 	);

@@ -4,6 +4,9 @@ import authHeader from "../../../../../../service/AuthHeader.js";
 import TableProduct from "./TableProduct.js";
 import Modal from "react-modal";
 import ModalDeleteProduct from "./ModalDeleteProduct.js";
+import { Select } from "antd";
+import "./ManagerProduct.css";
+const { Option } = Select;
 
 const ManagerProduct = () => {
 	const [loading, setloading] = useState(false);
@@ -42,11 +45,11 @@ const ManagerProduct = () => {
 		};
 		loadBrand();
 	}, [test, selectCategory]);
-	const onSelectCategory = (e) => {
-		setSelectCategory(e.target.value);
+	const onSelectCategory = (item) => {
+		setSelectCategory(item);
 	};
-	const onSelectBrand = (e) => {
-		setSelectBrand(e.target.value);
+	const onSelectBrand = (item) => {
+		setSelectBrand(item);
 	};
 
 	// load product
@@ -134,40 +137,32 @@ const ManagerProduct = () => {
 				<h2 className="title-admin">Quản Lý Sản Phẩm</h2>
 				<div></div>
 				<div className="select-show">
-					<select
-						value={selectCategory}
-						name="product"
-						className="select-category"
-						id="product"
-						onChange={(e) => onSelectCategory(e)}
+					<Select
+						defaultValue="select Category"
+						style={{ width: "100%" }}
+						onChange={onSelectCategory}
 					>
-						<option value="" disabled selected>
-							Chọn category tương ứng
-						</option>
-						{dataCategory.map((item, id) => (
-							<option className="option-item" key={id} value={item._id}>
-								{item.name}
-							</option>
-						))}
-					</select>
+						{dataCategory &&
+							dataCategory.map((item, id) => (
+								<Option className="option-item" key={id} value={item._id}>
+									{item.name}
+								</Option>
+							))}
+					</Select>
 				</div>
 				<div className="select-show-product">
-					<select
-						value={selectBrand}
-						name="product"
-						className="select-category"
-						id="product"
-						onChange={(e) => onSelectBrand(e)}
+					<Select
+						defaultValue="select brand"
+						style={{ width: "100%" }}
+						onChange={onSelectBrand}
 					>
-						<option value="" disabled selected>
-							Chọn brand
-						</option>
-						{dataBrand.map((item, id) => (
-							<option className="option-item" key={id} value={item._id}>
-								{item.name}
-							</option>
-						))}
-					</select>
+						{dataBrand &&
+							dataBrand.map((item, id) => (
+								<Option className="option-item" key={id} value={item._id}>
+									{item.name}
+								</Option>
+							))}
+					</Select>
 				</div>
 				<TableProduct columns={columns} data={dataProduct} loading={loading} />
 			</div>

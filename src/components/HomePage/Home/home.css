@@ -135,6 +135,25 @@ section[id] {
 	width: 150px;
 	height: 150px;
 }
+.menu-home-item {
+	position: relative;
+}
+.menu-home-item::before {
+	content: "";
+	position: absolute;
+	/* background-color: red; */
+	background-image: linear-gradient(to left, #fc6c8f, #ff2ced);
+	height: 3px;
+	width: 0;
+	bottom: -10px;
+	transition: 0.3s;
+}
+.menu-home-link:hover {
+	color: white;
+}
+.menu-home-item:hover::before {
+	width: 100%;
+}
 @media screen and (max-width: 767px) {
 	.btn {
 		height: 45px;
@@ -234,7 +253,7 @@ section {
 
 .menu-home-link {
 	font-weight: 600;
-	color: white;
+	color: #d8d7d7;
 }
 @media screen and (max-width: 1023px) {
 	.menu {

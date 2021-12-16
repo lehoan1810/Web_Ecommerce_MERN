@@ -1,5 +1,10 @@
 import React from "react";
 import { Line } from "@ant-design/charts";
+import StatisticsUser from "./StatisticsUser";
+import StatisticsProduct from "./StatisticsProduct";
+
+import "./ManagerData.css";
+
 const ManagerData = () => {
 	const data = [
 		{ month: "Tháng 1", value: 3 },
@@ -29,6 +34,11 @@ const ManagerData = () => {
 	return (
 		<div>
 			<h2 className="title-admin">Thống Kê</h2>
+			<div className="statistics-count">
+				<StatisticsUser />
+				<StatisticsProduct />
+			</div>
+			<br />
 			<Line {...config} />
 		</div>
 	);
