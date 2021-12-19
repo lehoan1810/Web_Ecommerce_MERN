@@ -16,7 +16,7 @@ button {
 .cart-table {
 	padding: 40px;
 	display: flex;
-	/* justify-content: space-between; */
+	margin-top: 80px;
 	background-color: #f4f4f4;
 }
 

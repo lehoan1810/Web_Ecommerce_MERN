@@ -2,6 +2,7 @@
 	display: flex;
 	padding: 30px 120px;
 	background-color: #f4f4f4;
+	margin-top: 80px;
 }
 .user-handel {
 	flex: 1;

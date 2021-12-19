@@ -1,5 +1,6 @@
 .product-background {
 	background-color: #f4f4f4;
+	margin-top: 80px;
 }
 .container-detail {
 	padding: 20px 90px;
@@ -167,8 +168,9 @@
 	padding: 8px 20px;
 	color: white;
 	background-color: #148edf;
-	margin-left: 10px;
+	margin-left: 40px;
 	border-radius: 4px;
+	margin-top: 20px;
 }
 .btn-comeback button:hover {
 	opacity: 0.9;

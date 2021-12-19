@@ -1,10 +1,15 @@
 .header-background {
 	/* background-color: #a19f9f9c; */
 	/* background-color: #969696; */
-	font-size: 18px;
-	border-bottom: 3px solid #cdcdcd;
 	margin-bottom: 10px;
+	font-size: 18px;
 	background-color: white;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 1000;
 }
 .icon-shop {
 	width: 28px;
@@ -14,6 +19,8 @@
 .card-shop {
 	/* position: relative; */
 	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 .header-icon-number {
 	position: relative;
@@ -23,43 +30,19 @@
 }
 
 .number-product {
+	display: block;
 	position: absolute;
 	color: white;
+	background-color: red;
+	padding: 2px 6px;
 	top: 0;
 	right: 0;
-	z-index: 2;
-	font-size: 13px;
+	font-size: 12px;
 	font-weight: 600;
-	/* transform: translate(50%, -10%); */
-	transform: translateX(3px);
-}
-
-.header-icon-number::after {
-	position: absolute;
-	display: block;
-	content: "";
-	font-size: 13px;
-	/* background-color: rgb(255, 146, 146); */
-	background-color: #ff6651;
-	top: 0;
-	right: 0;
-	width: 18px;
-	height: 18px;
+	text-align: center;
+	transform: translate(10px, -5px);
 	border-radius: 50%;
-	transform: translateX(10px);
-}
-.header-icon-like::after {
-	position: absolute;
-	content: "";
-	font-size: 13px;
-	/* background-color: rgb(255, 146, 146); */
-	background-color: #ff6651;
-	top: 0;
-	right: 0;
-	width: 18px;
-	height: 18px;
-	border-radius: 50%;
-	transform: translateX(10px);
+	line-height: 18px;
 }
 
 .header-padding {
@@ -81,8 +64,27 @@
 	display: inline-block;
 }
 .header-icon-role {
-	display: flex;
+	margin-left: 20px;
+	width: 50px;
+	height: 50px;
+	padding: 3px;
+	background: linear-gradient(
+		200deg,
+		#da3394 25%,
+		#e03c67 50%,
+		#f3753b 75%,
+		#f99b4a 100%
+	);
+	border-radius: 50%;
+	margin-right: 10px;
+}
+.header-icon-role img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 100%;
 	cursor: pointer;
+	border: 3px solid #fff;
 }
 .role-login {
 	padding: 10px;
@@ -102,4 +104,51 @@
 }
 .role-login:hover {
 	color: white;
+}
+.bell-noti-icon {
+	width: 22px;
+	height: 22px;
+}
+.bell-noti {
+	cursor: pointer;
+	font-size: 5rem;
+	color: #ccc;
+	position: relative;
+	display: inline-block;
+	margin-left: 20px;
+	padding: 8px;
+	border-radius: 50px;
+	background: linear-gradient(145deg, #e6e6e6, #ffffff);
+	box-shadow: 18px 18px 37px #d9d9d9, -18px -18px 37px #ffffff;
+}
+.item-message {
+	cursor: pointer;
+	background-color: rgb(218, 216, 216);
+	padding: 8px;
+	border-radius: 50px;
+	background: linear-gradient(145deg, #e6e6e6, #ffffff);
+	box-shadow: 18px 18px 37px #d9d9d9, -18px -18px 37px #ffffff;
+}
+.mess-margin-left {
+	margin-left: 30px;
+}
+.bell-noti-icon:hover {
+	animation: ring 0.25s forwards alternate infinite linear;
+}
+.bell-noti-status {
+	width: 1rem;
+	height: 1rem;
+	border-radius: 1rem;
+	background-color: var(--secondary);
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+@keyframes ring {
+	from {
+		transform: rotate(-10deg);
+	}
+	to {
+		transform: rotate(10deg);
+	}
 }

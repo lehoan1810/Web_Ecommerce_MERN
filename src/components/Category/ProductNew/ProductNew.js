@@ -1,14 +1,31 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import New from "../../../images/crown.png";
+import authHeader from "../../../service/AuthHeader";
 import "./ProductNew.css";
 
 const ProductNew = () => {
+	const [newProducts, setNewProducts] = useState([]);
+	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/category/get5ProductsNew`;
+
+	useEffect(() => {
+		const loadUser = () => {
+			axios
+				.get(url, { headers: authHeader() })
+				.then((res) => {
+					setNewProducts(res.data.products);
+					console.log("users: ", res.data.products);
+				})
+				.catch((err) => console.log(err));
+		};
+		loadUser();
+	}, [url]);
 	var settings = {
 		dots: true,
 		infinite: true,
 		speed: 500,
-		slidesToShow: 3,
+		slidesToShow: 4,
 		slidesToScroll: 3,
 	};
 	return (
@@ -21,18 +38,28 @@ const ProductNew = () => {
 
 				<div className="list-product-new">
 					<Slider {...settings}>
-						<div>
-							<img alt="" src="http://placekitten.com/g/400/200" />
-						</div>
-						<div>
-							<img alt="" src="http://placekitten.com/g/400/200" />
-						</div>
-						<div>
-							<img alt="" src="http://placekitten.com/g/400/200" />
-						</div>
-						<div>
-							<img alt="" src="http://placekitten.com/g/400/200" />
-						</div>
+						{newProducts &&
+							newProducts.map((item, id) => (
+								<div key={id}>
+									<div className="container-new-products">
+										<div className="new-product-image">
+											<img
+												className="img-new-product"
+												src={item.productPicture}
+												alt=""
+											/>
+										</div>
+										<div className="new-product-icon">
+											<span>number 1</span>
+										</div>
+										<div className="new-product-desc">
+											<span>{item.name}</span>
+											<h3 className="chafo">{item.price}</h3>
+										</div>
+										{/* <div className="new-product-icon"></div> */}
+									</div>
+								</div>
+							))}
 					</Slider>
 				</div>
 			</div>
