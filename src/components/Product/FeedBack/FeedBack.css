@@ -105,6 +105,8 @@
 	font-size: 1.3rem;
 	margin-bottom: 0;
 	display: inline-block;
+	padding-left: 10px;
+	padding-top: 2px;
 }
 .handle-review {
 	margin-top: 10px;
