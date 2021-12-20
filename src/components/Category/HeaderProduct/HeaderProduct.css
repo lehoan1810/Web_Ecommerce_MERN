@@ -78,7 +78,7 @@
 	border-radius: 50%;
 	margin-right: 10px;
 }
-.header-icon-user img {
+.header-icon-user .icon-user {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
@@ -145,6 +145,60 @@
 	right: 0;
 	top: 0;
 }
+/* UI logout */
+
+.header-log-out {
+	padding: 5px 15px;
+	position: absolute;
+	background-color: rgb(228, 228, 228);
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+		rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+	width: 14rem;
+	top: 75px;
+	display: none;
+	transform-origin: calc(100% - 90px) top;
+	animation: headerLogOut ease-in-out 0.4s;
+}
+.header-log-out .logOut {
+	font-size: 1.3rem;
+	padding: 3px;
+	color: #333;
+}
+.header-log-out .logOut img {
+	width: 2rem;
+	height: 2rem;
+	display: inline-block;
+	margin-right: 10px;
+}
+@keyframes headerLogOut {
+	from {
+		opacity: 0;
+		transform: scale(0);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+.header-icon-user:hover .header-log-out {
+	display: block;
+}
+
+.header-log-out::before {
+	content: "";
+	position: absolute;
+	width: 3rem;
+	height: 3rem;
+	border: 19px solid;
+	top: -32px;
+	left: 4px;
+	border-color: transparent transparent rgb(228, 228, 228) transparent;
+}
+.header-icon-user {
+	display: block;
+}
+
+/* keyframe animation */
 @keyframes ring {
 	from {
 		transform: rotate(-10deg);

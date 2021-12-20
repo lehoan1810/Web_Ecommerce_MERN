@@ -4,12 +4,15 @@ import Logo from "../../../images/LogoBrand.png";
 import CardTick from "../../../images/Bag.png";
 import Like from "../../../images/like.png";
 import Bell from "../../../images/notification.png";
+import Logout from "../../../images/Logout.png";
 import Message from "../../../images/message.png";
 import "./HeaderProduct.css";
 import authHeader from "../../../service/AuthHeader.js";
+
 import axios from "axios";
 import {
 	getCurrentRole,
+	logout,
 	getCurrentIdUser,
 } from "../../../service/AuthService.js";
 const HeaderProduct = () => {
@@ -58,6 +61,9 @@ const HeaderProduct = () => {
 			return length;
 		}
 	};
+	const logOut = async () => {
+		await logout();
+	};
 
 	return (
 		<header className="header-background">
@@ -96,7 +102,15 @@ const HeaderProduct = () => {
 									<div className="bell-noti-status"></div>
 								</div>
 								<div className="header-icon-user">
-									<img src={dataProfile.photo} alt="" />
+									<img className="icon-user" src={dataProfile.photo} alt="" />
+									<div className="header-log-out">
+										<div className="header-log-out-item">
+											<Link className="logOut" to="/">
+												<img src={Logout} alt="" />
+												<span onClick={logOut}>Đăng xuất</span>
+											</Link>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -109,8 +123,8 @@ const HeaderProduct = () => {
 								<img src={Bell} alt="" className="bell-noti-icon" />
 								<div className="bell-noti-status"></div>
 							</div>
-							<div className="header-icon-role">
-								<img src={dataProfile.photo} alt="" />
+							<div className="header-icon-user">
+								<img className="icon-user" src={dataProfile.photo} alt="" />
 							</div>
 						</div>
 					) : roleUser === "admin" ? (
@@ -122,8 +136,8 @@ const HeaderProduct = () => {
 								<img src={Bell} alt="" className="bell-noti-icon" />
 								<div className="bell-noti-status"></div>
 							</div>
-							<div className="header-icon-role">
-								<img src={dataProfile.photo} alt="" />
+							<div className="header-icon-user">
+								<img className="icon-user" src={dataProfile.photo} alt="" />
 							</div>
 						</div>
 					) : (
