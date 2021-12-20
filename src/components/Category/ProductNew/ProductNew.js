@@ -3,7 +3,11 @@ import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import New from "../../../images/crown.png";
 import authHeader from "../../../service/AuthHeader";
+import Like from "../../../images/Heart-new.png";
+import Detail from "../../../images/Show-new.png";
+import Cart from "../../../images/Buy-new.png";
 import "./ProductNew.css";
+import { Link } from "react-router-dom";
 
 const ProductNew = () => {
 	const [newProducts, setNewProducts] = useState([]);
@@ -50,11 +54,30 @@ const ProductNew = () => {
 											/>
 										</div>
 										<div className="new-product-icon">
-											<span>number 1</span>
+											<div>
+												<Link to="">
+													<img src={Cart} alt="" />
+												</Link>
+											</div>
+											<div>
+												<Link to="">
+													<img src={Like} alt="" />
+												</Link>
+											</div>
+											<div>
+												<Link to={`product/detail/${item.id}`}>
+													<img src={Detail} alt="" />
+												</Link>
+											</div>
 										</div>
 										<div className="new-product-desc">
 											<span>{item.name}</span>
-											<h3 className="chafo">{item.price}</h3>
+											<h3 className="price">
+												{new Intl.NumberFormat("it-IT", {
+													style: "currency",
+													currency: "VND",
+												}).format(item.price)}
+											</h3>
 										</div>
 										{/* <div className="new-product-icon"></div> */}
 									</div>

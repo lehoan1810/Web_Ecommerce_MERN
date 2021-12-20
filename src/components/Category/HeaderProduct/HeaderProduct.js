@@ -95,7 +95,7 @@ const HeaderProduct = () => {
 									<img src={Bell} alt="" className="bell-noti-icon" />
 									<div className="bell-noti-status"></div>
 								</div>
-								<div className="header-icon-role">
+								<div className="header-icon-user">
 									<img src={dataProfile.photo} alt="" />
 								</div>
 							</div>
