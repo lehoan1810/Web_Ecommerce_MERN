@@ -3,11 +3,13 @@ import TableProduct from "./TableProduct.js";
 import { Input } from "antd";
 import Modal from "react-modal";
 import axios from "axios";
-import "./ManagerProduct.css";
 import CreateProduct from "./ModalCreate/CreateProduct.js";
 import authHeader from "../../../../../../service/AuthHeader.js";
 import ModalUpdate from "./ModalUpdate/ModalUpdate.js";
+import { Select } from "antd";
+import "./ManagerProduct.css";
 const { Search } = Input;
+const { Option } = Select;
 
 const ManagerProduct = () => {
 	const [loading, setloading] = useState(false);
@@ -48,12 +50,11 @@ const ManagerProduct = () => {
 		};
 		loadBrand();
 	}, [test, selectCategory]);
-	const onSelectCategory = (e) => {
-		setSelectCategory(e.target.value);
+	const onSelectCategory = (item) => {
+		setSelectCategory(item);
 	};
-	const onSelectBrand = (e) => {
-		setSelectBrand(e.target.value);
-		console.log(e.target.value);
+	const onSelectBrand = (item) => {
+		setSelectBrand(item);
 	};
 
 	// load product
@@ -170,40 +171,32 @@ const ManagerProduct = () => {
 					</button>
 				</div>
 				<div className="select-show">
-					<select
-						value={selectCategory}
-						name="product"
-						className="select-category"
-						id="product"
-						onChange={(e) => onSelectCategory(e)}
+					<Select
+						defaultValue="select Category"
+						style={{ width: "100%" }}
+						onChange={onSelectCategory}
 					>
-						<option value="" disabled selected>
-							Chọn category tương ứng
-						</option>
-						{dataCategory.map((item, id) => (
-							<option className="option-item" key={id} value={item._id}>
-								{item.name}
-							</option>
-						))}
-					</select>
+						{dataCategory &&
+							dataCategory.map((item, id) => (
+								<Option className="option-item" key={id} value={item._id}>
+									{item.name}
+								</Option>
+							))}
+					</Select>
 				</div>
 				<div className="select-show-product">
-					<select
-						value={selectBrand}
-						name="product"
-						className="select-category"
-						id="product"
-						onChange={(e) => onSelectBrand(e)}
+					<Select
+						defaultValue="select brand"
+						style={{ width: "100%" }}
+						onChange={onSelectBrand}
 					>
-						<option value="" disabled selected>
-							Chọn brand
-						</option>
-						{dataBrand.map((item, id) => (
-							<option className="option-item" key={id} value={item._id}>
-								{item.name}
-							</option>
-						))}
-					</select>
+						{dataBrand &&
+							dataBrand.map((item, id) => (
+								<Option className="option-item" key={id} value={item._id}>
+									{item.name}
+								</Option>
+							))}
+					</Select>
 				</div>
 				<TableProduct columns={columns} data={filterData()} loading={loading} />
 			</div>
@@ -218,7 +211,7 @@ const ManagerProduct = () => {
 					content: {
 						width: "80vw",
 						margin: "auto",
-						height: "55rem",
+						height: "70rem",
 					},
 				}}
 			>
@@ -235,7 +228,7 @@ const ManagerProduct = () => {
 					content: {
 						width: "80vw",
 						margin: "auto",
-						height: "50rem",
+						height: "60rem",
 					},
 				}}
 			>

@@ -19,3 +19,6 @@
 	display: inline-block;
 	margin-bottom: 10px;
 }
+.anticon svg {
+	font-size: 13px;
+}

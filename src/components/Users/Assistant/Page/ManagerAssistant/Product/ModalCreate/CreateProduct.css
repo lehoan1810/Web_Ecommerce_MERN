@@ -78,3 +78,12 @@
 .ck.ck-editor__editable_inline {
 	padding: 0 20px;
 }
+.ck-editor__editable {
+	margin-bottom: 20px;
+}
+.add-category-product .title-select-category {
+	color: #ff6868;
+	font-weight: 500;
+	font-size: 1.6rem;
+	margin-bottom: 10px;
+}

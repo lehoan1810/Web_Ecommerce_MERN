@@ -7,6 +7,8 @@ import upload from "../../../../../../../images/upload.png";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import "./CreateProduct.css";
+import { Select } from "antd";
+const { Option } = Select;
 
 const CreateProduct = ({ setModalIsOpen }) => {
 	const [dataCategory, setDataCategory] = useState([]);
@@ -17,6 +19,7 @@ const CreateProduct = ({ setModalIsOpen }) => {
 	const [price, setPrice] = useState("");
 	const [selectCategory, setSelectCategory] = useState("");
 	const [selectBrand, setSelectBrand] = useState("");
+	const [specification, setSpecification] = useState("");
 
 	// post image
 	const [imageSelected, setImageSelected] = useState("");
@@ -67,12 +70,18 @@ const CreateProduct = ({ setModalIsOpen }) => {
 		};
 		loadBrand();
 	}, [test, selectCategory]);
-	const onSelectCategory = (e) => {
-		setSelectCategory(e.target.value);
+	// const onSelectCategory = (e) => {
+	// 	setSelectCategory(e.target.value);
+	// };
+	// const onSelectBrand = (e) => {
+	// 	setSelectBrand(e.target.value);
+	// 	console.log(e.target.value);
+	// };
+	const onSelectCategory = (item) => {
+		setSelectCategory(item);
 	};
-	const onSelectBrand = (e) => {
-		setSelectBrand(e.target.value);
-		console.log(e.target.value);
+	const onSelectBrand = (item) => {
+		setSelectBrand(item);
 	};
 
 	const urlAddCategory = `${process.env.REACT_APP_API_LOCAL}/api/v1/category/addproduct`;
@@ -86,6 +95,7 @@ const CreateProduct = ({ setModalIsOpen }) => {
 					price: price,
 					category: selectBrand,
 					productPicture: imageSelected,
+					specification: specification,
 				},
 				{
 					headers: authHeader(),
@@ -131,43 +141,35 @@ const CreateProduct = ({ setModalIsOpen }) => {
 					/>
 				</div>
 
-				<div className="add-category-product add-item">
-					<span>Select Category</span>
-					<select
-						value={selectCategory}
-						name="product"
-						className="select-category"
-						id="product"
-						onChange={(e) => onSelectCategory(e)}
+				<div className="add-category-product add-item-brand">
+					<span className="title-select-category">Select Category</span>
+					<Select
+						defaultValue="select Category"
+						style={{ width: "100%" }}
+						onChange={onSelectCategory}
 					>
-						<option value="" disabled selected>
-							Chọn category tương ứng
-						</option>
-						{dataCategory.map((item, id) => (
-							<option className="option-item" key={id} value={item._id}>
-								{item.name}
-							</option>
-						))}
-					</select>
+						{dataCategory &&
+							dataCategory.map((item, id) => (
+								<Option className="option-item" key={id} value={item._id}>
+									{item.name}
+								</Option>
+							))}
+					</Select>
 				</div>
-				<div className="add-category-product add-item">
-					<span>Select Brand</span>
-					<select
-						value={selectBrand}
-						name="product"
-						className="select-category"
-						id="product"
-						onChange={(e) => onSelectBrand(e)}
+				<div className="add-category-product add-item-brand">
+					<span className="title-select-category">Select Brand</span>
+					<Select
+						defaultValue="select brand"
+						style={{ width: "100%" }}
+						onChange={onSelectBrand}
 					>
-						<option value="" disabled selected>
-							Chọn brand tương ứng
-						</option>
-						{dataBrand.map((item, id) => (
-							<option className="option-item" key={id} value={item._id}>
-								{item.name}
-							</option>
-						))}
-					</select>
+						{dataBrand &&
+							dataBrand.map((item, id) => (
+								<Option className="option-item" key={id} value={item._id}>
+									{item.name}
+								</Option>
+							))}
+					</Select>
 				</div>
 
 				<div className="add-price-product add-item">
@@ -185,6 +187,15 @@ const CreateProduct = ({ setModalIsOpen }) => {
 						onChange={(event, editor) => {
 							const data = editor.getData();
 							setDescription(data);
+						}}
+					/>
+					<span>Specification Product</span>
+					<CKEditor
+						editor={ClassicEditor}
+						data={specification}
+						onChange={(event, editor) => {
+							const data = editor.getData();
+							setSpecification(data);
 						}}
 					/>
 				</div>

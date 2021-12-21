@@ -1,21 +1,25 @@
 import React, { useEffect, useState } from "react";
-import { Rate } from "antd";
-import HeaderProduct from "../../Category/HeaderProduct/HeaderProduct.js";
-import { useParams } from "react-router-dom";
-import Like from "../../../images/like.png";
-import FeedBack from "../FeedBack/FeedBack.js";
-import authHeader from "../../../service/AuthHeader.js";
-import Edit from "../../../images/Edit.png";
 import axios from "axios";
+import { Rate } from "antd";
+import { useParams } from "react-router-dom";
 import { Link, useHistory } from "react-router-dom";
-import "./ItemDetail.css";
-import parse from "html-react-parser/dist/html-react-parser";
-
-// test create review
 import Modal from "react-modal";
-import ModalAccess from "../../Users/Client/Page/Purchase/Order/ModalRating";
-import { getCurrentIdUser } from "../../../service/AuthService.js";
 import { toast } from "react-toastify";
+import parse from "html-react-parser/dist/html-react-parser";
+import HeaderProduct from "../../Category/HeaderProduct/HeaderProduct.js";
+import authHeader from "../../../service/AuthHeader.js";
+import { getCurrentIdUser } from "../../../service/AuthService.js";
+import FeedBack from "../FeedBack/FeedBack.js";
+import ModalAccess from "../../Users/Client/Page/Purchase/Order/ModalRating";
+
+// import image
+import Like from "../../../images/like.png";
+import Edit from "../../../images/Edit.png";
+import Planes from "../../../images/airplane.png";
+import Return from "../../../images/return.png";
+import Payment from "../../../images/credit-card.png";
+import Parameters from "./Parameters.js";
+import "./ItemDetail.css";
 
 const ItemDetail = () => {
 	const { id } = useParams();
@@ -102,16 +106,22 @@ const ItemDetail = () => {
 					<div className="container-detail-flex">
 						<div className="detail-image">
 							<img src={dataDetail.productPicture} alt="" />
+							<Parameters dataDetail={dataDetail} />
 						</div>
 						<div className="detail-info-item">
 							<h2 className="name-detail-item">{dataDetail.name}</h2>
-							<span className="detail-version">
-								{/* Phiên bản Custom build chưa bao gồm: Switch, Keycap */}
-							</span>
+							<span className="detail-version"></span>
 							<span className="detail-description">
 								{parse(dataDetail.description)}
 							</span>
-							{/* <span className="detail-insurance">Bảo hành: 24 tháng</span> */}
+							<span className="detail-insurance">
+								<Rate
+									disabled
+									allowHalf
+									defaultValue={dataDetail.ratingsAverage}
+								/>
+								({dataDetail.ratingsQuantity})
+							</span>
 							<span className="detail-price">
 								{new Intl.NumberFormat("it-IT", {
 									style: "currency",
@@ -142,6 +152,20 @@ const ItemDetail = () => {
 								<button className="detail-item-like">
 									<img className="item-like-img" src={Like} alt="" />
 								</button>
+							</div>
+							<div className="list-commit">
+								<div className="item-commit">
+									<img src={Planes} alt="" />
+									<span>Free international shipping for order over $40</span>
+								</div>
+								<div className="item-commit">
+									<img src={Payment} alt="" />
+									<span>Secured Payment</span>
+								</div>
+								<div className="item-commit">
+									<img src={Return} alt="" />
+									<span>Return within 15 days</span>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -199,12 +223,12 @@ const ItemDetail = () => {
 					content: {
 						width: "40rem",
 						margin: "auto",
-						height: "33rem",
+						height: "34rem",
 					},
 				}}
 			>
 				<ModalAccess
-					dataProduct={id}
+					dataProduct={dataDetail.name}
 					dataUser={dataUser}
 					setModalIsOpen={setModalIsOpen}
 				/>

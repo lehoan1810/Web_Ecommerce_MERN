@@ -57,7 +57,9 @@ const ModalRating = ({ dataUser, dataProduct }) => {
 				/>
 			</div>
 			<div className="button-rating">
-				<button onClick={onCreateReview}>Send</button>
+				<button onClick={onCreateReview}>
+					<span>Send</span>
+				</button>
 			</div>
 		</div>
 	);

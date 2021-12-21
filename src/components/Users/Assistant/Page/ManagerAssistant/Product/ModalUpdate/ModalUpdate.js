@@ -12,6 +12,7 @@ const ModalUpdate = ({ data, setModalIsOpen }) => {
 	const [name, setName] = useState(data.name);
 	const [description, setDescription] = useState(data.description);
 	const [price, setPrice] = useState(data.price);
+	const [specification, setSpecification] = useState(data.specification);
 
 	// post image
 	const [imageSelected, setImageSelected] = useState(data.productPicture);
@@ -43,6 +44,7 @@ const ModalUpdate = ({ data, setModalIsOpen }) => {
 					description: description,
 					price: price,
 					productPicture: imageSelected,
+					specification: specification,
 				},
 				{
 					headers: authHeader(),
@@ -88,13 +90,16 @@ const ModalUpdate = ({ data, setModalIsOpen }) => {
 						value={name}
 					/>
 				</div>
+				<div className="add-price-product add-item">
+					<span>Price Product</span>
+					<input
+						onChange={(e) => setPrice(e.target.value)}
+						placeholder={data.price}
+						value={price}
+					/>
+				</div>
 				<div className="add-desc-product add-item">
 					<span>Description Product</span>
-					{/* <textarea
-						onChange={(e) => setDescription(e.target.value)}
-						placeholder={data.description}
-						value={description}
-					/> */}
 					<CKEditor
 						placeholder={data.description}
 						editor={ClassicEditor}
@@ -104,14 +109,15 @@ const ModalUpdate = ({ data, setModalIsOpen }) => {
 							setDescription(data);
 						}}
 					/>
-				</div>
-
-				<div className="add-price-product add-item">
-					<span>Price Product</span>
-					<input
-						onChange={(e) => setPrice(e.target.value)}
-						placeholder={data.price}
-						value={price}
+					<span>Specification Product</span>
+					<CKEditor
+						placeholder={data.description}
+						editor={ClassicEditor}
+						data={specification}
+						onChange={(event, editor) => {
+							const data = editor.getData();
+							setSpecification(data);
+						}}
 					/>
 				</div>
 			</div>
