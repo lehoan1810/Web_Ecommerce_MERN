@@ -5,7 +5,7 @@ import "./PaymentProduct.css";
 import { getCurrentIdUser } from "../../../service/AuthService.js";
 import { toast } from "react-toastify";
 
-const PaymentProduct = ({ data }) => {
+const PaymentProduct = ({ dataCart, data }) => {
 	const idUser = getCurrentIdUser();
 	const [dataUser, setDataUser] = useState([]);
 	const [loading, setLoading] = useState();
@@ -43,7 +43,6 @@ const PaymentProduct = ({ data }) => {
 			.then((res) => {
 				console.log(res.data);
 				window.location = res.data.forwardLink;
-				toast.success("success !!!");
 				setLoading(false);
 			})
 			.catch((err) => {
@@ -74,10 +73,16 @@ const PaymentProduct = ({ data }) => {
 						<span>Free Ship</span>
 					</div>
 				</div>
-
-				<div className="btn-payment-price">
-					<button onClick={paypal}>Thanh Toán</button>
-				</div>
+				{dataCart && dataCart.length > 0 && (
+					<div className="btn-payment-price">
+						<button onClick={paypal}>Thanh Toán</button>
+					</div>
+				)}
+				{dataCart.length <= 0 && (
+					<div className="btn-payment-price">
+						<button>Không có sản phẩm để thanh toán</button>
+					</div>
+				)}
 				<div className="background-loading-center">
 					{loading === true && <span>Đang xử lý...</span>}
 				</div>

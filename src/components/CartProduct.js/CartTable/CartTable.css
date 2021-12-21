@@ -95,13 +95,13 @@ button {
 }
 .action-delete {
 	padding: 10px;
-	background-color: #e96747;
+	background-color: #e44119;
 	border-radius: 5px;
 	color: white;
 	transition: all 0.3s ease-in;
 }
 .action-delete:hover {
-	color: #333;
+	opacity: 0.7;
 }
 
 .count-cart-product {

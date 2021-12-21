@@ -104,10 +104,10 @@ const HeaderProduct = () => {
 								<div className="header-icon-user">
 									<img className="icon-user" src={dataProfile.photo} alt="" />
 									<div className="header-log-out">
-										<div className="header-log-out-item">
+										<div onClick={logOut} className="header-log-out-item">
 											<Link className="logOut" to="/">
 												<img src={Logout} alt="" />
-												<span onClick={logOut}>Đăng xuất</span>
+												<span>Đăng xuất</span>
 											</Link>
 										</div>
 									</div>

@@ -80,6 +80,7 @@ const ItemDetail = () => {
 				.post(urlAdd, { productId: id, qty: count }, { headers: authHeader() })
 				.then((res) => {
 					toast.success("Add to Cart Success !!!", { autoClose: 1500 });
+					window.location.reload();
 				})
 				.catch((err) => toast.error("Faild"));
 		}

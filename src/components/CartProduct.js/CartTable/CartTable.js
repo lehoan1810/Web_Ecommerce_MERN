@@ -142,7 +142,7 @@ const CartTable = () => {
 					))}
 				</table>
 			</div>
-			<PaymentProduct data={dataUser} />
+			<PaymentProduct dataCart={dataCart} data={dataUser} />
 			<Modal
 				isOpen={modalIsOpen}
 				ariaHideApp={false}
