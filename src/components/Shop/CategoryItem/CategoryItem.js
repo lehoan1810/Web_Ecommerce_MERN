@@ -22,7 +22,7 @@ const CategoryItem = () => {
 		setPageCurrent(page);
 		console.log("page: ", page);
 	};
-	const url = `http://localhost:5000/api/v1/category/paginationSort/${id}/`;
+	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/category/paginationSort/${id}/`;
 	useEffect(() => {
 		const loadProduct = () => {
 			axios
