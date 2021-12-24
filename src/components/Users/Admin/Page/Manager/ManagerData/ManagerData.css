@@ -63,3 +63,10 @@
 .ant-picker-cell-in-view.ant-picker-cell-today .ant-picker-cell-inner::before {
 	border-radius: 50%;
 }
+.title-graph {
+	text-transform: uppercase;
+	font-weight: 600;
+}
+.graph-product {
+	margin-bottom: 20px;
+}

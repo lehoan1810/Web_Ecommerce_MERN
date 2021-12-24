@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import { Line } from "@ant-design/charts";
 import StatisticsUser from "./StatisticsUser";
 import StatisticsProduct from "./StatisticsProduct";
-import { Calendar } from "antd";
+import { Calendar, Select } from "antd";
 import moment from "moment";
 
 import "./ManagerData.css";
 import axios from "axios";
 import authHeader from "../../../../../../service/AuthHeader";
+
+const { Option } = Select;
 
 const ManagerData = () => {
 	const [dataStatistic, setDataStatistic] = useState([]);
@@ -26,7 +28,11 @@ const ManagerData = () => {
 	let yearsCurrent = new Date(),
 		newYears = yearsCurrent.getFullYear();
 	console.log("years: ", newYears);
-	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/statistics/${newYears}`;
+	const [year, setYear] = useState(newYears);
+	const handleChange = (item) => {
+		setYear(item);
+	};
+	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/statistics/${year}`;
 	useEffect(() => {
 		const loadUser = () => {
 			axios
@@ -77,7 +83,20 @@ const ManagerData = () => {
 			</div>
 
 			<br />
-			<Line {...config} />
+			<div>
+				<h2 className="title-graph">Đồ thị tổng sản phẩm bán được</h2>
+				<div className="graph-product">
+					<Select
+						defaultValue={year}
+						style={{ width: 120 }}
+						onChange={handleChange}
+					>
+						<Option value="2021">2021</Option>
+						<Option value="2022">2022</Option>
+					</Select>
+				</div>
+				<Line {...config} />
+			</div>
 		</div>
 	);
 };
