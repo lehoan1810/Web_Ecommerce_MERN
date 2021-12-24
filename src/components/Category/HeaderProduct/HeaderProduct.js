@@ -125,6 +125,14 @@ const HeaderProduct = () => {
 							</div>
 							<div className="header-icon-user">
 								<img className="icon-user" src={dataProfile.photo} alt="" />
+								<div className="header-log-out">
+									<div onClick={logOut} className="header-log-out-item">
+										<Link className="logOut" to="/">
+											<img src={Logout} alt="" />
+											<span>Đăng xuất</span>
+										</Link>
+									</div>
+								</div>
 							</div>
 						</div>
 					) : roleUser === "admin" ? (
@@ -138,6 +146,14 @@ const HeaderProduct = () => {
 							</div>
 							<div className="header-icon-user">
 								<img className="icon-user" src={dataProfile.photo} alt="" />
+								<div className="header-log-out">
+									<div onClick={logOut} className="header-log-out-item">
+										<Link className="logOut" to="/">
+											<img src={Logout} alt="" />
+											<span>Đăng xuất</span>
+										</Link>
+									</div>
+								</div>
 							</div>
 						</div>
 					) : (
