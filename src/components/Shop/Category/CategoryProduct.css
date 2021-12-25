@@ -48,9 +48,9 @@
 	grid-template-columns: 1fr 1fr 1fr 1fr;
 	grid-gap: 2rem;
 }
-.item-flex {
+/* .item-flex {
 	margin: 0 3px;
-}
+} */
 .sub-item-product {
 	padding-left: 30px;
 	padding-top: 10px;

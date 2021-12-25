@@ -114,6 +114,12 @@ const CategoryItem = () => {
 		return dataProduct.filter(({ price }) => price <= filterInput);
 	};
 
+	//toggle
+	const [toggleType, setToggleType] = useState("net");
+	const toggleProduct = (item) => {
+		setToggleType(item);
+	};
+
 	return (
 		<div>
 			{dataProduct && dataProduct.length > 0 && (
@@ -128,10 +134,16 @@ const CategoryItem = () => {
 							></input>
 						</div>
 						<div className="handel-product">
-							<div className="layout-icon layout-list">
+							<div
+								onClick={() => toggleProduct("list")}
+								className="layout-icon layout-list"
+							>
 								<img src={List} alt="" />
 							</div>
-							<div className="layout-icon layout-net">
+							<div
+								onClick={() => toggleProduct("net")}
+								className="layout-icon layout-net"
+							>
 								<img src={Net} alt="" />
 							</div>
 
@@ -157,10 +169,16 @@ const CategoryItem = () => {
 							</div>
 						</div>
 					</div>
-					<div className="show-item-product">
+					<div
+						className={
+							toggleType === "net"
+								? "show-item-product"
+								: "show-item-product-list"
+						}
+					>
 						{filterData().map((item, id) => (
 							<div key={id} className="item-flex">
-								<ItemProduct data={item} />
+								<ItemProduct toggleType={toggleType} data={item} />
 							</div>
 						))}
 					</div>

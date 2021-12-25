@@ -9,7 +9,7 @@ import { getCurrentIdUser } from "../../../service/AuthService";
 import axios from "axios";
 import authHeader from "../../../service/AuthHeader";
 
-const ItemProduct = ({ data }) => {
+const ItemProduct = ({ toggleType, data }) => {
 	const linkTarget = (e) => {
 		window.location.href = `/product/detail/${data._id}`;
 	};
@@ -29,9 +29,15 @@ const ItemProduct = ({ data }) => {
 		}
 	};
 	return (
-		<div className="product-item">
+		<div
+			className={toggleType === "list" ? "product-item-list" : "product-item"}
+		>
 			<div className="product-image-show">
-				<img className="product-item-img" src={data.productPicture} alt="" />
+				<img
+					className="product-item-img type-list-image"
+					src={data.productPicture}
+					alt=""
+				/>
 			</div>
 			<div className="description">
 				<h3>{data.name}</h3>

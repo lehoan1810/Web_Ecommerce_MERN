@@ -26,8 +26,8 @@
 } */
 .profile-item:hover {
 	/* border-right: 5px solid #333; */
-	background-color: rgb(255, 118, 118);
-	color: white;
+	/* background-color: rgb(255, 118, 118); */
+	color: rgb(255, 118, 118);
 	transition: all 0.3s ease-in;
 }
 .user-dashboard .active .profile-item {
