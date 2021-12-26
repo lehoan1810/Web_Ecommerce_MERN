@@ -228,6 +228,7 @@ const ItemDetail = () => {
 				}}
 			>
 				<ModalAccess
+					idProduct={dataDetail.id}
 					dataProduct={dataDetail.name}
 					dataUser={dataUser}
 					setModalIsOpen={setModalIsOpen}

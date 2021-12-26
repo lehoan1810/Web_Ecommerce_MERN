@@ -25,6 +25,10 @@ const ManagerCategory = () => {
 	const urlCategory = `${process.env.REACT_APP_API_LOCAL}/api/v1/category/create`;
 
 	const addCategory = () => {
+		if (nameCategory === "") {
+			toast.error("Category name is empty !!!", { autoClose: 1500 });
+			return 0;
+		}
 		axios
 			.post(
 				urlCategory,
@@ -46,7 +50,7 @@ const ManagerCategory = () => {
 		axios
 			.delete(urlDelete, { headers: authHeader() })
 			.then((res) => {
-				toast.success("Add Success !!!");
+				toast.success("Delete Success !!!");
 				window.location.reload();
 			})
 			.catch((err) => toast.error(err));

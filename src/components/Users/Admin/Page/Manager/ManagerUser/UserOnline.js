@@ -109,9 +109,9 @@ const UserOnline = () => {
 						backgroundColor: "rgba(0,0,0,0.4)",
 					},
 					content: {
-						width: "22%",
+						width: "30rem",
 						margin: "auto",
-						height: "25%",
+						height: "18rem",
 					},
 				}}
 			>

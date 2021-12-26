@@ -2,11 +2,11 @@
 	padding: 10px;
 	color: white;
 	background-color: rgb(73, 139, 224);
-	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 	cursor: pointer;
 	border-radius: 5px;
 	outline: none;
-	border: 1px solid #333;
+	transition: all 0.4s ease-in-out;
 }
 .btn-update-account:hover {
 	background-color: rgb(31, 101, 192);
@@ -84,4 +84,20 @@
 	display: flex;
 	margin-top: 10px;
 	align-items: center;
+}
+.btn-handel-update-profile {
+	text-align: right;
+	margin-top: 20px;
+}
+.btn-cancel-account {
+	background-color: #ee756c;
+	padding: 10px 30px;
+	color: white;
+	border-radius: 5px;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+	margin-right: 50px;
+	transition: all 0.4s ease-in-out;
+}
+.btn-cancel-account:hover {
+	background-color: #ee291b;
 }

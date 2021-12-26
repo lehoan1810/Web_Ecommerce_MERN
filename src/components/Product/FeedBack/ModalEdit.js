@@ -23,7 +23,7 @@ const ModalEdit = ({ dataReview }) => {
 				{ headers: authHeader() }
 			)
 			.then((res) => {
-				toast.success("thành công");
+				toast.success("Update success!!!");
 				window.location.reload();
 			})
 			.catch((err) => {

@@ -4,16 +4,20 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 import authHeader from "../../../../../../service/AuthHeader.js";
 
-const ModalRating = ({ dataUser, dataProduct }) => {
+const ModalRating = ({ dataUser, dataProduct, idProduct }) => {
 	console.log("user review: ", dataUser);
-	console.log("id product: ", dataProduct);
+	console.log("id product: ", idProduct);
 	const [review, setReview] = useState("");
 	const [rating, setRating] = useState(1);
 	// const [currentValue, setCurrentValue] = useState(1);
 
 	// post review
-	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/category/${dataProduct}/reviews`;
+	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/category/${idProduct}/reviews`;
 	const onCreateReview = () => {
+		if (review === "") {
+			toast.error("Review is empty", { autoClose: 1500 });
+			return 0;
+		}
 		axios
 			.post(
 				url,

@@ -6,26 +6,13 @@ import { getCurrentIdUser } from "../../../service/AuthService.js";
 import Moment from "react-moment";
 import Modal from "react-modal";
 import ModalEdit from "./ModalEdit.js";
-import axios from "axios";
-import authHeader from "../../../service/AuthHeader.js";
-import { toast } from "react-toastify";
+import ModalDelete from "./ModalDelete";
 
 const FeedBack = ({ dataReview }) => {
 	const idUser = getCurrentIdUser();
 	console.log("test: ", dataReview);
 	const [modalIsOpen, setModalIsOpen] = useState(false);
-	const onDelete = (id) => {
-		const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/reviews/${id}`;
-		axios
-			.delete(url, { headers: authHeader() })
-			.then((res) => {
-				toast.success("success!!!");
-				window.location.reload();
-			})
-			.catch((err) => {
-				toast.error("faild");
-			});
-	};
+	const [modalDeleteOpen, setModalDeleteOpen] = useState(false);
 
 	return (
 		<div className="feedback">
@@ -59,7 +46,7 @@ const FeedBack = ({ dataReview }) => {
 							Edit
 						</span>
 						<span
-							onClick={() => onDelete(dataReview._id)}
+							onClick={() => setModalDeleteOpen(true)}
 							className="delete-review"
 						>
 							Delete
@@ -88,6 +75,28 @@ const FeedBack = ({ dataReview }) => {
 					// dataProduct={id}
 					dataReview={dataReview}
 					setModalIsOpen={setModalIsOpen}
+				/>
+			</Modal>
+			<Modal
+				isOpen={modalDeleteOpen}
+				ariaHideApp={false}
+				onRequestClose={() => setModalDeleteOpen(false)}
+				style={{
+					overlay: {
+						backgroundColor: "rgba(0,0,0,0.4)",
+					},
+					content: {
+						width: "30rem",
+						margin: "auto",
+						height: "20rem",
+					},
+				}}
+			>
+				<ModalDelete
+					// dataProduct={id}
+					idReview={dataReview._id}
+					dataReview={dataReview}
+					setModalIsOpen={setModalDeleteOpen}
 				/>
 			</Modal>
 		</div>

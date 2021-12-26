@@ -48,6 +48,8 @@ const ManagerData = () => {
 
 	let data = [...dataStatistic];
 	console.log("test:", data);
+	// let { month: foo, value: bar } = dataStatistic;
+	// console.log("change:", { p: foo, q: bar });
 
 	const config = {
 		data,

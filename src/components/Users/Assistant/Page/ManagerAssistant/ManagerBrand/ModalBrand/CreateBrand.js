@@ -31,6 +31,18 @@ const CreateBrand = ({ setModalIsOpen }) => {
 
 	const urlAddCategory = `${process.env.REACT_APP_API_LOCAL}/api/v1/category/create`;
 	const onAddBrand = () => {
+		if (name === "") {
+			toast.error("Name brand is empty!!!", { autoClose: 1500 });
+			return 0;
+		}
+		if (selectCategory === "") {
+			toast.error("No category selected !!!", { autoClose: 1500 });
+			return 0;
+		}
+		if (name === "" && selectCategory === "") {
+			toast.error("Information is empty !!!", { autoClose: 1500 });
+			return 0;
+		}
 		axios
 			.post(
 				urlAddCategory,

@@ -5,7 +5,7 @@ import "./ModalProfile.css";
 import Loading from "../../../../../Loading/Loading.js";
 import upload from "../../../../../../images/upload.png";
 
-const ModalProfile = ({ data }) => {
+const ModalProfile = ({ data, setModalIsOpen }) => {
 	// update field
 	const [email, setEmail] = useState(data.email);
 	const [address, setAddress] = useState(data.address);
@@ -113,9 +113,17 @@ const ModalProfile = ({ data }) => {
 						value={address}
 					/>
 				</div>
-				<button className="btn-update-account" onClick={onUpdateUser}>
-					Update Account
-				</button>
+				<div className="btn-handel-update-profile">
+					<button
+						className="btn-cancel-account"
+						onClick={() => setModalIsOpen(false)}
+					>
+						Cancel
+					</button>
+					<button className="btn-update-account" onClick={onUpdateUser}>
+						Update Account
+					</button>
+				</div>
 			</div>
 		</div>
 	);

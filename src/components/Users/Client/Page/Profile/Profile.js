@@ -98,7 +98,7 @@ const Profile = () => {
 					content: {
 						width: "80rem",
 						margin: "auto",
-						height: "50rem",
+						height: "48rem",
 					},
 				}}
 			>

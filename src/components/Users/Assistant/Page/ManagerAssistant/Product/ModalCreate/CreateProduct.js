@@ -86,6 +86,17 @@ const CreateProduct = ({ setModalIsOpen }) => {
 
 	const urlAddCategory = `${process.env.REACT_APP_API_LOCAL}/api/v1/category/addproduct`;
 	const onAddClass = () => {
+		if (
+			name === "" &&
+			description === "" &&
+			price === "" &&
+			selectBrand === "" &&
+			imageSelected === "" &&
+			specification === ""
+		) {
+			toast.error("information is empty!!!");
+			return 0;
+		}
 		axios
 			.post(
 				urlAddCategory,
