@@ -105,6 +105,16 @@ const ManagerProduct = () => {
 			dataIndex: "price",
 			responsive: ["md"],
 			key: "price",
+			render: (item) => (
+				<div>
+					<span>
+						{new Intl.NumberFormat("it-IT", {
+							style: "currency",
+							currency: "VND",
+						}).format(item)}
+					</span>
+				</div>
+			),
 		},
 
 		{
