@@ -1,0 +1,28 @@
+.form-voucher input {
+	border: 1px solid #cdcdcd;
+	padding: 10px;
+	border-radius: 5px;
+	width: 100%;
+	text-align: center;
+	font-size: 1.6rem;
+	font-weight: 600;
+	margin-top: 20px;
+}
+.form-voucher h3 {
+	background-color: red;
+	color: white;
+	display: inline;
+	padding: 5px 10px;
+	border-radius: 5px;
+}
+.handel-modal-voucher {
+	margin-top: 10px;
+	display: flex;
+	justify-content: space-around;
+}
+.btn-cancel-voucher {
+	padding: 10px 20px;
+	border-radius: 5px;
+	color: white;
+	background-color: rgb(240, 96, 96);
+}

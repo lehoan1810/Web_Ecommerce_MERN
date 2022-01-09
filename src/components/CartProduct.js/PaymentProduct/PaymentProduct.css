@@ -5,7 +5,8 @@
 	border-radius: 5px;
 	flex: 1;
 	/* height: 200px; */
-	max-height: 335px;
+	/* max-height: 335px; */
+	max-height: 450px;
 }
 
 .desc-order-user h3 {
@@ -57,4 +58,10 @@
 .background-loading-center {
 	padding-top: 8px;
 	text-align: center;
+}
+.handle-discount h3 {
+	color: rgb(252, 56, 56);
+	font-weight: 600;
+	font-size: 1.4rem;
+	cursor: pointer;
 }

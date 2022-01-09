@@ -11,6 +11,14 @@ html {
 body {
 	overflow-x: hidden;
 }
+body::-webkit-scrollbar {
+	width: 10px;
+	border-radius: 20px;
+}
+body::-webkit-scrollbar-thumb {
+	background-image: linear-gradient(#f20bd6, #20bcf2);
+	border-radius: 20px;
+}
 
 img {
 	display: block;
