@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import ArrowRight from "../../images/ArrowRight.png";
+import ArrowRight from "../../images/shopImg.png";
 import "./Login.css";
 import { useHistory } from "react-router-dom";
 import { login } from "../../service/AuthService.js";
@@ -40,9 +40,9 @@ function Login() {
 			{loading === false && <LoadingPage />}
 			<form className="login-form">
 				<div className="login-header">
-					<h1 className="login-title">Login to our platform</h1>
+					<h1 className="login-title">Welcome back</h1>
 					<span className="login-info">
-						Login here using your username and password
+						Welcome back! Please enter your details.
 					</span>
 				</div>
 				<div className="login-content">
@@ -94,6 +94,7 @@ function Login() {
 					Create account ?
 				</Link>
 			</form>
+			<div className="image-form-login"></div>
 		</div>
 	);
 }

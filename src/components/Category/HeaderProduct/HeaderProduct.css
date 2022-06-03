@@ -148,21 +148,29 @@
 /* UI logout */
 
 .header-log-out {
-	padding: 5px 15px;
+	padding: 5px 0;
 	position: absolute;
-	background-color: rgb(228, 228, 228);
-	box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
-		rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-	width: 14rem;
+	background-color: white;
+	/* background-color: rgb(228, 228, 228); */
+	box-shadow: 0 1px 10px rgb(0 0 0 / 25%);
+	width: 250px;
 	top: 75px;
+	right: 145px;
 	display: none;
 	transform-origin: calc(100% - 90px) top;
 	animation: headerLogOut ease-in-out 0.4s;
 }
 .header-log-out .logOut {
-	font-size: 1.3rem;
-	padding: 3px;
-	color: #333;
+	width: 100%;
+	padding: 5px 20px;
+	font-size: 15px;
+	line-height: 48px;
+	color: black;
+}
+.header-log-out-item:hover {
+	background-color: #ceeacf;
+	width: 100%;
+	cursor: pointer;
 }
 .header-log-out .logOut img {
 	width: 2rem;
@@ -170,6 +178,14 @@
 	display: inline-block;
 	margin-right: 10px;
 }
+.line-menu {
+	width: calc(100% - 40px);
+	margin: 0 20px;
+	height: 0.2px;
+	opacity: 1;
+	background-color: #7c7c7c;
+}
+
 @keyframes headerLogOut {
 	from {
 		opacity: 0;
@@ -187,12 +203,13 @@
 .header-log-out::before {
 	content: "";
 	position: absolute;
-	width: 3rem;
-	height: 3rem;
+	width: 6rem;
+	height: 4rem;
 	border: 19px solid;
 	top: -32px;
-	left: 4px;
-	border-color: transparent transparent rgb(228, 228, 228) transparent;
+	/* left: 4px; */
+	right: 0;
+	border-color: transparent;
 }
 .header-icon-user {
 	display: block;

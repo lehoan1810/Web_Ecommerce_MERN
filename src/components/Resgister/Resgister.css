@@ -4,32 +4,11 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-image: linear-gradient(
-		to right top,
-		#d16ba5,
-		#c877ba,
-		#bb84cc,
-		#ac91db,
-		#9c9de5,
-		#89a8ef,
-		#74b3f5,
-		#5fbdf7,
-		#3ac8f8,
-		#02d3f2,
-		#00dce7,
-		#32e4d8
-	);
 }
 
 .resgister-form {
-	width: 100%;
-	max-width: 45rem;
-	backdrop-filter: blur(16px) saturate(180%);
-	-webkit-backdrop-filter: blur(16px) saturate(180%);
-	background-color: rgba(255, 255, 255, 0.75);
-	border-radius: 12px;
-	border: 1px solid rgba(209, 213, 219, 0.3);
-	padding: 40px;
+	width: 50%;
+	padding: 40px 100px;
 }
 .resgister-header {
 	text-align: center;

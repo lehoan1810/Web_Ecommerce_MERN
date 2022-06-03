@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import "./Resgister.css";
-import ArrowRight from "../../images/ArrowRight.png";
+import ArrowRight from "../../images/shopImg.png";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -25,10 +25,6 @@ function Resgister() {
 			});
 			return;
 		}
-		// if (confirm !== password) {
-		// 	toast.error("Passwords did not match");
-		// 	return;
-		// }
 		setSuccess(false);
 		axios
 			.post(url, {
@@ -54,6 +50,7 @@ function Resgister() {
 		<div className="resgister">
 			{success === true && <Redirect to="./login" />}
 			{success === false && <LoadingPage />}
+			<div className="image-form-login"></div>
 			<form className="resgister-form">
 				<div className="resgister-header">
 					<h1 className="resgister-title">resgister to our platform</h1>

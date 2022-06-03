@@ -26,6 +26,7 @@ const ItemDetail = () => {
 	const [dataDetail, setDataDetail] = useState("");
 	const [review, setReview] = useState([]);
 	const [dataUser, setDataUser] = useState([]);
+	const [totalCart, setTotalCart] = useState(0);
 	const historyback = useHistory();
 
 	// test create review
@@ -39,8 +40,6 @@ const ItemDetail = () => {
 				.get(urlUser, { headers: authHeader() })
 				.then((res) => {
 					setDataUser(res.data.data.userData);
-
-					console.log(res.data.data.userData);
 				})
 				.catch((err) => console.log(err));
 		};
@@ -56,7 +55,6 @@ const ItemDetail = () => {
 				.then((res) => {
 					setDataDetail(res.data.product);
 					setReview(res.data.product.reviews);
-					console.log("data review: ", res.data.product);
 				})
 				.catch((err) => console.log(err));
 		};
@@ -75,16 +73,24 @@ const ItemDetail = () => {
 
 	// Add to cart
 	const urlAdd = `${process.env.REACT_APP_API_LOCAL}/api/v1/cart`;
-	const onAddCart = () => {
+	console.log("show id: ", id);
+	const onAddCart = (index) => {
 		const UserId = getCurrentIdUser();
+		const dataRaw = [...dataUser.cart.items];
+		const check = dataRaw.find((item) => item.productId === index);
+		console.log("check :", check);
+		// if(check){}
+
+		console.log("dataRaw: ", dataRaw);
 		if (!UserId) {
 			toast.error("You need Login !!!", { autoClose: 1500 });
 		} else {
 			axios
 				.post(urlAdd, { productId: id, qty: count }, { headers: authHeader() })
 				.then((res) => {
+					setDataUser([...dataRaw, res.data.doc.cart.items]);
+					// console.log(res.data.doc);
 					toast.success("Add to Cart Success !!!", { autoClose: 1500 });
-					window.location.reload();
 				})
 				.catch((err) => toast.error("Faild"));
 		}
@@ -97,7 +103,7 @@ const ItemDetail = () => {
 
 	return (
 		<div className="product-background">
-			<HeaderProduct />
+			<HeaderProduct totalCart={dataUser.cart} />
 			<div className="btn-comeback">
 				<button onClick={() => comeback(dataDetail.category)}>Back</button>
 			</div>
@@ -138,7 +144,10 @@ const ItemDetail = () => {
 								</button>
 							</div>
 							<div className="handle-item-detail">
-								<button onClick={onAddCart} className="detail-add-card">
+								<button
+									onClick={() => onAddCart(id)}
+									className="detail-add-card"
+								>
 									Thêm vào giỏ hàng
 								</button>
 								<Link

@@ -4,32 +4,21 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-image: linear-gradient(
-		to right top,
-		#d16ba5,
-		#c877ba,
-		#bb84cc,
-		#ac91db,
-		#9c9de5,
-		#89a8ef,
-		#74b3f5,
-		#5fbdf7,
-		#3ac8f8,
-		#02d3f2,
-		#00dce7,
-		#32e4d8
-	);
+	background-color: #f6f6f6;
 }
 
 .login-form {
+	width: 60%;
+	padding: 40px 130px;
+}
+.image-form-login {
+	background-image: url(https://images.unsplash.com/photo-1501959181532-7d2a3c064642?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1193&q=80);
 	width: 100%;
-	max-width: 45rem;
-	backdrop-filter: blur(16px) saturate(180%);
-	-webkit-backdrop-filter: blur(16px) saturate(180%);
-	background-color: rgba(255, 255, 255, 0.75);
-	border-radius: 12px;
-	border: 1px solid rgba(209, 213, 219, 0.3);
-	padding: 40px;
+	height: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .login-header {
 	text-align: center;
@@ -57,6 +46,8 @@
 		#9080e7,
 		#9f61de
 	);
+	font-size: 40px;
+	font-weight: 600;
 }
 .input-email {
 	padding: 10px;
@@ -148,7 +139,7 @@
 	font-size: 1.4rem;
 }
 .login-info {
-	font-size: 1.4rem;
+	font-size: 1.6rem;
 	color: #6e6e6e;
 }
 .icon-resgister {

@@ -23,7 +23,10 @@ export const login = async (formData) => {
 		sessionStorage.setItem("email", email);
 		sessionStorage.setItem("role", role);
 
-		toast.success("Login Success !!!");
+		toast.success("Login Success!", {
+			autoClose: 900,
+			hideProgressBar: true,
+		});
 		return { id, name, email, role };
 	} catch (error) {
 		toast.error("login failed");

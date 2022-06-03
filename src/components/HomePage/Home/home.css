@@ -80,8 +80,10 @@ section[id] {
 .wrapper {
 	max-width: 1920px;
 	margin: 0 auto;
-	background: url("../../../images/img2.jpg") no-repeat top/80%;
+	background: url(https://oyster.ignimgs.com/wordpress/stg.ign.com/2020/11/OMNIDESK-IGN-1.jpg);
 	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: top;
 	font-size: 18px;
 	color: #6a727f;
 	background-color: #222831;
@@ -252,7 +254,7 @@ section {
 
 .menu-home-link {
 	font-weight: 600;
-	color: #d8d7d7;
+	color: white;
 }
 @media screen and (max-width: 1023px) {
 	.menu {

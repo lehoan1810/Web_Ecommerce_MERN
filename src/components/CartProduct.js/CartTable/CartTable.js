@@ -4,7 +4,7 @@ import authHeader from "../../../service/AuthHeader.js";
 import PaymentProduct from "../PaymentProduct/PaymentProduct.js";
 import Modal from "react-modal";
 import "./CartTable.css";
-// import { toast } from "react-toastify";
+import { toast } from "react-toastify";
 import ModalDeleteItem from "./ModalDeleteItem.js";
 import imgIncrease from "../../../images/increase.png";
 import imgDecrease from "../../../images/decrease.png";
@@ -33,9 +33,11 @@ const CartTable = () => {
 	}, [urlCart]);
 
 	//
-	const Increase = (productId) => {
+	const Increase = (productId, id) => {
 		// setCount(count + 1);
 		const urlIncrease = `${process.env.REACT_APP_API_LOCAL}/api/v1/cart`;
+		const dataRaw = [...dataCart];
+		dataRaw[id].qty = parseInt(dataRaw[id].qty) + 1;
 		axios
 			.post(
 				urlIncrease,
@@ -44,13 +46,19 @@ const CartTable = () => {
 			)
 			.then((res) => {
 				console.log("thành công");
-				window.location.reload();
+				setDataCart(dataRaw);
 			})
 			.catch((err) => console.log(err));
 	};
-	const Decrease = (productId) => {
+	const Decrease = (productId, id) => {
 		const urlDecrease = `${process.env.REACT_APP_API_LOCAL}/api/v1/cart/decreaseFromCart`;
-		// count <= 0 ? setCount(0) : setCount(count - 1);
+		const dataRaw = [...dataCart];
+		dataRaw[id].qty = parseInt(dataRaw[id].qty) - 1;
+		if (dataRaw[id].qty < 1) {
+			toast.warning("Số lượng không nhỏ hơn 1!");
+			return;
+		}
+
 		axios
 			.post(
 				urlDecrease,
@@ -59,7 +67,7 @@ const CartTable = () => {
 			)
 			.then((res) => {
 				console.log("thành công");
-				window.location.reload();
+				setDataCart(dataRaw);
 			})
 			.catch((err) => console.log(err));
 	};
@@ -111,14 +119,14 @@ const CartTable = () => {
 									<div className="count-cart-product">
 										<button
 											className="btn-dec "
-											onClick={() => Decrease(item.productId)}
+											onClick={() => Decrease(item.productId, id)}
 										>
 											<img className="onChange-qty" src={imgDecrease} alt="" />
 										</button>
 										<span>{item.qty}</span>
 										<button
 											className="btn-inc"
-											onClick={() => Increase(item.productId)}
+											onClick={() => Increase(item.productId, id)}
 										>
 											<img className="onChange-qty" src={imgIncrease} alt="" />
 										</button>

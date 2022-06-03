@@ -6,6 +6,7 @@ import Like from "../../../images/like.png";
 import Bell from "../../../images/notification.png";
 import Logout from "../../../images/Logout.png";
 import Message from "../../../images/message.png";
+import noAvatar from "../../../images/no-avatar.png";
 import "./HeaderProduct.css";
 import authHeader from "../../../service/AuthHeader.js";
 
@@ -15,7 +16,12 @@ import {
 	logout,
 	getCurrentIdUser,
 } from "../../../service/AuthService.js";
-const HeaderProduct = () => {
+const HeaderProduct = (props) => {
+	const { totalCart } = props;
+	if (totalCart) {
+		console.log("total: ", totalCart.items);
+	}
+	console.log("total: ", totalCart);
 	const roleUser = getCurrentRole();
 	const idUser = getCurrentIdUser();
 	//profile User
@@ -90,7 +96,10 @@ const HeaderProduct = () => {
 									<img className="icon-shop" src={CardTick} alt="" />
 								</Link>
 								<div>
-									<span className="number-product">{count(dataUser)}</span>
+									{/* <span className="number-product">{count(dataUser)}</span> */}
+									<span className="number-product">
+										{totalCart ? totalCart.items.length : count(dataUser)}
+									</span>
 								</div>
 							</div>
 							<div className="header-tooll card-shop">
@@ -106,7 +115,18 @@ const HeaderProduct = () => {
 									<div className="header-log-out">
 										<div onClick={logOut} className="header-log-out-item">
 											<Link className="logOut" to="/">
-												<img src={Logout} alt="" />
+												<span>Thông tin cá nhân</span>
+											</Link>
+										</div>
+										<div onClick={logOut} className="header-log-out-item">
+											<Link className="logOut" to="/">
+												<span>Xem sản phẩm</span>
+											</Link>
+										</div>
+
+										<div className="line-menu"></div>
+										<div onClick={logOut} className="header-log-out-item">
+											<Link className="logOut" to="/">
 												<span>Đăng xuất</span>
 											</Link>
 										</div>
@@ -145,7 +165,11 @@ const HeaderProduct = () => {
 								<div className="bell-noti-status"></div>
 							</div>
 							<div className="header-icon-user">
-								<img className="icon-user" src={dataProfile.photo} alt="" />
+								<img
+									className="icon-user"
+									src={dataProfile.photo ? dataProfile.photo : noAvatar}
+									alt=""
+								/>
 								<div className="header-log-out">
 									<div onClick={logOut} className="header-log-out-item">
 										<Link className="logOut" to="/">
