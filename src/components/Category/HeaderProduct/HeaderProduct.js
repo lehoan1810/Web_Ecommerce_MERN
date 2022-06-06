@@ -16,12 +16,11 @@ import {
 	logout,
 	getCurrentIdUser,
 } from "../../../service/AuthService.js";
+import { Router } from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory } from "react-router-dom";
 const HeaderProduct = (props) => {
-	const { totalCart } = props;
-	if (totalCart) {
-		console.log("total: ", totalCart.items);
-	}
-	console.log("total: ", totalCart);
+	const { data } = props;
+	let history = useHistory();
 	const roleUser = getCurrentRole();
 	const idUser = getCurrentIdUser();
 	//profile User
@@ -43,6 +42,7 @@ const HeaderProduct = (props) => {
 
 	//data cart user
 	const [dataUser, setDataUser] = useState([]);
+	console.log("show dataUser: ", dataUser);
 	const urlCart = `${process.env.REACT_APP_API_LOCAL}/api/v1/cart`;
 	useEffect(() => {
 		const loadCart = () => {
@@ -51,7 +51,6 @@ const HeaderProduct = (props) => {
 					.get(urlCart, { headers: authHeader() })
 					.then((res) => {
 						setDataUser(res.data.data.doc.items);
-						console.log("header: ", res.data.data.doc);
 					})
 					.catch((err) => console.log(err));
 			}
@@ -69,6 +68,7 @@ const HeaderProduct = (props) => {
 	};
 	const logOut = async () => {
 		await logout();
+		history.push("/");
 	};
 
 	return (
@@ -98,7 +98,8 @@ const HeaderProduct = (props) => {
 								<div>
 									{/* <span className="number-product">{count(dataUser)}</span> */}
 									<span className="number-product">
-										{totalCart ? totalCart.items.length : count(dataUser)}
+										{/* {data === undefined ?  : data.length} */}
+										{dataUser.length}
 									</span>
 								</div>
 							</div>
@@ -113,8 +114,8 @@ const HeaderProduct = (props) => {
 								<div className="header-icon-user">
 									<img className="icon-user" src={dataProfile.photo} alt="" />
 									<div className="header-log-out">
-										<div onClick={logOut} className="header-log-out-item">
-											<Link className="logOut" to="/">
+										<div className="header-log-out-item">
+											<Link className="logOut" to="/user/account/profile/">
 												<span>Thông tin cá nhân</span>
 											</Link>
 										</div>

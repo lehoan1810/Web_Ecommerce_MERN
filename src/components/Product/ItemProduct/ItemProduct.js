@@ -2,12 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Show from "../../../images/Show.png";
 import Like from "../../../images/like.png";
-import Bag from "../../../images/Bag.png";
+import Bag from "../../../images/BagCart.png";
 import "./ItemProduct.css";
 import { toast } from "react-toastify";
 import { getCurrentIdUser } from "../../../service/AuthService";
 import axios from "axios";
 import authHeader from "../../../service/AuthHeader";
+import { Rate } from "antd";
 
 const ItemProduct = ({ toggleType, data }) => {
 	const linkTarget = (e) => {
@@ -17,12 +18,18 @@ const ItemProduct = ({ toggleType, data }) => {
 	const onAddCart = (id) => {
 		const UserId = getCurrentIdUser();
 		if (!UserId) {
-			toast.error("You need Login !!!", { autoClose: 1500 });
+			toast.error("You need Login !!!", {
+				autoClose: 900,
+				hideProgressBar: true,
+			});
 		} else {
 			axios
 				.post(urlAdd, { productId: id, qty: 1 }, { headers: authHeader() })
 				.then((res) => {
-					toast.success("Add to Cart Success !!!", { autoClose: 1500 });
+					toast.success("Add to Cart Success !!!", {
+						autoClose: 900,
+						hideProgressBar: true,
+					});
 					window.location.reload();
 				})
 				.catch((err) => toast.error("Faild"));
@@ -32,41 +39,38 @@ const ItemProduct = ({ toggleType, data }) => {
 		<div
 			className={toggleType === "list" ? "product-item-list" : "product-item"}
 		>
-			<div className="product-image-show">
-				<img
-					className="product-item-img type-list-image"
-					src={data.productPicture}
-					alt=""
-				/>
-			</div>
-			<div className="description">
-				<h3>{data.name}</h3>
-				<p>
-					{new Intl.NumberFormat("it-IT", {
-						style: "currency",
-						currency: "VND",
-					}).format(data.price)}
-				</p>
-				<div className="item-detail-handel">
-					<Link
-						// to="/product/detail/123"
-						to=""
-						href="/product/detail/123"
-						onClick={(e) => linkTarget(e)}
-						className="item-detail"
-					>
-						<img className="item-detail-img" src={Show} alt="" />
-					</Link>
-
-					<Link to="/product/Like" href="" className="item-detail">
-						<img className="item-detail-img" src={Like} alt="" />
-					</Link>
-					{/* <Link to="/product/Cart" href="" className="item-detail">
-						<img className="item-detail-img" src={Bag} alt="" />
-					</Link> */}
-					<button onClick={() => onAddCart(data._id)} className="item-detail">
-						<img className="item-detail-img" src={Bag} alt="" />
-					</button>
+			<div className="card-form-product">
+				<div className="image-card-product">
+					<img src={data.productPicture} alt="" />
+				</div>
+				<div className="content-card-product">
+					<div className="card-product-price">
+						{new Intl.NumberFormat("it-IT", {
+							style: "currency",
+							currency: "VND",
+						}).format(data.price)}
+					</div>
+					<div>
+						<Rate
+							className="show-star-product"
+							disabled
+							defaultValue={data.ratingsAverage}
+						/>
+						<span>{`(${data.ratingsAverage})`}</span>
+					</div>
+					<h2>{data.name}</h2>
+					<div className="handle-card-item-product">
+						<div className="flex-handle-card-item">
+							<img src={Bag} alt="" />
+							<img onClick={(e) => linkTarget(e)} src={Show} alt="" />
+						</div>
+						<button
+							onClick={() => onAddCart(data._id)}
+							className="handle-add-to-cart"
+						>
+							Add to Cart
+						</button>
+					</div>
 				</div>
 			</div>
 		</div>

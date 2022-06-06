@@ -750,7 +750,10 @@ section {
 
 .footer-top {
 	padding: 80px 0px 30px;
-	background-color: #c4c4c4;
+	background-color: #3f3f3f9c;
+	/* background-image: url("https://img.freepik.com/free-photo/trendy-stylish-office-studio-workspace-interior-design-with-computer-decor-wood-table_67155-22063.jpg?w=1380");
+	background-repeat: no-repeat;
+	background-size: cover; */
 }
 .footer-main {
 	display: grid;
@@ -799,7 +802,8 @@ section {
 }
 .footer-link {
 	display: inline-block;
-	color: #6a727f;
+	/* color: #6a727f; */
+	color: black;
 	font-size: 14px;
 }
 .footer-info {

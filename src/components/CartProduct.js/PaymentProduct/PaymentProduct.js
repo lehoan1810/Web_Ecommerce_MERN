@@ -6,12 +6,14 @@ import { getCurrentIdUser } from "../../../service/AuthService.js";
 import { toast } from "react-toastify";
 import Modal from "react-modal";
 import ModalVoucher from "../Voucher/ModalVoucher.js";
+import SelectPayment from "../SelectPayment/index.js";
 
 const PaymentProduct = ({ dataCart, data }) => {
 	const idUser = getCurrentIdUser();
 	const [dataUser, setDataUser] = useState([]);
 	const [loading, setLoading] = useState();
 	const [modalIsOpen, setModalIsOpen] = useState(false);
+	const [isOpenSelect, setIsOpenSelect] = useState(false);
 	const [voucher, setVoucher] = useState(0);
 	const [code, setCode] = useState("");
 	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/users/profile/${idUser}`;
@@ -40,29 +42,29 @@ const PaymentProduct = ({ dataCart, data }) => {
 		}
 	};
 
-	const paypal = () => {
-		const urlPaypal = `${process.env.REACT_APP_API_LOCAL}/api/v1/pay/${idUser}`;
-		setLoading(true);
+	// const paypal = () => {
+	// 	const urlPaypal = `${process.env.REACT_APP_API_LOCAL}/api/v1/pay/${idUser}`;
+	// 	setLoading(true);
 
-		axios
-			.post(
-				urlPaypal,
-				{
-					code: code,
-				},
-				{ headers: authHeader() }
-			)
-			.then((res) => {
-				console.log(res.data);
-				window.location = res.data.forwardLink;
-				setLoading(false);
-			})
-			.catch((err) => {
-				console.log("faild", err);
-				toast.error("faild");
-				setLoading();
-			});
-	};
+	// 	axios
+	// 		.post(
+	// 			urlPaypal,
+	// 			{
+	// 				code: code,
+	// 			},
+	// 			{ headers: authHeader() }
+	// 		)
+	// 		.then((res) => {
+	// 			console.log(res.data);
+	// 			window.location = res.data.forwardLink;
+	// 			setLoading(false);
+	// 		})
+	// 		.catch((err) => {
+	// 			console.log("faild", err);
+	// 			toast.error("faild");
+	// 			setLoading();
+	// 		});
+	// };
 
 	const idVoucher = (detailVoucher) => {
 		console.log("max giam gia: ", detailVoucher.code);
@@ -105,7 +107,8 @@ const PaymentProduct = ({ dataCart, data }) => {
 				</div>
 				{dataCart && dataCart.length > 0 && (
 					<div className="btn-payment-price">
-						<button onClick={() => paypal(voucher)}>Thanh Toán</button>
+						{/* <button onClick={() => paypal(voucher)}>Thanh Toán</button> */}
+						<button onClick={() => setIsOpenSelect(true)}>Thanh Toán</button>
 					</div>
 				)}
 				{dataCart.length <= 0 && (
@@ -137,6 +140,32 @@ const PaymentProduct = ({ dataCart, data }) => {
 					// data={getIdProduct}
 					setModalIsOpen={setModalIsOpen}
 					onVoucherClick={idVoucher}
+				/>
+			</Modal>
+			<Modal
+				isOpen={isOpenSelect}
+				ariaHideApp={false}
+				onRequestClose={() => setIsOpenSelect(false)}
+				style={{
+					overlay: {
+						backgroundColor: "rgba(0,0,0,0.4)",
+					},
+					content: {
+						width: "50rem",
+						margin: "auto",
+						height: "40rem",
+					},
+				}}
+			>
+				<SelectPayment
+					// dataProduct={id}
+					// data={getIdProduct}
+					setIsOpenSelect={setIsOpenSelect}
+					idUser={idUser}
+					voucher={voucher}
+					totalPrice={data.items}
+					code={code}
+					address={dataUser.address}
 				/>
 			</Modal>
 		</>

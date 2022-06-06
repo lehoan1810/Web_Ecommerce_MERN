@@ -26,7 +26,7 @@ const ItemDetail = () => {
 	const [dataDetail, setDataDetail] = useState("");
 	const [review, setReview] = useState([]);
 	const [dataUser, setDataUser] = useState([]);
-	const [totalCart, setTotalCart] = useState(0);
+	const [testData, setTestData] = useState([]);
 	const historyback = useHistory();
 
 	// test create review
@@ -69,30 +69,26 @@ const ItemDetail = () => {
 		count <= 1 ? setCount(1) : setCount(count - 1);
 	};
 
-	// format price VND
-
-	// Add to cart
 	const urlAdd = `${process.env.REACT_APP_API_LOCAL}/api/v1/cart`;
-	console.log("show id: ", id);
-	const onAddCart = (index) => {
+	const onAddCart = () => {
 		const UserId = getCurrentIdUser();
-		const dataRaw = [...dataUser.cart.items];
-		const check = dataRaw.find((item) => item.productId === index);
-		console.log("check :", check);
-		// if(check){}
 
-		console.log("dataRaw: ", dataRaw);
 		if (!UserId) {
 			toast.error("You need Login !!!", { autoClose: 1500 });
 		} else {
 			axios
 				.post(urlAdd, { productId: id, qty: count }, { headers: authHeader() })
 				.then((res) => {
-					setDataUser([...dataRaw, res.data.doc.cart.items]);
-					// console.log(res.data.doc);
-					toast.success("Add to Cart Success !!!", { autoClose: 1500 });
+					setTestData(res.data.data.doc.cart.items);
+					toast.success("Add to Cart Success !!!", {
+						autoClose: 1500,
+					});
+					window.location.reload();
 				})
-				.catch((err) => toast.error("Faild"));
+				.catch((err) => {
+					console.log(err);
+					toast.error("Faild");
+				});
 		}
 	};
 
@@ -100,10 +96,12 @@ const ItemDetail = () => {
 		// historyback.goBack();
 		historyback.push(`/shop/category/${item}`);
 	};
+	console.log("testdata: ", testData);
+	console.log("dataUser: ", dataUser.cart);
 
 	return (
 		<div className="product-background">
-			<HeaderProduct totalCart={dataUser.cart} />
+			<HeaderProduct data={testData} />
 			<div className="btn-comeback">
 				<button onClick={() => comeback(dataDetail.category)}>Back</button>
 			</div>
@@ -144,10 +142,7 @@ const ItemDetail = () => {
 								</button>
 							</div>
 							<div className="handle-item-detail">
-								<button
-									onClick={() => onAddCart(id)}
-									className="detail-add-card"
-								>
+								<button onClick={() => onAddCart()} className="detail-add-card">
 									Thêm vào giỏ hàng
 								</button>
 								<Link

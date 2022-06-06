@@ -12,6 +12,7 @@ export const login = async (formData) => {
 			email: formData.email,
 			password: formData.password,
 		});
+		console.log("show res login: ", res.data.data.user.cart);
 		const { id, name, email, role } = jwt_decode(res.data.token);
 
 		// console.log(jwt_decode(res.data.token));
@@ -22,6 +23,10 @@ export const login = async (formData) => {
 		sessionStorage.setItem("name", name);
 		sessionStorage.setItem("email", email);
 		sessionStorage.setItem("role", role);
+		localStorage.setItem(
+			"category",
+			JSON.stringify(res.data.data.user.cart.items)
+		);
 
 		toast.success("Login Success!", {
 			autoClose: 900,
@@ -51,4 +56,6 @@ export const logout = () => {
 	sessionStorage.removeItem("name");
 	sessionStorage.removeItem("role");
 	sessionStorage.removeItem("token");
+	sessionStorage.removeItem("email");
+	localStorage.removeItem("category");
 };

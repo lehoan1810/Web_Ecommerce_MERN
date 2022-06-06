@@ -15,6 +15,7 @@ import RouterAssistant from "./components/Users/Assistant/Router/RouterAssistant
 import RouterCategory from "./components/Shop/Router/RouterCategory.js";
 import ForgetPassword from "./components/Login/ForgetPassword/ForgetPassword.js";
 import ResetPassword from "./components/Login/ResetPassword/ResetPassword.js";
+import LoadingPage from "./common/LoadingPage";
 function App() {
 	return (
 		<Router>
@@ -48,7 +49,8 @@ function App() {
 
 					<Route path="/shop/category" component={RouterCategory} />
 
-					<Route path="*" component={NotPage} />
+					{/* <Route path="*" component={NotPage} /> */}
+					<Route path="*" component={LoadingPage} />
 				</Switch>
 			</div>
 		</Router>

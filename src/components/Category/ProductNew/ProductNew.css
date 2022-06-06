@@ -33,9 +33,9 @@
 }
 
 .list-product-new {
-	padding: 40px 40px;
+	padding: 10px 30px;
 	border: 1px solid #ccc;
-	border-radius: 20px;
+	border-radius: 10px;
 }
 .slick-list {
 	padding: 10px;
@@ -47,8 +47,8 @@
 /* new products */
 .container-new-products {
 	border-radius: 10px;
-	box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
-		rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+	/* box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+		rgba(0, 0, 0, 0.3) 0px 1px 3px -1px; */
 	/* padding: 10px 0; */
 	background-color: white;
 	width: 300px;
@@ -115,6 +115,11 @@
 .new-product-icon img {
 	height: 2rem;
 	width: 2rem;
+}
+.container-new-products:hover {
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+		rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+	cursor: pointer;
 }
 .container-new-products:hover .new-product-icon {
 	transform: translateY(-10px);

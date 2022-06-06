@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 import { login } from "../../service/AuthService.js";
 import iconShow from "../../images/Show.png";
 import iconHide from "../../images/Hide.png";
-import LoadingPage from "../LoadingPage/LoadingPage";
+import LoadingPage from "../../common/LoadingPage/index";
 
 function Login() {
 	const [email, setEmail] = useState("");
