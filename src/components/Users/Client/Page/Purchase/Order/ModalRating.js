@@ -1,18 +1,73 @@
 import { Rate } from "antd";
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import authHeader from "../../../../../../service/AuthHeader.js";
+import {
+	ref,
+	uploadBytes,
+	getDownloadURL,
+	listAll,
+	list,
+	deleteObject,
+} from "firebase/storage";
+import { storage } from "../../../../../../firebase/config";
+import { Button, Image, Space } from "antd";
+import Skeleton from "react-loading-skeleton";
+
+// import photoReview from "../../../../../../images/photo-review.png";
+// import { Upload } from "antd";
 
 const ModalRating = ({ dataUser, dataProduct, idProduct }) => {
-	console.log("user review: ", dataUser);
-	console.log("id product: ", idProduct);
 	const [review, setReview] = useState("");
 	const [rating, setRating] = useState(1);
-	// const [currentValue, setCurrentValue] = useState(1);
+
+	const [imageUpload, setImageUpload] = useState([]);
+	const [imageUrls, setImageUrls] = useState([]);
+	const [loading, setLoading] = useState(false);
+
+	// const imagesListRef = ref(storage, "images/");
+	const onChangeImage = (e) => {
+		setImageUpload([...e.target.files]);
+		setLoading(true);
+		uploadFile([...e.target.files]);
+	};
+
+	//upload image
+	const uploadFile = (imageUpload) => {
+		if (imageUpload.length === 0) {
+			return;
+		} else {
+			// setLoading(true);
+			for (let i = 0; i < imageUpload.length; i++) {
+				const imageRef = ref(
+					storage,
+					`images/${Date.now() + imageUpload[i].name}`
+				);
+				setLoading(true);
+				uploadBytes(imageRef, imageUpload[i]).then((snapshot) => {
+					getDownloadURL(snapshot.ref).then((url) => {
+						setImageUrls((prev) => [...prev, url]);
+					});
+				});
+			}
+		}
+	};
+
+	//Delete image
+	const deleteFromFirebase = async (imageUrl) => {
+		try {
+			const storageRef = ref(storage, imageUrl);
+			await deleteObject(storageRef);
+			setImageUrls(imageUrls.filter((image) => image !== imageUrl));
+		} catch (error) {
+			console.log(error);
+		}
+	};
 
 	// post review
 	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/category/${idProduct}/reviews`;
+	// const url = `http://localhost:5000/api/v1/category/${idProduct}/reviews`;
 	const onCreateReview = () => {
 		if (review === "") {
 			toast.error("Review is empty", { autoClose: 1500 });
@@ -26,11 +81,12 @@ const ModalRating = ({ dataUser, dataProduct, idProduct }) => {
 					photo: dataUser.photo,
 					review: review,
 					rating: rating,
+					photoReviews: imageUrls,
 				},
 				{ headers: authHeader() }
 			)
 			.then((res) => {
-				toast.success("thành công");
+				toast.success("success");
 				window.location.reload();
 			})
 			.catch((err) => console.log(err));
@@ -54,12 +110,40 @@ const ModalRating = ({ dataUser, dataProduct, idProduct }) => {
 			<div className="star-rating">
 				<Rate onChange={onRating} value={rating} />
 			</div>
+			<div className="photo-reviews">
+				<input
+					type="file"
+					multiple
+					onChange={(event) => {
+						onChangeImage(event);
+					}}
+				/>
+			</div>
+			<div className="show-image-upload">
+				{/* {loading && <span>loading...</span>} */}
+				{!loading &&
+					imageUrls.map((url, id) => {
+						return (
+							<div className="show-image-item" key={id}>
+								<span
+									className="delete-image-firebase"
+									onClick={() => deleteFromFirebase(url)}
+								>
+									x
+								</span>
+								<img src={url} alt="" onLoad="loading..." />
+							</div>
+						);
+					})}
+			</div>
+
 			<div className="desc-rating">
 				<textarea
 					onChange={(e) => setReview(e.target.value)}
 					placeholder="text"
 				/>
 			</div>
+
 			<div className="button-rating">
 				<button onClick={onCreateReview}>
 					<span>Send</span>

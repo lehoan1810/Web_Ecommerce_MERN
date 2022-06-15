@@ -115,3 +115,20 @@
 .update-review:hover {
 	background-color: rgb(125, 183, 250);
 }
+.views-image-feedback {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 20px;
+	padding-top: 10px;
+}
+.views-image-feedback-item {
+	width: 200px;
+	height: 200px;
+}
+.views-image-feedback-item img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 2px;
+}

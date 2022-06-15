@@ -227,7 +227,7 @@ const ItemDetail = () => {
 					content: {
 						width: "40rem",
 						margin: "auto",
-						height: "34rem",
+						height: "55rem",
 					},
 				}}
 			>

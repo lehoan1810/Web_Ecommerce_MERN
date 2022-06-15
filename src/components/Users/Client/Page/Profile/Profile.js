@@ -1,11 +1,14 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 import authHeader from "../../../../../service/AuthHeader.js";
 import ModalProfile from "./ModalProfile/ModalProfile.js";
 import { getCurrentIdUser } from "../../../../../service/AuthService.js";
 import "./Profile.css";
 import UpdatePassword from "./UpdatePassword/UpdatePassword.js";
+import noImage from "../../../../../images/noImage.png";
 
 const Profile = () => {
 	const idUser = getCurrentIdUser();
@@ -14,11 +17,13 @@ const Profile = () => {
 	const [dataUser, setDataUser] = useState("");
 	const [modalIsOpen, setModalIsOpen] = useState(false);
 	const [updateIsOpen, setUpdateIsOpen] = useState(false);
+	const [loading, setLoading] = useState(false);
 
 	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/users/profile/${idUser}`;
 
 	useEffect(() => {
 		const loadProfile = () => {
+			setLoading(true);
 			if (idUser == null) return 0;
 			axios
 				.get(url, { headers: authHeader() })
@@ -26,6 +31,7 @@ const Profile = () => {
 					setDataUser(res.data.data.userData);
 					sessionStorage.setItem("name", res.data.data.userData.name);
 					console.log(res.data.data);
+					setLoading(false);
 				})
 				.catch((err) => console.log(err));
 		};
@@ -66,7 +72,16 @@ const Profile = () => {
 					</div> */}
 				</div>
 				<div className="avt-profile-right">
-					<img src={dataUser.photo} alt="" />
+					{loading ? (
+						<Skeleton
+							circle
+							height="270px"
+							width="270px"
+							containerClassName="avatar-skeleton"
+						/>
+					) : (
+						<img src={dataUser.photo ? dataUser.photo : noImage} alt="" />
+					)}
 				</div>
 			</form>
 			<div className="button-update">

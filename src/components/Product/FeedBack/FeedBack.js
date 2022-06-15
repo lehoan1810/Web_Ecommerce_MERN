@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Rate } from "antd";
+import { Rate, Image } from "antd";
 import "antd/dist/antd.css";
 import "./FeedBack.css";
 import { getCurrentIdUser } from "../../../service/AuthService.js";
@@ -11,6 +11,7 @@ import ModalDelete from "./ModalDelete";
 const FeedBack = ({ dataReview }) => {
 	const idUser = getCurrentIdUser();
 	console.log("test: ", dataReview);
+	console.log("show data review: ", dataReview.photo);
 	const [modalIsOpen, setModalIsOpen] = useState(false);
 	const [modalDeleteOpen, setModalDeleteOpen] = useState(false);
 
@@ -39,7 +40,16 @@ const FeedBack = ({ dataReview }) => {
 
 				<div className="info-desc-feedback">
 					<span>{dataReview.review}</span>
+					<div className="views-image-feedback">
+						{dataReview.photoReviews &&
+							dataReview.photoReviews.map((item, id) => (
+								<div className="views-image-feedback-item" key={id}>
+									<img src={item} alt="" />
+								</div>
+							))}
+					</div>
 				</div>
+
 				{idUser === dataReview.user ? (
 					<div className="handle-review">
 						<span onClick={() => setModalIsOpen(true)} className="edit-review">
