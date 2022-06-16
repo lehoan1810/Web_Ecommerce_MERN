@@ -225,9 +225,13 @@ const ItemDetail = () => {
 						backgroundColor: "rgba(0,0,0,0.4)",
 					},
 					content: {
-						width: "40rem",
-						margin: "auto",
-						height: "55rem",
+						top: "50%",
+						left: "50%",
+						right: "auto",
+						bottom: "auto",
+						marginRight: "-50%",
+						transform: "translate(-50%, -50%)",
+						width: "35rem",
 					},
 				}}
 			>

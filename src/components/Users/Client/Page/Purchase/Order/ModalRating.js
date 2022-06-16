@@ -7,15 +7,11 @@ import {
 	ref,
 	uploadBytes,
 	getDownloadURL,
-	listAll,
-	list,
 	deleteObject,
 } from "firebase/storage";
 import { storage } from "../../../../../../firebase/config";
-import { Button, Image, Space } from "antd";
-import Skeleton from "react-loading-skeleton";
 
-// import photoReview from "../../../../../../images/photo-review.png";
+import uploadClound from "../../../../../../images/upload-clound.png";
 // import { Upload } from "antd";
 
 const ModalRating = ({ dataUser, dataProduct, idProduct }) => {
@@ -111,8 +107,16 @@ const ModalRating = ({ dataUser, dataProduct, idProduct }) => {
 				<Rate onChange={onRating} value={rating} />
 			</div>
 			<div className="photo-reviews">
+				<label htmlFor="uploadFirebase">
+					<div className="upload-firbase-label">
+						<span>Chọn hình ảnh</span>
+						<img src={uploadClound} alt="" />
+					</div>
+				</label>
 				<input
+					id="uploadFirebase"
 					type="file"
+					hidden
 					multiple
 					onChange={(event) => {
 						onChangeImage(event);
@@ -120,8 +124,7 @@ const ModalRating = ({ dataUser, dataProduct, idProduct }) => {
 				/>
 			</div>
 			<div className="show-image-upload">
-				{/* {loading && <span>loading...</span>} */}
-				{!loading &&
+				{imageUrls &&
 					imageUrls.map((url, id) => {
 						return (
 							<div className="show-image-item" key={id}>
