@@ -9,11 +9,11 @@ const ModalDelete = ({ idReview, setModalIsOpen }) => {
 		axios
 			.delete(url, { headers: authHeader() })
 			.then((res) => {
-				toast.success("success!!!");
+				toast.success("Xóa thành công!!!");
 				window.location.reload();
 			})
 			.catch((err) => {
-				toast.error("faild");
+				toast.error("lỗi, vui lòng thử lại !");
 			});
 	};
 	return (
@@ -26,13 +26,13 @@ const ModalDelete = ({ idReview, setModalIsOpen }) => {
 						onClick={() => setModalIsOpen(false)}
 						className="btn-delete-cancel"
 					>
-						Cancel
+						Hủy
 					</button>
 					<button
 						onClick={() => onDelete(idReview)}
 						className="btn-delete-user"
 					>
-						Delete
+						Xóa
 					</button>
 				</div>
 			</div>

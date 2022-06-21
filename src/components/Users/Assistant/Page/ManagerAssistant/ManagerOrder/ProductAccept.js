@@ -34,11 +34,11 @@ const ProductAccept = () => {
 				{ headers: authHeader() }
 			)
 			.then((res) => {
-				toast.success("Successful Delivery !!!");
+				toast.success("Xử lý thành công !!!");
 				window.location.reload();
 				console.log(res.data);
 			})
-			.catch((err) => console.log(err));
+			.catch((err) => console.log("lỗi, vui lòng thử lại!"));
 	};
 	return (
 		<div>

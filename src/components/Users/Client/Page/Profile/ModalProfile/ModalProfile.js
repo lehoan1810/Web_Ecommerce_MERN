@@ -71,7 +71,7 @@ const ModalProfile = ({ data, setModalIsOpen }) => {
 				</label>
 			</div>
 			<div className="profile-right">
-				<h1 className="title-profile-right">Personal information</h1>
+				<h1 className="title-profile-right">Thông tin cá nhân</h1>
 				<div className="update-profile-item">
 					<span className="item-info">Email:</span>
 					<input
@@ -118,10 +118,10 @@ const ModalProfile = ({ data, setModalIsOpen }) => {
 						className="btn-cancel-account"
 						onClick={() => setModalIsOpen(false)}
 					>
-						Cancel
+						Hủy
 					</button>
 					<button className="btn-update-account" onClick={onUpdateUser}>
-						Update Account
+						Cập nhập tài khoản
 					</button>
 				</div>
 			</div>

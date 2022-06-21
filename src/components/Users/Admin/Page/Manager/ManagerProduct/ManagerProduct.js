@@ -134,7 +134,7 @@ const ManagerProduct = () => {
 						className="check-delete"
 						onClick={(e) => onDelete(products, e)}
 					>
-						Delete
+						Xóa
 					</button>
 				</div>
 			),

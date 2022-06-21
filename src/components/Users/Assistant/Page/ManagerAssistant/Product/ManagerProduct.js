@@ -133,7 +133,7 @@ const ManagerProduct = () => {
 						className="check-detail"
 						onClick={(e) => onUpdate(products, e)}
 					>
-						Update
+						Cập nhập
 					</button>
 				</div>
 			),
@@ -167,7 +167,7 @@ const ManagerProduct = () => {
 						className="create-product"
 						onClick={() => setModalIsOpen(true)}
 					>
-						Create Product
+						Tạo sản phẩm
 					</button>
 				</div>
 				<div className="select-show">

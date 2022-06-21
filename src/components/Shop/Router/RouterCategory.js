@@ -13,7 +13,7 @@ const RouterCategory = () => {
 					<div className="sidebar-product">
 						<MenuCategory />
 					</div>
-					<div className="siderbar-show-product">
+					<div className="siderbar-show-product siderbar-product-relative">
 						<Switch>
 							<Route exact path="/shop/category/:id" component={CategoryItem} />
 							{/* <Route path="/product/detail/:id" component={ItemDetail} /> */}

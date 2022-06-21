@@ -26,14 +26,14 @@ const UpdatePassword = ({ setUpdateIsOpen }) => {
 				{ headers: authHeader() }
 			)
 			.then((res) => {
-				toast.success("Update Password Success !!!");
+				toast.success("Cập nhập mật khẩu thành công !!!");
 				logout();
 				history.push("/login");
 				window.location.reload("/login");
 				console.log(res.data.data);
 			})
 			.catch((err) => {
-				toast.error("faild");
+				toast.error("lỗi, vui lòng thử lại!");
 				console.log(err);
 			});
 	};
@@ -41,33 +41,33 @@ const UpdatePassword = ({ setUpdateIsOpen }) => {
 	return (
 		<div>
 			<div className="current-password">
-				<span className="title-update-password">Password Current</span>
+				<span className="title-update-password">Mật khẩu cũ</span>
 				<input
 					onChange={(e) => {
 						setPasswordCurrent(e.target.value);
 					}}
 					type="password"
-					placeholder="password old"
+					placeholder="Mật khẩu cũ"
 				/>
 			</div>
 			<div className="new-password">
-				<span className="title-update-password">New Password</span>
+				<span className="title-update-password">Mật khẩu mới</span>
 				<input
 					onChange={(e) => {
 						setPassword(e.target.value);
 					}}
 					type="password"
-					placeholder="password old"
+					placeholder="Mật khẩu mới"
 				/>
 			</div>
 			<div className="confirm-new-password">
-				<span className="title-update-password">Confirm Password</span>
+				<span className="title-update-password">Nhập lại mật khẩu</span>
 				<input
 					onChange={(e) => {
 						setPasswordConfirm(e.target.value);
 					}}
 					type="password"
-					placeholder="password old"
+					placeholder="Nhập lại mật khẩu"
 				/>
 			</div>
 			<div className="handle-update-password">
@@ -75,13 +75,13 @@ const UpdatePassword = ({ setUpdateIsOpen }) => {
 					onClick={() => setUpdateIsOpen(false)}
 					className="btn-update-password-cancel"
 				>
-					Cancel
+					Hủy
 				</button>
 				<button
 					onClick={onUpdatePassword}
 					className="btn-update-password-update"
 				>
-					Update and Log Out
+					Cập nhập và đăng xuất
 				</button>
 			</div>
 		</div>

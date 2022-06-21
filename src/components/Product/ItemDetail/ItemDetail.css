@@ -12,6 +12,16 @@
 	border-radius: 5px;
 	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
+.container-detail-slider {
+	background-color: white;
+	padding-top: 10px;
+	border-radius: 5px;
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.title-product-recomend {
+	padding-left: 20px;
+	font-weight: 600;
+}
 .detail-info-item {
 	margin-left: 50px;
 	width: 70%;

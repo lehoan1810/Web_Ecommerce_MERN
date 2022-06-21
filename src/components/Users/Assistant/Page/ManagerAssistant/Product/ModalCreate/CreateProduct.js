@@ -94,7 +94,7 @@ const CreateProduct = ({ setModalIsOpen }) => {
 			imageSelected === "" &&
 			specification === ""
 		) {
-			toast.error("information is empty!!!");
+			toast.error("Thông tin đang được để trống !!!");
 			return 0;
 		}
 		axios
@@ -114,12 +114,12 @@ const CreateProduct = ({ setModalIsOpen }) => {
 			)
 			.then((res) => {
 				console.log(res.data);
-				toast.success("Create success");
+				toast.success("Tạo thành công !!!");
 				window.location.reload();
 			})
 			.catch((err) => {
 				console.log(err);
-				toast.error("faild");
+				toast.error("lỗi, vui lòng thử lại!");
 			});
 	};
 
@@ -138,22 +138,22 @@ const CreateProduct = ({ setModalIsOpen }) => {
 				</label>
 				<div className="button-add-product">
 					<button onClick={(e) => setModalIsOpen(false)} className="btn-cancel">
-						Cancel
+						Hủy
 					</button>
-					<button onClick={onAddClass}>Add Product</button>
+					<button onClick={onAddClass}>Tạo sản phẩm</button>
 				</div>
 			</div>
 			<div className="add-product-right">
 				<div className="add-name-product add-item">
-					<span>Name Product</span>
+					<span>Tên sản phẩm</span>
 					<input
 						onChange={(e) => setName(e.target.value)}
-						placeholder="Name Product ..."
+						placeholder="Tên sản phẩm ..."
 					/>
 				</div>
 
 				<div className="add-category-product add-item-brand">
-					<span className="title-select-category">Select Category</span>
+					<span className="title-select-category">Chọn danh mục sản phẩm</span>
 					<Select
 						defaultValue="select Category"
 						style={{ width: "100%" }}
@@ -168,7 +168,7 @@ const CreateProduct = ({ setModalIsOpen }) => {
 					</Select>
 				</div>
 				<div className="add-category-product add-item-brand">
-					<span className="title-select-category">Select Brand</span>
+					<span className="title-select-category">Chọn nhãn hiệu</span>
 					<Select
 						defaultValue="select brand"
 						style={{ width: "100%" }}
@@ -184,14 +184,14 @@ const CreateProduct = ({ setModalIsOpen }) => {
 				</div>
 
 				<div className="add-price-product add-item">
-					<span>Price Product</span>
+					<span>Giá tiền sản phẩm</span>
 					<input
 						onChange={(e) => setPrice(e.target.value)}
-						placeholder="Price Product ..."
+						placeholder="Giá tiền sản phẩm ..."
 					/>
 				</div>
 				<div className="add-desc-product add-item item-Editor">
-					<span>Description Product</span>
+					<span>Nội dung sản phẩm</span>
 					<CKEditor
 						editor={ClassicEditor}
 						data={description}
@@ -200,7 +200,7 @@ const CreateProduct = ({ setModalIsOpen }) => {
 							setDescription(data);
 						}}
 					/>
-					<span>Specification Product</span>
+					<span>Thông số kỹ thuật của sản phẩm</span>
 					<CKEditor
 						editor={ClassicEditor}
 						data={specification}

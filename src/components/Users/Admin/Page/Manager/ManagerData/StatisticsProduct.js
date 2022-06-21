@@ -23,7 +23,7 @@ const StatisticsProduct = () => {
 		<div>
 			<div className="container-statistical">
 				<div className="container-statistic-items">
-					<span>Products</span>
+					<span>Sản phẩm</span>
 					<div className="data-statistic-user">
 						<img src={allProduct} alt="" />
 						<h2>{countProducts.length}</h2>

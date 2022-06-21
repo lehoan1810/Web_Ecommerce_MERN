@@ -18,7 +18,7 @@ const ItemProduct = ({ toggleType, data }) => {
 	const onAddCart = (id) => {
 		const UserId = getCurrentIdUser();
 		if (!UserId) {
-			toast.error("You need Login !!!", {
+			toast.error("Bạn cần phải đăng nhập !!!", {
 				autoClose: 900,
 				hideProgressBar: true,
 			});
@@ -26,13 +26,13 @@ const ItemProduct = ({ toggleType, data }) => {
 			axios
 				.post(urlAdd, { productId: id, qty: 1 }, { headers: authHeader() })
 				.then((res) => {
-					toast.success("Add to Cart Success !!!", {
+					toast.success("Thêm vào giỏ hàng thành công !!!", {
 						autoClose: 900,
 						hideProgressBar: true,
 					});
 					window.location.reload();
 				})
-				.catch((err) => toast.error("Faild"));
+				.catch((err) => toast.error("lỗi, vui lòng thử lại!"));
 		}
 	};
 	return (
@@ -68,7 +68,7 @@ const ItemProduct = ({ toggleType, data }) => {
 							onClick={() => onAddCart(data._id)}
 							className="handle-add-to-cart"
 						>
-							Add to Cart
+							Thêm vào giỏ hàng
 						</button>
 					</div>
 				</div>

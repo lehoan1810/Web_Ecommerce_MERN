@@ -20,6 +20,7 @@ import Return from "../../../images/return.png";
 import Payment from "../../../images/credit-card.png";
 import Parameters from "./Parameters.js";
 import "./ItemDetail.css";
+import SliderProduct from "../../../common/SliderProduct/index.js";
 
 const ItemDetail = () => {
 	const { id } = useParams();
@@ -54,6 +55,7 @@ const ItemDetail = () => {
 				.get(url, { headers: authHeader() })
 				.then((res) => {
 					setDataDetail(res.data.product);
+					console.log("show detail data: ", res.data.product);
 					setReview(res.data.product.reviews);
 				})
 				.catch((err) => console.log(err));
@@ -74,20 +76,20 @@ const ItemDetail = () => {
 		const UserId = getCurrentIdUser();
 
 		if (!UserId) {
-			toast.error("You need Login !!!", { autoClose: 1500 });
+			toast.error("Bạn cần phải đăng nhập  !!!", { autoClose: 1500 });
 		} else {
 			axios
 				.post(urlAdd, { productId: id, qty: count }, { headers: authHeader() })
 				.then((res) => {
 					setTestData(res.data.data.doc.cart.items);
-					toast.success("Add to Cart Success !!!", {
+					toast.success("Thêm vào giỏ hàng thành công !!!", {
 						autoClose: 1500,
 					});
 					window.location.reload();
 				})
 				.catch((err) => {
 					console.log(err);
-					toast.error("Faild");
+					toast.error("lỗi, hãy thử lại!");
 				});
 		}
 	};
@@ -96,8 +98,6 @@ const ItemDetail = () => {
 		// historyback.goBack();
 		historyback.push(`/shop/category/${item}`);
 	};
-	console.log("testdata: ", testData);
-	console.log("dataUser: ", dataUser.cart);
 
 	return (
 		<div className="product-background">
@@ -160,22 +160,30 @@ const ItemDetail = () => {
 							<div className="list-commit">
 								<div className="item-commit">
 									<img src={Planes} alt="" />
-									<span>Free international shipping for order over $40</span>
+									<span>
+										Miễn phí vận chuyển quốc tế cho đơn hàng trên 0 VNĐ
+									</span>
 								</div>
 								<div className="item-commit">
 									<img src={Payment} alt="" />
-									<span>Secured Payment</span>
+									<span>Thanh toán an toàn</span>
 								</div>
 								<div className="item-commit">
 									<img src={Return} alt="" />
-									<span>Return within 15 days</span>
+									<span>Đổi trả trong vòng 15 ngày</span>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			)}
-
+			{/* content */}
+			<div className="container-detail">
+				<div className="container-detail-slider">
+					<h1 className="title-product-recomend">Sản Phẩm Liên Quan</h1>
+					<SliderProduct idCategory={dataDetail.category} />
+				</div>
+			</div>
 			{/* <FeedBack /> */}
 			<div className="feedback">
 				<div className="feedback-item">
@@ -203,7 +211,7 @@ const ItemDetail = () => {
 							className="button-handel-create-review"
 							onClick={() => setModalIsOpen(true)}
 						>
-							Add Review
+							Tạo đánh giá
 							<img className="img-edit-review" src={Edit} alt="" />
 						</button>
 					</div>

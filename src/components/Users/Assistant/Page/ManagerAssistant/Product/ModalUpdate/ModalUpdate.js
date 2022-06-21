@@ -52,12 +52,12 @@ const ModalUpdate = ({ data, setModalIsOpen }) => {
 			)
 			.then((res) => {
 				console.log(res.data);
-				toast.success("Create success");
+				toast.success("Tạo thành công !!!");
 				window.location.reload();
 			})
 			.catch((err) => {
 				console.log(err);
-				toast.error("faild");
+				toast.error("lỗi, vui lòng thử lại!");
 			});
 	};
 
@@ -76,14 +76,14 @@ const ModalUpdate = ({ data, setModalIsOpen }) => {
 				</label>
 				<div className="button-add-product">
 					<button className="btn-cancel" onClick={(e) => setModalIsOpen(false)}>
-						Cancel
+						Hủy
 					</button>
-					<button onClick={onUpdate}>Add Product</button>
+					<button onClick={onUpdate}>Tạo sản phẩm</button>
 				</div>
 			</div>
 			<div className="add-product-right">
 				<div className="add-name-product add-item">
-					<span>Name Product</span>
+					<span>Tên sản phẩm</span>
 					<input
 						onChange={(e) => setName(e.target.value)}
 						placeholder={data.name}
@@ -91,7 +91,7 @@ const ModalUpdate = ({ data, setModalIsOpen }) => {
 					/>
 				</div>
 				<div className="add-price-product add-item">
-					<span>Price Product</span>
+					<span>Giá tiền sản phẩm</span>
 					<input
 						onChange={(e) => setPrice(e.target.value)}
 						placeholder={data.price}
@@ -99,7 +99,7 @@ const ModalUpdate = ({ data, setModalIsOpen }) => {
 					/>
 				</div>
 				<div className="add-desc-product add-item">
-					<span>Description Product</span>
+					<span>Nội dung sản phẩm</span>
 					<CKEditor
 						placeholder={data.description}
 						editor={ClassicEditor}
@@ -109,7 +109,7 @@ const ModalUpdate = ({ data, setModalIsOpen }) => {
 							setDescription(data);
 						}}
 					/>
-					<span>Specification Product</span>
+					<span>Thông số kỹ thuật sản phẩm</span>
 					<CKEditor
 						placeholder={data.description}
 						editor={ClassicEditor}

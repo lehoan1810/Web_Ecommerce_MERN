@@ -69,7 +69,7 @@ const ManagerCategory = () => {
 													onClick={() => onDelete(item._id)}
 													className="action-delete"
 												>
-													Delete
+													Xóa
 												</button>
 											</div>
 										</td>

@@ -84,33 +84,26 @@ const HeaderProduct = (props) => {
 					{roleUser === "customer" ? (
 						<div className="header-tooll card-shop">
 							<div className="header-icon-like">
-								<Link to="/product/Like">
+								{/* <Link to="/product/Like">
 									<img className="icon-shop" src={Like} alt="" />
 								</Link>
 								<div className="count-like-product">
 									<span className="number-product">0</span>
-								</div>
+								</div> */}
 							</div>
-							<div className="header-icon-number">
+							<div className="header-icon-number bell-noti">
 								<Link to="/product/cart">
-									<img className="icon-shop" src={CardTick} alt="" />
+									<img
+										className="icon-shop bell-noti-icon"
+										src={CardTick}
+										alt=""
+									/>
 								</Link>
 								<div>
-									{/* <span className="number-product">{count(dataUser)}</span> */}
-									<span className="number-product">
-										{/* {data === undefined ?  : data.length} */}
-										{dataUser.length}
-									</span>
+									<span className="number-product">{dataUser.length}</span>
 								</div>
 							</div>
 							<div className="header-tooll card-shop">
-								<div className="item-message mess-margin-left">
-									<img src={Message} alt="" className="bell-noti-icon" />
-								</div>
-								<div className="bell-noti">
-									<img src={Bell} alt="" className="bell-noti-icon" />
-									<div className="bell-noti-status"></div>
-								</div>
 								<div className="header-icon-user">
 									<img className="icon-user" src={dataProfile.photo} alt="" />
 									<div className="header-log-out">
@@ -188,11 +181,11 @@ const HeaderProduct = (props) => {
 
 								<Link to="/login" className="role-login">
 									{" "}
-									Login
+									Đăng nhập
 								</Link>
 								<Link to="/Resgister" className="role-resgister">
 									{" "}
-									Register
+									Đăng ký
 								</Link>
 							</div>
 						</div>

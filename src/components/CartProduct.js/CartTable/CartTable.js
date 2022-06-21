@@ -141,7 +141,7 @@ const CartTable = () => {
 											onClick={() => onGetIdproduct(item.productId)}
 											className="action-delete"
 										>
-											Delete
+											Xóa
 										</button>
 									</div>
 								</td>

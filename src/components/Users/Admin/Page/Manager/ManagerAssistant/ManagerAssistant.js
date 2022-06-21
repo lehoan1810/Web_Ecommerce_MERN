@@ -79,7 +79,7 @@ const ManagerAssistant = () => {
 													onClick={(e) => deleteUser(item._id, item.name, e)}
 													className="action-delete"
 												>
-													Delete
+													Xóa
 												</button>
 											</div>
 										</td>

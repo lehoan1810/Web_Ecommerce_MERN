@@ -10,10 +10,10 @@ const ModalDeleteItem = ({ data, setModalIsOpen }) => {
 		axios
 			.post(urlDelete, { productId: data }, { headers: authHeader() })
 			.then((res) => {
-				toast.success("delete success !!!");
+				toast.success("Xóa thành công !!!");
 				window.location.reload();
 			})
-			.catch((err) => toast.error("faild"));
+			.catch((err) => toast.error("lỗi, hãy thử lại!"));
 	};
 	return (
 		<div>
@@ -25,10 +25,10 @@ const ModalDeleteItem = ({ data, setModalIsOpen }) => {
 						onClick={() => setModalIsOpen(false)}
 						className="btn-delete-cancel"
 					>
-						Cancel
+						Hủy
 					</button>
 					<button onClick={onDelete} className="btn-delete-user">
-						Delete
+						Xóa
 					</button>
 				</div>
 			</div>

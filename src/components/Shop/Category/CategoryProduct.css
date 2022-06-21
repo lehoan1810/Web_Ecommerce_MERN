@@ -20,6 +20,9 @@
 	box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
 	border-radius: 5px;
 }
+.siderbar-product-relative {
+	position: relative;
+}
 .menu-item-product {
 	display: flex;
 	justify-content: space-between;

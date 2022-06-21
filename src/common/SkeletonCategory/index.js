@@ -3,9 +3,9 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import "./style.css";
 
-const SkeletonCard = () => {
+const SkeletonCategry = () => {
 	return (
-		<div className="skeleton-flex">
+		<div className="skeleton-category-flex">
 			<div className="card-inside">
 				<Skeleton height="200px" width="290px" />
 				<h4 className="card-title">
@@ -64,4 +64,4 @@ const SkeletonCard = () => {
 	);
 };
 
-export default SkeletonCard;
+export default SkeletonCategry;

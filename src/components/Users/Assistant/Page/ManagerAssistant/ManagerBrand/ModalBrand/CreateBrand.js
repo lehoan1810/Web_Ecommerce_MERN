@@ -32,15 +32,15 @@ const CreateBrand = ({ setModalIsOpen }) => {
 	const urlAddCategory = `${process.env.REACT_APP_API_LOCAL}/api/v1/category/create`;
 	const onAddBrand = () => {
 		if (name === "") {
-			toast.error("Name brand is empty!!!", { autoClose: 1500 });
+			toast.error("Tên nhãn hiệu để trống!!!", { autoClose: 1500 });
 			return 0;
 		}
 		if (selectCategory === "") {
-			toast.error("No category selected !!!", { autoClose: 1500 });
+			toast.error("Chưa chọn danh mục !!!", { autoClose: 1500 });
 			return 0;
 		}
 		if (name === "" && selectCategory === "") {
-			toast.error("Information is empty !!!", { autoClose: 1500 });
+			toast.error("Thông tin trống !!!", { autoClose: 1500 });
 			return 0;
 		}
 		axios
@@ -56,12 +56,12 @@ const CreateBrand = ({ setModalIsOpen }) => {
 			)
 			.then((res) => {
 				console.log(res.data);
-				toast.success("Create success");
+				toast.success("Tạo thành công !!!");
 				window.location.reload();
 			})
 			.catch((err) => {
 				console.log(err);
-				toast.error("faild");
+				toast.error("lỗi, vui lòng thử lại!");
 			});
 	};
 
@@ -69,15 +69,15 @@ const CreateBrand = ({ setModalIsOpen }) => {
 		<div className="add-product">
 			<div className="add-product-right">
 				<div className="add-name-product add-item">
-					<span>Name Brand</span>
+					<span>Tên nhãn hiệu</span>
 					<input
 						onChange={(e) => setName(e.target.value)}
-						placeholder="Name Brand ..."
+						placeholder="Tên nhãn hiệu ..."
 					/>
 				</div>
 
 				<div className="add-category-product add-item-brand">
-					<span className="titile-select">Select Category</span>
+					<span className="titile-select">Chọn danh mục sản phẩm</span>
 
 					<Select
 						defaultValue="select brand"
@@ -94,10 +94,10 @@ const CreateBrand = ({ setModalIsOpen }) => {
 				</div>
 				<div className="button-add-brand">
 					<button className="btn-cancel" onClick={() => setModalIsOpen(false)}>
-						Cancel
+						Hủy
 					</button>
 					<button className="btn-add" onClick={onAddBrand}>
-						Add Product
+						Tạo sản phẩm
 					</button>
 				</div>
 			</div>

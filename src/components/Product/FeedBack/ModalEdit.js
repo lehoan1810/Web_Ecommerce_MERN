@@ -23,11 +23,11 @@ const ModalEdit = ({ dataReview }) => {
 				{ headers: authHeader() }
 			)
 			.then((res) => {
-				toast.success("Update success!!!");
+				toast.success("Cập nhập thành công !!!");
 				window.location.reload();
 			})
 			.catch((err) => {
-				toast.error("faild");
+				toast.error("lỗi, hãy thử lại!");
 			});
 	};
 
@@ -49,7 +49,7 @@ const ModalEdit = ({ dataReview }) => {
 			</div>
 			<div className="button-rating">
 				<button className="update-review" onClick={onEditReview}>
-					Send
+					Gửi đánh giá
 				</button>
 			</div>
 		</div>

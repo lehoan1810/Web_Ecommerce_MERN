@@ -43,13 +43,23 @@
 	padding: 10px;
 	cursor: pointer;
 }
+.category-img1 {
+	width: 150px;
+	padding: 10px;
+	cursor: pointer;
+	margin: auto;
+}
 .category-item img {
-	-webkit-transform: scale(1);
-	transform: scale(1);
+	-webkit-transform: scale(0.8);
+	transform: scale(0.8);
 	-webkit-transition: 0.3s ease-in-out;
 	transition: 0.3s ease-in-out;
 }
 .category-item:hover img {
-	-webkit-transform: scale(1.2);
-	transform: scale(1.2);
+	-webkit-transform: scale(1);
+	transform: scale(1);
+}
+.category-item {
+	width: 300px;
+	margin-top: 20px;
 }

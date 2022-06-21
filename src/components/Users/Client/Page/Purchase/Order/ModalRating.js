@@ -66,7 +66,7 @@ const ModalRating = ({ dataUser, dataProduct, idProduct }) => {
 	// const url = `http://localhost:5000/api/v1/category/${idProduct}/reviews`;
 	const onCreateReview = () => {
 		if (review === "") {
-			toast.error("Review is empty", { autoClose: 1500 });
+			toast.error("Đánh giá đang trống", { autoClose: 1500 });
 			return 0;
 		}
 		axios
@@ -82,10 +82,10 @@ const ModalRating = ({ dataUser, dataProduct, idProduct }) => {
 				{ headers: authHeader() }
 			)
 			.then((res) => {
-				toast.success("success");
+				toast.success("Đánh giá thành công!!!");
 				window.location.reload();
 			})
-			.catch((err) => console.log(err));
+			.catch((err) => console.log("lỗi, vui lòng thử lại!"));
 	};
 
 	const onRating = (value) => {
@@ -149,7 +149,7 @@ const ModalRating = ({ dataUser, dataProduct, idProduct }) => {
 
 			<div className="button-rating">
 				<button onClick={onCreateReview}>
-					<span>Send</span>
+					<span>Gửi đánh giá</span>
 				</button>
 			</div>
 		</div>

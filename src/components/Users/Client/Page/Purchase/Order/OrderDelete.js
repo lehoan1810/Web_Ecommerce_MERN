@@ -40,12 +40,12 @@ const OrderDelete = () => {
 								<td>30.000.000 VND</td>
 								<td>
 									<div className="action-status">
-										<span>Delete</span>
+										<span>Đã xóa</span>
 									</div>
 								</td>
 								<td>
 									<div className="action-handel">
-										<button className="action-delete">Delete</button>
+										<button className="action-delete">Xóa</button>
 									</div>
 								</td>
 							</tr>

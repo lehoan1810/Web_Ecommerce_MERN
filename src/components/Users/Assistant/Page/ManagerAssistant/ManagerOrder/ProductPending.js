@@ -23,11 +23,11 @@ const ProductPending = ({ loading, data }) => {
 				{ headers: authHeader() }
 			)
 			.then((res) => {
-				toast.success("Success Accept!!!");
+				toast.success("Xử lý thành công !!!");
 				window.location.reload();
 				console.log(res.data);
 			})
-			.catch((err) => console.log(err));
+			.catch((err) => console.log("lỗi, vui lòng thử lại!"));
 	};
 
 	const onHandleDetail = (idOrder, item) => {
@@ -91,7 +91,7 @@ const ProductPending = ({ loading, data }) => {
 													onClick={() => onHandleAccept(item.order._id)}
 													className="action-accept"
 												>
-													Accept
+													Xác nhận
 												</button>
 											</div>
 										</td>

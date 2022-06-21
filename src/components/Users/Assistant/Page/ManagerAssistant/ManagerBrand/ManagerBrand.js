@@ -75,7 +75,7 @@ const ManagerBrand = () => {
 	return (
 		<div>
 			<div className="table-manager-product">
-				<h2 className="title-admin">Quản Lý Thương Hiệu</h2>
+				<h2 className="title-admin">Quản Lý Nhãn Hiệu</h2>
 
 				<div>
 					<Search
@@ -88,7 +88,7 @@ const ManagerBrand = () => {
 					/>
 				</div>
 				<button className="create-brand" onClick={() => setModalIsOpen(true)}>
-					Create Brand
+					Tạo nhãn hiệu
 				</button>
 				<Select
 					defaultValue="select brand"

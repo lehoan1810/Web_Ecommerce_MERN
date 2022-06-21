@@ -60,7 +60,7 @@ const SelectPayment = (props) => {
 				})
 				.catch((err) => {
 					console.log("faild", err);
-					toast.error("faild");
+					toast.error("lỗi, hãy thử lại!");
 					setLoading();
 				});
 		} else if (checkType === 2) {
@@ -86,11 +86,11 @@ const SelectPayment = (props) => {
 				})
 				.catch((err) => {
 					console.log("faild", err);
-					toast.error("faild");
+					toast.error("lỗi, vui lòng thử lại");
 					setLoading();
 				});
 		} else {
-			console.log("có lỗi xảy ra, vui lòng thử lại");
+			console.log("lỗi, vui lòng thử lại");
 		}
 	};
 	return (
@@ -99,7 +99,7 @@ const SelectPayment = (props) => {
 				<h3>Lựa chọn phương thức thanh toán</h3>
 				<div className="card-body">
 					<div className="payment-type">
-						<h4>Choose payment method below</h4>
+						<h4>chọn phương thức thanh toán dưới đây</h4>
 						<div className="types flex justify-space-between">
 							<div
 								onClick={() => handleActive(1)}

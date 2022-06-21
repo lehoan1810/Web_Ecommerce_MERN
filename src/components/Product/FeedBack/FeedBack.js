@@ -53,13 +53,13 @@ const FeedBack = ({ dataReview }) => {
 				{idUser === dataReview.user ? (
 					<div className="handle-review">
 						<span onClick={() => setModalIsOpen(true)} className="edit-review">
-							Edit
+							Chỉnh sửa
 						</span>
 						<span
 							onClick={() => setModalDeleteOpen(true)}
 							className="delete-review"
 						>
-							Delete
+							Xóa
 						</span>
 					</div>
 				) : (

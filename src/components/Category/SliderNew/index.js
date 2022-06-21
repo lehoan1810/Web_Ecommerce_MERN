@@ -26,7 +26,6 @@ const SliderNew = () => {
 					<img
 						src="https://img.freepik.com/free-photo/trendy-stylish-office-studio-workspace-interior-design-with-computer-decor-wood-table_67155-22063.jpg?w=1380"
 						alt=""
-						srcset=""
 					/>
 				</SwiperSlide>
 				<SwiperSlide>

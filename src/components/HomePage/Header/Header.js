@@ -36,18 +36,18 @@ const Header = () => {
 								<ul className="menu-home-list">
 									<li className="menu-home-item">
 										<Link to="/" href="" className="menu-home-link">
-											Home
+											Trang chủ
 										</Link>
 									</li>
 
 									<li className="menu-home-item">
 										<Link to="/product" href="" className="menu-home-link">
-											Category
+											Danh mục
 										</Link>
 									</li>
 									<li className="menu-home-item">
 										<Link to="/#" href="#work" className="menu-home-link">
-											Service
+											Dịch vụ
 										</Link>
 									</li>
 									<li className="menu-home-item">
@@ -57,7 +57,7 @@ const Header = () => {
 									</li>
 									<li className="menu-home-item">
 										<Link to="/" href="#contact" className="menu-home-link">
-											Contact
+											Liên hệ
 										</Link>
 									</li>
 								</ul>
@@ -71,18 +71,18 @@ const Header = () => {
 								<ul className="menu-home-list">
 									<li className="menu-home-item">
 										<Link to="/" href="" className="menu-home-link">
-											Home
+											Trang chủ
 										</Link>
 									</li>
 
 									<li className="menu-home-item">
 										<Link to="/product" href="" className="menu-home-link">
-											Category
+											Danh mục
 										</Link>
 									</li>
 									<li className="menu-home-item">
 										<Link to="/#" href="#work" className="menu-home-link">
-											Service
+											Dịch vụ
 										</Link>
 									</li>
 									<li className="menu-home-item">
@@ -92,7 +92,7 @@ const Header = () => {
 									</li>
 									<li className="menu-home-item">
 										<Link to="/" href="#contact" className="menu-home-link">
-											Contact
+											Liên hệ
 										</Link>
 									</li>
 								</ul>
@@ -117,16 +117,16 @@ const Header = () => {
 									</Link>
 								)}
 								<button onClick={logOut} className="link-logOut">
-									Log Out
+									Đăng xuất
 								</button>
 							</div>
 						) : (
 							<div className="header-tool">
 								<Link to="/resgister" href="" className="link-resgister">
-									Resgister
+									Đăng ký
 								</Link>
 								<Link to="/login" href="" className="link-login">
-									Login
+									Đăng nhập
 								</Link>
 							</div>
 						)}

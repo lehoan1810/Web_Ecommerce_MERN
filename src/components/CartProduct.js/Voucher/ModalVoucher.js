@@ -13,13 +13,13 @@ const ModalVoucher = ({ setModalIsOpen, onVoucherClick }) => {
 			.then((res) => {
 				console.log(res.data.data.voucher);
 				onVoucherClick(res.data.data.voucher);
-				toast.success("Use code success !");
+				toast.success("Áp dụng thành công !");
 				setModalIsOpen(false);
 			})
 			.catch((err) => {
 				// console.log(err.response);
 				console.log(err);
-				toast.error("faild");
+				toast.error("lỗi, hãy thử lại!");
 			});
 	};
 
@@ -37,12 +37,12 @@ const ModalVoucher = ({ setModalIsOpen, onVoucherClick }) => {
 							onClick={() => setModalIsOpen(false)}
 							className="btn-cancel-voucher"
 						>
-							Exit
+							Thoát
 						</button>
 					</div>
 					<div>
 						<button onClick={handleVoucher} className="btn-delete-cancel">
-							Accept
+							Xác nhận
 						</button>
 					</div>
 				</div>

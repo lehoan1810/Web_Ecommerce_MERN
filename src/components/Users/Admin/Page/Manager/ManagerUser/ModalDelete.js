@@ -28,10 +28,10 @@ const ModalDelete = ({ idData, nameUser, setModalIsOpen }) => {
 						onClick={() => setModalIsOpen(false)}
 						className="btn-delete-cancel"
 					>
-						Cancel
+						Hủy
 					</button>
 					<button onClick={DeleteUser} className="btn-delete-user">
-						Delete
+						Xóa
 					</button>
 				</div>
 			</div>

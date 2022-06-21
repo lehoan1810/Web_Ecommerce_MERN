@@ -65,7 +65,7 @@ const ProductDelivery = () => {
 										</td>
 										<td>
 											<div className="action-handel">
-												<button className="action-delete">Delete</button>
+												<button className="action-delete">Xóa</button>
 											</div>
 										</td>
 									</tr>

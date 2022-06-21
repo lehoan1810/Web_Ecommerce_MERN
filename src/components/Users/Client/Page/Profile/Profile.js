@@ -89,7 +89,7 @@ const Profile = () => {
 					className="btn-update-profile"
 					onClick={() => setModalIsOpen(true)}
 				>
-					UPDATE
+					Cập nhập
 				</button>
 			</div>
 			<div className="button-update-password">
@@ -97,7 +97,7 @@ const Profile = () => {
 					className="btn-update-password"
 					onClick={() => setUpdateIsOpen(true)}
 				>
-					UPDATE PASSWORD
+					Cập nhập mật khẩu
 				</button>
 			</div>
 			<Modal

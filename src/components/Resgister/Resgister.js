@@ -48,7 +48,7 @@ function Resgister() {
 
 	return (
 		<div className="resgister">
-			{success === true && <Redirect to="./login" />}
+			{success === true && <Redirect to="./RedirectEmail" />}
 			{success === false && <LoadingPage />}
 			<div className="image-form-login"></div>
 			<form className="resgister-form">

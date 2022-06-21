@@ -15,7 +15,7 @@ const ForgetPassword = () => {
 				console.log(email);
 				toast.success("success", { autoClose: 1500 });
 			})
-			.catch((err) => toast.error("faild"));
+			.catch((err) => toast.error("lỗi, vui lòng thử lại!"));
 	};
 
 	return (

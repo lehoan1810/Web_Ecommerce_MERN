@@ -8,8 +8,10 @@ import List from "../../../images/options-lines.png";
 import Net from "../../../images/category.png";
 import Filter from "../../../images/Filter.png";
 import Search from "../../../images/searchProduct.png";
+import Nodata from "../../../images/ic_empty_cate.png";
 import "antd/dist/antd.css";
 import "./CategoryItem.css";
+import SkeletonCard from "../../../common/SkeletonCard/index.js";
 
 const CategoryItem = () => {
 	const { id } = useParams();
@@ -17,6 +19,7 @@ const CategoryItem = () => {
 	const [size, setSize] = useState([]);
 	const [pageCurrent, setPageCurrent] = useState();
 	const [sort, setSort] = useState("-1");
+	const [loading, setLoading] = useState(false);
 
 	const handelPagination = (page) => {
 		setPageCurrent(page);
@@ -25,6 +28,7 @@ const CategoryItem = () => {
 	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/category/paginationSort/${id}/`;
 	useEffect(() => {
 		const loadProduct = () => {
+			setLoading(true);
 			axios
 				.get(
 					url,
@@ -40,11 +44,16 @@ const CategoryItem = () => {
 					console.log("dataProduct", res.data.sortProduct);
 					console.log("pages size: ", res.data);
 				})
-				.catch((err) => console.log(err));
+				.catch((err) => console.log(err))
+				.finally(() => {
+					setLoading(false);
+				});
 		};
 		loadProduct();
 	}, [url, pageCurrent, sort]);
-
+	// if (dataProduct.length === 0) {
+	// 	console.log("show no data ");
+	// }
 	// const maxPrice = () => {
 	// 	const url = `http://localhost:5000/api/v1/category/sortMinMax/${id}`;
 	// 	axios
@@ -195,9 +204,12 @@ const CategoryItem = () => {
 					</div>
 				</div>
 			)}
-			{dataProduct && dataProduct.length <= 0 && (
+			{loading && <SkeletonCard />}
+			{!loading && dataProduct.length === 0 && (
 				<div className="menu-product-item">
-					<span>Đang cập nhập.....</span>
+					<div className="handel-item-product">
+						<img className="nodata-product" src={Nodata} alt="" />
+					</div>
 				</div>
 			)}
 		</div>

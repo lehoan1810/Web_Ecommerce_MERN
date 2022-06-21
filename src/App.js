@@ -16,6 +16,7 @@ import RouterCategory from "./components/Shop/Router/RouterCategory.js";
 import ForgetPassword from "./components/Login/ForgetPassword/ForgetPassword.js";
 import ResetPassword from "./components/Login/ResetPassword/ResetPassword.js";
 import LoadingPage from "./common/LoadingPage";
+import RedirectEmail from "./components/Resgister/RedirectEmail/RedirectEmail";
 function App() {
 	return (
 		<Router>
@@ -26,6 +27,8 @@ function App() {
 					<Route exact path="/login" component={Login} />
 
 					<Route exact path="/forgetPassword" component={ForgetPassword} />
+
+					<Route exact path="/RedirectEmail" component={RedirectEmail} />
 
 					<Route exact path="/resetPassword/:id" component={ResetPassword} />
 

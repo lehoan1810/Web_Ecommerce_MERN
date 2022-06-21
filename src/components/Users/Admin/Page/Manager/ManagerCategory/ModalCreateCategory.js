@@ -78,8 +78,8 @@ const ModalCreateCategory = (prop) => {
 					/>
 				</div>
 				<div className="btn-handle-add-category">
-					<button onClick={() => setModalIsOpen(false)}>cancel</button>
-					<button onClick={addCategory}>Create</button>
+					<button onClick={() => setModalIsOpen(false)}>Hủy</button>
+					<button onClick={addCategory}>Tạo mới</button>
 				</div>
 			</div>
 			<div className="item-image-category">
