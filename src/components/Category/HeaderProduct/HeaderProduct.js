@@ -105,7 +105,15 @@ const HeaderProduct = (props) => {
 							</div>
 							<div className="header-tooll card-shop">
 								<div className="header-icon-user">
-									<img className="icon-user" src={dataProfile.photo} alt="" />
+									<img
+										className="icon-user"
+										src={
+											dataProfile.photo
+												? dataProfile.photo
+												: "https://glints-dashboard.s3.amazonaws.com/profile-picture/42f6703e9bf85c15fbb096ed58bb09a1.png"
+										}
+										alt=""
+									/>
 									<div className="header-log-out">
 										<div className="header-log-out-item">
 											<Link className="logOut" to="/user/account/profile/">

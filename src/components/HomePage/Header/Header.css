@@ -34,6 +34,7 @@
 .custom-avt {
 	display: flex;
 	cursor: pointer;
+	align-items: center;
 	padding: 10px;
 	border-radius: 10px;
 }

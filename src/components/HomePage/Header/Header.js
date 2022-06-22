@@ -102,12 +102,24 @@ const Header = () => {
 							<div className="header-tool">
 								{roleUser === "admin" ? (
 									<Link to="/admin/account/profile/" className="custom-avt">
-										<img src={avtHeader} alt="" />
+										<div className="header-icon-user">
+											<img
+												className="icon-user"
+												src="https://glints-dashboard.s3.amazonaws.com/profile-picture/42f6703e9bf85c15fbb096ed58bb09a1.png"
+												alt=""
+											/>
+										</div>
 										<span>{currentUser}</span>
 									</Link>
 								) : roleUser === "customer" ? (
 									<Link to="/user/account/profile/" className="custom-avt">
-										<img src={avtHeader} alt="" />
+										<div className="header-icon-user">
+											<img
+												className="icon-user"
+												src="https://glints-dashboard.s3.amazonaws.com/profile-picture/42f6703e9bf85c15fbb096ed58bb09a1.png"
+												alt=""
+											/>
+										</div>
 										<span>{currentUser}</span>
 									</Link>
 								) : (

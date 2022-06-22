@@ -5,7 +5,7 @@ import ArrowRight from "../../images/shopImg.png";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import LoadingPage from "../LoadingPage/LoadingPage";
+import LoadingPage from "../../common/LoadingPage";
 
 toast.configure();
 function Resgister() {
@@ -16,15 +16,28 @@ function Resgister() {
 	const [confirm, setConfirm] = useState("");
 	const [success, setSuccess] = useState();
 
+	// const ValidateEmail = (inputText) => {
+	// 	const mailformat =
+	// 		/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+	// 	if (inputText.match(mailformat)) {
+	// 		console.log("Email không hợp lệ!");
+	// 		return;
+	// 	}
+	// };
+
 	const onSignUp = (e) => {
 		e.preventDefault();
 
 		if (name === "" || email === "" || password === "") {
-			toast.error("Fill in the registration information completely", {
+			toast.error("Vui lòng điền đầy đủ thông tin đăng ký!", {
 				autoClose: 1500,
 			});
 			return;
 		}
+		// if (email) {
+		// 	ValidateEmail(email);
+		// }
+
 		setSuccess(false);
 		axios
 			.post(url, {
@@ -36,11 +49,17 @@ function Resgister() {
 			.then((res) => {
 				console.log(res.data);
 				setSuccess(true);
-				toast.success("Sign Up Success !!!", { autoClose: 1500 });
+				toast.success("Đăng ký thành công !!!", {
+					autoClose: 1500,
+					hideProgressBar: true,
+				});
 			})
 			.catch((err) => {
-				console.log(err.response.data.message);
-				toast.error(err.response.data.message, { autoClose: 1500 });
+				console.log(err);
+				toast.error("Đăng ký thất bại, vui lòng thử lại!", {
+					autoClose: 1500,
+					hideProgressBar: true,
+				});
 				setSuccess();
 				// setError(err.response.data.data[0].description);
 			});

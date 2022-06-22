@@ -22,20 +22,25 @@
 }
 
 .layout-list {
-	background-color: rgb(55, 189, 230);
+	/* background-color: rgb(55, 189, 230); */
 	padding: 10px;
 	cursor: pointer;
 }
 .layout-net {
-	background-color: rgb(255, 118, 118);
+	/* background-color: rgb(255, 118, 118); */
 	padding: 10px;
 	cursor: pointer;
 	margin: 0 15px;
 }
 .layout-icon {
+	border: 2px solid rgb(49, 49, 49);
 	width: 4rem;
 	height: 4rem;
 	border-radius: 7px;
+	transition: all 0.2s ease-in-out;
+}
+.layout-icon:hover {
+	background-color: rgb(55, 189, 230);
 }
 .layout-icon img {
 	width: 100%;
@@ -77,7 +82,7 @@
 .dropdown {
 	width: 130px;
 	position: relative;
-	color: #333;
+	color: #fff;
 	text-transform: uppercase;
 	font-size: 1.4rem;
 	font-weight: bold;

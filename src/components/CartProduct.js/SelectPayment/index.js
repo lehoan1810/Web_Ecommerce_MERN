@@ -43,6 +43,7 @@ const SelectPayment = (props) => {
 	const paypal = (checkType) => {
 		const urlPaypal = `${process.env.REACT_APP_API_LOCAL}/api/v1/pay/${idUser}`;
 		const urlVNPAY = `${process.env.REACT_APP_API_LOCAL}/api/v1/vnpay/create_payment_url`;
+		// const urlVNPAY = `http://localhost:5000/api/v1/vnpay/create_payment_url`;
 		setLoading(true);
 		if (checkType === 1) {
 			axios
