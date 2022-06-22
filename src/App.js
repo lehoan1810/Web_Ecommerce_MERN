@@ -53,7 +53,7 @@ function App() {
 					<Route path="/shop/category" component={RouterCategory} />
 
 					{/* <Route path="*" component={NotPage} /> */}
-					<Route path="*" component={LoadingPage} />
+					<Route path="*" component={NotPage} />
 				</Switch>
 			</div>
 		</Router>

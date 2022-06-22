@@ -8,25 +8,42 @@ import img4 from "../../../images/img4.jpg";
 import img5 from "../../../images/img5.png";
 import img6 from "../../../images/img6.png";
 import img7 from "../../../images/img7.png";
-import imgHomeReview from "../../../images/img-home-review.png";
+import ArrowRight from "../../../images/ArrowRight.png";
+import ProductNew from "../../Category/ProductNew/ProductNew";
 
 const Main = () => {
 	return (
 		<div>
 			<main>
-				<section className="hero">
+				{/* <section className="hero">
 					<div className="container">
 						<div className="hero-content">
-							<h1 className="hero-heading">Computer</h1>
+							<h2 className="hero-heading">Computer</h2>
 							<h3 className="hero-caption">Shop Online</h3>
 							<div className="hero-video">
-								<img src="" alt="" />
 								<span>Open - 8:00 AM</span>
 								<span>Close - 5:00 PM</span>
 							</div>
 						</div>
 					</div>
-				</section>
+				</section> */}
+				<div className="banner1">
+					<div className="container1">
+						<div className="hero-content">
+							<h2 className="hero-heading">Computer</h2>
+							<p className="hero-caption">
+								Everything That You Want To Know Woolib Shop
+							</p>
+							<form>
+								<input
+									type="text"
+									className="search-input"
+									placeholder="Tìm kiếm sản phẩm . . ."
+								/>
+							</form>
+						</div>
+					</div>
+				</div>
 				<section className="feature">
 					<div className="container">
 						<div className="feature-main">
@@ -34,48 +51,108 @@ const Main = () => {
 								<div className="feature-icon">
 									<img src={IconQuality} alt="" />
 								</div>
-								<h3 className="feature-title">Quality</h3>
+								<h3 className="feature-title">Chất Lượng</h3>
 								<div className="feature-desc text">
-									Is a store that provides the most prestigious computer
-									accessories, and does not disappoint customers.
+									Sản phẩm chất lượng hàng đầu
 								</div>
 							</div>
 							<div className="feature-item">
 								<div className="feature-icon">
 									<img src={IconModern} alt="" />
 								</div>
-								<h3 className="feature-title">Reputations</h3>
+								<h3 className="feature-title">Bảo Hành</h3>
 								<div className="feature-desc text">
-									Is the most prestigious store today.
+									Bảo hành toàn sản phẩm trong 2 năm
 								</div>
 							</div>
 							<div className="feature-item">
 								<div className="feature-icon">
 									<img src={IconReputations} alt="" />
 								</div>
-								<h3 className="feature-title">Modern</h3>
+								<h3 className="feature-title">Hiện đại</h3>
 								<div className="feature-desc text">
-									The items are always the latest and most modern lines.
+									Những mặt hàng, sản phẩm đều là model mới nhất
 								</div>
 							</div>
+						</div>
+					</div>
+				</section>
+				<section className="about">
+					<div className="container">
+						<div className="work-header">
+							<h3 className="caption">Dòng sản phẩm mới </h3>
+							<div className="text">
+								Đây là những dòng sản phẩm hot nhất là cửa hàng có được
+							</div>
+						</div>
+						<ProductNew />
+					</div>
+				</section>
+				<section className="about">
+					<div className="container">
+						<div className="work-header">
+							<h3 className="caption">Những phụ kiện nổi bật </h3>
+							<div className="text">
+								Những dòng phụ kiện được người dùng ưu chuộng nhất
+							</div>
+						</div>
+						<div className="card-outstanding-flex">
+							<div className="card-outstanding">
+								<img
+									className="card-outstanding-images"
+									src="https://cdn.dribbble.com/users/486985/screenshots/14161095/media/a2efbe029701f63c428679e356c6771d.jpg?compress=1&resize=400x300"
+									alt=""
+								/>
+								<span>Laptop</span>
+							</div>
+							<div className="card-outstanding">
+								<img
+									className="card-outstanding-images"
+									src="https://cdn.dribbble.com/users/99875/screenshots/11050290/isolation-office_dribbble.png?compress=1&resize=400x300"
+									alt=""
+								/>
+								<span>Chuột</span>
+							</div>
+							<div className="card-outstanding">
+								<img
+									className="card-outstanding-images"
+									src="https://cdn.dribbble.com/userupload/2713130/file/original-c5eeea77c5957ad47ccfd665f85d3eb9.png?compress=1&resize=400x300&vertical=top"
+									alt=""
+								/>
+								<span>Tai nghe</span>
+							</div>
+							<div className="card-outstanding">
+								<img
+									className="card-outstanding-images"
+									src="https://design4users.com/wp-content/uploads/2020/02/3d-illustration-workspace.jpg.pagespeed.ce.Fx4pca0q_y.jpg"
+									alt=""
+								/>
+								<span>Bàn phím</span>
+							</div>
+						</div>
+						<div className="card-outstanding-see-more">
+							<Link to="/product">Xem thêm</Link>
+							<img src={ArrowRight} alt="" />
 						</div>
 					</div>
 				</section>
 				<section className="about" id="about">
 					<div className="container">
 						<div className="about-main">
-							<div className="about-content">
-								<h3 className="caption">About us</h3>
-								<h2 className="heading">Give your workplace a modern look</h2>
-								<div className="text">
-									Phasellus pulvinar iaculis nunc at placerat. Sed porta
-									sollicitudin eros, vel sagittis turpis consequat nec. Donec ac
-									viverra ligula, in scelerisque leo.
-								</div>
-							</div>
 							<div className="about-image">
 								<img src={img3} alt="" className="about-phone-under" />
-								<img src="" alt="" className="about-phone" />
+							</div>
+							<div className="about-content">
+								<h3 className="caption">Về chúng tôi</h3>
+								<div className="text">
+									<strong>WooLib Computer </strong>
+									là nhà phân phối độc quyền các thương hiệu lớn trên thế giới
+									như bàn phím cơ Filco (từ tập đoàn Diatec – Nhật Bản), bàn
+									phím cơ Realforce (từ tập đoàn Topre – Nhật Bản), cân màu
+									Spyder (từ tập đoàn Datacolor – Mỹ), gaming gear thương hiệu
+									Glorious (Glorious PC Gaming Race - Mỹ) và Pulsar đến từ Hàn
+									Quốc.
+								</div>
 							</div>
 						</div>
 					</div>
@@ -83,11 +160,10 @@ const Main = () => {
 				<section className="work" id="work">
 					<div className="container">
 						<div className="work-header">
-							<h3 className="caption">work</h3>
-							<h2 className="heading">Featured products</h2>
+							<h3 className="caption">Nổi Bật</h3>
 							<div className="text">
-								These are the types of products that are most trusted by users
-								of the shop
+								Đây là những loại sản phẩm được người dùng tin tưởng nhất của
+								shop
 							</div>
 						</div>
 						<div className="work-list">
@@ -107,87 +183,6 @@ const Main = () => {
 						<Link to="/product" href="#" className="btn btn--primary work-link">
 							All works
 						</Link>
-					</div>
-				</section>
-				<section className="experience" id="experience">
-					<div className="container">
-						<div className="experience-main">
-							<div className="experience-number">
-								<span className="experience-year">4</span>
-								{/* <img src={giado} alt="" /> */}
-								<img src="" alt="" className="experience-dots" />
-							</div>
-							<div className="experience-content">
-								<h3 className="caption">Experience</h3>
-								<h2 className="heading">Operational Experience</h2>
-								<div className="text">
-									Has many years of experience in providing the best quality
-									computer products and accessories
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-				{/* <section className="partner" id="blog">
-					<div className="container">
-						<div className="partner-header">
-							<h3 className="caption">Partner</h3>
-						</div>
-						<div className="partner-list">
-							<div className="partner-item">
-								<img
-									src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Dell_Logo.svg/1200px-Dell_Logo.svg.png"
-									alt=""
-								/>
-							</div>
-							<div className="partner-item">
-								<img
-									src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/i/c912aa42-301c-4141-a624-745ab5702e03/dc8q1ww-20360b90-2838-43d0-9926-cf391efe14af.png"
-									alt=""
-								/>
-							</div>
-							<div className="partner-item">
-								<img src="" alt="" />
-							</div>
-							<div className="partner-item">
-								<img src="" alt="" />
-							</div>
-							<div className="partner-item">
-								<img src="" alt="" />
-							</div>
-							<div className="partner-item">
-								<img src="" alt="" />
-							</div>
-							<div className="partner-item">
-								<img src="" alt="" />
-							</div>
-							<div className="partner-item">
-								<img src="" alt="" />
-							</div>
-						</div>
-					</div>
-				</section> */}
-				<section className="review">
-					<div className="container">
-						<div className="review-header">
-							<h3 className="caption">Testimonials</h3>
-							<h2 className="heading">See our Customers’ Reviews</h2>
-							<div className="text">
-								Your most unhappy customers are your greatest source of learning
-							</div>
-						</div>
-						<div className="review-list">
-							<div className="review-item">
-								<img src="" alt="" className="review-icon" />
-								<div className="review-desc">
-									Your company’s most valuable asset is how it is known to its
-									<span></span>
-									<strong> customers</strong>.
-								</div>
-								<img src={imgHomeReview} alt="" className="review-avatar" />
-								<h3 className="review-author">Brian Tracy</h3>
-							</div>
-						</div>
 					</div>
 				</section>
 			</main>

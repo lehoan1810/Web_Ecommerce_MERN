@@ -112,8 +112,8 @@ const HeaderProduct = (props) => {
 												<span>Thông tin cá nhân</span>
 											</Link>
 										</div>
-										<div onClick={logOut} className="header-log-out-item">
-											<Link className="logOut" to="/">
+										<div className="header-log-out-item">
+											<Link className="logOut" to="/product">
 												<span>Xem sản phẩm</span>
 											</Link>
 										</div>

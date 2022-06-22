@@ -13,7 +13,7 @@ const Category = () => {
 			{/* <Slider /> */}
 			<SliderNew />
 			<Content />
-			<ProductNew />
+			{/* <ProductNew /> */}
 			<Footer />
 		</div>
 	);

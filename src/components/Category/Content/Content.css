@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Courgette&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Courgette&display=swap"); */
 
 .product-category {
 	margin-top: 30px;
@@ -14,7 +14,9 @@
 	margin-bottom: 0;
 	font-size: 6rem;
 	text-align: center;
-	font-family: "Courgette", cursive;
+	padding-top: 20px;
+	font-weight: 600;
+	/* font-family: "Courgette", cursive; */
 }
 .Category-list {
 	display: flex;

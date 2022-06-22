@@ -79,14 +79,12 @@ section[id] {
 
 .wrapper {
 	max-width: 1920px;
-	margin: 0 auto;
-	background: url(https://oyster.ignimgs.com/wordpress/stg.ign.com/2020/11/OMNIDESK-IGN-1.jpg);
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-position: top;
-	font-size: 18px;
-	color: #6a727f;
-	background-color: #222831;
+	height: 720px;
+	background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+		url(../../../images/banner-bg.jpg) center/cover no-repeat fixed;
+	/* display: flex;
+	flex-direction: column;
+	justify-content: stretch; */
 }
 
 .container {
@@ -100,17 +98,18 @@ section[id] {
 	height: 60px;
 	object-fit: cover;
 }
+
 .about-image img {
-	-webkit-transform: scale(0.5);
-	transform: scale(1);
+	-webkit-transform: scale(0.7);
+	transform: scale(0.7);
 	-webkit-transition: 0.3s ease-in-out;
 	transition: 0.3s ease-in-out;
 	cursor: pointer;
 }
 
 .about-image:hover img {
-	-webkit-transform: scale(1);
-	transform: scale(1.1);
+	-webkit-transform: scale(0.8);
+	transform: scale(0.8);
 }
 
 .about-phone-under {
@@ -139,6 +138,37 @@ section[id] {
 .menu-home-item {
 	position: relative;
 }
+
+/*  */
+.banner1 {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	color: #fff;
+}
+
+.banner1 form {
+	background: #fff;
+	border-radius: 2rem;
+	/* padding: 2rem 1rem; */
+	display: flex;
+	justify-content: space-between;
+	margin-top: 1.4rem;
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+}
+.search-input {
+	font-size: 15px;
+	width: 100%;
+	outline: 0;
+	padding: 20px;
+	border: none;
+	border-radius: 37%;
+}
+/*  */
 .menu-home-item::before {
 	content: "";
 	position: absolute;
@@ -170,8 +200,9 @@ section {
 .caption {
 	text-transform: uppercase;
 	font-weight: bold;
-	color: #f56766;
-	margin-bottom: 35px;
+	color: #333;
+	margin-bottom: 10px;
+	font-size: 30px;
 }
 
 .heading {
@@ -224,7 +255,7 @@ section {
 	}
 }
 .header {
-	border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+	background-color: rgba(0, 0, 0, 0.214);
 }
 .header-main {
 	display: flex;
@@ -290,7 +321,7 @@ section {
 		transition: all 0.2s ease;
 	}
 	.menu-home-link:hover {
-		color: white;
+		color: #333;
 		background-color: #f56766;
 	}
 }
@@ -298,31 +329,74 @@ section {
 .hero {
 	display: block;
 	padding: 270px 0 380px;
-	color: white;
+	/* color: white; */
+	color: #333;
 }
 .hero-heading {
 	text-transform: uppercase;
 	font-weight: 800;
 	font-size: 120px;
 	margin-bottom: 15px;
-	color: white;
+	color: #353535;
+	/* transform: skewY(-4deg); */
+	text-shadow: #f9f9f9 4px 4px, #696969 8px 8px;
 }
+
+@keyframes animate {
+	0%,
+	100% {
+		clip-path: polygon(
+			0% 45%,
+			16% 44%,
+			33% 50%,
+			54% 60%,
+			70% 61%,
+			84% 59%,
+			100% 52%,
+			100% 100%,
+			0% 100%
+		);
+	}
+
+	50% {
+		clip-path: polygon(
+			0% 60%,
+			15% 65%,
+			34% 66%,
+			51% 62%,
+			67% 50%,
+			84% 45%,
+			100% 46%,
+			100% 100%,
+			0% 100%
+		);
+	}
+}
+
 .hero-caption {
-	font-size: 40px;
+	padding: 10px 0 20px 0;
+	font-size: 18px;
+	text-transform: capitalize;
 	font-weight: 600;
-	margin-bottom: 50px;
+	word-spacing: 2px;
 	color: white;
 }
+
 .hero-video {
-	display: flex;
+	display: inline-flex;
 	align-items: center;
-	gap: 0 25px;
 	font-weight: 600;
 	font-size: 18px;
+	background-color: white;
+	padding: 8px;
+	border-radius: 10px;
+}
+.hero-video span:first-child {
+	margin-right: 10px;
 }
 @media screen and (max-width: 1599px) {
 	.hero {
-		padding: 109px 0 280px;
+		padding: 50px 0 0px;
 	}
 }
 @media screen and (max-width: 1279px) {
@@ -373,8 +447,9 @@ section {
 	text-align: center;
 	flex-direction: column;
 	border-radius: 4px;
-	background-color: #2b3139;
-	padding: 65px 40px;
+
+	background-color: #626262;
+	padding: 20px 40px;
 }
 .feature-icon {
 	margin-bottom: 35px;
@@ -382,12 +457,15 @@ section {
 .feature-title {
 	color: white;
 	font-size: 22px;
-	font-weight: 800;
+	font-weight: 600;
 	margin-bottom: 20px;
+}
+.feature-desc {
+	color: white;
 }
 @media screen and (max-width: 1599px) {
 	.feature {
-		padding: 100px 0 150px;
+		padding: 290px 0 30px;
 	}
 }
 @media screen and (max-width: 1023px) {
@@ -422,7 +500,7 @@ section {
 }
 
 .about {
-	padding-bottom: 190px;
+	padding-bottom: 90px;
 	display: block;
 }
 .about .container {
@@ -432,10 +510,15 @@ section {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	gap: 0 70px;
 }
 .about-content {
 	max-width: 470px;
+}
+.about-content .caption {
+	font-size: 24px;
+}
+.about-content .text {
+	font-size: 20px;
 }
 .about-phone {
 	position: absolute;
@@ -480,8 +563,84 @@ section {
 .work-header {
 	text-align: center;
 	max-width: 490px;
-	margin: 0 auto 100px;
+	margin: 0 auto 40px;
 }
+.work-header .text {
+	font-size: 18px;
+}
+
+/* card-outstanding */
+.card-outstanding {
+	overflow: hidden;
+	position: relative;
+	width: 300px;
+	height: 300px;
+	border-radius: 7px;
+	cursor: pointer;
+}
+.card-outstanding img {
+	position: absolute;
+	z-index: -1;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 200ms;
+}
+.card-outstanding::after {
+	position: absolute;
+	content: "";
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.1);
+}
+.card-outstanding:hover img {
+	transform: scale(1.05);
+}
+.card-outstanding span {
+	position: absolute;
+	bottom: 0;
+	padding: 25px 20px;
+	background-color: rgba(0, 0, 0, 0.6);
+	z-index: 1;
+	color: white;
+	font-weight: 600;
+	width: 100%;
+	font-size: 16px;
+	text-align: right;
+	text-transform: uppercase;
+}
+.card-outstanding-flex {
+	--columns: 4;
+	--gap: 20px;
+	display: grid;
+	grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
+	grid-gap: var(--gap);
+}
+.card-outstanding-see-more {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding-top: 20px;
+	justify-content: flex-end;
+}
+.card-outstanding-see-more a {
+	font-size: 17px;
+}
+.card-outstanding-see-more a:hover {
+	cursor: pointer;
+	color: #f56766;
+}
+.card-outstanding-see-more img:hover {
+	cursor: pointer;
+}
+.card-outstanding-see-more img {
+	width: 30px;
+	height: 30px;
+	object-fit: cover;
+}
+/*  */
 .work-list {
 	margin-bottom: 60px;
 	display: grid;
