@@ -41,9 +41,9 @@ const SliderProduct = (prop) => {
 			>
 				{listProduct &&
 					listProduct.map((item, id) => (
-						<SwiperSlide>
+						<SwiperSlide key={id}>
 							{/* <img key={id} src={item.productPicture} alt="" srcset="" /> */}
-							<Link to={`${item.id}`} replace key={id}>
+							<Link to={`${item.id}`} replace>
 								<div className="container-recommend-products">
 									<div className="recommend-product-image">
 										<img

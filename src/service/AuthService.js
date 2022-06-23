@@ -29,13 +29,13 @@ export const login = async (formData) => {
 		);
 
 		toast.success("Đăng nhập thành công!", {
-			autoClose: 900,
+			autoClose: 1500,
 			hideProgressBar: true,
 		});
 		return { id, name, email, role };
 	} catch (error) {
-		toast.error("Đăng nhập không thành công, vui lòng thử lại!", {
-			autoClose: 900,
+		toast.error(error.response.data.message, {
+			autoClose: 1500,
 			hideProgressBar: true,
 		});
 		throw error;

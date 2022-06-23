@@ -24,6 +24,7 @@ import SliderProduct from "../../../common/SliderProduct/index.js";
 
 const ItemDetail = () => {
 	const { id } = useParams();
+	console.log(id);
 	const [dataDetail, setDataDetail] = useState("");
 	const [review, setReview] = useState([]);
 	const [dataUser, setDataUser] = useState([]);
@@ -55,13 +56,15 @@ const ItemDetail = () => {
 				.get(url, { headers: authHeader() })
 				.then((res) => {
 					setDataDetail(res.data.product);
-					console.log("show detail data: ", res.data.product);
+					console.log("check review: ", res.data.product.reviews);
 					setReview(res.data.product.reviews);
 				})
 				.catch((err) => console.log(err));
 		};
 		loadDetail();
 	}, [url]);
+
+	const checkReview = review.find((item) => item.user === idUser);
 
 	const [count, setCount] = useState(1);
 	const Increase = () => {
@@ -207,13 +210,17 @@ const ItemDetail = () => {
 								</span>
 							</div>
 						</div>
-						<button
-							className="button-handel-create-review"
-							onClick={() => setModalIsOpen(true)}
-						>
-							Tạo đánh giá
-							<img className="img-edit-review" src={Edit} alt="" />
-						</button>
+						{checkReview ? (
+							" "
+						) : (
+							<button
+								className="button-handel-create-review"
+								onClick={() => setModalIsOpen(true)}
+							>
+								Tạo đánh giá
+								<img className="img-edit-review" src={Edit} alt="" />
+							</button>
+						)}
 					</div>
 					{review.map((item, id) => (
 						<div key={id}>
