@@ -138,13 +138,13 @@ const HeaderProduct = (props) => {
 						</div>
 					) : roleUser === "assistant" ? (
 						<div className="header-tooll card-shop">
-							<div className="item-message">
+							{/* <div className="item-message">
 								<img src={Message} alt="" className="bell-noti-icon" />
 							</div>
 							<div className="bell-noti">
 								<img src={Bell} alt="" className="bell-noti-icon" />
 								<div className="bell-noti-status"></div>
-							</div>
+							</div> */}
 							<div className="header-icon-user">
 								<img className="icon-user" src={dataProfile.photo} alt="" />
 								<div className="header-log-out">
@@ -159,13 +159,13 @@ const HeaderProduct = (props) => {
 						</div>
 					) : roleUser === "admin" ? (
 						<div className="header-tooll card-shop">
-							<div className="item-message">
+							{/* <div className="item-message">
 								<img src={Message} alt="" className="bell-noti-icon" />
 							</div>
 							<div className="bell-noti">
 								<img src={Bell} alt="" className="bell-noti-icon" />
 								<div className="bell-noti-status"></div>
-							</div>
+							</div> */}
 							<div className="header-icon-user">
 								<img
 									className="icon-user"

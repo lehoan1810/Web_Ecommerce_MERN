@@ -51,7 +51,7 @@ const ManagerBrand = () => {
 						className="check-detail"
 						// onClick={(e) => onAssign(teacher.idTeacher, e)}
 					>
-						delete
+						Xóa
 					</button>
 				</div>
 			),

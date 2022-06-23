@@ -133,7 +133,7 @@ const ManagerProduct = () => {
 						className="check-detail"
 						onClick={(e) => onUpdate(products, e)}
 					>
-						Cập nhập
+						Sửa
 					</button>
 				</div>
 			),
