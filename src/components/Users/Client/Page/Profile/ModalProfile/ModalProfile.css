@@ -2,7 +2,6 @@
 	padding: 10px;
 	color: white;
 	background-color: rgb(73, 139, 224);
-	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 	cursor: pointer;
 	border-radius: 5px;
 	outline: none;
@@ -90,11 +89,10 @@
 	margin-top: 20px;
 }
 .btn-cancel-account {
-	background-color: #ee756c;
+	background-color: rgb(253, 63, 63);
 	padding: 10px 30px;
 	color: white;
 	border-radius: 5px;
-	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 	margin-right: 50px;
 	transition: all 0.4s ease-in-out;
 }

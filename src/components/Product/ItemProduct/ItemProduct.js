@@ -59,18 +59,26 @@ const ItemProduct = ({ toggleType, data }) => {
 						<span>{`(${data.ratingsAverage})`}</span>
 					</div>
 					<h2>{data.name}</h2>
-					<div className="handle-card-item-product">
-						<div className="flex-handle-card-item">
-							<img src={Bag} alt="" />
-							<img onClick={(e) => linkTarget(e)} src={Show} alt="" />
+					{data.isWorking === false ? (
+						<div className="handle-card-item-product">
+							<div className="flex-handle-card-item"></div>
+							<span className="handle-add-to-cart-stop">Ngừng kinh doanh</span>
 						</div>
-						<button
-							onClick={() => onAddCart(data._id)}
-							className="handle-add-to-cart"
-						>
-							Thêm vào giỏ hàng
-						</button>
-					</div>
+					) : (
+						<div className="handle-card-item-product">
+							<div className="flex-handle-card-item">
+								<img src={Bag} alt="" />
+								<img onClick={(e) => linkTarget(e)} src={Show} alt="" />
+							</div>
+
+							<button
+								onClick={() => onAddCart(data._id)}
+								className="handle-add-to-cart"
+							>
+								Thêm vào giỏ hàng
+							</button>
+						</div>
+					)}
 				</div>
 			</div>
 		</div>

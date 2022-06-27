@@ -13,12 +13,31 @@ const { Option } = Select;
 
 const ManagerProduct = () => {
 	const [loading, setloading] = useState(false);
-
 	const [modalIsOpen, setModalIsOpen] = useState(false);
 	const [selectCategory, setSelectCategory] = useState("");
 	const [selectBrand, setSelectBrand] = useState("");
 	const [dataCategory, setDataCategory] = useState([]);
 	const [dataBrand, setDataBrand] = useState([]);
+	const [dataUpdate, setDataUpdate] = useState(null);
+	const [statusWorking, setStatusWorking] = useState("");
+
+	const statusProduct = [
+		{
+			id: "1",
+			isWorking: "",
+			name: "Tất cả",
+		},
+		{
+			id: "2",
+			isWorking: true,
+			name: "Đang kinh doanh",
+		},
+		{
+			id: "3",
+			isWorking: false,
+			name: "Ngừng kinh doanh",
+		},
+	];
 
 	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/category/getCategory`;
 
@@ -56,15 +75,21 @@ const ManagerProduct = () => {
 	const onSelectBrand = (item) => {
 		setSelectBrand(item);
 	};
+	const onSelectStatus = (item) => {
+		setStatusWorking(item);
+	};
 
 	// load product
-	const urlProduct = `${process.env.REACT_APP_API_LOCAL}/api/v1/category/getProductsId/${selectBrand}`;
+	const urlProduct = `${process.env.REACT_APP_API_LOCAL}/api/v1/category/getProductsId/${selectBrand}?status=${statusWorking}`;
 
 	const [dataProduct, setDataProduct] = useState([]);
 	useEffect(() => {
 		const loadProduct = () => {
 			if (!selectBrand) {
 				return 0;
+			}
+			if (dataUpdate) {
+				console.log("show dataTest: ", dataUpdate);
 			}
 			setloading(true);
 			axios
@@ -77,7 +102,7 @@ const ManagerProduct = () => {
 				.catch((err) => console.log(err));
 		};
 		loadProduct();
-	}, [urlProduct, selectBrand]);
+	}, [urlProduct, selectBrand, dataUpdate, statusWorking]);
 
 	const [updateIsOpen, setUpdateIsOpen] = useState(false);
 	const [idUpdate, setIdUpdate] = useState("");
@@ -104,8 +129,12 @@ const ManagerProduct = () => {
 			dataIndex: "name",
 			responsive: ["md"],
 			key: "name",
+			render: (item) => (
+				<div className="desc-name-table">
+					<span>{item}</span>
+				</div>
+			),
 		},
-
 		{
 			title: "Giá Sản Phẩm",
 			dataIndex: "price",
@@ -119,6 +148,22 @@ const ManagerProduct = () => {
 							currency: "VND",
 						}).format(item)}
 					</span>
+				</div>
+			),
+		},
+
+		{
+			title: "Tình trạng",
+			dataIndex: "isWorking",
+			responsive: ["md"],
+			key: "isWorking",
+			render: (item) => (
+				<div>
+					{item === false ? (
+						<span className="off-product">Ngừng kinh doanh</span>
+					) : (
+						<span className="onl-product">Đang kinh doanh</span>
+					)}
 				</div>
 			),
 		},
@@ -148,6 +193,10 @@ const ManagerProduct = () => {
 		}
 		return dataProduct.filter(({ price }) => price === +filterInput);
 	};
+	const checkUpdate = (value) => {
+		console.log("show value update: ", value);
+		setDataUpdate(value);
+	};
 
 	return (
 		<div>
@@ -172,8 +221,8 @@ const ManagerProduct = () => {
 				</div>
 				<div className="select-show">
 					<Select
-						defaultValue="select Category"
-						style={{ width: "100%" }}
+						defaultValue="Lựa chọn danh mục"
+						style={{ width: "180px" }}
 						onChange={onSelectCategory}
 					>
 						{dataCategory &&
@@ -186,13 +235,27 @@ const ManagerProduct = () => {
 				</div>
 				<div className="select-show-product">
 					<Select
-						defaultValue="select brand"
-						style={{ width: "100%" }}
+						defaultValue="Lựa chọn nhãn hiệu"
+						style={{ width: "180px" }}
 						onChange={onSelectBrand}
 					>
 						{dataBrand &&
 							dataBrand.map((item, id) => (
 								<Option className="option-item" key={id} value={item._id}>
+									{item.name}
+								</Option>
+							))}
+					</Select>
+				</div>
+				<div className="select-show-product status-product-assistant">
+					<Select
+						defaultValue="Chọn tình trạng"
+						style={{ width: "180px" }}
+						onChange={onSelectStatus}
+					>
+						{statusProduct &&
+							statusProduct.map((item, id) => (
+								<Option className="option-item" key={id} value={item.isWorking}>
 									{item.name}
 								</Option>
 							))}
@@ -209,9 +272,14 @@ const ManagerProduct = () => {
 						backgroundColor: "rgba(0,0,0,0.4)",
 					},
 					content: {
-						width: "80vw",
-						margin: "auto",
-						height: "70rem",
+						top: "50%",
+						left: "50%",
+						right: "auto",
+						bottom: "auto",
+						marginRight: "-50%",
+						transform: "translate(-50%, -50%)",
+						width: "75vw",
+						height: "60rem",
 					},
 				}}
 			>
@@ -232,7 +300,11 @@ const ManagerProduct = () => {
 					},
 				}}
 			>
-				<ModalUpdate data={idUpdate} setModalIsOpen={setUpdateIsOpen} />
+				<ModalUpdate
+					data={idUpdate}
+					setModalIsOpen={setUpdateIsOpen}
+					productUpdate={checkUpdate}
+				/>
 			</Modal>
 		</div>
 	);

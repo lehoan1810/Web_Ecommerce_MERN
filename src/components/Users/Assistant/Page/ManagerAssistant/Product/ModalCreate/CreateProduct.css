@@ -87,3 +87,10 @@
 	font-size: 1.6rem;
 	margin-bottom: 10px;
 }
+
+.add-category-flexbox {
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-end;
+	gap: 30px;
+}

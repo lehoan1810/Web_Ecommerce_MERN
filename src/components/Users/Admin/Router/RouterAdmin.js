@@ -9,6 +9,7 @@ import ManagerCategory from "../Page/Manager/ManagerCategory/ManagerCategory.js"
 import ManagerData from "../Page/Manager/ManagerData/ManagerData.js";
 import ManagerProduct from "../Page/Manager/ManagerProduct/ManagerProduct.js";
 import ManagerUser from "../Page/Manager/ManagerUser/ManagerUser.js";
+import ManagerVoucher from "../Page/Manager/ManagerVoucher/ManagerVoucher.js";
 
 const RouterAdmin = () => {
 	return (
@@ -33,6 +34,11 @@ const RouterAdmin = () => {
 								exact
 								path="/admin/manager/product"
 								component={ManagerProduct}
+							/>
+							<Route
+								exact
+								path="/admin/manager/voucher"
+								component={ManagerVoucher}
 							/>
 							<Route
 								exact

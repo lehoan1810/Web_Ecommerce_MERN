@@ -21,7 +21,7 @@ const DashboardAssistant = () => {
 					<NavLink activeClassName="active" to="/assistant/manager/user">
 						<li className="profile-item item-bottom">
 							<img src={imgUser} alt="" />
-							<span>Quản Lý Khách Hàng</span>
+							<span>Quản Lý Tài Khoản</span>
 						</li>
 					</NavLink>
 					<NavLink activeClassName="active" to="/assistant/product">

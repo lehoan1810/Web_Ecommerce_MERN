@@ -8,15 +8,15 @@ const { TabPane } = Tabs;
 const ManagerUser = () => {
 	return (
 		<div>
-			<h2 className="title-admin">Quản Lý Khách hàng</h2>
+			<h2 className="title-admin">Quản Lý Tài khoản</h2>
 			<div className="form-purchase-user">
 				<Tabs defaultActiveKey="1">
-					<TabPane tab={<span>User Online</span>} key="1">
+					<TabPane tab={<span>Danh sách các tài khoản</span>} key="1">
 						<UserOnline />
 					</TabPane>
-					<TabPane tab={<span>User Lock</span>} key="2">
+					{/* <TabPane tab={<span>User Lock</span>} key="2">
 						<UserLock />
-					</TabPane>
+					</TabPane> */}
 				</Tabs>
 			</div>
 		</div>

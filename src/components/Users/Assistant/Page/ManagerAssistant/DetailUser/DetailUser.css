@@ -11,3 +11,14 @@
 .action-detail:hover {
 	background-color: rgb(20, 150, 224);
 }
+.total-data-user {
+	background-color: rgb(86, 192, 253);
+	display: inline-block;
+	margin-left: 50px;
+	width: 100px;
+	padding: 5px;
+}
+.total-data-user span {
+	font-size: 15px;
+	font-weight: 600;
+}

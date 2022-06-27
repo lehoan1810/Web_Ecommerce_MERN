@@ -3,17 +3,28 @@ import React from "react";
 import { toast } from "react-toastify";
 import authHeader from "../../../service/AuthHeader.js";
 
-const ModalDeleteItem = ({ data, setModalIsOpen }) => {
+const ModalDeleteItem = ({ data, setModalIsOpen, checkDelete }) => {
 	console.log(data);
+
 	const urlDelete = `${process.env.REACT_APP_API_LOCAL}/api/v1/cart/deleteFromCart`;
 	const onDelete = () => {
 		axios
 			.post(urlDelete, { productId: data }, { headers: authHeader() })
 			.then((res) => {
-				toast.success("Xóa thành công !!!");
+				toast.success("Xóa thành công !", {
+					autoClose: 1500,
+					hideProgressBar: true,
+				});
+				checkDelete(res.data);
+				setModalIsOpen(false);
 				window.location.reload();
 			})
-			.catch((err) => toast.error("lỗi, hãy thử lại!"));
+			.catch((err) =>
+				toast.error("lỗi, hãy thử lại!", {
+					autoClose: 1500,
+					hideProgressBar: true,
+				})
+			);
 	};
 	return (
 		<div>

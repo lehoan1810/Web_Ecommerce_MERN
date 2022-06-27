@@ -22,3 +22,29 @@
 .anticon svg {
 	font-size: 13px;
 }
+.desc-name-table span {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 250px;
+	letter-spacing: 1px;
+}
+.off-product {
+	font-weight: 600;
+	padding: 6px;
+	background-color: rgb(255, 118, 118);
+	color: white;
+	border-radius: 5px;
+}
+.onl-product {
+	font-weight: 600;
+	padding: 6px;
+	background-color: rgb(43, 181, 245);
+	color: white;
+	border-radius: 5px;
+}
+.status-product-assistant {
+	margin-left: 20px;
+}

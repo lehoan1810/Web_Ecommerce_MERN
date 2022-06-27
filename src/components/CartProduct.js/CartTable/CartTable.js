@@ -15,6 +15,7 @@ const CartTable = () => {
 	const [dataUser, setDataUser] = useState([]);
 	const [modalIsOpen, setModalIsOpen] = useState(false);
 	const [getIdProduct, setGetIdproduct] = useState("");
+	const [itemDataDelete, setItemDataDelete] = useState(null);
 
 	//Delete item from cart
 	const urlCart = `${process.env.REACT_APP_API_LOCAL}/api/v1/cart`;
@@ -30,7 +31,7 @@ const CartTable = () => {
 				.catch((err) => console.log(err));
 		};
 		loadCart();
-	}, [urlCart]);
+	}, [urlCart, itemDataDelete]);
 
 	//
 	const Increase = (productId, id) => {
@@ -55,7 +56,10 @@ const CartTable = () => {
 		const dataRaw = [...dataCart];
 		dataRaw[id].qty = parseInt(dataRaw[id].qty) - 1;
 		if (dataRaw[id].qty < 1) {
-			toast.warning("Số lượng không nhỏ hơn 1!");
+			toast.warning("Số lượng không nhỏ hơn 1!", {
+				autoClose: 1500,
+				hideProgressBar: true,
+			});
 			return;
 		}
 
@@ -84,6 +88,9 @@ const CartTable = () => {
 		setModalIsOpen(true);
 		setGetIdproduct(id);
 	};
+	const checkDataDelete = (item) => {
+		setItemDataDelete(item);
+	};
 
 	return (
 		<div className="cart-table">
@@ -102,50 +109,124 @@ const CartTable = () => {
 					{dataCart.map((item, id) => (
 						<tbody key={id}>
 							{/* <h1>{sum(item.qty, item.price)}</h1> */}
-							<tr>
-								<td>
-									<div className="image-text">
-										<img src={item.productPicture} alt="" />
-									</div>
-								</td>
-								<td className="name-prodcut">{item.productName}</td>
-								<td>
-									{new Intl.NumberFormat("it-IT", {
-										style: "currency",
-										currency: "VND",
-									}).format(item.price)}
-								</td>
-								<td>
-									<div className="count-cart-product">
-										<button
-											className="btn-dec "
-											onClick={() => Decrease(item.productId, id)}
-										>
-											<img className="onChange-qty" src={imgDecrease} alt="" />
-										</button>
-										<span>{item.qty}</span>
-										<button
-											className="btn-inc"
-											onClick={() => Increase(item.productId, id)}
-										>
-											<img className="onChange-qty" src={imgIncrease} alt="" />
-										</button>
-									</div>
-								</td>
-								<td>
-									<span>{totalOneProduct(item.qty, item.price)}</span>
-								</td>
-								<td>
-									<div className="action-handel">
-										<button
-											onClick={() => onGetIdproduct(item.productId)}
-											className="action-delete"
-										>
-											Xóa
-										</button>
-									</div>
-								</td>
-							</tr>
+							{item.isWorking === false ? (
+								<tr className="hidden-off-product">
+									<td>
+										<div className="image-text image-text-off">
+											<img src={item.productPicture} alt="" />
+											<span className="">Ngừng kinh doanh</span>
+										</div>
+									</td>
+									<td className="name-prodcut">{item.productName}</td>
+									<td>
+										{new Intl.NumberFormat("it-IT", {
+											style: "currency",
+											currency: "VND",
+										}).format(item.price)}
+									</td>
+									<td>
+										<div className="count-cart-product">
+											<button
+												className="btn-dec "
+												onClick={() => {
+													toast.error("Sản phẩm đã ngừng kinh doanh", {
+														autoClose: 1500,
+														hideProgressBar: true,
+													});
+												}}
+											>
+												<img
+													className="onChange-qty"
+													src={imgDecrease}
+													alt=""
+												/>
+											</button>
+											<span>{item.qty}</span>
+											<button
+												className="btn-inc"
+												onClick={() => {
+													toast.error("Sản phẩm đã ngừng kinh doanh", {
+														autoClose: 1500,
+														hideProgressBar: true,
+													});
+												}}
+											>
+												<img
+													className="onChange-qty"
+													src={imgIncrease}
+													alt=""
+												/>
+											</button>
+										</div>
+									</td>
+									<td>
+										<span>{totalOneProduct(item.qty, item.price)}</span>
+									</td>
+									<td>
+										<div className="action-handel">
+											<button
+												onClick={() => onGetIdproduct(item.productId)}
+												className="action-delete"
+											>
+												Xóa
+											</button>
+										</div>
+									</td>
+								</tr>
+							) : (
+								<tr>
+									<td>
+										<div className="image-text">
+											<img src={item.productPicture} alt="" />
+										</div>
+									</td>
+									<td className="name-prodcut">{item.productName}</td>
+									<td>
+										{new Intl.NumberFormat("it-IT", {
+											style: "currency",
+											currency: "VND",
+										}).format(item.price)}
+									</td>
+									<td>
+										<div className="count-cart-product">
+											<button
+												className="btn-dec "
+												onClick={() => Decrease(item.productId, id)}
+											>
+												<img
+													className="onChange-qty"
+													src={imgDecrease}
+													alt=""
+												/>
+											</button>
+											<span>{item.qty}</span>
+											<button
+												className="btn-inc"
+												onClick={() => Increase(item.productId, id)}
+											>
+												<img
+													className="onChange-qty"
+													src={imgIncrease}
+													alt=""
+												/>
+											</button>
+										</div>
+									</td>
+									<td>
+										<span>{totalOneProduct(item.qty, item.price)}</span>
+									</td>
+									<td>
+										<div className="action-handel">
+											<button
+												onClick={() => onGetIdproduct(item.productId)}
+												className="action-delete"
+											>
+												Xóa
+											</button>
+										</div>
+									</td>
+								</tr>
+							)}
 						</tbody>
 					))}
 				</table>
@@ -170,6 +251,7 @@ const CartTable = () => {
 					// dataProduct={id}
 					data={getIdProduct}
 					setModalIsOpen={setModalIsOpen}
+					checkDelete={checkDataDelete}
 				/>
 			</Modal>
 		</div>

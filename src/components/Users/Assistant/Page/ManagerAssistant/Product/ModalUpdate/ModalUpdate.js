@@ -6,13 +6,29 @@ import Loading from "../../../../../../Loading/Loading.js";
 import upload from "../../../../../../../images/upload.png";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import { Select } from "antd";
+const { Option } = Select;
 
-const ModalUpdate = ({ data, setModalIsOpen }) => {
+const ModalUpdate = ({ data, setModalIsOpen, productUpdate }) => {
 	console.log(data);
 	const [name, setName] = useState(data.name);
 	const [description, setDescription] = useState(data.description);
 	const [price, setPrice] = useState(data.price);
 	const [specification, setSpecification] = useState(data.specification);
+	const [status, setStatus] = useState(data.isWorking);
+
+	const statusProduct = [
+		{
+			id: "1",
+			isWorking: true,
+			name: "Đang kinh doanh",
+		},
+		{
+			id: "2",
+			isWorking: false,
+			name: "Ngừng kinh doanh",
+		},
+	];
 
 	// post image
 	const [imageSelected, setImageSelected] = useState(data.productPicture);
@@ -36,6 +52,7 @@ const ModalUpdate = ({ data, setModalIsOpen }) => {
 	const urlUpdate = `${process.env.REACT_APP_API_LOCAL}/api/v1/category/updateProductById/${data._id}`;
 
 	const onUpdate = () => {
+		setModalIsOpen(false);
 		axios
 			.patch(
 				urlUpdate,
@@ -45,20 +62,32 @@ const ModalUpdate = ({ data, setModalIsOpen }) => {
 					price: price,
 					productPicture: imageSelected,
 					specification: specification,
+					isWorking: status,
 				},
 				{
 					headers: authHeader(),
 				}
 			)
 			.then((res) => {
-				console.log(res.data);
-				toast.success("Tạo thành công !!!");
-				window.location.reload();
+				productUpdate(res.data.data.product);
+				console.log("data update product:", res.data.data.product);
+				toast.success("Cập nhập thành công !!!", {
+					autoClose: 1500,
+					hideProgressBar: true,
+				});
+
+				// window.location.reload();
 			})
 			.catch((err) => {
 				console.log(err);
-				toast.error("lỗi, vui lòng thử lại!");
+				toast.error("lỗi, vui lòng thử lại!", {
+					autoClose: 1500,
+					hideProgressBar: true,
+				});
 			});
+	};
+	const onSelectStatus = (item) => {
+		setStatus(item);
 	};
 
 	return (
@@ -78,7 +107,7 @@ const ModalUpdate = ({ data, setModalIsOpen }) => {
 					<button className="btn-cancel" onClick={(e) => setModalIsOpen(false)}>
 						Hủy
 					</button>
-					<button onClick={onUpdate}>Tạo sản phẩm</button>
+					<button onClick={onUpdate}>Cập nhập sản phẩm</button>
 				</div>
 			</div>
 			<div className="add-product-right">
@@ -89,6 +118,21 @@ const ModalUpdate = ({ data, setModalIsOpen }) => {
 						placeholder={data.name}
 						value={name}
 					/>
+				</div>
+				<div className="add-category-product add-item-brand ">
+					<span className="title-select-category block">Tình trạng</span>
+					<Select
+						defaultValue={status}
+						style={{ width: "200px" }}
+						onChange={onSelectStatus}
+					>
+						{statusProduct &&
+							statusProduct.map((item, id) => (
+								<Option className="option-item" key={id} value={item.isWorking}>
+									{item.name}
+								</Option>
+							))}
+					</Select>
 				</div>
 				<div className="add-price-product add-item">
 					<span>Giá tiền sản phẩm</span>

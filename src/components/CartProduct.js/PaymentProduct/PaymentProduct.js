@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import Modal from "react-modal";
 import ModalVoucher from "../Voucher/ModalVoucher.js";
 import SelectPayment from "../SelectPayment/index.js";
+import ModalProfile from "../../Users/Client/Page/Profile/ModalProfile/ModalProfile.js";
 
 const PaymentProduct = ({ dataCart, data }) => {
 	const idUser = getCurrentIdUser();
@@ -14,6 +15,7 @@ const PaymentProduct = ({ dataCart, data }) => {
 	const [loading, setLoading] = useState();
 	const [modalIsOpen, setModalIsOpen] = useState(false);
 	const [isOpenSelect, setIsOpenSelect] = useState(false);
+	const [isOpenUpdate, setIsOpenUpdate] = useState(false);
 	const [voucher, setVoucher] = useState(0);
 	const [code, setCode] = useState("");
 	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/users/profile/${idUser}`;
@@ -31,7 +33,10 @@ const PaymentProduct = ({ dataCart, data }) => {
 	}, [url, idUser]);
 	const sum = (he, voucher) => {
 		if (he) {
-			const itemsPrice = he.reduce((a, c) => a + c.price * c.qty, 0);
+			console.log("show he nef: ", he);
+			const itemsPrice = he
+				.filter(({ isWorking }) => isWorking === true)
+				.reduce((a, c) => a + c.price * c.qty, 0);
 			console.log("giá tiền:", itemsPrice);
 			return new Intl.NumberFormat("it-IT", {
 				style: "currency",
@@ -73,9 +78,19 @@ const PaymentProduct = ({ dataCart, data }) => {
 		setCode(detailVoucher.code);
 	};
 
+	const checkIsWorking = (dataCarts) => {
+		return dataCarts.some((item) => item.isWorking === false);
+	};
+
 	return (
 		<>
 			<div className="form-payment">
+				<span
+					onClick={() => setIsOpenUpdate(true)}
+					className="edit-address-payment"
+				>
+					Chỉnh sửa địa chỉ
+				</span>
 				<div className="desc-order-user">
 					<h3>Họ và tên</h3>
 					<span>{dataUser.name}</span>
@@ -105,10 +120,24 @@ const PaymentProduct = ({ dataCart, data }) => {
 						<h3 onClick={() => setModalIsOpen(true)}>Áp dụng mã giảm giá ?</h3>
 					</div>
 				</div>
-				{dataCart && dataCart.length > 0 && (
+				{dataCart && dataCart.length > 0 && checkIsWorking(dataCart) === false && (
 					<div className="btn-payment-price">
 						{/* <button onClick={() => paypal(voucher)}>Thanh Toán</button> */}
 						<button onClick={() => setIsOpenSelect(true)}>Thanh Toán</button>
+					</div>
+				)}
+				{dataCart.length > 0 && checkIsWorking(dataCart) === true && (
+					<div className="btn-payment-price">
+						<button
+							onClick={() =>
+								toast.error(
+									"Vui lòng xóa sản phẩm ngừng kinh doanh khỏi giỏ hàng",
+									{ autoClose: 1500, hideProgressBar: true }
+								)
+							}
+						>
+							Thanh Toán
+						</button>
 					</div>
 				)}
 				{dataCart.length <= 0 && (
@@ -167,6 +196,25 @@ const PaymentProduct = ({ dataCart, data }) => {
 					code={code}
 					address={dataUser.address}
 				/>
+			</Modal>
+			<Modal
+				isOpen={isOpenUpdate}
+				//err
+				ariaHideApp={false}
+				//
+				onRequestClose={() => setIsOpenUpdate(false)}
+				style={{
+					overlay: {
+						backgroundColor: "rgba(0,0,0,0.4)",
+					},
+					content: {
+						width: "80rem",
+						margin: "auto",
+						height: "48rem",
+					},
+				}}
+			>
+				<ModalProfile data={dataUser} setModalIsOpen={setIsOpenUpdate} />
 			</Modal>
 		</>
 	);

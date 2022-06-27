@@ -5,24 +5,50 @@ import Moment from "react-moment";
 import "./ManagerOrder.css";
 import { toast } from "react-toastify";
 import Loading from "../../../../../Loading/Loading.js";
+import { Select, Input } from "antd";
+const { Option } = Select;
+const { Search } = Input;
 
 const ProductAccept = () => {
 	const [dataOrder, setDataOrder] = useState([]);
-	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/orders?sort=date&status=1`;
+
 	const [loading, setLoading] = useState(true);
+	const [chooseDay, setChooseDay] = useState(30);
+	const [valueSearch, setValueSearch] = useState("");
+
+	const dataChooseDay = [
+		{
+			id: "1",
+			date: 3,
+			name: "3 ngày gần nhất",
+		},
+		{
+			id: "2",
+			date: 10,
+			name: "10 ngày gần nhất",
+		},
+		{
+			id: "3",
+			date: 30,
+			name: "30 ngày gần nhất",
+		},
+	];
+	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/orders?sort=date&status=1&chooseDay=${chooseDay}&search=${valueSearch}`;
 	useEffect(() => {
 		const loadProduct = () => {
 			axios
 				.get(url, { headers: authHeader() })
 				.then((res) => {
-					setDataOrder(res.data.data.orders);
-					console.log(res.data.data.orders);
+					setDataOrder(res.data.data.resultProductData);
 					setLoading(false);
 				})
 				.catch((err) => console.log(err));
 		};
 		loadProduct();
-	}, [url]);
+	}, [url, chooseDay]);
+	const onSearch = (value) => {
+		setValueSearch(value);
+	};
 	const onHandleDelivery = (idOrder) => {
 		const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/orders/${idOrder}`;
 		axios
@@ -40,8 +66,33 @@ const ProductAccept = () => {
 			})
 			.catch((err) => console.log("lỗi, vui lòng thử lại!"));
 	};
+	const handleChange = (item) => {
+		setChooseDay(item);
+	};
 	return (
 		<div>
+			<div>
+				<Select
+					defaultValue="select Day"
+					style={{ width: 120 }}
+					onChange={handleChange}
+				>
+					{dataChooseDay &&
+						dataChooseDay.map((item, id) => (
+							<Option key={id} value={item.date}>
+								{item.name}
+							</Option>
+						))}
+				</Select>
+				<Search
+					placeholder="Tìm kiếm "
+					allowClear
+					enterButton="Search"
+					// size="large"
+					onSearch={onSearch}
+					className="search-product"
+				/>
+			</div>
 			<div className="Order-table">
 				<div className="table">
 					<table>

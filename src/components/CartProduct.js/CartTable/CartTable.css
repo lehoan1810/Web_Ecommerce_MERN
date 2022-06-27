@@ -131,3 +131,21 @@ button {
 	width: 2.2rem;
 	object-fit: cover;
 }
+.hidden-off-product {
+	/* filter: opacity(0.2); */
+	background-color: rgba(99, 99, 99, 0.2);
+}
+.image-text-off {
+	position: relative;
+}
+.image-text-off span {
+	display: block;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	left: 0;
+	background-color: #e44119;
+	padding: 5px;
+	color: white;
+	border-radius: 5px;
+}

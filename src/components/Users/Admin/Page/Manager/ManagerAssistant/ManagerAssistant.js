@@ -2,20 +2,25 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import authHeader from "../../../../../../service/AuthHeader.js";
 import ModalDelete from "../ManagerUser/ModalDelete.js";
+import Message from "../../../../../../images/message.png";
 import Modal from "react-modal";
 import Loading from "../../../../../Loading/Loading.js";
+import ModalSendEmail from "../../../../../../common/ModalSendEmail/index.js";
 
 const ManagerAssistant = () => {
 	const [dataUser, setDataUser] = useState([]);
 	const [modalIsOpen, setModalIsOpen] = useState(false);
+	const [modalOpen, setModalOpen] = useState(false);
 	const [idUser, setIdUser] = useState("");
 	const [nameUser, setNameUser] = useState("");
-	const [loading, setLoading] = useState(true);
+	const [loading, setLoading] = useState(false);
+	const [emailUser, setEmailUser] = useState("");
 
 	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/users/getAllAssistant`;
 
 	useEffect(() => {
 		const loadUser = () => {
+			setLoading(true);
 			axios
 				.get(url, { headers: authHeader() })
 				.then((res) => {
@@ -33,6 +38,10 @@ const ManagerAssistant = () => {
 		setNameUser(name);
 		setModalIsOpen(true);
 	};
+	const sendEmail = (email) => {
+		setModalOpen(true);
+		setEmailUser(email);
+	};
 
 	return (
 		<div>
@@ -45,6 +54,7 @@ const ManagerAssistant = () => {
 								<th>Họ và Tên</th>
 								<th>Email</th>
 								<th>Phone</th>
+								<th>Liên hệ</th>
 								<th>Thao Tác</th>
 							</tr>
 						</thead>
@@ -72,7 +82,16 @@ const ManagerAssistant = () => {
 										<td>{item.name}</td>
 										<td>{item.email}</td>
 										<td>{item.phone}</td>
-
+										<td>
+											<div
+												onClick={() => sendEmail(item.email)}
+												className="action-handel"
+											>
+												<button className="action-lock">
+													<img src={Message} alt="" />
+												</button>
+											</div>
+										</td>
 										<td>
 											<div className="action-handel">
 												<button
@@ -111,6 +130,27 @@ const ManagerAssistant = () => {
 					nameUser={nameUser}
 					setModalIsOpen={setModalIsOpen}
 				/>
+			</Modal>
+			<Modal
+				isOpen={modalOpen}
+				ariaHideApp={false}
+				onRequestClose={() => setModalOpen(false)}
+				style={{
+					overlay: {
+						backgroundColor: "rgba(0,0,0,0.4)",
+					},
+					content: {
+						top: "50%",
+						left: "50%",
+						right: "auto",
+						bottom: "auto",
+						marginRight: "-50%",
+						transform: "translate(-50%, -50%)",
+						width: "50rem",
+					},
+				}}
+			>
+				<ModalSendEmail setModalIsOpen={setModalOpen} email={emailUser} />
 			</Modal>
 		</div>
 	);

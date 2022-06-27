@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
 import ModalOrder from "./ModalOrder/ModalOrder";
 import Moment from "react-moment";
@@ -6,11 +6,57 @@ import axios from "axios";
 import authHeader from "../../../../../../service/AuthHeader";
 import { toast } from "react-toastify";
 import Loading from "../../../../../Loading/Loading";
+import { Select, Input } from "antd";
+const { Option } = Select;
+const { Search } = Input;
 
-const ProductPending = ({ loading, data }) => {
+const ProductPending = () => {
 	const [modalIsOpen, setModalIsOpen] = useState(false);
 	const [dataModa, setDataModal] = useState([]);
 	const [nameUser, setNameUser] = useState([]);
+	const [chooseDay, setChooseDay] = useState(30);
+	const [valueSearch, setValueSearch] = useState("");
+
+	const dataChooseDay = [
+		{
+			id: "1",
+			date: 3,
+			name: "3 ngày gần nhất",
+		},
+		{
+			id: "2",
+			date: 10,
+			name: "10 ngày gần nhất",
+		},
+		{
+			id: "3",
+			date: 30,
+			name: "30 ngày gần nhất",
+		},
+	];
+	const [dataOrder, setDataOrder] = useState([]);
+	const [loading, setLoading] = useState(true);
+
+	const onSearch = (value) => {
+		setValueSearch(value);
+	};
+
+	const handleChange = (item) => {
+		setChooseDay(item);
+	};
+	const urls = `${process.env.REACT_APP_API_LOCAL}/api/v1/orders?sort=date&status=0&chooseDay=${chooseDay}&search=${valueSearch}`;
+	useEffect(() => {
+		const loadData = () => {
+			axios
+				.get(urls, { headers: authHeader() })
+				.then((res) => {
+					setDataOrder(res.data.data.resultProductData);
+					setLoading(false);
+				})
+				.catch((err) => console.log(err));
+		};
+		loadData();
+	}, [urls, chooseDay]);
 
 	const onHandleAccept = (idOrder) => {
 		const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/orders/${idOrder}`;
@@ -19,6 +65,7 @@ const ProductPending = ({ loading, data }) => {
 				url,
 				{
 					status: 1,
+					// chooseDay: chooseDay;
 				},
 				{ headers: authHeader() }
 			)
@@ -38,6 +85,31 @@ const ProductPending = ({ loading, data }) => {
 
 	return (
 		<div>
+			<div>
+				<Select
+					defaultValue="select Day"
+					style={{ width: 120 }}
+					onChange={handleChange}
+				>
+					{dataChooseDay &&
+						dataChooseDay.map((item, id) => (
+							<Option key={id} value={item.date}>
+								{item.name}
+							</Option>
+						))}
+				</Select>
+				<Search
+					placeholder="Tìm kiếm "
+					allowClear
+					enterButton="Search"
+					// size="large"
+					onSearch={onSearch}
+					className="search-product"
+				/>
+				<div>
+					{/* <input type="text" onChange={(e) => onSearch(e.target.value)} /> */}
+				</div>
+			</div>
 			<div className="Order-table">
 				<div className="table">
 					<table>
@@ -59,8 +131,8 @@ const ProductPending = ({ loading, data }) => {
 									</td>
 								</tr>
 							)}
-							{loading === false &&
-								data.map((item, id) => (
+							{dataOrder &&
+								dataOrder.map((item, id) => (
 									<tr key={id}>
 										<td>{item.nameUser}</td>
 										<td>

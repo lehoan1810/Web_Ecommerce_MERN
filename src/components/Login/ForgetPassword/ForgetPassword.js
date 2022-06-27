@@ -9,6 +9,7 @@ const ForgetPassword = () => {
 	const onsubmit = (e) => {
 		e.preventDefault();
 		const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/users/forgotPassword`;
+		// const url = `http://localhost:5000/api/v1/users/forgotPassword`;
 		axios
 			.post(url, { email: email })
 			.then((res) => {

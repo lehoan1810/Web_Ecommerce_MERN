@@ -14,7 +14,7 @@
 }
 .table-category {
 	padding: 30px 10px;
-	width: 50%;
+	width: 100%;
 }
 .item-image-dashed-border {
 	width: 200px;
@@ -75,4 +75,41 @@
 }
 .btn-handle-add-category button:last-child:hover {
 	background-color: #1396c2;
+}
+.table-scroll tbody {
+	overflow-y: auto;
+	display: block;
+	max-height: 300px;
+}
+.table-scroll {
+	width: 70%;
+	flex: 3;
+	background: rgba(255, 255, 255, 0.55);
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(4.5px);
+	-webkit-backdrop-filter: blur(4.5px);
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+	border-radius: 5px;
+
+	padding: 0 0 0 20px;
+}
+.table-scroll tr.loadings-center {
+	justify-content: center;
+}
+.table-scroll tr {
+	border-bottom: 1px solid #e6e9ec;
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+}
+.table-scroll td {
+	width: 24%;
+}
+.table-scroll th {
+	width: 27%;
+}
+.button-remove-category {
+	width: 100px;
 }

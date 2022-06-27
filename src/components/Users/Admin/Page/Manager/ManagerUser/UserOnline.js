@@ -1,22 +1,45 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import Lock from "../../../../../../images/lock.png";
+import Message from "../../../../../../images/message.png";
 import authHeader from "../../../../../../service/AuthHeader.js";
 import Modal from "react-modal";
 import ModalDelete from "./ModalDelete.js";
 import Loading from "../../../../../Loading/Loading";
+import { Select } from "antd";
+import ModalSendEmail from "../../../../../../common/ModalSendEmail";
+const { Option } = Select;
 
 const UserOnline = () => {
 	const [dataUser, setDataUser] = useState([]);
 	const [modalIsOpen, setModalIsOpen] = useState(false);
+	const [modalOpen, setModalOpen] = useState(false);
 	const [idUser, setIdUser] = useState("");
 	const [nameUser, setNameUser] = useState("");
-	const [loading, setLoading] = useState(true);
+	const [loading, setLoading] = useState(false);
+	const [userHasBuy, setUserHasBuy] = useState();
+	const [emailUser, setEmailUser] = useState("");
 
-	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/users/getAllCustomer`;
-
+	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/users/getAllCustomer?userHasBuy=${userHasBuy}`;
+	const dataUserHasBuy = [
+		{
+			id: "1",
+			useHasBuy: -1,
+			name: "Tất cả",
+		},
+		{
+			id: "2",
+			useHasBuy: "1",
+			name: "Đã từng mua hàng",
+		},
+		{
+			id: "3",
+			useHasBuy: "0",
+			name: "Chưa từng mua hàng",
+		},
+	];
 	useEffect(() => {
 		const loadUser = () => {
+			setLoading(true);
 			axios
 				.get(url, { headers: authHeader() })
 				.then((res) => {
@@ -28,6 +51,14 @@ const UserOnline = () => {
 		};
 		loadUser();
 	}, [url]);
+	const handleChange = (item) => {
+		setUserHasBuy(item);
+		setLoading(true);
+	};
+	const sendEmail = (email) => {
+		setModalOpen(true);
+		setEmailUser(email);
+	};
 	const deleteUser = (id, name, e) => {
 		e.preventDefault();
 		setIdUser(id);
@@ -37,6 +68,23 @@ const UserOnline = () => {
 
 	return (
 		<div>
+			<div>
+				<Select
+					defaultValue="Lựa chọn"
+					style={{ width: 200 }}
+					onChange={handleChange}
+				>
+					{dataUserHasBuy &&
+						dataUserHasBuy.map((item, id) => (
+							<Option key={id} value={item.useHasBuy}>
+								{item.name}
+							</Option>
+						))}
+				</Select>
+				<div className="total-data-user">
+					<span>Số lượng: {dataUser && dataUser.length}</span>
+				</div>
+			</div>
 			<div className="Order-table">
 				<div className="table">
 					<table>
@@ -46,7 +94,7 @@ const UserOnline = () => {
 								<th>Họ và Tên</th>
 								<th>Email</th>
 								<th>Phone</th>
-								<th>Block</th>
+								<th>Liên hệ</th>
 								<th>Thao Tác</th>
 							</tr>
 						</thead>
@@ -75,9 +123,12 @@ const UserOnline = () => {
 										<td>{item.email}</td>
 										<td>{item.phone}</td>
 										<td>
-											<div className="action-handel">
+											<div
+												onClick={() => sendEmail(item.email)}
+												className="action-handel"
+											>
 												<button className="action-lock">
-													<img src={Lock} alt="" />
+													<img src={Message} alt="" />
 												</button>
 											</div>
 										</td>
@@ -118,8 +169,29 @@ const UserOnline = () => {
 				<ModalDelete
 					idData={idUser}
 					nameUser={nameUser}
-					setModalIsOpen={setModalIsOpen}
+					setModalIsOpen={setModalOpen}
 				/>
+			</Modal>
+			<Modal
+				isOpen={modalOpen}
+				ariaHideApp={false}
+				onRequestClose={() => setModalOpen(false)}
+				style={{
+					overlay: {
+						backgroundColor: "rgba(0,0,0,0.4)",
+					},
+					content: {
+						top: "50%",
+						left: "50%",
+						right: "auto",
+						bottom: "auto",
+						marginRight: "-50%",
+						transform: "translate(-50%, -50%)",
+						width: "50rem",
+					},
+				}}
+			>
+				<ModalSendEmail setModalIsOpen={setModalOpen} email={emailUser} />
 			</Modal>
 		</div>
 	);

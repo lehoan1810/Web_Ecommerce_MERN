@@ -65,3 +65,10 @@
 	font-size: 1.4rem;
 	cursor: pointer;
 }
+.edit-address-payment {
+	text-align: right;
+	display: block;
+	font-weight: 600;
+	color: rgb(253, 63, 63);
+	cursor: pointer;
+}

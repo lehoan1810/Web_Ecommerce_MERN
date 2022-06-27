@@ -1,3 +1,15 @@
 .anticon svg {
 	font-size: 15px;
 }
+.handel-delete-update {
+	display: flex;
+}
+.desc-name-table-admin {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 220px;
+	letter-spacing: 1px;
+}

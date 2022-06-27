@@ -6,6 +6,7 @@ import Modal from "react-modal";
 import ModalDeleteProduct from "./ModalDeleteProduct.js";
 import { Select } from "antd";
 import "./ManagerProduct.css";
+import ModalUpdate from "../../../../Assistant/Page/ManagerAssistant/Product/ModalUpdate/ModalUpdate.js";
 const { Option } = Select;
 
 const ManagerProduct = () => {
@@ -14,6 +15,26 @@ const ManagerProduct = () => {
 	const [selectBrand, setSelectBrand] = useState("");
 	const [dataCategory, setDataCategory] = useState([]);
 	const [dataBrand, setDataBrand] = useState([]);
+	const [dataUpdate, setDataUpdate] = useState(null);
+	const [statusWorking, setStatusWorking] = useState("");
+
+	const statusProduct = [
+		{
+			id: "1",
+			isWorking: "",
+			name: "Tất cả",
+		},
+		{
+			id: "2",
+			isWorking: true,
+			name: "Đang kinh doanh",
+		},
+		{
+			id: "3",
+			isWorking: false,
+			name: "Ngừng kinh doanh",
+		},
+	];
 
 	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/category/getCategory`;
 
@@ -53,13 +74,18 @@ const ManagerProduct = () => {
 	};
 
 	// load product
-
+	const onSelectStatus = (item) => {
+		setStatusWorking(item);
+	};
 	const [dataProduct, setDataProduct] = useState([]);
 	useEffect(() => {
-		const urlProduct = `${process.env.REACT_APP_API_LOCAL}/api/v1/category/getProductsId/${selectBrand}`;
+		const urlProduct = `${process.env.REACT_APP_API_LOCAL}/api/v1/category/getProductsId/${selectBrand}?status=${statusWorking}`;
 		const loadProduct = () => {
 			if (!selectBrand) {
 				return 0;
+			}
+			if (dataUpdate) {
+				console.log("show dataTest: ", dataUpdate);
 			}
 			setloading(true);
 			axios
@@ -72,7 +98,7 @@ const ManagerProduct = () => {
 				.catch((err) => console.log(err));
 		};
 		loadProduct();
-	}, [selectBrand]);
+	}, [selectBrand, dataUpdate, statusWorking]);
 	const [modalIsOpen, setModalIsOpen] = useState(false);
 	const [idDelete, setIdDelete] = useState("");
 	const onDelete = (item, e) => {
@@ -80,10 +106,17 @@ const ManagerProduct = () => {
 		setIdDelete(item._id);
 		setModalIsOpen(true);
 	};
+	const [updateIsOpen, setUpdateIsOpen] = useState(false);
+	const [idUpdate, setIdUpdate] = useState("");
+	const onUpdate = (item, e) => {
+		e.preventDefault();
+		setIdUpdate(item);
+		setUpdateIsOpen(true);
+	};
 
 	const columns = [
 		{
-			title: "Image",
+			title: "Hình ảnh",
 			dataIndex: "productPicture",
 			key: "productPicture",
 			render: (item) => (
@@ -98,6 +131,11 @@ const ManagerProduct = () => {
 			dataIndex: "name",
 			responsive: ["md"],
 			key: "name",
+			render: (item) => (
+				<div className="desc-name-table-admin">
+					<span>{item}</span>
+				</div>
+			),
 		},
 
 		{
@@ -116,20 +154,33 @@ const ManagerProduct = () => {
 				</div>
 			),
 		},
-
 		{
-			title: "Action",
+			title: "Tình trạng",
+			dataIndex: "isWorking",
+			responsive: ["md"],
+			key: "isWorking",
+			render: (item) => (
+				<div>
+					{item === false ? (
+						<span className="off-product">Ngừng kinh doanh</span>
+					) : (
+						<span className="onl-product">Đang kinh doanh</span>
+					)}
+				</div>
+			),
+		},
+		{
+			title: "Xử lý",
 			dataIndex: "action",
 			key: "action",
 			render: (item, products) => (
-				<div>
-					{/* <Link
-						to="./detail"
+				<div className="handel-delete-update">
+					<button
 						className="check-detail"
-						// onClick={(e) => onDetail(teacher.idTeacher, e)}
+						onClick={(e) => onUpdate(products, e)}
 					>
-						Accept
-					</Link> */}
+						Sửa
+					</button>
 					<button
 						className="check-delete"
 						onClick={(e) => onDelete(products, e)}
@@ -140,7 +191,10 @@ const ManagerProduct = () => {
 			),
 		},
 	];
-
+	const checkUpdate = (value) => {
+		console.log("show value update: ", value);
+		setDataUpdate(value);
+	};
 	return (
 		<div>
 			<div className="table-manager-product">
@@ -148,8 +202,8 @@ const ManagerProduct = () => {
 				<div></div>
 				<div className="select-show">
 					<Select
-						defaultValue="select Category"
-						style={{ width: "100%" }}
+						defaultValue="Lựa chọn danh mục"
+						style={{ width: "180px" }}
 						onChange={onSelectCategory}
 					>
 						{dataCategory &&
@@ -162,13 +216,27 @@ const ManagerProduct = () => {
 				</div>
 				<div className="select-show-product">
 					<Select
-						defaultValue="select brand"
-						style={{ width: "100%" }}
+						defaultValue="Lựa chọn nhãn hiệu"
+						style={{ width: "180px" }}
 						onChange={onSelectBrand}
 					>
 						{dataBrand &&
 							dataBrand.map((item, id) => (
 								<Option className="option-item" key={id} value={item._id}>
+									{item.name}
+								</Option>
+							))}
+					</Select>
+				</div>
+				<div className="select-show-product status-product-assistant">
+					<Select
+						defaultValue="Chọn tình trạng"
+						style={{ width: "180px" }}
+						onChange={onSelectStatus}
+					>
+						{statusProduct &&
+							statusProduct.map((item, id) => (
+								<Option className="option-item" key={id} value={item.isWorking}>
 									{item.name}
 								</Option>
 							))}
@@ -193,7 +261,32 @@ const ManagerProduct = () => {
 					},
 				}}
 			>
-				<ModalDeleteProduct idData={idDelete} setModalIsOpen={setModalIsOpen} />
+				<ModalDeleteProduct
+					idData={idDelete}
+					setModalIsOpen={setModalIsOpen}
+					productUpdate={checkUpdate}
+				/>
+			</Modal>
+			<Modal
+				isOpen={updateIsOpen}
+				ariaHideApp={false}
+				onRequestClose={() => setUpdateIsOpen(false)}
+				style={{
+					overlay: {
+						backgroundColor: "rgba(0,0,0,0.4)",
+					},
+					content: {
+						width: "80vw",
+						margin: "auto",
+						height: "60rem",
+					},
+				}}
+			>
+				<ModalUpdate
+					data={idUpdate}
+					setModalIsOpen={setUpdateIsOpen}
+					productUpdate={checkUpdate}
+				/>
 			</Modal>
 		</div>
 	);

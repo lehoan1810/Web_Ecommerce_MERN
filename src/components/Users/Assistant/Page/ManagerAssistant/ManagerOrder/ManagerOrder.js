@@ -8,29 +8,12 @@ import ProductDelivery from "./ProductDelivery.js";
 const { TabPane } = Tabs;
 
 const ManagerOrder = () => {
-	const [dataOrder, setDataOrder] = useState([]);
-	const [loading, setLoading] = useState(true);
-	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/orders?sort=date&status=0`;
-	// const url = "http://localhost:5000/api/v1/orders?sort=date&status=0";
-	useEffect(() => {
-		const loadData = () => {
-			axios
-				.get(url, { headers: authHeader() })
-				.then((res) => {
-					setDataOrder(res.data.data.orders);
-					console.log(res.data.data.orders);
-					setLoading(false);
-				})
-				.catch((err) => console.log(err));
-		};
-		loadData();
-	}, [url]);
 	return (
 		<div>
 			<div className="form-purchase-user">
 				<Tabs defaultActiveKey="1">
 					<TabPane tab={<span>Đơn Hàng Chờ Xử Lý</span>} key="1">
-						<ProductPending loading={loading} data={dataOrder} />
+						<ProductPending />
 					</TabPane>
 					<TabPane tab={<span>Đơn Hàng Đã Xử Lý</span>} key="2">
 						<ProductAccept />

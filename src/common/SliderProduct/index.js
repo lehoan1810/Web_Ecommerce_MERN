@@ -14,7 +14,7 @@ import { Link } from "react-router-dom";
 const SliderProduct = (prop) => {
 	const { idCategory } = prop;
 	const [listProduct, setListProduct] = useState([]);
-	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/category/getProductsId/${idCategory}`;
+	const url = `${process.env.REACT_APP_API_LOCAL}/api/v1/category/getProductsId/${idCategory}?status=true`;
 	useEffect(() => {
 		const loadDetail = () => {
 			axios

@@ -19,7 +19,21 @@ const CreateProduct = ({ setModalIsOpen }) => {
 	const [price, setPrice] = useState("");
 	const [selectCategory, setSelectCategory] = useState("");
 	const [selectBrand, setSelectBrand] = useState("");
+	const [selectStatus, setSelectStatus] = useState("");
 	const [specification, setSpecification] = useState("");
+
+	const statusProduct = [
+		{
+			id: "1",
+			isWorking: true,
+			name: "Đang kinh doanh",
+		},
+		{
+			id: "2",
+			isWorking: false,
+			name: "Ngừng kinh doanh",
+		},
+	];
 
 	// post image
 	const [imageSelected, setImageSelected] = useState("");
@@ -70,18 +84,16 @@ const CreateProduct = ({ setModalIsOpen }) => {
 		};
 		loadBrand();
 	}, [test, selectCategory]);
-	// const onSelectCategory = (e) => {
-	// 	setSelectCategory(e.target.value);
-	// };
-	// const onSelectBrand = (e) => {
-	// 	setSelectBrand(e.target.value);
-	// 	console.log(e.target.value);
-	// };
+
 	const onSelectCategory = (item) => {
 		setSelectCategory(item);
 	};
 	const onSelectBrand = (item) => {
 		setSelectBrand(item);
+	};
+	const onSelectStatus = (item) => {
+		setSelectStatus(item);
+		console.log(item);
 	};
 
 	const urlAddCategory = `${process.env.REACT_APP_API_LOCAL}/api/v1/category/addproduct`;
@@ -94,8 +106,18 @@ const CreateProduct = ({ setModalIsOpen }) => {
 			imageSelected === "" &&
 			specification === ""
 		) {
-			toast.error("Thông tin đang được để trống !!!");
-			return 0;
+			toast.error("Thông tin đang được để trống", {
+				autoClose: 1500,
+				hideProgressBar: true,
+			});
+			return;
+		}
+		if (selectStatus === "") {
+			toast.error("Chưa chọn tình trạng", {
+				autoClose: 1500,
+				hideProgressBar: true,
+			});
+			return;
 		}
 		axios
 			.post(
@@ -107,6 +129,7 @@ const CreateProduct = ({ setModalIsOpen }) => {
 					category: selectBrand,
 					productPicture: imageSelected,
 					specification: specification,
+					isWorking: selectStatus,
 				},
 				{
 					headers: authHeader(),
@@ -114,12 +137,18 @@ const CreateProduct = ({ setModalIsOpen }) => {
 			)
 			.then((res) => {
 				console.log(res.data);
-				toast.success("Tạo thành công !!!");
+				toast.success("Tạo thành công", {
+					autoClose: 1500,
+					hideProgressBar: true,
+				});
 				window.location.reload();
 			})
 			.catch((err) => {
 				console.log(err);
-				toast.error("lỗi, vui lòng thử lại!");
+				toast.error("lỗi, vui lòng thử lại!", {
+					autoClose: 1500,
+					hideProgressBar: true,
+				});
 			});
 	};
 
@@ -151,38 +180,57 @@ const CreateProduct = ({ setModalIsOpen }) => {
 						placeholder="Tên sản phẩm ..."
 					/>
 				</div>
-
-				<div className="add-category-product add-item-brand">
-					<span className="title-select-category">Chọn danh mục sản phẩm</span>
-					<Select
-						defaultValue="select Category"
-						style={{ width: "100%" }}
-						onChange={onSelectCategory}
-					>
-						{dataCategory &&
-							dataCategory.map((item, id) => (
-								<Option className="option-item" key={id} value={item._id}>
-									{item.name}
-								</Option>
-							))}
-					</Select>
+				<div className="add-category-flexbox">
+					<div className="add-category-product add-item-brand ">
+						<span className="title-select-category block">Lựa chọn</span>
+						<Select
+							defaultValue="Lựa chọn danh mục"
+							style={{ width: "200px" }}
+							onChange={onSelectCategory}
+						>
+							{dataCategory &&
+								dataCategory.map((item, id) => (
+									<Option className="option-item" key={id} value={item._id}>
+										{item.name}
+									</Option>
+								))}
+						</Select>
+					</div>
+					<div className="add-category-product add-item-brand">
+						<span className="title-select-category"></span>
+						<Select
+							defaultValue="Lựa chọn nhãn hiệu"
+							style={{ width: "200px" }}
+							onChange={onSelectBrand}
+						>
+							{dataBrand &&
+								dataBrand.map((item, id) => (
+									<Option className="option-item" key={id} value={item._id}>
+										{item.name}
+									</Option>
+								))}
+						</Select>
+					</div>
+					<div className="add-category-product add-item-brand ">
+						<span className="title-select-category block">Tình trạng</span>
+						<Select
+							defaultValue="Tình trạng sản phẩm"
+							style={{ width: "200px" }}
+							onChange={onSelectStatus}
+						>
+							{statusProduct &&
+								statusProduct.map((item, id) => (
+									<Option
+										className="option-item"
+										key={id}
+										value={item.isWorking}
+									>
+										{item.name}
+									</Option>
+								))}
+						</Select>
+					</div>
 				</div>
-				<div className="add-category-product add-item-brand">
-					<span className="title-select-category">Chọn nhãn hiệu</span>
-					<Select
-						defaultValue="select brand"
-						style={{ width: "100%" }}
-						onChange={onSelectBrand}
-					>
-						{dataBrand &&
-							dataBrand.map((item, id) => (
-								<Option className="option-item" key={id} value={item._id}>
-									{item.name}
-								</Option>
-							))}
-					</Select>
-				</div>
-
 				<div className="add-price-product add-item">
 					<span>Giá tiền sản phẩm</span>
 					<input
