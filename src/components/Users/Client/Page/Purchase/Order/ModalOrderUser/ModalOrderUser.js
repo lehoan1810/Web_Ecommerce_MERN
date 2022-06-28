@@ -34,6 +34,12 @@ const ModalOrderUser = ({ data }) => {
 	// table data
 	const columns = [
 		{
+			title: "ID Sản Phẩm",
+			dataIndex: "productId",
+			responsive: ["md"],
+			key: "productId",
+		},
+		{
 			title: "Tên Sản Phẩm",
 			dataIndex: "productName",
 			responsive: ["md"],
