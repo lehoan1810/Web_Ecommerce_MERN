@@ -15,7 +15,7 @@ const ModalDeleteItem = ({ data, setModalIsOpen, checkDelete }) => {
 					autoClose: 1500,
 					hideProgressBar: true,
 				});
-				checkDelete(res.data);
+				checkDelete(data);
 				setModalIsOpen(false);
 				window.location.reload();
 			})

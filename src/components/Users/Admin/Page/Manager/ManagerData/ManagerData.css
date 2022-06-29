@@ -9,7 +9,7 @@
 	border-radius: 10px;
 	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 	background-image: linear-gradient(to right top, #26dec8, #00d4e0);
-	width: 23rem;
+	width: 295px;
 	cursor: pointer;
 	position: relative;
 	overflow: hidden;
@@ -21,15 +21,17 @@
 	text-align: center;
 	text-transform: uppercase;
 	font-weight: 600;
-	font-size: 25px;
+	font-size: 20px;
 	position: relative;
 	z-index: 1;
 }
 
 .statistics-count {
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	grid-gap: 4rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 20px;
+	flex-wrap: wrap;
 }
 /* .data-statistic-user:hover {
 	background-color: rgba(204, 203, 203, 0.87);
@@ -48,10 +50,11 @@
 	transform: rotateY(180deg);
 }
 .data-statistic-user h2 {
-	font-size: 5rem;
+	font-size: 20px;
 	margin-bottom: 0;
 	color: white;
 	z-index: 1;
+	font-weight: 600;
 }
 /* calendar */
 .first-part-statistics {
@@ -101,4 +104,7 @@
 }
 .container-statistic-items:hover::before {
 	transform: scale(3);
+}
+.statistic-status span {
+	color: #e34e4e;
 }

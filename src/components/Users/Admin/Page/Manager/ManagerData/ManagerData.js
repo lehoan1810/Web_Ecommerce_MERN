@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Line } from "@ant-design/charts";
+import { Line, Column } from "@ant-design/charts";
+// import { Column } from "@ant-design/plots";
 import StatisticsUser from "./StatisticsUser";
 import StatisticsProduct from "./StatisticsProduct";
-import { Calendar, Select } from "antd";
+import { Select } from "antd";
 import moment from "moment";
 
 import "./ManagerData.css";
@@ -13,9 +14,8 @@ const { Option } = Select;
 
 const ManagerData = () => {
 	const [dataStatistic, setDataStatistic] = useState([]);
-	function onPanelChange(value, mode) {
-		console.log(value, mode);
-	}
+	const [dataTurnovers, setDataTurnovers] = useState([]);
+
 	let today = new Date(),
 		date =
 			today.getFullYear() +
@@ -27,7 +27,6 @@ const ManagerData = () => {
 
 	let yearsCurrent = new Date(),
 		newYears = yearsCurrent.getFullYear();
-	console.log("years: ", newYears);
 	const [year, setYear] = useState(newYears);
 	const handleChange = (item) => {
 		setYear(item);
@@ -47,14 +46,11 @@ const ManagerData = () => {
 	}, [url]);
 
 	let data = [...dataStatistic];
-	console.log("test:", data);
-	// let { month: foo, value: bar } = dataStatistic;
-	// console.log("change:", { p: foo, q: bar });
 
 	const config = {
 		data,
 		xField: "month",
-		yField: "value",
+		yField: "total",
 		point: {
 			size: 5,
 			style: {
@@ -71,22 +67,17 @@ const ManagerData = () => {
 			opacity: 0.5,
 		},
 	};
+
 	return (
 		<div>
 			<h2 className="title-admin">Thống Kê</h2>
 			<div className="first-part-statistics">
-				<div className="statistics-count">
-					<StatisticsUser />
-					<StatisticsProduct />
-				</div>
-				<div className="site-calendar-demo-card">
-					<Calendar fullscreen={false} onPanelChange={onPanelChange} />
-				</div>
+				<StatisticsUser />
 			</div>
 
 			<br />
 			<div>
-				<h2 className="title-graph">Đồ thị tổng sản phẩm bán được</h2>
+				<h2 className="title-graph">Đồ thị doanh thu qua các tháng</h2>
 				<div className="graph-product">
 					<Select
 						defaultValue={year}
@@ -99,6 +90,7 @@ const ManagerData = () => {
 				</div>
 				<Line {...config} />
 			</div>
+			<br />
 		</div>
 	);
 };

@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import ModalDeleteItem from "./ModalDeleteItem.js";
 import imgIncrease from "../../../images/increase.png";
 import imgDecrease from "../../../images/decrease.png";
+import SkeletonCart from "../../../common/SkeletonCart/index.js";
 
 const CartTable = () => {
 	// const [count, setCount] = useState(0);
